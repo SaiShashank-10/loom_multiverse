@@ -58,8 +58,18 @@ export const MCP_SERVER_NAMES = {
   LINEAR: "linear",
 } as const;
 
-/** Embedding dimensions for pgvector (OpenAI text-embedding-3-small) */
-export const EMBEDDING_DIMENSIONS = 1536;
+/**
+ * Embedding dimensions per provider.
+ * - Ollama nomic-embed-text: 768 dimensions (FREE)
+ * - OpenAI text-embedding-3-small: 1536 dimensions (PAID)
+ */
+export const EMBEDDING_DIMENSIONS = {
+  ollama: 768,
+  openai: 1536,
+} as const;
+
+/** Default embedding dimensions (Ollama — free) */
+export const DEFAULT_EMBEDDING_DIMS = 768;
 
 /** Maximum context window tokens per agent call */
 export const MAX_CONTEXT_TOKENS = 128_000;

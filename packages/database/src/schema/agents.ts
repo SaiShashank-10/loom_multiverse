@@ -11,7 +11,7 @@ export const agents = pgTable("agents", {
   displayName: varchar("display_name", { length: 255 }).notNull(),
   description: text("description"),
   systemPrompt: text("system_prompt"),
-  model: varchar("model", { length: 100 }).notNull().default("claude-sonnet-4-20250514"),
+  model: varchar("model", { length: 100 }).notNull().default("qwen3:4b"),
   temperature: varchar("temperature", { length: 10 }).notNull().default("0.3"),
   tools: jsonb("tools").$type<string[]>().default([]),
   isActive: boolean("is_active").notNull().default(true),

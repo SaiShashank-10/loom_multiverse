@@ -19,7 +19,23 @@ const configSchema = z.object({
   // Redis
   REDIS_URL: z.string().url().startsWith("redis://"),
 
-  // LLM Providers
+  // LLM Provider Strategy
+  // "ollama" = free local models (default)
+  // "anthropic" = Claude API (paid fallback)
+  // "openai" = OpenAI API (paid fallback)
+  LLM_PROVIDER: z.enum(["ollama", "anthropic", "openai"]).default("ollama"),
+
+  // Ollama (Local — FREE)
+  OLLAMA_BASE_URL: z.string().url().default("http://127.0.0.1:11434"),
+  OLLAMA_MODEL: z.string().default("qwen3:4b"),
+  OLLAMA_CODE_MODEL: z.string().default("qwen3:8b"),
+  OLLAMA_EMBED_MODEL: z.string().default("nomic-embed-text"),
+
+  // Embedding Provider — "ollama" uses nomic-embed-text (768 dims, FREE)
+  // "openai" uses text-embedding-3-small (1536 dims, PAID)
+  EMBEDDING_PROVIDER: z.enum(["ollama", "openai"]).default("ollama"),
+
+  // Cloud LLM Providers (optional paid fallback)
   ANTHROPIC_API_KEY: z.string().min(1).optional(),
   OPENAI_API_KEY: z.string().min(1).optional(),
 

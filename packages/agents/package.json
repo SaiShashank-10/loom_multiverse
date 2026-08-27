@@ -20,6 +20,7 @@
     "@loom/mcp-core": "workspace:*",
     "@langchain/langgraph": "^0.2.0",
     "@langchain/core": "^0.3.0",
+    "@langchain/ollama": "^0.2.0",
     "@langchain/anthropic": "^0.3.0",
     "@langchain/openai": "^0.5.0",
     "zod": "^3.24.0"

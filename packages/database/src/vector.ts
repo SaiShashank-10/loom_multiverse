@@ -1,6 +1,6 @@
 import type { Database } from "./client.js";
 import { memory } from "./schema/memory.js";
-import { sql, eq, desc } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import { createLogger } from "@loom/shared/logger";
 
 const log = createLogger("vector-store");
@@ -9,13 +9,15 @@ const log = createLogger("vector-store");
  * Vector similarity search utilities for pgvector.
  *
  * Uses cosine distance (<=> operator) for semantic retrieval.
- * Embeddings are stored as vector(1536) matching OpenAI text-embedding-3-small.
+ * Supports both Ollama (768d, free) and OpenAI (1536d, paid) embeddings.
+ * Dimension is auto-detected from the embedding array length.
  */
 export class VectorStore {
   constructor(private db: Database) {}
 
   /**
    * Store a text embedding in the memory table.
+   * Auto-detects vector dimensions from the embedding array.
    */
   async store(params: {
     projectId: string;
@@ -26,6 +28,7 @@ export class VectorStore {
     phase?: string;
     metadata?: Record<string, unknown>;
   }) {
+    const dims = params.embedding.length;
     const embeddingStr = `[${params.embedding.join(",")}]`;
 
     await this.db.execute(sql`
@@ -34,20 +37,20 @@ export class VectorStore {
         ${params.projectId},
         ${params.namespace},
         ${params.content},
-        ${embeddingStr}::vector(1536),
+        ${embeddingStr}::vector(${sql.raw(String(dims))}),
         ${params.agentRole ?? null},
         ${params.phase ?? null},
         ${params.metadata ? JSON.stringify(params.metadata) : null}
       )
     `);
 
-    log.debug({ namespace: params.namespace }, "Stored embedding");
+    log.debug({ namespace: params.namespace, dims }, "Stored embedding");
   }
 
   /**
    * Semantic similarity search — finds the most relevant memories.
    *
-   * @param embedding - Query embedding vector
+   * @param embedding - Query embedding vector (768d for Ollama, 1536d for OpenAI)
    * @param projectId - Scope search to a project
    * @param options - Filtering and pagination options
    * @returns Array of matching memory entries ordered by similarity
@@ -62,6 +65,7 @@ export class VectorStore {
     } = {},
   ) {
     const { namespace, limit = 10, minSimilarity = 0.7 } = options;
+    const dims = embedding.length;
     const embeddingStr = `[${embedding.join(",")}]`;
 
     const results = await this.db.execute(sql`
@@ -73,17 +77,17 @@ export class VectorStore {
         agent_role,
         phase,
         metadata,
-        1 - (embedding <=> ${embeddingStr}::vector(1536)) as similarity,
+        1 - (embedding <=> ${embeddingStr}::vector(${sql.raw(String(dims))})) as similarity,
         created_at
       FROM memory
       WHERE project_id = ${projectId}
         ${namespace ? sql`AND namespace = ${namespace}` : sql``}
-        AND 1 - (embedding <=> ${embeddingStr}::vector(1536)) >= ${minSimilarity}
-      ORDER BY embedding <=> ${embeddingStr}::vector(1536)
+        AND 1 - (embedding <=> ${embeddingStr}::vector(${sql.raw(String(dims))})) >= ${minSimilarity}
+      ORDER BY embedding <=> ${embeddingStr}::vector(${sql.raw(String(dims))})
       LIMIT ${limit}
     `);
 
-    log.debug({ projectId, matches: results.length }, "Vector search completed");
+    log.debug({ projectId, dims, matches: results.length }, "Vector search completed");
     return results;
   }
 
