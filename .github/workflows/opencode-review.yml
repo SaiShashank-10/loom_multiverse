@@ -33,20 +33,14 @@ jobs:
       - name: Setup Node.js
         uses: ./.github/actions/setup-node
 
-      - name: Install OpenCode
-        run: npm install -g opencode
-
       - name: Run OpenCode Review
+        uses: anomalyco/opencode/github@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
-        run: |
-          opencode review \
-            --pr ${{ github.event.pull_request.number }} \
-            --repo ${{ github.repository }} \
-            --model anthropic/claude-sonnet-4-20250514 \
-            --severity warning \
-            --post-comments
+        with:
+          model: anthropic/claude-sonnet-4-20250514
+          use_github_token: true
 
       - name: Extract Linear issue from branch
         id: linear
