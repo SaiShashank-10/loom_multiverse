@@ -43,4 +43,3 @@ Check the `skills/` directory for detailed guides on:
 - Linear workflow
 - E2B sandbox usage
 - Founder Feed sources
-## Test
