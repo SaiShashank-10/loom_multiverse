@@ -1,0 +1,72 @@
+# ============================================
+# OpenCode AI PR Review
+# ============================================
+# Triggers on PR open/update. Runs OpenCode AI to review
+# code changes and post line-level comments.
+
+name: OpenCode PR Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: opencode-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    name: AI Code Review
+    runs-on: ubuntu-latest
+    if: |
+      !contains(github.event.pull_request.labels.*.name, 'skip-review') &&
+      github.event.pull_request.draft == false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: ./.github/actions/setup-node
+
+      - name: Install OpenCode
+        run: npm install -g opencode
+
+      - name: Run OpenCode Review
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+        run: |
+          opencode review \
+            --pr ${{ github.event.pull_request.number }} \
+            --repo ${{ github.repository }} \
+            --model anthropic/claude-sonnet-4-20250514 \
+            --severity warning \
+            --post-comments
+
+      - name: Extract Linear issue from branch
+        id: linear
+        run: |
+          BRANCH="${{ github.head_ref }}"
+          ISSUE_ID=$(echo "$BRANCH" | grep -oP 'LOOM-\d+' || echo "")
+          echo "issue_id=$ISSUE_ID" >> $GITHUB_OUTPUT
+          if [ -n "$ISSUE_ID" ]; then
+            echo "✅ Linked to Linear issue: $ISSUE_ID"
+          fi
+
+      - name: Comment Linear link on PR
+        if: steps.linear.outputs.issue_id != ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issueId = '${{ steps.linear.outputs.issue_id }}';
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `🔗 **Linear Issue:** [${issueId}](https://linear.app/issue/${issueId})\n\n_AI review completed by OpenCode_`,
+            });

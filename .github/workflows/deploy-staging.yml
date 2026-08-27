@@ -1,0 +1,22 @@
+# ============================================
+# Deploy to Staging
+# ============================================
+# Triggered on push to develop branch.
+# Calls the reusable deploy workflow with staging config.
+
+name: Deploy Staging
+
+on:
+  push:
+    branches: [develop]
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/deploy.yml
+    with:
+      environment: staging
+      api-url: https://api-staging.loom-multiverse.dev
+    secrets: inherit

@@ -1,0 +1,38 @@
+{
+  "name": "@loom/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@loom/shared": "workspace:*",
+    "@loom/database": "workspace:*",
+    "@loom/agents": "workspace:*",
+    "@loom/mcp-core": "workspace:*",
+    "@loom/mcp-servers": "workspace:*",
+    "@loom/founder-feed": "workspace:*",
+    "hono": "^4.7.0",
+    "@hono/node-server": "^1.14.0",
+    "@hono/zod-validator": "^0.5.0",
+    "jsonwebtoken": "^9.0.0",
+    "ws": "^8.18.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.0",
+    "@types/ws": "^8.5.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.8.0",
+    "vitest": "^3.2.0",
+    "rimraf": "^6.0.0"
+  }
+}

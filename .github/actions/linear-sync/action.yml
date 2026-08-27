@@ -1,0 +1,86 @@
+# ============================================
+# Composite Action: Linear Issue Sync
+# ============================================
+# Parses commit messages and branch names for Linear issue IDs (e.g., LOOM-123)
+# and updates issue status via Linear GraphQL API.
+
+name: "Sync Linear Issues"
+description: "Parse commits for Linear issue IDs and update status"
+
+inputs:
+  linear-api-key:
+    description: "Linear API key"
+    required: true
+  target-status:
+    description: "Linear status to transition the issue to"
+    required: true
+    default: "In Review"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Extract Linear issue IDs
+      id: extract
+      shell: bash
+      run: |
+        # Extract from branch name (e.g., feature/LOOM-123-description)
+        BRANCH_NAME="${GITHUB_HEAD_REF:-$GITHUB_REF_NAME}"
+        BRANCH_IDS=$(echo "$BRANCH_NAME" | grep -oP 'LOOM-\d+' || true)
+
+        # Extract from commit messages
+        COMMIT_IDS=$(git log --format="%s %b" -10 | grep -oP 'LOOM-\d+' || true)
+
+        # Combine and deduplicate
+        ALL_IDS=$(echo -e "$BRANCH_IDS\n$COMMIT_IDS" | sort -u | tr '\n' ',' | sed 's/,$//')
+
+        echo "issue_ids=$ALL_IDS" >> $GITHUB_OUTPUT
+        echo "Found Linear issues: $ALL_IDS"
+
+    - name: Update Linear issue status
+      if: steps.extract.outputs.issue_ids != ''
+      shell: bash
+      env:
+        LINEAR_API_KEY: ${{ inputs.linear-api-key }}
+        ISSUE_IDS: ${{ steps.extract.outputs.issue_ids }}
+        TARGET_STATUS: ${{ inputs.target-status }}
+      run: |
+        IFS=',' read -ra IDS <<< "$ISSUE_IDS"
+        for ISSUE_ID in "${IDS[@]}"; do
+          if [ -z "$ISSUE_ID" ]; then continue; fi
+
+          echo "Updating $ISSUE_ID to status: $TARGET_STATUS"
+
+          # Get issue UUID from identifier
+          RESPONSE=$(curl -s -X POST https://api.linear.app/graphql \
+            -H "Content-Type: application/json" \
+            -H "Authorization: $LINEAR_API_KEY" \
+            -d "{\"query\": \"{ issueSearch(filter: { number: { eq: ${ISSUE_ID#LOOM-} } }) { nodes { id state { name } } } }\"}")
+
+          ISSUE_UUID=$(echo "$RESPONSE" | jq -r '.data.issueSearch.nodes[0].id // empty')
+
+          if [ -z "$ISSUE_UUID" ]; then
+            echo "Warning: Could not find issue $ISSUE_ID"
+            continue
+          fi
+
+          # Get target state ID
+          STATES_RESPONSE=$(curl -s -X POST https://api.linear.app/graphql \
+            -H "Content-Type: application/json" \
+            -H "Authorization: $LINEAR_API_KEY" \
+            -d "{\"query\": \"{ workflowStates { nodes { id name } } }\"}")
+
+          STATE_ID=$(echo "$STATES_RESPONSE" | jq -r ".data.workflowStates.nodes[] | select(.name == \"$TARGET_STATUS\") | .id // empty")
+
+          if [ -z "$STATE_ID" ]; then
+            echo "Warning: Could not find state '$TARGET_STATUS'"
+            continue
+          fi
+
+          # Update issue state
+          curl -s -X POST https://api.linear.app/graphql \
+            -H "Content-Type: application/json" \
+            -H "Authorization: $LINEAR_API_KEY" \
+            -d "{\"query\": \"mutation { issueUpdate(id: \\\"$ISSUE_UUID\\\", input: { stateId: \\\"$STATE_ID\\\" }) { success } }\"}"
+
+          echo "✅ Updated $ISSUE_ID to $TARGET_STATUS"
+        done

@@ -1,0 +1,64 @@
+name: ✨ Feature Request
+description: Suggest a new feature for Loom Multiverse
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting a feature!
+
+  - type: dropdown
+    id: phase
+    attributes:
+      label: Related Phase
+      description: Which pipeline phase does this relate to?
+      options:
+        - Phase 1 - Idea Check
+        - Phase 2 - Planning
+        - Phase 3 - Design
+        - Phase 4 - Building
+        - Phase 5 - Testing
+        - Phase 6 - Launch
+        - Orchestrator
+        - Founder Feed
+        - MCP Integrations
+        - Dashboard / UI
+        - Infrastructure / DevOps
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: What problem does this feature solve?
+      placeholder: "As a founder, I want to..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: How should this feature work?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Have you considered any alternative approaches?
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - Must-have (blocks launch)
+        - Should-have (important)
+        - Nice-to-have (enhancement)
+    validations:
+      required: true

@@ -1,0 +1,75 @@
+# ============================================
+# Loom Multiverse — Local Development Stack
+# ============================================
+# Usage:
+#   pnpm docker:up      — Start all services
+#   pnpm docker:down    — Stop all services
+#   pnpm docker:reset   — Destroy volumes and restart fresh
+
+services:
+  # ──────────────────────────────────────────
+  # PostgreSQL with pgvector extension
+  # ──────────────────────────────────────────
+  postgres:
+    image: pgvector/pgvector:pg17
+    container_name: loom-postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-loom}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-loom_secret}
+      POSTGRES_DB: ${POSTGRES_DB:-loom_multiverse}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/01-init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-loom} -d ${POSTGRES_DB:-loom_multiverse}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ──────────────────────────────────────────
+  # Redis (Pub/Sub, Caching, Job Queues)
+  # ──────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: loom-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisdata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+
+  # ──────────────────────────────────────────
+  # pgAdmin (Database Management UI)
+  # ──────────────────────────────────────────
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: loom-pgadmin
+    restart: unless-stopped
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@loom.dev
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    volumes:
+      - pgadmindata:/var/lib/pgadmin
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  pgdata:
+    driver: local
+  redisdata:
+    driver: local
+  pgadmindata:
+    driver: local

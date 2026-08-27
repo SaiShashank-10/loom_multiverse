@@ -1,0 +1,93 @@
+# ============================================
+# Security Scanning
+# ============================================
+# Runs weekly + on PRs to main.
+# npm audit, CodeQL, dependency review, Semgrep SAST.
+
+name: Security Scan
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # Every Monday at 6:00 UTC
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  security-events: write
+  pull-requests: write
+
+jobs:
+  # ──────────────────────────────────────────
+  # Dependency Audit
+  # ──────────────────────────────────────────
+  audit:
+    name: Dependency Audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: ./.github/actions/setup-node
+
+      - name: Run npm audit
+        run: pnpm audit --audit-level=high
+        continue-on-error: true
+
+      - name: Dependency Review (PRs only)
+        if: github.event_name == 'pull_request'
+        uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: high
+          comment-summary-in-pr: always
+
+  # ──────────────────────────────────────────
+  # CodeQL Analysis
+  # ──────────────────────────────────────────
+  codeql:
+    name: CodeQL Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript-typescript
+          queries: security-extended
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:javascript-typescript"
+
+  # ──────────────────────────────────────────
+  # Semgrep SAST
+  # ──────────────────────────────────────────
+  semgrep:
+    name: Semgrep SAST
+    runs-on: ubuntu-latest
+    container:
+      image: semgrep/semgrep:latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Semgrep
+        env:
+          SEMGREP_RULES: >-
+            p/typescript
+            p/nodejs
+            p/owasp-top-ten
+            p/security-audit
+        run: semgrep ci --json --output semgrep-results.json || true
+
+      - name: Upload Semgrep results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: semgrep-results
+          path: semgrep-results.json
+          retention-days: 30

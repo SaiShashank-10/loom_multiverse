@@ -1,0 +1,81 @@
+# ============================================
+# Database Migration Workflow
+# ============================================
+# Triggered when migration files change.
+# Runs dry-run on staging, requires manual approval for production.
+
+name: Database Migration
+
+on:
+  push:
+    paths:
+      - "packages/database/migrations/**"
+      - "packages/database/src/schema/**"
+    branches: [develop, main]
+
+permissions:
+  contents: read
+
+jobs:
+  # ──────────────────────────────────────────
+  # Generate & Validate Migration
+  # ──────────────────────────────────────────
+  validate:
+    name: Validate Migration
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:pg17
+        env:
+          POSTGRES_USER: loom
+          POSTGRES_PASSWORD: loom_secret
+          POSTGRES_DB: loom_multiverse_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U loom"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: ./.github/actions/setup-node
+
+      - name: Build database package
+        run: pnpm turbo run build --filter=@loom/database
+
+      - name: Run migration dry-run
+        env:
+          DATABASE_URL: postgresql://loom:loom_secret@localhost:5432/loom_multiverse_test
+        run: |
+          cd packages/database
+          pnpm db:push
+          echo "✅ Migration validated against test database"
+
+  # ──────────────────────────────────────────
+  # Apply to Production (manual gate)
+  # ──────────────────────────────────────────
+  apply-production:
+    name: Apply to Production
+    runs-on: ubuntu-latest
+    needs: validate
+    if: github.ref == 'refs/heads/main'
+    environment: production-db
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: ./.github/actions/setup-node
+
+      - name: Build database package
+        run: pnpm turbo run build --filter=@loom/database
+
+      - name: Apply migration
+        env:
+          DATABASE_URL: ${{ secrets.PRODUCTION_DATABASE_URL }}
+        run: |
+          cd packages/database
+          pnpm db:migrate
+          echo "✅ Production migration applied"

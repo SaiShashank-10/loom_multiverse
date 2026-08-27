@@ -1,0 +1,24 @@
+# Code Owners — Loom Multiverse
+# These users will be automatically requested for review
+# when changes touch their owned files.
+
+# Default owner for everything
+* @loom-team
+
+# Agent pipeline
+/packages/agents/ @loom-team
+/packages/mcp-core/ @loom-team
+/packages/mcp-servers/ @loom-team
+
+# Database schema changes require extra review
+/packages/database/src/schema/ @loom-team
+/packages/database/migrations/ @loom-team
+
+# CI/CD — critical infrastructure
+/.github/ @loom-team
+
+# Founder Feed
+/packages/founder-feed/ @loom-team
+
+# Dashboard
+/apps/dashboard/ @loom-team

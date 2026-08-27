@@ -1,0 +1,39 @@
+{
+  "name": "@loom/database",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./schema": "./dist/schema/index.js",
+    "./client": "./dist/client.js",
+    "./vector": "./dist/vector.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "clean": "rimraf dist",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "@loom/shared": "workspace:*",
+    "drizzle-orm": "^0.44.0",
+    "postgres": "^3.4.0",
+    "pgvector": "^0.2.0"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.0",
+    "typescript": "^5.8.0",
+    "vitest": "^3.2.0",
+    "rimraf": "^6.0.0"
+  }
+}

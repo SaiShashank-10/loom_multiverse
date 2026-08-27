@@ -1,0 +1,35 @@
+{
+  "name": "@loom/shared",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./logger": "./dist/logger.js",
+    "./config": "./dist/config.js",
+    "./errors": "./dist/errors.js",
+    "./types": "./dist/types.js",
+    "./constants": "./dist/constants.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "pino": "^9.6.0",
+    "pino-pretty": "^13.0.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.0",
+    "vitest": "^3.2.0",
+    "rimraf": "^6.0.0"
+  }
+}

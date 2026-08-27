@@ -1,0 +1,33 @@
+{
+  "name": "@loom/mcp-core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./server": "./dist/server.js",
+    "./client": "./dist/client.js",
+    "./types": "./dist/types.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@loom/shared": "workspace:*",
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.0",
+    "vitest": "^3.2.0",
+    "rimraf": "^6.0.0"
+  }
+}

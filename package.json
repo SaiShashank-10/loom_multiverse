@@ -1,0 +1,52 @@
+{
+  "name": "loom-multiverse",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Multi-agent, end-to-end software generation platform — from idea to deployed product",
+  "author": "Loom Multiverse Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=10.0.0"
+  },
+  "packageManager": "pnpm@10.14.0",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "test:coverage": "turbo run test:coverage",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,yml,yaml}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,yml,yaml}\"",
+    "db:generate": "turbo run db:generate --filter=@loom/database",
+    "db:migrate": "turbo run db:migrate --filter=@loom/database",
+    "db:studio": "turbo run db:studio --filter=@loom/database",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "docker:reset": "docker compose down -v && docker compose up -d",
+    "clean": "turbo run clean && rimraf node_modules",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "eslint": "^9.28.0",
+    "husky": "^9.1.0",
+    "lint-staged": "^15.4.0",
+    "prettier": "^3.5.0",
+    "rimraf": "^6.0.0",
+    "turbo": "^2.5.0",
+    "typescript": "^5.8.0",
+    "vitest": "^3.2.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  }
+}

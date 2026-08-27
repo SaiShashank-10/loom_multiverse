@@ -1,0 +1,53 @@
+# ============================================
+# Composite Action: Setup Node.js + pnpm
+# ============================================
+# Provides consistent Node.js + pnpm setup across all workflows.
+# Includes Turborepo remote cache and pnpm store caching.
+
+name: "Setup Node.js Environment"
+description: "Install Node.js, pnpm, and restore caches"
+
+inputs:
+  node-version:
+    description: "Node.js version to use"
+    required: false
+    default: "22"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 10
+
+    - name: Setup Node.js ${{ inputs.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: "pnpm"
+
+    - name: Get pnpm store directory
+      id: pnpm-cache
+      shell: bash
+      run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+    - name: Cache pnpm store
+      uses: actions/cache@v4
+      with:
+        path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-store-
+
+    - name: Cache Turborepo
+      uses: actions/cache@v4
+      with:
+        path: .turbo
+        key: ${{ runner.os }}-turbo-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-turbo-
+
+    - name: Install dependencies
+      shell: bash
+      run: pnpm install --frozen-lockfile

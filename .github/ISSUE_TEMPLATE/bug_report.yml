@@ -1,0 +1,92 @@
+name: 🐛 Bug Report
+description: Report a bug in Loom Multiverse
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+
+  - type: input
+    id: linear-issue
+    attributes:
+      label: Linear Issue ID
+      description: If this bug is tracked in Linear, provide the ID
+      placeholder: "LOOM-123"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      description: Which component is affected?
+      options:
+        - Orchestrator Agent
+        - Idea Check Agent
+        - Planning Agent
+        - Design Agent
+        - Build Agent
+        - Testing Agent
+        - Launch Agent
+        - Founder Feed
+        - MCP Server (Stripe)
+        - MCP Server (Resend)
+        - MCP Server (PostHog)
+        - MCP Server (E2B)
+        - API Server
+        - Dashboard
+        - Database
+        - CI/CD Pipeline
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is
+      placeholder: "When I try to..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Steps to reproduce the behavior
+      value: |
+        1. Go to '...'
+        2. Click on '...'
+        3. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What you expected to happen
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Paste relevant logs here
+      render: shell
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Critical (system down)
+        - High (feature broken)
+        - Medium (workaround available)
+        - Low (cosmetic)
+    validations:
+      required: true
