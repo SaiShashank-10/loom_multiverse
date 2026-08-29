@@ -15,19 +15,20 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@loom/shared": "workspace:*",
+    "@langchain/anthropic": "^0.3.0",
+    "@langchain/core": "^0.3.0",
+    "@langchain/langgraph": "^0.2.0",
+    "@langchain/ollama": "^0.2.0",
+    "@langchain/openai": "^0.5.0",
     "@loom/database": "workspace:*",
     "@loom/mcp-core": "workspace:*",
-    "@langchain/langgraph": "^0.2.0",
-    "@langchain/core": "^0.3.0",
-    "@langchain/ollama": "^0.2.0",
-    "@langchain/anthropic": "^0.3.0",
-    "@langchain/openai": "^0.5.0",
+    "@loom/shared": "workspace:*",
+    "pino": "^9.14.0",
     "zod": "^3.24.0"
   },
   "devDependencies": {
+    "rimraf": "^6.0.0",
     "typescript": "^5.8.0",
-    "vitest": "^3.2.0",
-    "rimraf": "^6.0.0"
+    "vitest": "^3.2.0"
   }
 }

@@ -15,7 +15,7 @@ services:
     container_name: loom-postgres
     restart: unless-stopped
     ports:
-      - "5432:5432"
+      - "5435:5432"
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-loom}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-loom_secret}

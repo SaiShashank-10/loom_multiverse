@@ -1,5 +1,5 @@
 import { pgTable, uuid, text, timestamp, varchar, index, integer } from "drizzle-orm/pg-core";
-import { sql } from "drizzle-orm";
+
 
 /**
  * Memory table — stores vector embeddings for semantic retrieval.
