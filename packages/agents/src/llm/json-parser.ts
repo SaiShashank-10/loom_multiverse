@@ -32,6 +32,16 @@ export function extractAndParseJson(content: string): unknown {
   }
 
   // 2. Fallback to advanced brace-matching algorithm.
+  // First, if there are unbalanced left braces, forcefully close them at the end.
+  let leftCount = (content.match(/\{/g) || []).length;
+  let rightCount = (content.match(/\}/g) || []).length;
+  
+  if (leftCount > rightCount) {
+    const missingBraces = leftCount - rightCount;
+    log.warn(`Found ${missingBraces} unclosed braces. Forcefully appending '}' to repair JSON.`);
+    content += "}".repeat(missingBraces);
+  }
+
   // We scan the text for all balanced brace pairs and try parsing them from last to first.
   const jsonBlocks: string[] = [];
   let braceCount = 0;
@@ -50,12 +60,18 @@ export function extractAndParseJson(content: string): unknown {
     }
   }
 
-  // Iterate backwards since models often write a "draft" JSON before the final one
-  for (let i = jsonBlocks.length - 1; i >= 0; i--) {
+  // Sort blocks by length descending to find the largest (most complete) JSON object
+  jsonBlocks.sort((a, b) => b.length - a.length);
+
+  for (const block of jsonBlocks) {
     try {
       // Use non-null assertion because we are iterating valid array indices
-      parsedJson = JSON.parse(jsonBlocks[i]!);
-      return parsedJson;
+      parsedJson = JSON.parse(block);
+      
+      // Basic heuristic: check if it's an object/array, not just a string/number
+      if (typeof parsedJson === "object" && parsedJson !== null) {
+         return parsedJson;
+      }
     } catch {
       // Continue to the next block if parsing fails
     }

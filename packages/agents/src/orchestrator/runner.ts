@@ -24,6 +24,7 @@ export interface RunPipelineOptions {
   projectId: string;
   initialContext?: Record<string, unknown>;
   threadId?: string;
+  onProgress?: (event: string, data: any) => void;
 }
 
 export class PipelineRunner {
@@ -47,7 +48,30 @@ export class PipelineRunner {
         context: options.initialContext ?? {},
       };
 
-      // Invoke the graph
+      // If we have an onProgress callback, we use streamEvents
+      if (options.onProgress) {
+        options.onProgress("pipeline:started", { projectId: options.projectId });
+        
+        const stream = await compiledGraph.stream(initialState, config);
+        
+        let finalState: OrchestratorStateType | null = null;
+        for await (const chunk of stream) {
+          options.onProgress("pipeline:progress", chunk);
+          finalState = Object.values(chunk)[0] as OrchestratorStateType;
+        }
+        
+        options.onProgress("pipeline:completed", { finalPhase: finalState?.currentPhase });
+        
+        log.info({ 
+          projectId: options.projectId, 
+          finalPhase: finalState?.currentPhase,
+          hasError: !!finalState?.error 
+        }, "Pipeline execution completed");
+        
+        return finalState!;
+      }
+
+      // Otherwise just invoke normally
       const finalState = await compiledGraph.invoke(initialState, config);
       
       log.info({ 

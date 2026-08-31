@@ -16,57 +16,53 @@ import { embedText, createTier1LLM } from "../../llm/index.js";
 import type { AgentInput, AgentResult } from "../types.js";
 
 // ─────────────────────────────────────────────
-// Zod Schemas
+// Zod Schemas (V2 Industry-Grade)
 // ─────────────────────────────────────────────
 
-const ColumnSchema = z.object({
-  name: z.string(),
-  type: z.string(),
-  description: z.string().optional().default("")
-});
-
-const TableSchema = z.object({
-  tableName: z.string(),
-  columns: z.array(ColumnSchema).default([]),
-  description: z.string().optional().default("")
-});
-
-const ApiEndpointSchema = z.union([
-  z.object({
-    method: z.string().default("GET"),
-    path: z.string().default(""),
-    description: z.string().optional().default("")
-  }),
-  z.string().transform(str => ({ method: "GET", path: str, description: "" }))
-]);
-
-const PhaseSchema = z.union([
-  z.object({
-    phaseName: z.string().optional(),
-    name: z.string().optional(),
-    title: z.string().optional(),
-    tasks: z.array(z.string()).default([])
-  }).transform(val => ({
-    phaseName: val.phaseName || val.name || val.title || "Unnamed Phase",
-    tasks: val.tasks
-  })),
-  z.string().transform(str => ({
-    phaseName: str,
-    tasks: []
-  }))
-]);
-
-export const PlanningSchema = z.object({
+export const PlanningResultSchema = z.object({
+  projectName: z.string().catch("Unnamed Project"),
+  architecture: z.object({
+    type: z.enum(["monolith", "microservices", "serverless", "jamstack"]).catch("monolith"),
+    diagramMermaid: z.string().catch(""),
+    services: z.array(z.object({
+      name: z.string().catch("Unknown Service"),
+      responsibility: z.string().catch(""),
+      techStack: z.array(z.string()).catch([])
+    })).catch([])
+  }).catch({ type: "monolith", diagramMermaid: "", services: [] }),
   techStack: z.object({
-    frontend: z.array(z.string()).default([]),
-    backend: z.array(z.string()).default([]),
-    database: z.array(z.string()).default([]),
-    infrastructure: z.array(z.string()).default([])
-  }).default({ frontend: [], backend: [], database: [], infrastructure: [] }),
-  databaseSchema: z.array(TableSchema).default([]),
-  apiEndpoints: z.array(ApiEndpointSchema).default([]),
-  phases: z.array(PhaseSchema).default([]),
-  potentialChallenges: z.array(z.string()).default([])
+    frontend: z.array(z.string()).catch([]),
+    backend: z.array(z.string()).catch([]),
+    database: z.array(z.string()).catch([]),
+    infrastructure: z.array(z.string()).catch([])
+  }).catch({ frontend: [], backend: [], database: [], infrastructure: [] }),
+  databaseSchema: z.object({
+    diagramMermaid: z.string().catch(""),
+    tables: z.array(z.object({
+      tableName: z.string().catch("Unknown Table"),
+      columns: z.array(z.object({
+        name: z.string().catch(""),
+        type: z.string().catch(""),
+        description: z.string().catch("")
+      })).catch([]),
+      description: z.string().catch("")
+    })).catch([])
+  }).catch({ diagramMermaid: "", tables: [] }),
+  apiEndpoints: z.array(z.object({
+    method: z.enum(["GET", "POST", "PUT", "PATCH", "DELETE"]).catch("GET"),
+    path: z.string().catch(""),
+    description: z.string().catch(""),
+    auth: z.boolean().catch(false)
+  })).catch([]),
+  nonFunctionalRequirements: z.array(z.object({
+    category: z.string().catch(""),
+    requirements: z.array(z.string()).catch([])
+  })).catch([]),
+  developmentPhases: z.array(z.object({
+    phaseName: z.string().catch(""),
+    tasks: z.array(z.string()).catch([])
+  })).catch([]),
+  potentialChallenges: z.array(z.string()).catch([])
 });
 
 // ─────────────────────────────────────────────
@@ -111,9 +107,21 @@ export class PlanningAgent extends BaseAgent {
       const response = await planningLlm.invoke(messages);
       const content = typeof response.content === "string" ? response.content : JSON.stringify(response.content);
       
-      // 4. Parse & Validate
-      const parsedJson = extractAndParseJson(content);
-      const plan = PlanningSchema.parse(parsedJson);
+      this.log.info({ content }, "Raw LLM output");
+      
+      // 4. Parse & Validate JSON and Mermaid blocks
+      const parsedJson = extractAndParseJson(content) as any;
+      
+      // Extract Mermaid diagrams using regex
+      const mermaidBlocks = [...content.matchAll(/```mermaid\s*([\s\S]*?)\s*```/g)];
+      
+      if (!parsedJson.architecture) parsedJson.architecture = {};
+      parsedJson.architecture.diagramMermaid = mermaidBlocks[0] ? mermaidBlocks[0][1] : "";
+      
+      if (!parsedJson.databaseSchema) parsedJson.databaseSchema = {};
+      parsedJson.databaseSchema.diagramMermaid = mermaidBlocks[1] ? mermaidBlocks[1][1] : "";
+
+      const plan = PlanningResultSchema.parse(parsedJson);
 
       this.log.info("Technical Architecture Plan generated successfully.");
 

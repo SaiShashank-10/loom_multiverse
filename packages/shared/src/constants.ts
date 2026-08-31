@@ -82,8 +82,8 @@ export const FEED_SOURCES = {
   INDIA_TODAY: {
     name: "India Today",
     url: "https://www.indiatoday.in",
-    rssUrl: "https://www.indiatoday.in/rss/home",
-    category: "general",
+    rssUrl: "https://www.indiatoday.in/rss/1206578", // Technology feed
+    category: "tech",
   },
   HINDUSTAN_TIMES: {
     name: "Hindustan Times",
@@ -94,14 +94,14 @@ export const FEED_SOURCES = {
   ECONOMIC_TIMES: {
     name: "The Economic Times",
     url: "https://economictimes.indiatimes.com",
-    rssUrl: "https://economictimes.indiatimes.com/rssfeedstopstories.cms",
-    category: "business",
+    rssUrl: "https://economictimes.indiatimes.com/tech/rssfeeds/13357270.cms", // Tech feed
+    category: "tech",
   },
   TELANGANA_TODAY: {
     name: "Telangana Today",
     url: "https://telanganatoday.com",
-    rssUrl: "https://telanganatoday.com/feed",
-    category: "regional",
+    rssUrl: "https://telanganatoday.com/category/technology/feed", // Tech feed
+    category: "tech",
   },
   TECHCRUNCH: {
     name: "TechCrunch",
@@ -129,13 +129,13 @@ export const FEED_SOURCES = {
   NDTV: {
     name: "NDTV",
     url: "https://www.ndtv.com",
-    rssUrl: "https://feeds.feedburner.com/ndtvnews-top-stories",
-    category: "general",
+    rssUrl: "https://feeds.feedburner.com/ndtv/gadgets", // Gadgets360/Tech feed
+    category: "tech",
   },
   THE_HINDU: {
     name: "The Hindu",
     url: "https://www.thehindu.com",
-    rssUrl: "https://www.thehindu.com/feeder/default.rss",
-    category: "general",
+    rssUrl: "https://www.thehindu.com/sci-tech/technology/feeder/default.rss", // Technology feed
+    category: "tech",
   },
 } as const;

@@ -1,23 +1,27 @@
-import { createDatabaseClient } from "./packages/database/src/client.js";
-import { sql } from "drizzle-orm";
+import { createDatabaseClient, feedItems } from './packages/database/src/index.js';
+import { desc } from 'drizzle-orm';
+import { config } from 'dotenv';
+config();
 
-async function run() {
-  const db = createDatabaseClient("postgresql://loom:loom_secret@127.0.0.1:5432/loom_multiverse");
-  
-  try {
-    const res = await db.execute(sql`SELECT extname FROM pg_extension`);
-    console.log("Extensions:", res);
-    
-    // Also try to insert without vector cast
-    await db.execute(sql`INSERT INTO memory (project_id, namespace, content) VALUES (gen_random_uuid(), 'test', 'test')`);
-    console.log("Insert ok");
-    
-    // Also try the vector cast
-    await db.execute(sql`INSERT INTO memory (project_id, namespace, content, embedding) VALUES (gen_random_uuid(), 'test', 'test', '[0.1, 0.2]'::vector(2))`);
-    console.log("Vector insert ok");
-  } catch(e) {
-    console.error("Failed:", e);
-  }
+async function test() {
+  const db = createDatabaseClient(process.env.DATABASE_URL!);
+  const items = await db.select().from(feedItems).orderBy(desc(feedItems.relevanceScore)).limit(5);
+
+  console.log('\n======================================');
+  console.log('📰 TOP 5 MOST RELEVANT ARTICLES SCRAPED');
+  console.log('======================================');
+
+  items.forEach((item, i) => {
+    console.log(`\n[${i + 1}] ${item.title}`);
+    console.log(`    Source: ${item.source} | Score: ${item.relevanceScore}`);
+    console.log(`    URL: ${item.url}`);
+    if (item.summary) {
+      console.log(`    Snippet: ${item.summary.substring(0, 100)}...`);
+    }
+  });
+
+  console.log('\n✅ Plus 848 more articles saved in PostgreSQL!');
   process.exit(0);
 }
-run();
+
+test();

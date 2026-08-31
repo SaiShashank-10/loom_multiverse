@@ -48,5 +48,8 @@
     "*.{json,md,yml,yaml}": [
       "prettier --write"
     ]
+  },
+  "dependencies": {
+    "mermaid": "^11.17.2"
   }
 }

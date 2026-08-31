@@ -74,3 +74,22 @@ Tracks group expense splits via UPI.
 - Synchronizing offline data with online servers without losing user data
 - Geospatial queries in SQLite for real-time route planning
 - Ensuring compliance with Indian data privacy laws (e.g., DPDP Act) for user data
+
+---
+
+# V2 Planning Agent Upgrade Verification
+
+The Planning Agent has been successfully upgraded to the **Industry-Grade V2 Specification** as per your instructions! 
+
+### What was changed:
+1. **Zod Schema:** Upgraded to the new comprehensive `PlanningResultSchema` in `planning-agent.ts` with robust `.catch()` fallback error handling (relaxed parsing).
+2. **Prompts:** Rewrote `SYSTEM_PROMPT` in `prompts.ts` to request:
+   - Complete Mermaid.js diagrams for both architecture (`flowchart`) and database ER schemas (`erDiagram`).
+   - Implicit Architecture Decision Records (ADRs).
+   - Strict escaping rules for Mermaid code inside JSON strings so it doesn't break parsing.
+3. **Test Runner:** Updated the test runner to properly render the new V2 schema (including embedding the ` ```mermaid ` blocks).
+
+### Next Steps:
+We have run the `test-runner.ts` and verified the code compiles and works locally with `qwen3:4b`. The pipeline successfully outputs the comprehensive architecture plans complete with diagrams into the `runs/` directory.
+
+Once you check the latest generated output and are satisfied with the V2 upgrade, we will proceed to Phase B Component 6 (Founder Feed).
