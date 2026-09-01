@@ -1,0 +1,92 @@
+/* Reset some default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* General layout */
+.container {
+  width: 80%;
+  margin: 2rem auto;
+  overflow: hidden;
+}
+
+header {
+  background: #333;
+  color: #fff;
+  padding-top: 1rem;
+  min-height: 70px;
+}
+
+header a {
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 18px;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+header a:hover {
+  color: #ddd;
+}
+
+/* Navigation */
+nav {
+  background: #444;
+  padding-top: 1rem;
+}
+
+nav ul {
+  list-style-type: none;
+  float: right;
+}
+
+nav li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+nav a:hover {
+  background: #ddd;
+  color: #333;
+}
+
+/* Main content */
+.main-content {
+  padding-top: 2rem;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #333;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  header a, nav li, nav a {
+    font-size: 14px;
+  }
+}

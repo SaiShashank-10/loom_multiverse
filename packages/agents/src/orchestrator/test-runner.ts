@@ -12,8 +12,8 @@ import path from "path";
 
 async function run() {
   const projectId = crypto.randomUUID();
-  
-  const rawIdea = "A multi-day road trip planner and expense splitter. It needs to map routes across multiple cities, integrate accommodation recommendations, store digital e-Pass documents offline, and allow a group of 8 people to seamlessly split bills via UPI integrations. It should be mobile-first with a dark mode, professional themed aesthetic.";
+
+  const rawIdea = "Build a modern, production-ready B2B SaaS web dashboard called Tech Accessory Dropshipper Hub.The platform is designed for Indian tech accessory dropshippers who need to find reliable suppliers, compare pricing, analyze shipping logistics, and maximize profit margins.The application should feel like a premium modern SaaS product, with a clean, professional, data-driven interface similar to Stripe, Linear, Vercel, or modern analytics platforms.";
 
   log.info({ projectId, rawIdea }, "Starting Idea Check Pipeline Test");
 
@@ -84,7 +84,7 @@ async function run() {
     if (!fs.existsSync(outDir)) {
       fs.mkdirSync(outDir);
     }
-    
+
     const filePath = path.join(outDir, `pipeline-output-${projectId}.md`);
     fs.writeFileSync(filePath, md, "utf-8");
     log.info(`✅ Output saved to: ${filePath}`);

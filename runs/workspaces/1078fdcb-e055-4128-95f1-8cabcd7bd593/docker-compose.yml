@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  route-service:
+    build:
+      context: ./backend/src/routeService
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongo:27017/roadtripplanner
+    depends_on:
+      - mongo
+
+  accommodation-service:
+    build:
+      context: ./backend/src/accommodationService
+      dockerfile: Dockerfile
+    ports:
+      - "3002:3002"
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongo:27017/roadtripplanner
+    depends_on:
+      - mongo
+
+  pass-document-service:
+    build:
+      context: ./backend/src/passDocumentService
+      dockerfile: Dockerfile
+    ports:
+      - "3003:3003"
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongo:27017/roadtripplanner
+    depends_on:
+      - mongo
+
+  bill-splitting-service:
+    build:
+      context: ./backend/src/billSplittingService
+      dockerfile: Dockerfile
+    ports:
+      - "3004:3004"
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongo:27017/roadtripplanner
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"
+
+volumes:
+  mongo-data:
+
+networks:
+  default:
+    driver: bridge

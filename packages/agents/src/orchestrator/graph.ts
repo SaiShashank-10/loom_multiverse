@@ -63,6 +63,12 @@ const ideaCheckNode = createPhaseNode("idea_check");
 const planningNode = createPhaseNode("planning");
 
 /**
+ * Node: Code Generation Phase
+ * Generates the source code files based on the technical plan.
+ */
+const codeGenNode = createPhaseNode("code_gen");
+
+/**
  * Routing logic after Idea Check.
  * If there's an error (idea rejected), we stop. Otherwise, proceed to planning.
  */
@@ -73,11 +79,19 @@ function routeAfterIdeaCheck(state: OrchestratorStateType): string {
 
 /**
  * Routing logic after Planning.
- * For Phase B, we end here. (Phase C will add Design and Build).
+ * For Phase C, we route to code_gen.
  */
 function routeAfterPlanning(state: OrchestratorStateType): string {
   if (state.error) return END;
-  // TODO (Phase C): return "design"
+  return "code_gen";
+}
+
+/**
+ * Routing logic after Code Generation.
+ * For now, we end here.
+ */
+function routeAfterCodeGen(state: OrchestratorStateType): string {
+  if (state.error) return END;
   return END;
 }
 
@@ -89,11 +103,13 @@ const workflow = new StateGraph(OrchestratorState)
   // Add Nodes
   .addNode("idea_check", ideaCheckNode)
   .addNode("planning", planningNode)
+  .addNode("code_gen", codeGenNode)
   
   // Add Edges
   .addEdge("__start__", "idea_check")
   .addConditionalEdges("idea_check", routeAfterIdeaCheck)
-  .addConditionalEdges("planning", routeAfterPlanning);
+  .addConditionalEdges("planning", routeAfterPlanning)
+  .addConditionalEdges("code_gen", routeAfterCodeGen);
 
 /**
  * The compiled LangGraph instance ready for execution.

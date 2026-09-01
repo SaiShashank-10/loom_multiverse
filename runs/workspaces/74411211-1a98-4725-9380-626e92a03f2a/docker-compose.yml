@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:14
+    container_name: techaccessory_db
+    environment:
+      POSTGRES_DB: techaccessory
+      POSTGRES_USER: techaccessory_user
+      POSTGRES_PASSWORD: techaccessory_password
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: techaccessory_backend
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://techaccessory_user:techaccessory_password@db:5432/techaccessory
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: techaccessory_frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  db_data:
+
+networks:
+  default:
+    driver: bridge
