@@ -6,6 +6,26 @@
 
 import type { BaseChatModel } from "@langchain/core/language_models/chat_models";
 
+// ─────────────────────────────────────────────
+// Chat / Interactive Types
+// ─────────────────────────────────────────────
+
+/** A single message in the agent-user conversation */
+export interface ChatMessage {
+  /** Who sent this message */
+  role: "agent" | "user" | "system";
+  /** The message content */
+  content: string;
+  /** ISO timestamp */
+  timestamp: string;
+  /** Optional structured data attached to the message */
+  metadata?: Record<string, unknown>;
+}
+
+// ─────────────────────────────────────────────
+// Agent Input / Output
+// ─────────────────────────────────────────────
+
 /**
  * Standard input payload provided to every agent when it runs.
  */
@@ -18,6 +38,12 @@ export interface AgentInput {
   payload: Record<string, unknown>;
   /** Optional override for the LLM to use */
   llm?: BaseChatModel;
+  /** Callback for sending messages to the user (WebSocket/CLI) */
+  onMessage?: (event: string, data: unknown) => void;
+  /** Callback for receiving user input (WebSocket/CLI) */
+  waitForUserInput?: () => Promise<string>;
+  /** Whether to run in interactive mode (with user approval loops) */
+  interactive?: boolean;
 }
 
 /**
@@ -42,4 +68,7 @@ export interface AgentResult {
   error?: string;
   /** The structured output data */
   data?: Record<string, unknown>;
+  /** Chat history from interactive sessions */
+  chatHistory?: ChatMessage[];
 }
+

@@ -6,6 +6,7 @@
  */
 
 import { Annotation } from "@langchain/langgraph";
+import type { ChatMessage } from "../agents/types.js";
 
 /**
  * The unified state object that travels through the pipeline.
@@ -38,9 +39,36 @@ export const OrchestratorState = Annotation.Root({
     reducer: (x, y) => y !== undefined ? y : x,
     default: () => null,
   }),
+
+  /**
+   * Chat history for human-in-the-loop interactions, keyed by phase.
+   * E.g., { "idea_check": [...messages], "planning": [...messages] }
+   */
+  chatHistory: Annotation<Record<string, ChatMessage[]>>({
+    reducer: (x, y) => ({ ...x, ...y }),
+    default: () => ({}),
+  }),
+
+  /**
+   * List of uploaded document file paths (for RAG ingestion).
+   */
+  uploadedDocuments: Annotation<string[]>({
+    reducer: (x, y) => [...(x || []), ...(y || [])],
+    default: () => [],
+  }),
+
+  /**
+   * User approval status per phase.
+   * E.g., { "idea_check": true, "planning": false }
+   */
+  approvals: Annotation<Record<string, boolean>>({
+    reducer: (x, y) => ({ ...x, ...y }),
+    default: () => ({}),
+  }),
 });
 
 /**
  * Type alias for the inferred state type.
  */
 export type OrchestratorStateType = typeof OrchestratorState.State;
+
