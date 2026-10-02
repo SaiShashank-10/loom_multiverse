@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Style OS</string>
+    <string name="closet_health_and_analytics_title">Closet Health & Wardrobe Analytics</string>
+    <string name="ai_wardrobe_scan_and_auto_detection_title">AI Wardrobe Scan & Auto-Detection</string>
+    <string name="mobile_settings_and_wardrobe_management_title">Mobile Settings & Wardrobe Management</string>
+    <string name="virtual_try_on_and_outfit_diary_title">Virtual Try-On & Outfit Diary</string>
+    <string name="mobile_home_title">Home</string>
+    <string name="mobile_closet_and_wardrobe_grid_title">Closet & Wardrobe Grid</string>
+    <string name="camera_permission_message">Style OS needs access to your camera to scan and categorize your wardrobe.</string>
+    <string name="storage_permission_message">Style OS needs access to your storage to save favorite looks and track wardrobe health.</string>
+    <string name="location_permission_message">Style OS needs access to your location to provide weather-based styling tips.</string>
+    <string name="weather_api_key_error">Weather API key is required for real-time weather data.</string>
+    <string name="database_connection_error">Failed to connect to the database. Please check your connection and try again later.</string>
+    <string name="authentication_error">Authentication failed. Please try signing in again.</string>
+</resources>

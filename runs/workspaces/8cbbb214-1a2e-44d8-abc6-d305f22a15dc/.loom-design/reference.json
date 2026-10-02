@@ -1,0 +1,33 @@
+{
+  "fingerprint": "e542aba9b34c8599240c7e394dd14245316b3b495fe0e9257fb2599de934c570",
+  "screens": [
+    {
+      "id": "6e0a0c875d0a4b9796474bd6bfe1c34d",
+      "title": "Shopping Cart - Review & Bag",
+      "device": "DESKTOP",
+      "sha256": "24674087dbe20f131b66ccc0f8ed4c544a277f31e0125b15092205778cd92106",
+      "screenshotUrl": "https://lh3.googleusercontent.com/aida/AEtjO1X6os-dBiqq7p63NW5GHYLp7gf93HUgoAen1gcIHe2PKe2_IEdvhjOLN-K1rskPXNuAkjwQgqwjapmzCZLAiYO5mXcje5R5KzajzravuT2zddz47tTmMqsOClfsg2O4S8iN3uygdJiAEU2Rn5vftcmwizTmrfA3v6mWKDE-d2KB2bmfbvjLWihEyCn75wDsjdwrPtBfxHp5ROmyHBWZzHc0CmYwNDTPfZcoyHcvgBGouIdW-KLSQdFUrY4"
+    },
+    {
+      "id": "06635da5ad954bc6b24ed9804b64e4a6",
+      "title": "Checkout - Shipping & Payment",
+      "device": "DESKTOP",
+      "sha256": "bd2f62131174eaa338f403a9095270fdbaca75aef6ce1412c175886c9b656044",
+      "screenshotUrl": "https://lh3.googleusercontent.com/aida/AEtjO1U0rJdruL_Xq-M3Fb5M176thJHdgqcYNxlu1EphqNmqzyBIGmZZJTjg71g42vxNnDlvl6m8mH-0Nyh9fON7j3-HVq2v9HalTncYsI_mefS31jiNtPlohpJ1Z-G0lJrz6PY8ZD2g-c05ocdTfQFguBB-paggcX4JFIMXgFgdRjinYdB6OyrPooRCG939Q7JMpX_oKTnXfBQC3boG94ztzP-32KxoO94-6YOipevP7ogN5Ri6njlZzzhRUhdb"
+    },
+    {
+      "id": "51590b4c579d4616bd234685861651fe",
+      "title": "Order Confirmation & Review",
+      "device": "DESKTOP",
+      "sha256": "0a3770bac73555de3d408fdd7a7fb913adc593a701f2f846715fe0be1545989d",
+      "screenshotUrl": "https://lh3.googleusercontent.com/aida/AEtjO1V3Bx40Q91TRoclWbH7cOWUC9j_sMtHX7ZHLgN0S-WmRqh726_U0kSW_vAeEeHfptZWECnJKxsIiDca-uSUDeksj2c-QRAaWvKj2HWT0sGnLLQlZc90CL8nMLNfjASvd8jFiwWIhc3b83YShJ1rpUuy2p2YiNcJeMTL8U6OGNqNmWZKsYn9v8MWHJobUF2OJE2ZFhRHJhnxb3YPLd_IUzAKNTFYYYB1gzNhBtx97KdJyoukE6z0KA11iDAz"
+    },
+    {
+      "id": "d169d644cde14b09ab9faeb49191af96",
+      "title": "Product Detail - Komorebi Stoneware Vase",
+      "device": "DESKTOP",
+      "sha256": "a769ae307ae2ba63d9f51650c6d7f690372cd58b2072bc07c84c6a540bdff631",
+      "screenshotUrl": "https://lh3.googleusercontent.com/aida/AEtjO1XyYXf3-nP9YwlQPtxgHXH7fAHhRPurwhEsfYFvFMFikbmJYe6r8AI2_B9rU1cVKGw7Cya0rN6sMcMH3DYCNehzSPjyaZ_wmUyxIDpaIs4WOZ7-kuktg0wgya6_gR_WFvx7k4E3iFXHAJEN4bGbv-tljJoPEkFkESAniDBJkTOizEmeP98UDvV3Adid2Nl7qL4cf7UH9mjh0zf9bZc9_bhmN_5BfdvAl5FBYwKDeMzuM7L-Mp9dHpGKgYc"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "fingerprint": "8fb325dac4f69b33ca5d8f770875430fea6c993b0f5ea8334026ab90192da934",
+  "plan": {
+    "requiresTraining": false,
+    "task": "none",
+    "modalities": [],
+    "framework": "none",
+    "modelFamily": "none",
+    "mode": "none",
+    "datasetSchema": "No training dataset required.",
+    "splitStrategy": "Not applicable.",
+    "metrics": [],
+    "acceptanceCriteria": [],
+    "compute": {
+      "device": "auto",
+      "maxRuntimeMinutes": 60,
+      "maxMemoryGB": 4
+    },
+    "rationale": "The project does not require training a new model or dataset. It involves designing and implementing a system using existing technologies, which does not necessitate machine learning."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "content": "{\n  \"content\": \"<!-- src/components/JobCard.jsx -->\\n\\nimport React from 'react';\\n\\nconst JobCard = ({ job }) => {\\n  const { id, title, company, location, workplace, salary, posted, match, skills, gap, color } = job;\\n\\n  return (\\n    <div className=\\\"job-card\\\">\\n      <div className=\\\"job-top\\\">\\n        <div className={`company-mark ${color ? `large` : ``}`}></div>\\n        <div className=\\\"job-heading\\\">\\n          <h3>{title}</h3>\\n          <p className=\\\"text-muted small\\\">{company}</p>\\n        </div>\\n      </div>\\n\\n      <div className=\\\"job-meta\\\">\\n        <span>{location}</span>\\n        <span>{workplace}</span>\\n        <span>{salary}</span>\\n        <span>Posted {posted} ago</span>\\n      </div>\\n\\n      <div className=\\\"job-skills\\\">\\n        <p className=\\\"eyebrow\\\">Matched Skills</p>\\n        {skills.map((skill, index) => (\\n          <span key={index} className=\\\"chip selected\\\">{skill}</span>\\n        ))}\\n      </div>\\n\\n      <div className=\\\"job-bottom\\\">\\n        <button className={`icon-button ${gap ? `saved` : ``}`} aria-label=\\\"Save Job\\\">\\n          <span className=\\\"material-symbols-outlined\\\" data-icon={gap ? `bookmark` : `bookmark_border`}>bookmark</span>\\n        </button>\\n\\n        <a href={`/job/${id}`} className=\\\"text-button primary\\\">View Details</a>\\n      </div>\\n    </div>\\n  );\\n};\\n\\nexport default JobCard;\"\n}",
+  "usage": {
+    "input_tokens": 6415,
+    "output_tokens": 390,
+    "total_tokens": 6805
+  }
+}

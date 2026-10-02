@@ -1,0 +1,10 @@
+{
+  "project": "9bdf0624-3489-443b-98af-23722d87e6fc",
+  "model": "qwen2.5-coder:14b",
+  "design": "e029725f3bfd856a6509c89c48d3aaff5559f73476e211a98e057bcb1921d9ec",
+  "scope": "One React Job Search result card using existing CSS; not a full pipeline run",
+  "passed": false,
+  "error": "src/components/JobCard.jsx: rejected 3 invalid generations. Error: src/components/JobCard.jsx: Expression expected.",
+  "calls": 3,
+  "elapsedSeconds": 1109
+}

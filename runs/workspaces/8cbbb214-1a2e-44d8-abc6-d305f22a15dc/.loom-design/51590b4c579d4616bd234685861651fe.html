@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Review &amp; Finalize Order — Emily Carter Ceramics</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Newsreader & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-fixed": "#141d23",
+            "tertiary-fixed": "#ffdbcc",
+            "on-surface": "#161c22",
+            "inverse-on-surface": "#ecf1f9",
+            "secondary": "#575f67",
+            "on-surface-variant": "#414754",
+            "surface-container": "#e9eef6",
+            "tertiary": "#9e3d00",
+            "error": "#ba1a1a",
+            "surface-container-highest": "#dde3eb",
+            "secondary-container": "#d8e1ea",
+            "outline": "#717786",
+            "on-secondary": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "surface-bright": "#f7f9ff",
+            "inverse-primary": "#adc7ff",
+            "primary-fixed": "#d8e2ff",
+            "error-container": "#ffdad6",
+            "on-secondary-container": "#5b646b",
+            "on-secondary-fixed-variant": "#3f484f",
+            "on-primary-fixed": "#001a41",
+            "on-tertiary-container": "#fffbff",
+            "surface-container-low": "#eff4fc",
+            "on-error-container": "#93000a",
+            "on-tertiary": "#ffffff",
+            "tertiary-container": "#c64f00",
+            "surface-tint": "#005bc0",
+            "on-primary-container": "#fefcff",
+            "surface-variant": "#dde3eb",
+            "on-tertiary-fixed": "#351000",
+            "surface": "#f7f9ff",
+            "on-background": "#161c22",
+            "outline-variant": "#c1c6d7",
+            "on-error": "#ffffff",
+            "on-tertiary-fixed-variant": "#7c2e00",
+            "primary-fixed-dim": "#adc7ff",
+            "secondary-fixed-dim": "#bfc8d0",
+            "surface-dim": "#d5dae2",
+            "surface-container-high": "#e3e9f0",
+            "primary-container": "#0070ea",
+            "secondary-fixed": "#dbe4ed",
+            "inverse-surface": "#2b3137",
+            "tertiary-fixed-dim": "#ffb695",
+            "on-primary-fixed-variant": "#004493",
+            "background": "#f7f9ff",
+            "primary": "#0059bb",
+            "on-primary": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "gutter-mobile": "1rem",
+            "margin": "3rem",
+            "margin-mobile": "1.25rem",
+            "space-md": "1rem",
+            "gutter": "1.5rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2.5rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Newsreader"],
+            "display-hero": ["Newsreader"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Newsreader"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "display-hero-mobile": ["Newsreader"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-sm": ["Newsreader"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Newsreader"]
+          },
+          "fontSize": {
+            "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.015em", "fontWeight": "400" }],
+            "display-hero": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+            "body-sm": ["13px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "display-hero-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "body-md": ["15px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-sm": ["22px", { "lineHeight": "28px", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "headline-md": ["28px", { "lineHeight": "36px", "fontWeight": "500" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Subtle hairline styling matching tactile studio aesthetic */
+    .ledger-border {
+      border-color: rgba(108, 122, 125, 0.18);
+    }
+    .badge-pill {
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- ==================== TOP NAVIGATION BAR (Shared Component) ==================== -->
+<header class="docked full-width top-0 sticky z-40 bg-surface/90 dark:bg-inverse-surface/90 backdrop-blur-md border-b border-outline-variant/30 dark:border-outline/20 shadow-sm">
+<div class="flex justify-between items-center w-full px-12 py-4 max-w-[1440px] mx-auto">
+<!-- Studio Logo -->
+<a class="font-headline-md text-headline-md tracking-tight text-on-surface dark:text-inverse-on-surface flex items-center gap-2 group transition-all duration-200" href="#">
+<span class="w-2.5 h-2.5 rounded-full bg-primary inline-block transition-transform group-hover:scale-125"></span>
+        Emily Carter Ceramics
+      </a>
+<!-- Desktop Links -->
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-primary dark:text-inverse-primary font-semibold border-b-2 border-primary pb-1 font-label-md text-label-md transition-colors duration-150" href="#">Shop</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 font-label-md text-label-md" href="#">Collection</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 font-label-md text-label-md" href="#">Workshops</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 font-label-md text-label-md" href="#">About</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors duration-150 font-label-md text-label-md" href="#">Journal</a>
+</nav>
+<!-- Search & Trailing Icons -->
+<div class="flex items-center space-x-6">
+<!-- Search bar on right -->
+<div class="relative hidden lg:block w-48 focus-within:w-60 transition-all duration-200">
+<input class="w-full bg-surface-container-low border border-outline-variant/50 rounded-lg pl-8 pr-3 py-1.5 text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary focus:ring-0" placeholder="Search stoneware..." type="text"/>
+<span class="material-symbols-outlined absolute left-2.5 top-2 text-on-surface-variant text-[18px]">search</span>
+</div>
+<!-- Trailing actions -->
+<a aria-label="Account" class="text-on-surface hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">person</span>
+</a>
+<a aria-label="Shopping Bag" class="text-on-surface hover:text-primary transition-colors relative flex items-center" href="#">
+<span class="material-symbols-outlined text-[22px]">shopping_bag</span>
+<span class="absolute -top-1.5 -right-2 bg-primary text-on-primary text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">3</span>
+</a>
+</div>
+</div>
+</header>
+<!-- ==================== MAIN CHECKOUT REVIEW CANVAS ==================== -->
+<main class="flex-grow max-w-[1440px] w-full mx-auto px-6 md:px-12 pt-8 pb-20">
+<!-- BREADCRUMB & PROGRESS STEPPER -->
+<div class="mb-10">
+<!-- Breadcrumb -->
+<nav class="flex items-center space-x-2 text-body-sm font-body-sm text-on-surface-variant mb-6">
+<a class="hover:text-primary transition-colors" href="#">Cart</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Checkout</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface font-semibold">Review &amp; Confirm</span>
+</nav>
+<!-- Stepper Container -->
+<div class="bg-surface-container-low rounded-xl p-5 border ledger-border shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
+<!-- Step 1: Bag & Details (Completed) -->
+<div class="flex items-center space-x-3 w-full md:w-auto">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-md text-label-md shadow-sm">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-secondary">Step 1</span>
+<span class="bg-secondary-container text-on-secondary-container text-[10px] font-bold px-1.5 py-0.2 rounded">Completed</span>
+</div>
+<p class="font-label-lg text-label-lg text-on-surface font-semibold">Bag &amp; Details</p>
+</div>
+</div>
+<div class="hidden md:block w-16 h-px bg-outline-variant/60"></div>
+<!-- Step 2: Shipping & Payment (Completed) -->
+<div class="flex items-center space-x-3 w-full md:w-auto">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-md text-label-md shadow-sm">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-secondary">Step 2</span>
+<span class="bg-secondary-container text-on-secondary-container text-[10px] font-bold px-1.5 py-0.2 rounded">Completed</span>
+</div>
+<p class="font-label-lg text-label-lg text-on-surface font-semibold">Shipping &amp; Payment</p>
+</div>
+</div>
+<div class="hidden md:block w-16 h-px bg-outline-variant/60"></div>
+<!-- Step 3: Review & Place Order (Active / Current) -->
+<div class="flex items-center space-x-3 w-full md:w-auto">
+<div class="w-8 h-8 rounded-full bg-primary-fixed border-2 border-primary text-primary flex items-center justify-center font-label-md text-label-md font-bold">
+            3
+          </div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-primary font-bold">Step 3</span>
+<span class="bg-primary text-on-primary text-[10px] font-bold px-1.5 py-0.2 rounded">Current</span>
+</div>
+<p class="font-label-lg text-label-lg text-primary font-bold">Review &amp; Place Order</p>
+</div>
+</div>
+</div>
+</div>
+<!-- PAGE HEADER TITLE & NOTIFICATION -->
+<div class="mb-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Review Your Order</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 max-w-2xl">
+            Please review your items, delivery address, and payment information before finalizing your artisan order. Each vessel is inspected and prepared in our Portland studio.
+          </p>
+</div>
+<div class="text-left md:text-right">
+<span class="font-body-sm text-body-sm text-secondary">Order Reference Intent:</span>
+<span class="font-mono text-body-sm font-semibold text-on-surface block">ECC-2024-8842-REV</span>
+</div>
+</div>
+<!-- Breakage-Free Guarantee Notice Banner -->
+<div class="bg-surface-container-low border border-outline-variant/50 rounded-lg p-4 flex items-center gap-3.5 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[24px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<div class="flex-grow">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Breakage-Free Guarantee:</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-1">
+            Every piece is custom-packaged in eco-cushioned insulated crates. If an artisan creation arrives damaged, we replace it at zero expense or commission an exact remake immediately.
+          </span>
+</div>
+<a class="text-primary hover:underline text-body-sm font-label-md whitespace-nowrap hidden sm:inline" href="#">Learn More</a>
+</div>
+</div>
+<!-- TWO-COLUMN LAYOUT -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- ==================== LEFT COLUMN (Main Review Area, 65% width / 8 cols) ==================== -->
+<div class="lg:col-span-8 space-y-6">
+<!-- 1. ITEMIZED ITEMS IN ORDER CARD -->
+<section class="bg-surface-container-lowest rounded-xl border ledger-border overflow-hidden shadow-sm">
+<div class="px-6 py-4.5 bg-surface-container-low/60 border-b ledger-border flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-on-surface-variant">inventory_2</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Items for Shipment (3 items)</h2>
+</div>
+<button class="text-primary hover:underline font-label-md text-label-md flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">edit</span>
+              Edit Bag
+            </button>
+</div>
+<div class="divide-y ledger-border">
+<!-- Item 1 -->
+<article class="p-6 flex flex-col sm:flex-row gap-5 items-start sm:items-center justify-between hover:bg-surface-bright/50 transition-colors">
+<div class="flex gap-4 items-center">
+<div class="w-20 h-24 sm:w-24 sm:h-28 rounded-lg overflow-hidden bg-surface-container flex-shrink-0 border ledger-border">
+<img class="w-full h-full object-cover" data-alt="A sculptural fluted stoneware vase with sand and matte moss reactive glaze on an untreated wooden shelf in an editorial pottery studio with soft morning sunlight casting organic ceramic shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2yarAradT35JMeBgckuQAyDju6IX7oPxKerDkiLvAMQjq5OllfFI4Q664FtdNDTIXl1CO9aZacBDQG02fW2twyY2fmPbmILjDed66taJXymfct2Vk5lC5SPrfkfgJa_DVuaH4kRUZoK_IDMvCf9_ERpJLzVtBbEEo_OeewkNwPPfb_vcRVscGrbBo-gTYcxZpluIhyCAy2_092T_I7xGCQ3ondB5oJL7zld2nGMURkVaaOgeFM5YDxQLzvVN8ptTHz1sOE_R8iUUt"/>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="inline-block text-[10px] font-bold uppercase tracking-wider text-secondary px-2 py-0.5 rounded bg-surface-container">Studio Edition</span>
+<span class="text-body-sm text-secondary">Dimensions: 24cm H</span>
+</div>
+<h3 class="font-headline-sm text-[19px] leading-snug text-on-surface mt-1">Komorebi Fluted Stoneware Vase</h3>
+<p class="text-body-sm text-on-surface-variant">Glaze: Sand &amp; Matte Moss • Clay: Coarse Buff Stoneware</p>
+<p class="text-body-sm text-secondary mt-0.5">Quantity: <span class="font-semibold text-on-surface">1</span></p>
+</div>
+</div>
+<div class="text-right flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto pt-2 sm:pt-0 border-t sm:border-t-0 ledger-border">
+<span class="font-label-lg text-lg font-bold text-on-surface">$145.00</span>
+<div class="flex gap-3 text-body-sm mt-1 sm:mt-2">
+<button class="text-secondary hover:text-primary transition-colors text-label-md underline underline-offset-2" type="button">Change</button>
+<button class="text-error hover:underline text-label-md" type="button">Remove</button>
+</div>
+</div>
+</article>
+<!-- Item 2 -->
+<article class="p-6 flex flex-col sm:flex-row gap-5 items-start sm:items-center justify-between hover:bg-surface-bright/50 transition-colors">
+<div class="flex gap-4 items-center">
+<div class="w-20 h-24 sm:w-24 sm:h-28 rounded-lg overflow-hidden bg-surface-container flex-shrink-0 border ledger-border">
+<img class="w-full h-full object-cover" data-alt="A curated set of four handcrafted wabi-sabi ceramic dinner plates stacked neatly, featuring subtle iron specks in an oatmeal stoneware glaze under bright diffused studio light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDqyIlA7bC2lXF5EvOF-bKnzaJZ6IvSU-GAOU5nuwojFpeiBH9on7BNRJbd0tk54u4mr7Xb9ZNArND-VrHrbh0BkJtBxSrQ8iDpNKSUaaZPmzqKE7jvT3J_GPia-AMsRYoyZCrziJ38xQ-BP5iOYtH7UR4rDmnG3GyvcKH8uNeh0a1yWrULGidOY8BYpzrr0uczY7f7YLFPc2AasVtJ03MuwmHEuW-_oq6LVsCq5lYrx97bppOn48UOobu4X6iUC8gONJZOHt9hmlr"/>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="inline-block text-[10px] font-bold uppercase tracking-wider text-secondary px-2 py-0.5 rounded bg-surface-container">Batch of 8</span>
+<span class="text-body-sm text-secondary">Set of 4 Plates</span>
+</div>
+<h3 class="font-headline-sm text-[19px] leading-snug text-on-surface mt-1">Wabi-Sabi Speckled Dinner Plate Set</h3>
+<p class="text-body-sm text-on-surface-variant">Glaze: Oatmeal Speckled Glaze • Clay: Oregon River Clay</p>
+<p class="text-body-sm text-secondary mt-0.5">Quantity: <span class="font-semibold text-on-surface">1</span></p>
+</div>
+</div>
+<div class="text-right flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto pt-2 sm:pt-0 border-t sm:border-t-0 ledger-border">
+<span class="font-label-lg text-lg font-bold text-on-surface">$180.00</span>
+<div class="flex gap-3 text-body-sm mt-1 sm:mt-2">
+<button class="text-secondary hover:text-primary transition-colors text-label-md underline underline-offset-2" type="button">Change</button>
+<button class="text-error hover:underline text-label-md" type="button">Remove</button>
+</div>
+</div>
+</article>
+<!-- Item 3 -->
+<article class="p-6 flex flex-col sm:flex-row gap-5 items-start sm:items-center justify-between hover:bg-surface-bright/50 transition-colors">
+<div class="flex gap-4 items-center">
+<div class="w-20 h-24 sm:w-24 sm:h-28 rounded-lg overflow-hidden bg-surface-container flex-shrink-0 border ledger-border">
+<img class="w-full h-full object-cover" data-alt="Two dark minimalist hand-thrown stoneware matcha bowls with deep iron black texture and hand-trimmed foot rings displayed against a clean beige linen cloth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZV9eLuqdPpqAVRr72X2c6leut8rNJpv-rwjK4bcNmnaoj5vEZ63AClB9z2Oe4aoJNHriuAaGdKH64tPAiSCArYFJ1eg3rThuZ5rkZ2ahtirpLYSdtdFlGX4x-6_qyM1VRxfVdKS9x0_u0cwyXqxGIfv2nTBx3boHx14evdN221l7yu4jfKzwEjKIxSThCehdhUoOCpKBOQcg2c6AWVG6FaYeAgwnF0ZpXSrDtCYvmbFxRzRgwg5y0kqyBSuY3j05BJ28MO1ZpRfMw"/>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="inline-block text-[10px] font-bold uppercase tracking-wider text-secondary px-2 py-0.5 rounded bg-surface-container">Wheel Thrown</span>
+<span class="text-body-sm text-secondary">Traditional Chawan (400ml)</span>
+</div>
+<h3 class="font-headline-sm text-[19px] leading-snug text-on-surface mt-1">Minimalist Hand-thrown Matcha Bowl</h3>
+<p class="text-body-sm text-on-surface-variant">Finish: Iron Black Matte Wash • Clay: High-Iron Dark Earth</p>
+<p class="text-body-sm text-secondary mt-0.5">Quantity: <span class="font-semibold text-on-surface">2</span> <span class="text-[12px] text-secondary">($68.00 each)</span></p>
+</div>
+</div>
+<div class="text-right flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto pt-2 sm:pt-0 border-t sm:border-t-0 ledger-border">
+<span class="font-label-lg text-lg font-bold text-on-surface">$136.00</span>
+<div class="flex gap-3 text-body-sm mt-1 sm:mt-2">
+<button class="text-secondary hover:text-primary transition-colors text-label-md underline underline-offset-2" type="button">Change</button>
+<button class="text-error hover:underline text-label-md" type="button">Remove</button>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- 2. SHIPPING & RECIPIENT INFORMATION CARD -->
+<section class="bg-surface-container-lowest rounded-xl border ledger-border p-6 shadow-sm">
+<div class="flex items-center justify-between pb-4 border-b ledger-border mb-4">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[22px]">local_shipping</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Shipping Address</h2>
+</div>
+<button class="px-3 py-1 text-primary hover:bg-surface-container-low rounded font-label-md text-label-md transition-colors border border-primary/30 flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[15px]">edit</span>
+              Edit Shipping
+            </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-body-md">
+<div>
+<p class="font-bold text-on-surface">John Doe <span class="text-secondary font-normal">(Interior Designer)</span></p>
+<p class="text-on-surface-variant mt-1">742 Evergreen Terrace, Apt 4B</p>
+<p class="text-on-surface-variant">Portland, OR 97201</p>
+<p class="text-on-surface-variant">United States</p>
+</div>
+<div class="border-t md:border-t-0 md:border-l md:pl-6 ledger-border pt-3 md:pt-0">
+<p class="text-body-sm text-secondary font-label-md">Contact Coordinates:</p>
+<p class="text-on-surface mt-1 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[16px]">mail</span>
+                john.doe@interiordesign.com
+              </p>
+<p class="text-on-surface mt-1 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[16px]">call</span>
+                (503) 555-0194
+              </p>
+<span class="inline-flex items-center gap-1 text-[11px] text-primary bg-primary-fixed/40 px-2 py-0.5 rounded mt-3 font-semibold">
+<span class="material-symbols-outlined text-[13px]">mark_email_read</span>
+                Address verified with USPS Ground Art Service
+              </span>
+</div>
+</div>
+</section>
+<!-- 3. DELIVERY METHOD CARD -->
+<section class="bg-surface-container-lowest rounded-xl border ledger-border p-6 shadow-sm">
+<div class="flex items-center justify-between pb-4 border-b ledger-border mb-4">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[22px]">package_2</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Delivery Method</h2>
+</div>
+<button class="px-3 py-1 text-primary hover:bg-surface-container-low rounded font-label-md text-label-md transition-colors border border-primary/30 flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[15px]">tune</span>
+              Change Method
+            </button>
+</div>
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-surface-container-low/50 p-4 rounded-lg border ledger-border">
+<div class="flex items-start gap-3">
+<div class="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">shield</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h4 class="font-label-lg text-label-lg font-bold text-on-surface">Artisan Fragile Courier (Insured &amp; Climate Handled)</h4>
+<span class="bg-surface-container text-on-surface text-[11px] font-bold px-2 py-0.5 rounded">Signature Req.</span>
+</div>
+<p class="text-body-sm text-on-surface-variant mt-0.5">Estimated studio arrival window: <strong class="text-on-surface">Oct 28 - Nov 01, 2024</strong></p>
+<p class="text-body-sm text-secondary mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">info</span>
+                  Special note: <em>“Leave inside building foyer or ring buzzer 4B.”</em>
+</p>
+</div>
+</div>
+<div class="text-right pl-12 md:pl-0">
+<span class="text-body-md font-bold text-primary uppercase text-label-md">Complimentary</span>
+<span class="block text-body-sm text-secondary line-through">$24.00</span>
+</div>
+</div>
+</section>
+<!-- 4. PAYMENT METHOD CARD -->
+<section class="bg-surface-container-lowest rounded-xl border ledger-border p-6 shadow-sm">
+<div class="flex items-center justify-between pb-4 border-b ledger-border mb-4">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[22px]">credit_card</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Payment Method</h2>
+</div>
+<button class="px-3 py-1 text-primary hover:bg-surface-container-low rounded font-label-md text-label-md transition-colors border border-primary/30 flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[15px]">swap_horiz</span>
+              Change Payment
+            </button>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="w-14 h-10 rounded border ledger-border bg-white flex items-center justify-center p-1 shadow-xs">
+<span class="font-label-sm font-extrabold tracking-wider text-[#1a1f71] italic text-base">VISA</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg font-bold text-on-surface">Visa ending in 4242</p>
+<p class="text-body-sm text-secondary">Expires: 08/2027 • Authorized for Artisan Transaction</p>
+</div>
+</div>
+<div class="text-left sm:text-right">
+<span class="text-body-sm text-secondary block font-label-md">Billing Address:</span>
+<span class="text-body-sm text-on-surface-variant font-medium">Same as Shipping Address</span>
+</div>
+</div>
+</section>
+<!-- 5. GIFT OPTIONS & STUDIO NOTES SECTION -->
+<section class="bg-surface-container-lowest rounded-xl border ledger-border p-6 shadow-sm">
+<div class="flex items-center justify-between pb-4 border-b ledger-border mb-4">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[22px]">featured_seasonal_and_gifts</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Gift Options &amp; Studio Inscription</h2>
+</div>
+<button class="text-primary hover:underline font-label-md text-label-md flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[15px]">edit_note</span>
+              Edit Message
+            </button>
+</div>
+<div class="space-y-4">
+<label class="flex items-start gap-3 cursor-pointer select-none">
+<input checked="" class="mt-1 w-4.5 h-4.5 text-primary border-outline rounded focus:ring-0 focus:ring-offset-0" type="checkbox"/>
+<div>
+<span class="font-label-lg text-label-lg font-semibold text-on-surface">Complimentary handwritten studio gift card included</span>
+<p class="text-body-sm text-secondary">Card is stamped with the Emily Carter studio wax seal on heavy cotton letterpress paper.</p>
+</div>
+</label>
+<!-- Handwritten note block quote -->
+<div class="bg-surface-container-low p-4 rounded-lg border-l-4 border-primary pl-4 italic text-body-md text-on-surface-variant font-headline-sm">
+              “Happy Housewarming, Sarah! Handcrafted with love.”
+            </div>
+</div>
+</section>
+</div>
+<!-- ==================== RIGHT COLUMN (Sticky Order Summary Sidebar, 35% width / 4 cols) ==================== -->
+<aside class="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
+<!-- ORDER SUMMARY CARD -->
+<div class="bg-surface-container-lowest rounded-xl border ledger-border p-6 shadow-sm">
+<h2 class="font-headline-sm text-headline-sm text-on-surface pb-4 border-b ledger-border">
+            Order Summary
+          </h2>
+<!-- Ledger calculation table -->
+<div class="py-4 space-y-3 text-body-md">
+<div class="flex justify-between items-center text-on-surface-variant">
+<span>Items Subtotal (4 pieces)</span>
+<span class="font-medium text-on-surface">$461.00</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="flex items-center gap-1">
+                Fragile Art Freight
+                <span class="material-symbols-outlined text-[15px] text-secondary" title="Complimentary insured courier for orders over $250">help_outline</span>
+</span>
+<div class="text-right">
+<span class="text-primary font-semibold text-label-md uppercase">FREE</span>
+</div>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="flex items-center gap-1">
+                Carbon-neutral Packing Offset
+                <span class="material-symbols-outlined text-[15px] text-secondary" title="Biodegradable custom-cut organic starch foam">nature</span>
+</span>
+<span class="text-on-surface font-medium">$4.50</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<span>Estimated Sales Tax</span>
+<span class="text-on-surface font-medium">$34.58</span>
+</div>
+<!-- Promo badge applied -->
+<div class="bg-surface-container-low p-2.5 rounded-lg border border-outline-variant/40 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">sell</span>
+<span class="font-mono text-body-sm font-semibold text-on-surface">STUDIOOPEN10</span>
+<span class="text-[11px] font-bold text-primary bg-primary-fixed px-1.5 py-0.2 rounded">-10%</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-semibold text-body-sm text-primary">-$46.10</span>
+<button aria-label="Remove Promo Code" class="text-secondary hover:text-error transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+</div>
+<!-- Promo code input accordion trigger -->
+<div class="pt-1">
+<button class="text-body-sm text-secondary hover:text-primary transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[15px]">add</span>
+                Have another studio voucher or gift certificate?
+              </button>
+</div>
+</div>
+<!-- Total Calculation -->
+<div class="pt-4 border-t ledger-border">
+<div class="flex justify-between items-baseline mb-1">
+<div>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Total Due</span>
+<span class="block text-body-sm text-secondary">Including insured carriage &amp; duties</span>
+</div>
+<span class="font-headline-lg text-headline-lg font-bold text-primary tracking-tight">$453.98</span>
+</div>
+</div>
+<!-- PRIMARY CALL TO ACTION -->
+<div class="mt-6 space-y-3">
+<button class="w-full bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg py-4 px-6 rounded-lg transition-all duration-200 active:opacity-85 flex items-center justify-center gap-2 shadow-sm group" type="button">
+<span class="material-symbols-outlined text-[20px] transition-transform group-hover:scale-110">lock</span>
+<span>Place Order &amp; Pay $453.98</span>
+</button>
+<p class="text-center text-[12px] leading-relaxed text-secondary px-2">
+              By placing this order, you agree to our <a class="underline hover:text-primary" href="#">Studio Terms of Service</a> and <a class="underline hover:text-primary" href="#">Artisan Fragile Guarantee</a>. You will receive an immediate firing and dispatch ledger via email.
+            </p>
+</div>
+<!-- Secondary Return Action -->
+<div class="pt-4 mt-4 border-t ledger-border text-center">
+<a class="inline-flex items-center gap-1.5 text-body-sm font-label-md text-secondary hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+              Return to Cart to Modify Pieces
+            </a>
+</div>
+</div>
+<!-- TRUST & CRAFTSMANSHIP BADGES -->
+<div class="bg-surface-container-low rounded-xl border ledger-border p-5 space-y-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[22px] flex-shrink-0 mt-0.5">verified</span>
+<div>
+<h5 class="font-label-lg text-label-lg font-bold text-on-surface">100% Breakage-Free Replacement</h5>
+<p class="text-body-sm text-secondary mt-0.5">Double-boxed insulated shipping ensures delicate ceramics arrive safely or are immediately remade.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 border-t ledger-border pt-3">
+<span class="material-symbols-outlined text-primary text-[22px] flex-shrink-0 mt-0.5">lock_clock</span>
+<div>
+<h5 class="font-label-lg text-label-lg font-bold text-on-surface">256-Bit SSL Encrypted Checkout</h5>
+<p class="text-body-sm text-secondary mt-0.5">All transactions processed via ultra-secure tokenized bank protocols.</p>
+</div>
+</div>
+<div class="flex items-start gap-3 border-t ledger-border pt-3">
+<span class="material-symbols-outlined text-primary text-[22px] flex-shrink-0 mt-0.5">history_edu</span>
+<div>
+<h5 class="font-label-lg text-label-lg font-bold text-on-surface">Certificate of Handcrafted Authenticity</h5>
+<p class="text-body-sm text-secondary mt-0.5">Each individual piece bears Emily Carter's stamped studio chop and edition registry number.</p>
+</div>
+</div>
+</div>
+<!-- Studio Concierge Assistance -->
+<div class="p-4 rounded-lg border ledger-border bg-surface-container-lowest text-center">
+<p class="font-label-md text-label-md text-on-surface">Need help before confirming?</p>
+<p class="text-body-sm text-secondary mt-0.5">Our studio assistant is available for bespoke glaze questions.</p>
+<a class="inline-block mt-2 text-primary font-semibold text-body-sm hover:underline" href="#">Chat with Studio Specialist →</a>
+</div>
+</aside>
+</div>
+</main>
+<!-- ==================== FOOTER (Shared Component) ==================== -->
+<footer class="docked full-width bottom w-full bg-surface-container-low dark:bg-inverse-surface border-t border-outline-variant/30 dark:border-outline/20 flat no shadows mt-auto">
+<div class="w-full px-12 pt-16 pb-12 max-w-[1440px] mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+<!-- Studio Brand Column -->
+<div class="space-y-4 md:col-span-1">
+<a class="font-headline-md text-headline-md text-on-surface dark:text-inverse-on-surface block tracking-tight" href="#">
+            Emily Carter Ceramics
+          </a>
+<p class="text-body-sm font-body-sm text-on-surface-variant dark:text-secondary-fixed-dim leading-relaxed">
+            Functional and sculptural stoneware, hand-thrown in small studio batches with raw mineral glazes and locally harvested Oregon clay.
+          </p>
+<div class="pt-2 text-label-sm font-label-sm text-secondary">
+<span>Studio Location:</span>
+<p class="text-on-surface font-semibold">1204 NW Glisan St, Studio 3A, Portland, OR</p>
+</div>
+</div>
+<!-- Links Column 1: Studio Services -->
+<div class="space-y-3">
+<h4 class="font-headline-sm text-headline-sm text-on-surface dark:text-inverse-on-surface">Client Services</h4>
+<ul class="space-y-2 text-body-sm font-body-sm">
+<li><a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-inverse-primary underline underline-offset-4 transition-colors duration-150" href="#">Customer Care</a></li>
+<li><a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-inverse-primary underline underline-offset-4 transition-colors duration-150" href="#">Studio Hours &amp; Visits</a></li>
+<li><a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-inverse-primary underline underline-offset-4 transition-colors duration-150" href="#">Workshop Bookings</a></li>
+<li><a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-inverse-primary underline underline-offset-4 transition-colors duration-150" href="#">Care &amp; Maintenance Guide</a></li>
+</ul>
+</div>
+<!-- Links Column 2: Guarantees & Shipping -->
+<div class="space-y-3">
+<h4 class="font-headline-sm text-headline-sm text-on-surface dark:text-inverse-on-surface">Artisan Standards</h4>
+<ul class="space-y-2 text-body-sm font-body-sm">
+<li><a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-inverse-primary underline underline-offset-4 transition-colors duration-150" href="#">Breakage-Free Guarantee</a></li>
+<li><a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-inverse-primary underline underline-offset-4 transition-colors duration-150" href="#">Shipping &amp; Fragile Handling</a></li>
+<li><a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-inverse-primary underline underline-offset-4 transition-colors duration-150" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant dark:text-secondary-fixed-dim hover:text-primary dark:hover:text-inverse-primary underline underline-offset-4 transition-colors duration-150" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<!-- Newsletter & Dispatch Sign-up -->
+<div class="space-y-3">
+<h4 class="font-headline-sm text-headline-sm text-on-surface dark:text-inverse-on-surface">Kiln Dispatch Updates</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant dark:text-secondary-fixed-dim">
+            Receive private preview invitations 48 hours prior to public studio firing drops.
+          </p>
+<div class="flex gap-2 pt-1">
+<input class="w-full bg-surface-container-lowest border border-outline-variant/60 rounded px-3 py-2 text-body-sm text-on-surface focus:outline-none focus:border-primary" placeholder="collector@domain.com" type="email"/>
+<button class="bg-primary hover:bg-primary-container text-on-primary px-4 py-2 rounded text-label-md font-label-md transition-colors flex-shrink-0" type="button">
+              Join
+            </button>
+</div>
+</div>
+</div>
+<!-- Footer Bottom Hairline & Exact Immutable Copyright Text -->
+<div class="border-t border-outline-variant/30 dark:border-outline/20 pt-8 flex flex-col sm:flex-row items-center justify-between text-body-sm font-body-sm text-secondary">
+<p>© 2024 Emily Carter Ceramics. All rights reserved. Artisan Stoneware Studio.</p>
+<div class="flex space-x-6 mt-4 sm:mt-0">
+<span class="inline-flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+            Studio Kilns Active (Firing Cone 10)
+          </span>
+<span>Portland, Oregon</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

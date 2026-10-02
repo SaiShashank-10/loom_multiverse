@@ -1,0 +1,4 @@
+[
+  "tests/test_pipeline.py::test_preprocess_creates_disjoint_reproducible_splits",
+  "tests/test_pipeline.py::test_preprocess_rejects_invalid_schema"
+]

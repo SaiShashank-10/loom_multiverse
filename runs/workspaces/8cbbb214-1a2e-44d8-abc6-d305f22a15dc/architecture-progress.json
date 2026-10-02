@@ -1,0 +1,453 @@
+{
+  "fingerprint": "161e29fa2bc1c40d47458e66578a1ad01311ab3bebce35b3e8558364277836c5",
+  "batches": [
+    {
+      "files": [
+        {
+          "path": "src/.env.example",
+          "description": "Example environment variables file for React.js application."
+        },
+        {
+          "path": "src/App.tsx",
+          "description": "Main entry point of the React application."
+        },
+        {
+          "path": "src/components/Button.tsx",
+          "description": "Button component used throughout the application."
+        },
+        {
+          "path": "src/components/Card.tsx",
+          "description": "Card component for displaying product details and other items."
+        },
+        {
+          "path": "src/components/Modal.tsx",
+          "description": "Modal component for handling dialogs and forms."
+        },
+        {
+          "path": "src/components/InputField.tsx",
+          "description": "Input field component for form inputs."
+        },
+        {
+          "path": "src/context/AuthContext.tsx",
+          "description": "React Context for managing user authentication state."
+        },
+        {
+          "path": "src/pages/ProductCatalog.tsx",
+          "description": "Page displaying the product catalog with grid layout."
+        },
+        {
+          "path": "src/pages/ProductDetail.tsx",
+          "description": "Page displaying detailed information about a specific product."
+        },
+        {
+          "path": "src/pages/CartPage.tsx",
+          "description": "Page for reviewing and managing selected items in the cart."
+        },
+        {
+          "path": "src/pages/CheckoutPage.tsx",
+          "description": "Page guiding users through the payment process and completing their purchase."
+        },
+        {
+          "path": "src/styles/global.css",
+          "description": "Global CSS file for styling the application."
+        },
+        {
+          "path": "src/styles/theme.css",
+          "description": "CSS file defining design tokens and theme styles."
+        },
+        {
+          "path": "src/types.ts",
+          "description": "Type definitions for TypeScript."
+        },
+        {
+          "path": "package.json",
+          "description": "Package manifest for the React.js application with build, test, and start scripts."
+        }
+      ]
+    },
+    {
+      "files": [
+        {
+          "path": "src/.env.example",
+          "description": "Example environment variables file with placeholder values."
+        },
+        {
+          "path": "src/App.tsx",
+          "description": "Main application component that renders the root layout and routes."
+        },
+        {
+          "path": "src/components/Button.tsx",
+          "description": "Button component with hover animation."
+        },
+        {
+          "path": "src/components/Card.tsx",
+          "description": "Card component with enter viewport animation."
+        },
+        {
+          "path": "src/components/Modal.tsx",
+          "description": "Modal component with open animation."
+        },
+        {
+          "path": "src/components/InputField.tsx",
+          "description": "Input field component for forms."
+        },
+        {
+          "path": "src/context/AuthContext.tsx",
+          "description": "React Context for managing user authentication state."
+        },
+        {
+          "path": "src/pages/ProductCatalog.tsx",
+          "description": "Product catalog page with responsive layout."
+        },
+        {
+          "path": "src/pages/ProductDetail.tsx",
+          "description": "Product detail page with responsive layout and detailed product information."
+        },
+        {
+          "path": "src/pages/CartPage.tsx",
+          "description": "Cart page with responsive layout and checkout flow."
+        },
+        {
+          "path": "src/pages/CheckoutPage.tsx",
+          "description": "Checkout page with responsive layout and payment processing."
+        },
+        {
+          "path": "src/styles/global.css",
+          "description": "Global styles for the application, including reset and base styles."
+        },
+        {
+          "path": "src/styles/theme.css",
+          "description": "Theme-specific styles for the application."
+        },
+        {
+          "path": "src/types.ts",
+          "description": "Type definitions for common types used throughout the application."
+        },
+        {
+          "path": "package.json",
+          "description": "Package manifest with real dependencies and scripts for build, test, and start commands."
+        }
+      ]
+    },
+    {
+      "files": [
+        {
+          "path": "src/.env.example",
+          "description": "Example environment variables file with placeholder values."
+        },
+        {
+          "path": "src/App.tsx",
+          "description": "Main application component that renders the root layout and routes."
+        },
+        {
+          "path": "src/components/Button.tsx",
+          "description": "Reusable button component for consistent styling and behavior across the app."
+        },
+        {
+          "path": "src/components/Card.tsx",
+          "description": "Reusable card component for displaying product information or other data in a styled format."
+        },
+        {
+          "path": "src/components/Modal.tsx",
+          "description": "Reusable modal component for displaying additional information or forms."
+        },
+        {
+          "path": "src/components/InputField.tsx",
+          "description": "Reusable input field component with validation and error handling."
+        },
+        {
+          "path": "src/context/AuthContext.tsx",
+          "description": "React context for managing user authentication state across the app."
+        },
+        {
+          "path": "src/pages/ProductCatalog.tsx",
+          "description": "Page displaying a list of all available products with search and filter functionality."
+        },
+        {
+          "path": "src/pages/ProductDetail.tsx",
+          "description": "Page displaying detailed information about a single product, including images and reviews."
+        },
+        {
+          "path": "src/pages/CartPage.tsx",
+          "description": "Page allowing users to review their shopping cart items and proceed to checkout."
+        },
+        {
+          "path": "src/pages/CheckoutPage.tsx",
+          "description": "Page for completing the payment process, including shipping and payment options."
+        },
+        {
+          "path": "src/styles/global.css",
+          "description": "Global CSS file for styling common elements across the app."
+        },
+        {
+          "path": "src/styles/theme.css",
+          "description": "CSS file defining the theme styles for the app, including colors and typography."
+        },
+        {
+          "path": "src/types.ts",
+          "description": "Type definitions for custom types used throughout the application."
+        },
+        {
+          "path": "package.json",
+          "description": "Package manifest with real dependency and build/test/start scripts."
+        }
+      ]
+    },
+    {
+      "files": [
+        {
+          "path": "src/.env.example",
+          "description": "Example environment variables file with placeholder values."
+        },
+        {
+          "path": "src/App.tsx",
+          "description": "Main application component that renders the root layout and routes."
+        },
+        {
+          "path": "src/components/Button.tsx",
+          "description": "Reusable button component for consistent styling and behavior across the app."
+        },
+        {
+          "path": "src/components/Card.tsx",
+          "description": "Reusable card component for displaying product information or other data."
+        },
+        {
+          "path": "src/components/Modal.tsx",
+          "description": "Reusable modal component for displaying additional information or forms."
+        },
+        {
+          "path": "src/components/InputField.tsx",
+          "description": "Reusable input field component with validation and error handling."
+        },
+        {
+          "path": "src/context/AuthContext.tsx",
+          "description": "React context for managing user authentication state across the app."
+        },
+        {
+          "path": "src/pages/ProductCatalog.tsx",
+          "description": "Page displaying a list of products with filtering and sorting options."
+        },
+        {
+          "path": "src/pages/ProductDetail.tsx",
+          "description": "Page displaying detailed information about a single product, including images and reviews."
+        },
+        {
+          "path": "src/pages/CartPage.tsx",
+          "description": "Page allowing users to review their cart items, update quantities, and manage the shopping cart."
+        },
+        {
+          "path": "src/pages/CheckoutPage.tsx",
+          "description": "Page guiding users through the checkout process with multiple payment options."
+        },
+        {
+          "path": "src/styles/global.css",
+          "description": "Global CSS file for styling common elements and ensuring consistent design across the app."
+        },
+        {
+          "path": "src/styles/theme.css",
+          "description": "CSS file defining the theme and color palette for the app."
+        },
+        {
+          "path": "src/types.ts",
+          "description": "Type definitions for custom types used throughout the application."
+        },
+        {
+          "path": "package.json",
+          "description": "Package manifest with real dependency and build/test/start scripts."
+        }
+      ]
+    },
+    {
+      "files": [
+        {
+          "path": "src/.env.example",
+          "description": "Example environment variables file for React.js application"
+        },
+        {
+          "path": "src/App.tsx",
+          "description": "Main entry point of the React application"
+        },
+        {
+          "path": "src/components/Button.tsx",
+          "description": "Reusable button component"
+        },
+        {
+          "path": "src/components/Card.tsx",
+          "description": "Reusable card component for displaying product details"
+        },
+        {
+          "path": "src/components/Modal.tsx",
+          "description": "Reusable modal component for dialogs and forms"
+        },
+        {
+          "path": "src/components/InputField.tsx",
+          "description": "Reusable input field component with validation"
+        },
+        {
+          "path": "src/context/AuthContext.tsx",
+          "description": "React context for managing user authentication state"
+        },
+        {
+          "path": "src/pages/ProductCatalog.tsx",
+          "description": "Page to display a list of products"
+        },
+        {
+          "path": "src/pages/ProductDetail.tsx",
+          "description": "Page to display details of a specific product"
+        },
+        {
+          "path": "src/pages/CartPage.tsx",
+          "description": "Page to manage the shopping cart"
+        },
+        {
+          "path": "src/pages/CheckoutPage.tsx",
+          "description": "Page for processing the checkout and creating an order"
+        },
+        {
+          "path": "src/styles/global.css",
+          "description": "Global styles for the application"
+        },
+        {
+          "path": "src/styles/theme.css",
+          "description": "Theme-specific styles for the application"
+        },
+        {
+          "path": "src/types.ts",
+          "description": "Type definitions for TypeScript in the React application"
+        },
+        {
+          "path": "package.json",
+          "description": "Package manifest for managing dependencies and scripts"
+        }
+      ]
+    },
+    {
+      "files": [
+        {
+          "path": "src/.env.example",
+          "description": "Example environment variables file for React.js application."
+        },
+        {
+          "path": "src/App.tsx",
+          "description": "Main entry point of the React application."
+        },
+        {
+          "path": "src/components/Button.tsx",
+          "description": "Reusable button component."
+        },
+        {
+          "path": "src/components/Card.tsx",
+          "description": "Reusable card component for displaying product details."
+        },
+        {
+          "path": "src/components/Modal.tsx",
+          "description": "Reusable modal component for dialogs and forms."
+        },
+        {
+          "path": "src/components/InputField.tsx",
+          "description": "Reusable input field component with validation."
+        },
+        {
+          "path": "src/context/AuthContext.tsx",
+          "description": "React context for managing user authentication state."
+        },
+        {
+          "path": "src/pages/ProductCatalog.tsx",
+          "description": "Page displaying the product catalog."
+        },
+        {
+          "path": "src/pages/ProductDetail.tsx",
+          "description": "Page displaying details of a specific product."
+        },
+        {
+          "path": "src/pages/CartPage.tsx",
+          "description": "Page for reviewing and managing the shopping cart."
+        },
+        {
+          "path": "src/pages/CheckoutPage.tsx",
+          "description": "Page for completing the checkout process."
+        },
+        {
+          "path": "src/styles/global.css",
+          "description": "Global CSS styles for the application."
+        },
+        {
+          "path": "src/styles/theme.css",
+          "description": "Theme-specific CSS styles for the application."
+        },
+        {
+          "path": "src/types.ts",
+          "description": "Type definitions for TypeScript in the application."
+        },
+        {
+          "path": "package.json",
+          "description": "Package manifest file with dependencies and scripts for building, testing, and starting the React application."
+        }
+      ]
+    },
+    {
+      "files": [
+        {
+          "path": "src/.env.example",
+          "description": "Example environment variables file for development, staging, and production environments."
+        },
+        {
+          "path": "src/App.tsx",
+          "description": "The main entry point of the React application."
+        },
+        {
+          "path": "src/components/Button.tsx",
+          "description": "A reusable button component."
+        },
+        {
+          "path": "src/components/Card.tsx",
+          "description": "A reusable card component for displaying product information."
+        },
+        {
+          "path": "src/components/Modal.tsx",
+          "description": "A reusable modal component for user interactions like login or checkout."
+        },
+        {
+          "path": "src/components/InputField.tsx",
+          "description": "A reusable input field component with validation."
+        },
+        {
+          "path": "src/context/AuthContext.tsx",
+          "description": "React context for managing authentication state."
+        },
+        {
+          "path": "src/pages/ProductCatalog.tsx",
+          "description": "Page displaying a list of products."
+        },
+        {
+          "path": "src/pages/ProductDetail.tsx",
+          "description": "Page displaying details of a single product."
+        },
+        {
+          "path": "src/pages/CartPage.tsx",
+          "description": "Page for reviewing and managing the shopping cart."
+        },
+        {
+          "path": "src/pages/CheckoutPage.tsx",
+          "description": "Page for completing the checkout process."
+        },
+        {
+          "path": "src/styles/global.css",
+          "description": "Global CSS styles for the application."
+        },
+        {
+          "path": "src/styles/theme.css",
+          "description": "CSS variables and theme-specific styles."
+        },
+        {
+          "path": "src/types.ts",
+          "description": "Type definitions for TypeScript."
+        },
+        {
+          "path": "package.json",
+          "description": "Package manifest with dependencies, scripts for building, testing, and starting the application."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "files": [
+    {
+      "path": "android/app/build.gradle",
+      "description": "Android build configuration file for Flutter project; Gradle build configuration for the Android app; Gradle build configuration for the Android app; Gradle build configuration for the Android app; Gradle build configuration for the Android app; Gradle build configuration for the Android app; Gradle build script for the Android app"
+    },
+    {
+      "path": "android/app/src/main/AndroidManifest.xml",
+      "description": "Android manifest file defining the app's metadata and permissions; Android manifest file defining app components and permissions; Android manifest file defining the app's components and permissions; Android manifest file defining the app's components and permissions; Android manifest file defining app metadata and permissions; Android manifest file defining the app's components and permissions; Android manifest file defining the app's components and permissions"
+    },
+    {
+      "path": "android/app/src/main/java/com/styleos/MainApplication.java",
+      "description": "Main application class for Android; Main application class for initializing Flutter and setting up dependencies; Main application class for initializing Flutter and setting up dependencies; Main application class for initializing Flutter and setting up dependencies; Main application class for initializing Flutter and integrating with native code; Main application class for initializing Flutter and setting up dependencies; Main application class for Android"
+    },
+    {
+      "path": "android/app/src/main/res/values/strings.xml",
+      "description": "String resources file for Android; String resources for the app, including UI text and labels; Resource file containing string values used throughout the app; Resource file containing string values used throughout the app; Resource file containing string values used in the app; Resource file containing string values used throughout the app; Resource file containing string values used in the app"
+    },
+    {
+      "path": "lib/main.dart",
+      "description": "Entry point of the Flutter app; Entry point of the Flutter application; Entry point of the Flutter application; Entry point of the Flutter application; Entry point of the Flutter application; Entry point of the Flutter application; Entry point of the Flutter application"
+    },
+    {
+      "path": "lib/screens/closet_health_and_analytics_screen.dart",
+      "description": "Screen for displaying closet health and wardrobe analytics; Screen displaying closet health and wardrobe analytics; Screen for displaying closet health metrics and wardrobe analytics; Screen for displaying closet health and analytics; Screen for displaying closet health and wardrobe analytics; Screen for displaying closet health and wardrobe analytics; Screen for Closet Health & Wardrobe Analytics"
+    },
+    {
+      "path": "lib/screens/ai_wardrobe_scan_and_auto_detection_screen.dart",
+      "description": "Screen for AI wardrobe scan and auto-detection; Screen for AI-driven wardrobe scan and auto-detection; Screen for capturing photos of clothing items and automatically categorizing them; Screen for AI wardrobe scan and auto-detection functionality; Screen for AI-driven wardrobe scan and auto-detection; Screen for AI wardrobe scan and auto-detection functionality; Screen for AI Wardrobe Scan & Auto-Detection"
+    },
+    {
+      "path": "lib/screens/mobile_settings_and_wardrobe_management_screen.dart",
+      "description": "Screen for mobile settings and wardrobe management; Screen for managing settings and wardrobe items; Screen for managing user settings and wardrobe items; Screen for managing mobile settings and wardrobe; Screen for managing mobile settings and wardrobe; Screen for mobile settings and wardrobe management; Screen for Mobile Settings & Wardrobe Management"
+    },
+    {
+      "path": "lib/screens/virtual_try_on_and_outfit_diary_screen.dart",
+      "description": "Screen for virtual try-on and outfit diary; Screen for virtual try-on and outfit diary functionality; Screen for virtually trying on outfits and saving favorite looks; Screen for virtual try-on and outfit diary functionality; Screen for virtual try-on and outfit diary; Screen for virtual try-on and outfit diary functionality; Screen for Virtual Try-On & Outfit Diary"
+    },
+    {
+      "path": "lib/screens/mobile_home_screen.dart",
+      "description": "Home screen of the mobile app; Home screen displaying personalized outfit recommendations; Home screen displaying the app's main features and navigation options; Home screen of the mobile application; Home screen of the mobile application; Home screen of the mobile application; Home screen of the mobile app"
+    },
+    {
+      "path": "lib/screens/mobile_closet_and_wardrobe_grid_screen.dart",
+      "description": "Screen for displaying a grid of closet items; Screen for viewing and managing wardrobe items in a grid format; Screen for viewing and managing a grid of wardrobe items; Screen displaying a grid of closet and wardrobe items; Screen for displaying a grid of closet and wardrobe items; Screen for displaying a grid of closet and wardrobe items; Screen for displaying a grid of closet and wardrobe items"
+    },
+    {
+      "path": ".env.example",
+      "description": "Environment configuration template. List all variable names needed by this component with empty values or obvious placeholders and explanatory comments. Never include real credentials, copy an existing .env, or invent working API keys. The user creates their own local environment file from this template."
+    },
+    {
+      "path": "pubspec.yaml",
+      "description": "Package manifest file for Flutter project; Package manifest defining dependencies, build scripts, and other configurations; Package manifest file defining dependencies, build scripts, and other configurations for the Flutter project; Package manifest for Flutter dependencies and build scripts; Pubspec file defining dependencies and build configuration for Flutter; Package manifest file for Flutter dependencies and build configuration; Package manifest file for Flutter dependencies"
+    },
+    {
+      "path": "test/closet_health_and_analytics_screen_test.dart",
+      "description": "Behavioral test for Closet Health & Wardrobe Analytics screen"
+    },
+    {
+      "path": "test/ai_wardrobe_scan_and_auto_detection_screen_test.dart",
+      "description": "Behavioral test for AI Wardrobe Scan & Auto-Detection screen"
+    },
+    {
+      "path": "test/mobile_settings_and_wardrobe_management_screen_test.dart",
+      "description": "Behavioral test for Mobile Settings & Wardrobe Management screen"
+    },
+    {
+      "path": "test/virtual_try_on_and_outfit_diary_screen_test.dart",
+      "description": "Behavioral test for Virtual Try-On & Outfit Diary screen"
+    },
+    {
+      "path": "test/mobile_home_screen_test.dart",
+      "description": "Behavioral test for Home screen of the mobile app"
+    },
+    {
+      "path": "test/mobile_closet_and_wardrobe_grid_screen_test.dart",
+      "description": "Behavioral test for displaying a grid of closet and wardrobe items"
+    }
+  ]
+}

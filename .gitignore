@@ -15,6 +15,7 @@ out/
 *.tsbuildinfo
 
 # Environment variables
+.agents/mcp_config.json
 .env
 .env.local
 .env.development.local
@@ -74,3 +75,7 @@ drizzle/meta/
 
 # Vercel
 .vercel/
+
+# Local mobile verification fixtures and SDK junctions
+/runs/mobile-smoke/
+/runs/toolchains/

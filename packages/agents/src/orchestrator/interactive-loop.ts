@@ -23,6 +23,7 @@ const log = createLogger("orchestrator:interactive-loop");
 // ─────────────────────────────────────────────
 
 export interface InteractiveLoopConfig {
+  initialHistory?: ChatMessage[];
   /** Name of the agent running this loop */
   agentName: string;
   /** Phase identifier (e.g., "idea_check") */
@@ -37,6 +38,16 @@ export interface InteractiveLoopConfig {
   onMessage?: (event: string, data: unknown) => void;
   /** Callback for receiving user input */
   waitForUserInput?: () => Promise<string>;
+  /** Optional callback to intercept and handle custom actions before the LLM responds */
+  onCustomAction?: (
+    userMessage: string,
+    chatHistory: ChatMessage[],
+    intent: "change" | "question",
+  ) => Promise<string | null | void>;
+  /** Return a message to keep reviewing instead of accepting approval. */
+  beforeApprove?: () => Promise<string | null>;
+  /** Design reviews already have structured artifacts; skip LLM extraction. */
+  extractFinalOutput?: boolean;
   /** Maximum number of conversation turns before forcing a decision */
   maxTurns?: number;
   /** The LLM to use for conversation */
@@ -119,13 +130,19 @@ export class InteractiveLoop {
       systemPrompt,
       initialAgentMessage,
       onMessage,
+      onCustomAction,
       maxTurns = 20,
     } = config;
 
     const llm = config.llm ?? createTier1LLM({ maxTokens: 4096 });
     const waitForInput = config.waitForUserInput ?? createCliInputReader();
-    const chatHistory: ChatMessage[] = [];
-    const langchainMessages = [new SystemMessage(systemPrompt)];
+    const chatHistory: ChatMessage[] = [...(config.initialHistory ?? [])];
+    const langchainMessages = [
+      new SystemMessage(systemPrompt),
+      ...chatHistory.map((m) =>
+        m.role === "user" ? new HumanMessage(m.content) : new AIMessage(m.content),
+      ),
+    ];
 
     log.info({ agentName, phase, projectId }, "Starting interactive loop");
 
@@ -163,6 +180,8 @@ export class InteractiveLoop {
         continue;
       }
 
+      if (/^(quit|cancel|abort|stop)[.! ]*$/i.test(userInput.trim())) break;
+
       // Record user message
       const userMsg: ChatMessage = {
         role: "user",
@@ -178,27 +197,40 @@ export class InteractiveLoop {
       const intentResult = await this.detectIntent(userInput, llm);
 
       if (intentResult.intent === "approve") {
-        log.info({ turn: turns }, "User approved. Extracting final output.");
-
-        // Ask the LLM to produce the final structured output
-        const finalPrompt = `The user has approved the current output. 
+        const blocked = await config.beforeApprove?.();
+        if (blocked) {
+          chatHistory.push({
+            role: "agent",
+            content: blocked,
+            timestamp: new Date().toISOString(),
+          });
+          langchainMessages.push(new AIMessage(blocked));
+          if (onMessage) onMessage("agent:message", { phase, message: blocked });
+          else console.log(blocked);
+          continue;
+        }
+        log.info({ turn: turns }, "User approved.");
+        if (config.extractFinalOutput !== false) {
+          // Ask the LLM to produce the final structured output
+          const finalPrompt = `The user has approved the current output.
 Please produce the FINAL structured JSON output that captures everything we've agreed upon.
 Respond ONLY with the final JSON object, no other text.`;
 
-        langchainMessages.push(new HumanMessage(finalPrompt));
-        const finalResponse = await llm.invoke(langchainMessages);
-        const finalContent = typeof finalResponse.content === "string"
-          ? finalResponse.content
-          : JSON.stringify(finalResponse.content);
+          langchainMessages.push(new HumanMessage(finalPrompt));
+          const finalResponse = await llm.invoke(langchainMessages);
+          const finalContent =
+            typeof finalResponse.content === "string"
+              ? finalResponse.content
+              : JSON.stringify(finalResponse.content);
 
-        try {
-          finalOutput = extractAndParseJson(finalContent);
-        } catch {
-          // If JSON extraction fails, use the raw chat context as the output
-          log.warn("Could not extract final JSON. Using last agent message as output.");
-          finalOutput = { rawApproval: finalContent };
+          try {
+            finalOutput = extractAndParseJson(finalContent);
+          } catch {
+            // If JSON extraction fails, use the raw chat context as the output
+            log.warn("Could not extract final JSON. Using last agent message as output.");
+            finalOutput = { rawApproval: finalContent };
+          }
         }
-
         approved = true;
 
         const approvalMsg: ChatMessage = {
@@ -219,15 +251,24 @@ Respond ONLY with the final JSON object, no other text.`;
       }
 
       // 3. Not approved — let the agent respond conversationally
-      const agentResponse = await llm.invoke(langchainMessages);
-      const agentContent = typeof agentResponse.content === "string"
-        ? agentResponse.content
-        : JSON.stringify(agentResponse.content);
+      let agentContent = "";
+      if (onCustomAction) {
+        const customResponse = await onCustomAction(userInput, chatHistory, intentResult.intent);
+        if (customResponse) {
+          agentContent = customResponse;
+        }
+      }
+
+      if (!agentContent) {
+        const agentResponse = await llm.invoke(langchainMessages);
+        agentContent =
+          typeof agentResponse.content === "string"
+            ? agentResponse.content
+            : JSON.stringify(agentResponse.content);
+      }
 
       // Clean up any thinking tags from the model
-      const cleanedContent = agentContent
-        .replace(/<think>[\s\S]*?<\/think>/g, "")
-        .trim();
+      const cleanedContent = agentContent.replace(/<think>[\s\S]*?<\/think>/g, "").trim();
 
       langchainMessages.push(new AIMessage(cleanedContent));
 
@@ -276,28 +317,32 @@ Respond ONLY with the final JSON object, no other text.`;
 
     // If the message contains a question mark, it's likely a question, not approval
     const isQuestion = lowerMsg.includes("?");
+    if (/\b(generate|add|change|replace|remove|fix|update|create|modify)\b/.test(lowerMsg))
+      return { intent: "change", summary: "Apply requested changes before approval" };
+    if (/^(quit|cancel|abort|stop)[.! ]*$/.test(lowerMsg))
+      return { intent: "change", summary: "Cancel requested" };
 
     // Only match approval keywords as WHOLE WORDS (word boundaries)
     // and only if the message is SHORT and not a question
     const approvalPhrases = [
-      /^(yes|yep|yup|yeah)[\s!.]*$/,       // standalone "yes", "yep", etc.
-      /^approve[d]?[\s!.]*$/,               // standalone "approve" / "approved"
-      /^proceed[\s!.]*$/,                   // standalone "proceed"
-      /^confirm(ed)?[\s!.]*$/,              // standalone "confirm" / "confirmed"
-      /^accept(ed)?[\s!.]*$/,               // standalone "accept" / "accepted"
-      /^lgtm[\s!.]*$/,                      // standalone "lgtm"
-      /\blooks good\b/,                     // "looks good" anywhere
-      /\bgo ahead\b/,                       // "go ahead" anywhere
-      /\ball good\b/,                       // "all good" anywhere
-      /\bship it\b/,                        // "ship it" anywhere
-      /\bi approve\b/,                      // "i approve" anywhere
-      /\blet'?s go\b/,                      // "let's go" / "lets go" anywhere
-      /\bmove on\b/,                        // "move on" anywhere
-      /\bnext phase\b/,                     // "next phase" anywhere
+      /^(yes|yep|yup|yeah)[\s!.]*$/, // standalone "yes", "yep", etc.
+      /^(?:designs? (?:are )?)?approve[d]?[\s!.]*$/, // standalone "approve" / "approved"
+      /^proceed[\s!.]*$/, // standalone "proceed"
+      /^confirm(ed)?[\s!.]*$/, // standalone "confirm" / "confirmed"
+      /^accept(ed)?[\s!.]*$/, // standalone "accept" / "accepted"
+      /^lgtm[\s!.]*$/, // standalone "lgtm"
+      /\blooks good\b/, // "looks good" anywhere
+      /\bgo ahead\b/, // "go ahead" anywhere
+      /\ball good\b/, // "all good" anywhere
+      /\bship it\b/, // "ship it" anywhere
+      /\bi approve\b/, // "i approve" anywhere
+      /\blet'?s go\b/, // "let's go" / "lets go" anywhere
+      /\bmove on\b/, // "move on" anywhere
+      /\bnext phase\b/, // "next phase" anywhere
     ];
 
     // Only trigger keyword approval if it's NOT a question
-    if (!isQuestion && approvalPhrases.some(rx => rx.test(lowerMsg))) {
+    if (!isQuestion && approvalPhrases.some((rx) => rx.test(lowerMsg))) {
       return { intent: "approve", summary: "User explicitly approved" };
     }
 
@@ -305,9 +350,8 @@ Respond ONLY with the final JSON object, no other text.`;
     try {
       const prompt = APPROVAL_CHECK_PROMPT.replace("{message}", userMessage);
       const response = await llm.invoke([new HumanMessage(prompt)]);
-      const content = typeof response.content === "string"
-        ? response.content
-        : JSON.stringify(response.content);
+      const content =
+        typeof response.content === "string" ? response.content : JSON.stringify(response.content);
 
       const cleanedContent = content.replace(/<think>[\s\S]*?<\/think>/g, "").trim();
       const parsed = extractAndParseJson(cleanedContent) as {

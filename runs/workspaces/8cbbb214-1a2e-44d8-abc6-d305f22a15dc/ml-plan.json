@@ -1,0 +1,21 @@
+{
+  "fingerprint": "83dd68670e82f74a04a24435da3c6cab0516a075db5b116d420c35e735430526",
+  "plan": {
+    "requiresTraining": false,
+    "task": "none",
+    "modalities": [],
+    "framework": "none",
+    "modelFamily": "none",
+    "mode": "none",
+    "datasetSchema": "No training dataset required.",
+    "splitStrategy": "Not applicable.",
+    "metrics": [],
+    "acceptanceCriteria": [],
+    "compute": {
+      "device": "auto",
+      "maxRuntimeMinutes": 60,
+      "maxMemoryGB": 16
+    },
+    "rationale": "The project does not require training a model. It involves web app development, database setup, and payment gateway integration."
+  }
+}

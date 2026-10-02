@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Style OS - Settings &amp; Preferences</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-primary": "#adc7ff",
+            "on-secondary-container": "#5b646b",
+            "inverse-surface": "#2d3138",
+            "error-container": "#ffdad6",
+            "surface-container-high": "#e5e8f2",
+            "primary-fixed-dim": "#adc7ff",
+            "on-tertiary-container": "#f7fff2",
+            "background": "#f9f9ff",
+            "secondary-container": "#d8e1ea",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#fefcff",
+            "surface-variant": "#dfe2ec",
+            "outline-variant": "#c1c6d7",
+            "inverse-on-surface": "#eef0fa",
+            "outline": "#717786",
+            "surface-container-highest": "#dfe2ec",
+            "surface-container-lowest": "#ffffff",
+            "primary-container": "#0070ea",
+            "on-secondary-fixed": "#141d23",
+            "on-tertiary": "#ffffff",
+            "secondary-fixed": "#dbe4ed",
+            "tertiary-fixed": "#83fc8e",
+            "on-primary-fixed": "#001a41",
+            "on-surface": "#181c23",
+            "on-secondary": "#ffffff",
+            "on-error-container": "#93000a",
+            "surface-dim": "#d7dae3",
+            "surface-container": "#ebeef7",
+            "tertiary-container": "#008730",
+            "surface-container-low": "#f1f3fd",
+            "on-secondary-fixed-variant": "#3f484f",
+            "surface": "#f9f9ff",
+            "on-error": "#ffffff",
+            "surface-bright": "#f9f9ff",
+            "secondary": "#575f67",
+            "on-primary-fixed-variant": "#004493",
+            "on-tertiary-fixed-variant": "#00531a",
+            "on-surface-variant": "#414754",
+            "tertiary-fixed-dim": "#66df75",
+            "surface-tint": "#005bc0",
+            "tertiary": "#006b24",
+            "primary": "#0059bb",
+            "on-background": "#181c23",
+            "on-tertiary-fixed": "#002106",
+            "secondary-fixed-dim": "#bfc8d0",
+            "primary-fixed": "#d8e2ff",
+            "error": "#ba1a1a"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-xl": "2.5rem",
+            "margin": "1.25rem",
+            "gutter": "1rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "label-md": ["Space Grotesk"],
+            "label-lg": ["Space Grotesk"],
+            "body-sm": ["Hanken Grotesk"],
+            "headline-md": ["Space Grotesk"],
+            "label-sm": ["Space Grotesk"],
+            "headline-sm": ["Space Grotesk"],
+            "body-md": ["Hanken Grotesk"],
+            "body-lg": ["Hanken Grotesk"],
+            "display-lg-mobile": ["Space Grotesk"],
+            "headline-lg": ["Space Grotesk"],
+            "display-lg": ["Space Grotesk"]
+          },
+          "fontSize": {
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "display-lg-mobile": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1;
+    }
+    /* Hide scrollbar for neat mobile experience */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md antialiased selection:bg-primary-fixed selection:text-on-primary-fixed min-h-screen flex justify-center">
+<!-- Mobile Viewport Shell (Flutter App Canvas Max 440px) -->
+<div class="w-full max-w-[440px] min-h-screen bg-surface flex flex-col relative pb-28 shadow-2xl overflow-x-hidden">
+<!-- Top Navigation Bar (Shared Component Style: docked full-width top, no borders, clean elevated canvas) -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-5 py-3.5 flex items-center justify-between transition-all duration-150">
+<div class="flex items-center gap-3">
+<button aria-label="Go Back" class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-lowest hover:bg-surface-container text-on-surface active:scale-95 transition-transform duration-150 shadow-sm border border-outline-variant/30" type="button">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<div>
+<h1 class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight">Settings &amp; Preferences</h1>
+<p class="font-label-sm text-label-sm text-secondary">Style OS Engine v3.4</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-9 px-4 rounded-full bg-primary text-on-primary font-label-md text-label-md flex items-center gap-1.5 shadow-sm active:scale-95 hover:bg-primary-container transition-all" id="save-btn" type="button">
+<span class="material-symbols-outlined text-[16px] text-on-primary">check</span>
+<span>Saved</span>
+</button>
+</div>
+</header>
+<!-- Main Scrollable Content -->
+<main class="flex-1 px-5 pt-3 space-y-6">
+<!-- SECTION 1: Profile Information & AI Styling Persona -->
+<section class="bg-surface-container-lowest rounded-2xl p-5 border border-outline-variant/30 shadow-[0px_4px_20px_rgba(30,34,41,0.04)] space-y-5">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img alt="Sarah Thompson" class="w-16 h-16 rounded-full object-cover ring-2 ring-primary/20 p-0.5" data-alt="Close-up editorial portrait of Sarah Thompson, a polished marketing manager with warm natural makeup and sleek pulled-back hair, set against a bright, airy architectural studio background. The aesthetic is clean high-fashion modernism with pure cobalt blue accents and crisp lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPTT4layEYscw_klWKBh_opyIHGjn3y1HvlVZKtsYUdvCEeoLhk5s7rfa0KVSjzIO8GmCws_ojFeaTZg9UrcYKZnTNhCrlYK6jz5ZgDazoW4Pvp7Kmyow-QB94CNFXraeg4n7POpstkx-mrv55G7OQiVEG6iPz-7mLT19sPy4CJ8DNfcWA950ZNRp8rqLw1OxWGBb0ehmbaHDRQ01tS4XH3LTuIjgUBgyjqkSGKrbSFSib82EemW7-NWG31Qa7o9Dhj2ccPf1osDM"/>
+<button aria-label="Change photo" class="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-md active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[15px]">photo_camera</span>
+</button>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-1.5">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface truncate">Sarah Thompson</h2>
+<span class="material-symbols-outlined text-primary text-[18px] fill" title="Verified Curated Profile">verified</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary truncate">Marketing Manager • London, UK</p>
+<div class="mt-1.5 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]">auto_awesome</span>
+<span>Versatility Score: 88%</span>
+</div>
+</div>
+</div>
+<!-- AI Persona Chips -->
+<div class="pt-3 border-t border-outline-variant/20 space-y-3">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-semibold text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[16px]">styler</span>
+<span>AI Styling Persona</span>
+</span>
+<button class="font-label-sm text-label-sm text-primary hover:underline">Re-calibrate</button>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<div class="bg-surface-container-low p-2.5 rounded-xl text-center border border-outline-variant/20">
+<span class="font-label-sm text-label-sm text-secondary block">Body Shape</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">Hourglass</span>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-xl text-center border border-outline-variant/20">
+<span class="font-label-sm text-label-sm text-secondary block">Color Season</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">Soft Autumn</span>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-xl text-center border border-outline-variant/20">
+<span class="font-label-sm text-label-sm text-secondary block">Dressing Mood</span>
+<span class="font-label-md text-label-md font-bold text-primary">Executive</span>
+</div>
+</div>
+</div>
+<!-- Measurements & Fit Preferences -->
+<div class="space-y-3 pt-1">
+<label class="block font-label-md text-label-md text-secondary">Physical Baseline &amp; Silhouette</label>
+<div class="grid grid-cols-2 gap-3">
+<div class="relative">
+<input class="w-full h-11 bg-surface-container-low border border-outline-variant/30 rounded-xl px-3 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-0 transition-colors" type="text" value="172 cm (5'8&quot;)"/>
+<span class="absolute right-3 top-3 font-label-sm text-label-sm text-secondary">Height</span>
+</div>
+<div class="relative">
+<input class="w-full h-11 bg-surface-container-low border border-outline-variant/30 rounded-xl px-3 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-0 transition-colors" type="text" value="34-27-38"/>
+<span class="absolute right-3 top-3 font-label-sm text-label-sm text-secondary">B-W-H</span>
+</div>
+</div>
+<!-- Fit Preference Selector -->
+<div class="space-y-1.5 pt-1">
+<span class="font-label-sm text-label-sm text-secondary">Default AI Fit Bias</span>
+<div class="grid grid-cols-3 gap-2 p-1 bg-surface-container-low rounded-xl border border-outline-variant/20">
+<button class="py-2 rounded-lg font-label-md text-label-md text-secondary hover:text-on-surface transition-colors text-center" type="button">Fitted</button>
+<button class="py-2 rounded-lg font-label-md text-label-md text-secondary hover:text-on-surface transition-colors text-center" type="button">Relaxed</button>
+<button class="py-2 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md font-bold shadow-sm text-center" type="button">Tailored</button>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: Weather & Location Styling Preferences -->
+<section class="bg-surface-container-lowest rounded-2xl p-5 border border-outline-variant/30 shadow-[0px_4px_20px_rgba(30,34,41,0.04)] space-y-5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined text-[18px]">routine</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Atmospheric Synthesis</h3>
+<p class="font-label-sm text-label-sm text-secondary">Synchronize outfit engine to microclimates</p>
+</div>
+</div>
+</div>
+<!-- Weather Sync Module Card -->
+<div class="bg-surface-container-low rounded-xl p-4 border border-outline-variant/30 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-[24px]">wb_sunny</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">72°F</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high font-label-sm text-label-sm text-on-surface-variant font-medium">London, UK</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">Real-Time Weather Sync Active</p>
+</div>
+</div>
+<!-- Styled Switch Toggle -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-6 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Temperature Sensitivity Selector -->
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md font-semibold text-on-surface">Temperature Sensitivity</label>
+<span class="font-label-sm text-label-sm text-primary font-medium">Balanced (+0° offset)</span>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<button class="py-2.5 px-3 rounded-full border border-outline-variant/30 text-secondary bg-surface-container-low font-label-md text-label-md hover:bg-surface-container transition-all flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">ac_unit</span>
+<span>Runs Cold</span>
+</button>
+<button class="py-2.5 px-3 rounded-full bg-on-surface text-on-primary font-label-md text-label-md font-semibold shadow-sm flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">balance</span>
+<span>Balanced</span>
+</button>
+<button class="py-2.5 px-3 rounded-full border border-outline-variant/30 text-secondary bg-surface-container-low font-label-md text-label-md hover:bg-surface-container transition-all flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">local_fire_department</span>
+<span>Runs Warm</span>
+</button>
+</div>
+</div>
+<!-- Commute Mode Selector -->
+<div class="space-y-2 pt-1">
+<label class="font-label-md text-label-md font-semibold text-on-surface">Primary Daily Commute</label>
+<div class="grid grid-cols-3 gap-2">
+<label class="cursor-pointer">
+<input checked="" class="sr-only peer" name="commute" type="radio"/>
+<div class="p-3 rounded-xl border border-outline-variant/30 peer-checked:border-primary peer-checked:bg-primary-fixed/30 flex flex-col items-center gap-1.5 transition-all">
+<span class="material-symbols-outlined text-primary text-[22px]">directions_walk</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Walking</span>
+<span class="font-body-sm text-[10px] text-secondary text-center leading-tight">Footwear focus</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="sr-only peer" name="commute" type="radio"/>
+<div class="p-3 rounded-xl border border-outline-variant/30 peer-checked:border-primary peer-checked:bg-primary-fixed/30 flex flex-col items-center gap-1.5 transition-all">
+<span class="material-symbols-outlined text-secondary peer-checked:text-primary text-[22px]">subway</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Transit</span>
+<span class="font-body-sm text-[10px] text-secondary text-center leading-tight">Breathable layers</span>
+</div>
+</label>
+<label class="cursor-pointer">
+<input class="sr-only peer" name="commute" type="radio"/>
+<div class="p-3 rounded-xl border border-outline-variant/30 peer-checked:border-primary peer-checked:bg-primary-fixed/30 flex flex-col items-center gap-1.5 transition-all">
+<span class="material-symbols-outlined text-secondary peer-checked:text-primary text-[22px]">directions_car</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Driving</span>
+<span class="font-body-sm text-[10px] text-secondary text-center leading-tight">Compact jackets</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Precipitation Toggle -->
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/20">
+<div>
+<span class="font-label-md text-label-md font-semibold text-on-surface block">Precipitation &amp; Rain Safeguard</span>
+<span class="font-body-sm text-body-sm text-secondary">Prioritize water-resistant outers when rain probability &gt; 30%</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer ml-3 shrink-0">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-6 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</section>
+<!-- SECTION 3: Clothing Item & Wardrobe Management -->
+<section class="bg-surface-container-lowest rounded-2xl p-5 border border-outline-variant/30 shadow-[0px_4px_20px_rgba(30,34,41,0.04)] space-y-5">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[18px]">checkroom</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Wardrobe Matrix Intelligence</h3>
+<p class="font-label-sm text-label-sm text-secondary">Categorization, automated tagging &amp; health</p>
+</div>
+</div>
+<!-- Automated Cataloging Toggles -->
+<div class="space-y-3.5">
+<div class="flex items-center justify-between">
+<div class="space-y-0.5 pr-2">
+<span class="font-label-md text-label-md font-semibold text-on-surface block">Auto-Fabric Detection</span>
+<span class="font-body-sm text-body-sm text-secondary">Neural scan recognition for wool, cashmere, silk, and cotton blends</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-6 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<div class="space-y-0.5 pr-2">
+<span class="font-label-md text-label-md font-semibold text-on-surface block">Cost-Per-Wear (CPW) Real-Time Tracker</span>
+<span class="font-body-sm text-body-sm text-secondary">Calculate amortized value per confirmed daily log</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-6 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<!-- Dormancy Threshold Slider -->
+<div class="bg-surface-container-low p-4 rounded-xl space-y-3 border border-outline-variant/30">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Closet Dormancy Alert</span>
+<span class="font-label-md text-label-md text-primary font-bold px-2 py-0.5 bg-surface-container-lowest rounded-md shadow-xs">45 Days</span>
+</div>
+<input class="w-full accent-primary h-1.5 bg-surface-variant rounded-lg cursor-pointer" max="90" min="15" type="range" value="45"/>
+<div class="flex justify-between text-[11px] font-label-sm text-secondary">
+<span>15 Days (High Agility)</span>
+<span>45 Days (Standard)</span>
+<span>90 Days (Seasonal)</span>
+</div>
+<p class="font-body-sm text-[11px] text-secondary leading-normal pt-1">
+            Items unworn past this threshold will be flagged for resale, donation, or intentional recombination.
+          </p>
+</div>
+<!-- Action Quick-Row -->
+<div class="grid grid-cols-3 gap-2 pt-1">
+<button class="p-3 bg-surface-container-low rounded-xl border border-outline-variant/20 hover:bg-surface-container text-center flex flex-col items-center gap-1 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-primary text-[20px]">layers</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Bulk Manage</span>
+</button>
+<button class="p-3 bg-surface-container-low rounded-xl border border-outline-variant/20 hover:bg-surface-container text-center flex flex-col items-center gap-1 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-primary text-[20px]">file_download</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Export JSON</span>
+</button>
+<button class="p-3 bg-surface-container-low rounded-xl border border-outline-variant/20 hover:bg-surface-container text-center flex flex-col items-center gap-1 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-primary text-[20px]">3d_rotation</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Sync 3D Twin</span>
+</button>
+</div>
+</section>
+<!-- SECTION 4: AI Virtual Try-on & Privacy Controls -->
+<section class="bg-surface-container-lowest rounded-2xl p-5 border border-outline-variant/30 shadow-[0px_4px_20px_rgba(30,34,41,0.04)] space-y-4">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed">
+<span class="material-symbols-outlined text-[18px]">security</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Neural Privacy &amp; Render Cache</h3>
+<p class="font-label-sm text-label-sm text-secondary">Local biometric security &amp; rendering cache</p>
+</div>
+</div>
+<div class="divide-y divide-outline-variant/20">
+<div class="py-3 flex items-center justify-between">
+<div>
+<span class="font-label-md text-label-md font-semibold text-on-surface block">On-Device 3D Mesh Processing</span>
+<span class="font-body-sm text-body-sm text-secondary">Never upload full-body photos to remote servers</span>
+</div>
+<span class="material-symbols-outlined text-tertiary text-[22px]">lock</span>
+</div>
+<div class="py-3 flex items-center justify-between">
+<div>
+<span class="font-label-md text-label-md font-semibold text-on-surface block">Local Virtual Try-On Cache</span>
+<span class="font-body-sm text-body-sm text-secondary">384 MB cached garments</span>
+</div>
+<button class="px-3 py-1 bg-surface-container rounded-full font-label-sm text-label-sm text-on-surface font-semibold hover:bg-surface-container-high transition-colors">
+              Purge
+            </button>
+</div>
+<div class="py-3 flex items-center justify-between">
+<div>
+<span class="font-label-md text-label-md font-semibold text-on-surface block">Anonymous Curation Insights</span>
+<span class="font-body-sm text-body-sm text-secondary">Contribute aggregated trend telemetry</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-6 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- System Log Out / Reset Link -->
+<div class="pt-2 pb-6 text-center space-y-2">
+<button class="font-label-md text-label-md text-error hover:underline inline-flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[16px]">logout</span>
+<span>Sign Out of Sartorial Profile</span>
+</button>
+<p class="font-body-sm text-[11px] text-outline">Style OS Mobile Build 4.19.02 (Arm64 Cupertino Engine)</p>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Shared Component Execution from JSON) -->
+<!-- Destination count: 5, Active: Health/Settings semantic match to active destination -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 border-t border-outline-variant/20 bg-surface-container-lowest shadow-lg max-w-[440px] left-1/2 -translate-x-1/2">
+<!-- Destination 1: Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container px-3 py-1.5 rounded-full active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]">home</span>
+<span class="font-label-sm text-label-sm mt-0.5">Home</span>
+</a>
+<!-- Destination 2: Try-On -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container px-3 py-1.5 rounded-full active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]">view_in_ar</span>
+<span class="font-label-sm text-label-sm mt-0.5">Try-On</span>
+</a>
+<!-- Destination 3: Scan (Center Action Pill) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container px-3 py-1.5 rounded-full active:scale-95 transition-transform duration-150" href="#">
+<div class="w-10 h-10 -mt-3 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[20px]">photo_camera</span>
+</div>
+<span class="font-label-sm text-label-sm mt-0.5">Scan</span>
+</a>
+<!-- Destination 4: Closet -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container px-3 py-1.5 rounded-full active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]">checkroom</span>
+<span class="font-label-sm text-label-sm mt-0.5">Closet</span>
+</a>
+<!-- Destination 5: Health/Settings (ACTIVE DESTINATION according to JSON and Settings context) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-3 py-1.5 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px] fill">analytics</span>
+<span class="font-label-sm text-label-sm font-semibold mt-0.5">Health</span>
+</a>
+</nav>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const saveBtn = document.getElementById('save-btn');
+      if (saveBtn) {
+        saveBtn.addEventListener('click', () => {
+          const originalContent = saveBtn.innerHTML;
+          saveBtn.innerHTML = `<span class="material-symbols-outlined text-[16px] animate-spin">refresh</span><span>Saving...</span>`;
+          setTimeout(() => {
+            saveBtn.innerHTML = `<span class="material-symbols-outlined text-[16px]">done_all</span><span>Updated</span>`;
+            saveBtn.classList.add('bg-tertiary-container', 'text-on-tertiary-container');
+            setTimeout(() => {
+              saveBtn.innerHTML = originalContent;
+              saveBtn.classList.remove('bg-tertiary-container', 'text-on-tertiary-container');
+            }, 2000);
+          }, 650);
+        });
+      }
+    });
+  </script>
+</body></html>

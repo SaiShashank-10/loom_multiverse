@@ -1,0 +1,31 @@
+{
+  "fingerprint": "a20575d79450b2bacdb4cd20c7d2734754d9c3a3c3b73dd1469e6c32b235061b",
+  "plan": {
+    "requiresTraining": true,
+    "task": "ranking",
+    "modalities": [
+      "text"
+    ],
+    "framework": "tensorflow",
+    "modelFamily": "transformer",
+    "mode": "new",
+    "datasetSchema": "resume, portfolio, job description",
+    "splitStrategy": "80/10/10",
+    "metrics": [
+      "accuracy",
+      "precision",
+      "recall"
+    ],
+    "acceptanceCriteria": [
+      "Model achieves an accuracy of at least 90%",
+      "Precision is greater than or equal to 85%",
+      "Recall is greater than or equal to 80%"
+    ],
+    "compute": {
+      "device": "cpu",
+      "maxRuntimeMinutes": 120,
+      "maxMemoryGB": 4
+    },
+    "rationale": "The job matching algorithm requires a transformer model due to its ability to handle sequential data and capture long-range dependencies. Training on a dataset of resumes, portfolios, and job descriptions will enable the model to learn patterns and make accurate predictions."
+  }
+}

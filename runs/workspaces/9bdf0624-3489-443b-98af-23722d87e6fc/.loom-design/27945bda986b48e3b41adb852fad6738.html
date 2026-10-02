@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CareerPath - Junior Frontend Engineer at Stripe</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100..900&display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN with forms and container queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration matching Design System Tokens -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-fixed-variant": "#3f484f",
+            "on-secondary-container": "#5b646b",
+            "primary-container": "#0070ea",
+            "secondary-fixed-dim": "#bfc8d0",
+            "tertiary-container": "#008730",
+            "tertiary": "#006b24",
+            "surface-container": "#e9eef6",
+            "inverse-primary": "#adc7ff",
+            "on-primary-fixed-variant": "#004493",
+            "inverse-on-surface": "#ecf1f9",
+            "surface-container-highest": "#dde3eb",
+            "on-tertiary-fixed": "#002106",
+            "tertiary-fixed": "#83fc8e",
+            "surface-dim": "#d5dae2",
+            "secondary-fixed": "#dbe4ed",
+            "on-secondary-fixed": "#141d23",
+            "inverse-surface": "#2b3137",
+            "on-error": "#ffffff",
+            "on-tertiary-fixed-variant": "#00531a",
+            "secondary": "#575f67",
+            "on-surface-variant": "#414754",
+            "surface-container-high": "#e3e9f0",
+            "on-tertiary-container": "#f7fff2",
+            "on-surface": "#161c22",
+            "surface-container-low": "#eff4fc",
+            "outline": "#717786",
+            "on-primary-container": "#fefcff",
+            "surface-tint": "#005bc0",
+            "primary-fixed-dim": "#adc7ff",
+            "error-container": "#ffdad6",
+            "surface": "#f7f9ff",
+            "on-secondary": "#ffffff",
+            "surface-variant": "#dde3eb",
+            "surface-container-lowest": "#ffffff",
+            "primary": "#0059bb",
+            "outline-variant": "#c1c6d7",
+            "on-tertiary": "#ffffff",
+            "surface-bright": "#f7f9ff",
+            "tertiary-fixed-dim": "#66df75",
+            "on-background": "#161c22",
+            "background": "#f7f9ff",
+            "on-primary-fixed": "#001a41",
+            "error": "#ba1a1a",
+            "primary-fixed": "#d8e2ff",
+            "on-primary": "#ffffff",
+            "secondary-container": "#d8e1ea",
+            "on-error-container": "#93000a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-xl": "2.5rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "margin": "2rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "gutter": "1.5rem",
+            "gutter-mobile": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "label-md": ["Roboto Flex"],
+            "headline-lg": ["Roboto Flex"],
+            "display": ["Roboto Flex"],
+            "body-md": ["Roboto Flex"],
+            "headline-sm": ["Roboto Flex"],
+            "label-sm": ["Roboto Flex"],
+            "body-sm": ["Roboto Flex"],
+            "headline-md": ["Roboto Flex"],
+            "headline-lg-mobile": ["Roboto Flex"],
+            "body-lg": ["Roboto Flex"],
+            "title-md": ["Roboto Flex"],
+            "label-lg": ["Roboto Flex"]
+          },
+          "fontSize": {
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "title-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen pb-24 selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Viewport Wrapper (Centered on larger screens to simulate mobile UI fidelity) -->
+<div class="max-w-md mx-auto bg-surface-container-lowest min-h-screen relative shadow-2xl flex flex-col">
+<!-- Top App Bar (Shared Components Anchor & Contextual Job Details Header) -->
+<header class="bg-surface-container-lowest sticky top-0 z-40 flex justify-between items-center w-full px-margin-mobile h-14 shadow-sm">
+<div class="flex items-center space-x-2">
+<a class="p-1 -ml-1 text-secondary hover:text-primary active:scale-95 transition-transform flex items-center" href="#back">
+<span class="material-symbols-outlined text-headline-sm" data-icon="arrow_back">arrow_back</span>
+</a>
+<span class="font-title-md text-title-md text-on-surface tracking-tight">Job Details</span>
+</div>
+<div class="flex items-center space-x-1">
+<!-- Bookmark Toggle Button -->
+<button aria-label="Bookmark Job" class="p-2 text-primary hover:bg-surface-container rounded-full active:scale-95 transition-transform duration-150" id="bookmarkBtn" onclick="toggleBookmark()">
+<span class="material-symbols-outlined text-headline-sm" data-icon="bookmark" id="bookmarkIcon" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</button>
+<!-- Share Action Button -->
+<button aria-label="Share Job" class="p-2 text-secondary hover:text-primary hover:bg-surface-container rounded-full active:scale-95 transition-transform duration-150" onclick="shareJob()">
+<span class="material-symbols-outlined text-headline-sm" data-icon="share">share</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin-mobile pt-space-md space-y-space-lg">
+<!-- Company Hero Block & Header Information -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-space-lg shadow-sm">
+<div class="flex items-start gap-space-md">
+<!-- Company Monogram / Logo Badge -->
+<div class="w-14 h-14 rounded-lg bg-primary flex items-center justify-center text-on-primary shadow-sm flex-shrink-0">
+<span class="font-headline-md text-headline-md font-bold tracking-tight">S</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center space-x-1.5 mb-1">
+<span class="font-label-md text-label-md text-secondary">Stripe</span>
+<span class="inline-block w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label-sm text-label-sm text-tertiary bg-surface-container-low px-1.5 py-0.5 rounded flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+                Verified
+              </span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface leading-tight font-bold mb-1">
+              Junior Frontend Engineer
+            </h1>
+<p class="font-body-md text-body-md text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="location_on">location_on</span>
+              San Francisco, CA <span class="text-outline-variant">•</span> Hybrid
+            </p>
+</div>
+</div>
+<!-- Key Job Meta Pill Badges -->
+<div class="mt-space-md pt-space-md border-t border-surface-container flex flex-wrap gap-space-xs">
+<div class="inline-flex items-center gap-1 px-2.5 py-1 bg-surface-container-low border border-outline-variant text-on-surface rounded font-label-md text-label-md">
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="payments">payments</span>
+            $105k - $125k/yr
+          </div>
+<div class="inline-flex items-center gap-1 px-2.5 py-1 bg-surface-container-low border border-outline-variant text-on-surface rounded font-label-md text-label-md">
+<span class="material-symbols-outlined text-[14px] text-secondary" data-icon="schedule">schedule</span>
+            Full-time
+          </div>
+<div class="inline-flex items-center gap-1 px-2.5 py-1 bg-surface-container-low border border-outline-variant text-on-surface rounded font-label-md text-label-md">
+<span class="material-symbols-outlined text-[14px] text-secondary" data-icon="school">school</span>
+            Entry-Level
+          </div>
+<div class="inline-flex items-center gap-1 px-2.5 py-1 bg-surface-container-low border border-outline-variant text-secondary rounded font-label-md text-label-md">
+<span class="material-symbols-outlined text-[14px] text-secondary" data-icon="history">history</span>
+            Posted 2 days ago
+          </div>
+</div>
+</section>
+<!-- Match & Technical Gap Analysis Card -->
+<section class="bg-surface-container-lowest border-2 border-tertiary-fixed rounded-xl p-space-lg shadow-sm relative overflow-hidden">
+<!-- Top Accent Bar -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-tertiary"></div>
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-headline-sm" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<h2 class="font-title-md text-title-md text-on-surface">Match Analysis</h2>
+<p class="font-body-sm text-body-sm text-secondary">Based on your CareerPath profile</p>
+</div>
+</div>
+<!-- High Compatibility Pill Badge -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed rounded-full font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+            94% Match
+          </div>
+</div>
+<!-- Visual Progress Match Meter -->
+<div class="space-y-1.5 mb-space-lg">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface font-semibold">Your Candidate Compatibility</span>
+<span class="text-tertiary font-bold">94% vs 75% Average</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2.5 overflow-hidden flex">
+<div class="bg-tertiary h-full rounded-full transition-all duration-500" style="width: 94%"></div>
+</div>
+</div>
+<!-- Detailed Breakdown Matrix -->
+<div class="space-y-space-md">
+<!-- Matched Skills -->
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-md text-label-md text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-tertiary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                Matched Skills (5/7)
+              </span>
+<span class="font-label-sm text-label-sm text-secondary">High Proficiency</span>
+</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-low border border-outline-variant font-label-sm text-label-sm text-on-surface flex items-center gap-1">
+                React <span class="text-[10px] text-tertiary font-bold bg-white px-1 rounded">Proficient</span>
+</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-low border border-outline-variant font-label-sm text-label-sm text-on-surface flex items-center gap-1">
+                TypeScript <span class="text-[10px] text-tertiary font-bold bg-white px-1 rounded">Proficient</span>
+</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-low border border-outline-variant font-label-sm text-label-sm text-on-surface flex items-center gap-1">
+                Tailwind CSS <span class="text-[10px] text-tertiary font-bold bg-white px-1 rounded">Proficient</span>
+</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-low border border-outline-variant font-label-sm text-label-sm text-on-surface">Git</span>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-low border border-outline-variant font-label-sm text-label-sm text-on-surface">HTML5 / CSS3</span>
+</div>
+</div>
+<!-- Skill Gaps / Recommendation Section -->
+<div class="pt-space-sm border-t border-surface-container">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-md text-label-md text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-on-secondary-container" data-icon="info">info</span>
+                Skill Gaps & Accelerated Paths
+              </span>
+</div>
+<div class="space-y-2">
+<!-- Gap 1: Next.js with direct action -->
+<div class="p-2.5 rounded-lg bg-surface-container-low border border-outline-variant flex flex-col space-y-1.5">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="font-label-md text-label-md text-on-surface">Next.js</span>
+<span class="font-label-sm text-label-sm text-secondary">(1 course away)</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Fast Track</span>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded border border-outline-variant flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="play_circle">play_circle</span>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface font-semibold leading-tight">Next.js 14 App Router Deep Dive</p>
+<p class="font-body-sm text-[10px] text-secondary">4h modular curriculum</p>
+</div>
+</div>
+<button class="px-2 py-1 bg-surface-container text-primary rounded font-label-sm text-label-sm hover:bg-primary hover:text-white transition-colors">Start</button>
+</div>
+</div>
+<!-- Gap 2: Docker -->
+<div class="p-2.5 rounded-lg bg-surface-container-low border border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-md text-label-md text-on-surface">Docker</span>
+<span class="font-body-sm text-[11px] text-secondary">• Basic containerization desired</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary">Optional</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Detailed Description Section -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-space-lg shadow-sm space-y-space-md">
+<div>
+<h2 class="font-title-md text-title-md text-on-surface mb-2">About the Role</h2>
+<p class="font-body-md text-body-md text-secondary leading-relaxed">
+            As a Junior Frontend Engineer on Stripe’s Developer Dashboard team, you will craft seamless, intuitive experiences that empower millions of online businesses globally. You will write robust web code, implement responsive UI patterns, and elevate standard interface performance across millions of daily active sessions.
+          </p>
+</div>
+<div>
+<h3 class="font-label-lg text-label-lg text-on-surface mb-2">Core Responsibilities</h3>
+<ul class="space-y-2 font-body-md text-body-md text-secondary">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary mt-0.5" data-icon="check">check</span>
+<span>Build modular, accessible, and high-performance React and TypeScript components within Stripe's Sailor design system.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary mt-0.5" data-icon="check">check</span>
+<span>Partner closely with product designers, staff engineers, and API product managers to iterate on financial analytics views.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary mt-0.5" data-icon="check">check</span>
+<span>Maintain unit test suites with Jest and React Testing Library, upholding Stripe’s standard for 99.99% interface uptime.</span>
+</li>
+</ul>
+</div>
+<div>
+<h3 class="font-label-lg text-label-lg text-on-surface mb-2">Technical Qualifications</h3>
+<div class="space-y-3">
+<div>
+<p class="font-label-md text-label-md text-primary mb-1 uppercase tracking-wide">Must Have</p>
+<ul class="list-disc list-inside font-body-md text-body-md text-secondary space-y-1">
+<li>Demonstrated proficiency with modern React (Hooks, Context, State Management).</li>
+<li>Firm foundation in TypeScript, strict typing, and ES6+ JavaScript.</li>
+<li>Working knowledge of responsive CSS layouts, semantic HTML, and accessibility (WCAG 2.1).</li>
+</ul>
+</div>
+<div>
+<p class="font-label-md text-label-md text-secondary mb-1 uppercase tracking-wide">Nice to Have</p>
+<ul class="list-disc list-inside font-body-md text-body-md text-secondary space-y-1">
+<li>Exposure to Next.js or modern server-side rendering patterns.</li>
+<li>Familiarity with financial dashboards, charts (D3/Recharts), and container concepts.</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Benefits & Perks Bento Grid -->
+<div>
+<h3 class="font-label-lg text-label-lg text-on-surface mb-2">Benefits & Perks</h3>
+<div class="grid grid-cols-2 gap-2.5">
+<div class="p-3 bg-surface-container-low border border-outline-variant rounded-lg">
+<span class="material-symbols-outlined text-primary mb-1" data-icon="health_and_safety">health_and_safety</span>
+<p class="font-label-md text-label-md text-on-surface">Comprehensive Health</p>
+<p class="font-body-sm text-[11px] text-secondary">100% premium coverage for medical, vision, and dental.</p>
+</div>
+<div class="p-3 bg-surface-container-low border border-outline-variant rounded-lg">
+<span class="material-symbols-outlined text-primary mb-1" data-icon="savings">savings</span>
+<p class="font-label-md text-label-md text-on-surface">401(k) Matching</p>
+<p class="font-body-sm text-[11px] text-secondary">Up to 4% dollar-for-dollar company contribution match.</p>
+</div>
+<div class="p-3 bg-surface-container-low border border-outline-variant rounded-lg">
+<span class="material-symbols-outlined text-primary mb-1" data-icon="menu_book">menu_book</span>
+<p class="font-label-md text-label-md text-on-surface">$1,500 Learning Stipend</p>
+<p class="font-body-sm text-[11px] text-secondary">Annual budget for courses, books, and tech conferences.</p>
+</div>
+<div class="p-3 bg-surface-container-low border border-outline-variant rounded-lg">
+<span class="material-symbols-outlined text-primary mb-1" data-icon="home_work">home_work</span>
+<p class="font-label-md text-label-md text-on-surface">Hybrid Flexibility</p>
+<p class="font-body-sm text-[11px] text-secondary">2 days in-office in SF, flexible remote days & home setup fund.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Application Form (Inline Card / Express Apply) -->
+<section class="bg-surface-container-lowest border-2 border-primary rounded-xl p-space-lg shadow-md space-y-space-md">
+<div class="flex items-center justify-between pb-2 border-b border-surface-container">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary text-headline-sm" data-icon="bolt">bolt</span>
+<h2 class="font-title-md text-title-md text-on-surface">Quick Apply</h2>
+</div>
+<span class="font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed px-2 py-0.5 rounded-full font-bold">1-Click Fast Track</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">
+          We will auto-populate verified credentials from your CareerPath portfolio to Stripe's hiring system.
+        </p>
+<!-- Attached Resume File Pill -->
+<div class="space-y-1.5">
+<label class="font-label-md text-label-md text-on-surface">Target Resume Attached</label>
+<div class="p-2.5 rounded-lg border border-outline-variant bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center space-x-2.5 overflow-hidden">
+<span class="material-symbols-outlined text-error text-[24px]" data-icon="picture_as_pdf">picture_as_pdf</span>
+<div class="truncate">
+<p class="font-label-md text-label-md text-on-surface truncate">Alex_Chen_Resume_2025.pdf</p>
+<p class="font-body-sm text-[10px] text-secondary">Updated 3 days ago • ATS Optimized (98/100)</p>
+</div>
+</div>
+<button class="text-primary font-label-md text-label-md hover:underline flex-shrink-0 ml-2" type="button">Replace</button>
+</div>
+</div>
+<!-- Contact Details Preview -->
+<div class="space-y-1.5">
+<label class="font-label-md text-label-md text-on-surface">Applicant Profile</label>
+<div class="p-2.5 rounded-lg border border-outline-variant bg-surface-container-low space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Alex Chen</span>
+<span class="font-label-sm text-label-sm text-tertiary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]" data-icon="check_circle">check_circle</span> Verified
+              </span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">alex.chen@example.com • (555) 234-5678</p>
+</div>
+</div>
+<!-- Portfolio / GitHub Link Field -->
+<div class="space-y-1.5">
+<label class="font-label-md text-label-md text-on-surface" for="portfolioInput">Portfolio / GitHub Repository</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-3 text-[18px] text-secondary" data-icon="link">link</span>
+<input class="w-full h-11 pl-9 pr-3 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none" id="portfolioInput" placeholder="https://" type="url" value="https://github.com/alexchen-dev"/>
+</div>
+</div>
+<!-- Short Cover Note Field -->
+<div class="space-y-1.5">
+<div class="flex justify-between">
+<label class="font-label-md text-label-md text-on-surface" for="coverNote">Why are you excited about Stripe?</label>
+<span class="font-label-sm text-label-sm text-secondary">Max 250 words</span>
+</div>
+<textarea class="w-full p-2.5 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none" id="coverNote" placeholder="Brief note highlighting your passion for developer tools and modern UI craft..." rows="3"></textarea>
+</div>
+<!-- Action Buttons -->
+<div class="space-y-2 pt-1">
+<button class="w-full h-11 bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg rounded-lg flex items-center justify-center gap-2 shadow-sm active:scale-95 transition-all" id="submitBtn" onclick="handleApplicationSubmit()">
+<span class="material-symbols-outlined text-[18px]" data-icon="send">send</span>
+            Submit Application
+          </button>
+<button class="w-full h-10 bg-transparent border border-outline text-secondary hover:text-on-surface hover:border-on-surface font-label-md text-label-md rounded-lg flex items-center justify-center transition-colors" onclick="handleSaveDraft()" type="button">
+            Save Draft
+          </button>
+</div>
+</section>
+<!-- Feedback Toast Notification Container (Dynamic) -->
+<div class="fixed bottom-20 left-4 right-4 max-w-md mx-auto transform translate-y-32 opacity-0 transition-all duration-300 pointer-events-none z-50" id="toast">
+<div class="bg-inverse-surface text-inverse-on-surface p-3 rounded-lg shadow-xl flex items-center justify-between border border-outline">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-tertiary-fixed text-[20px]" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-body-md" id="toastMessage">Application successfully submitted!</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Executed verbatim from Shared Components JSON with active context) -->
+<!-- JSON Blueprint: destination_count: 4, label_texts: ["Jobs", "Matches", "Applications", "Profile"], icons: ["search", "auto_awesome", "description", "person"] -->
+<!-- The page intent is Job Details, belonging directly to the "Jobs" destination -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-gutter-mobile bg-surface-container-lowest dark:bg-inverse-surface shadow-md dark:shadow-none border-t border-outline-variant dark:border-outline">
+<!-- Jobs (Active) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-inverse-primary font-label-sm text-label-sm active:scale-95 transition-transform duration-150" href="#jobs">
+<span class="material-symbols-outlined" data-icon="search" style="font-variation-settings: 'FILL' 1;">search</span>
+<span>Jobs</span>
+</a>
+<!-- Matches -->
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim font-label-sm text-label-sm hover:text-primary dark:hover:text-inverse-primary active:scale-95 transition-transform duration-150" href="#matches">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span>Matches</span>
+</a>
+<!-- Applications -->
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim font-label-sm text-label-sm hover:text-primary dark:hover:text-inverse-primary active:scale-95 transition-transform duration-150" href="#applications">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span>Applications</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim font-label-sm text-label-sm hover:text-primary dark:hover:text-inverse-primary active:scale-95 transition-transform duration-150" href="#profile">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span>Profile</span>
+</a>
+</nav>
+</div>
+<!-- Interactive JavaScript Logic -->
+<script>
+    let isBookmarked = true;
+
+    function toggleBookmark() {
+      isBookmarked = !isBookmarked;
+      const icon = document.getElementById('bookmarkIcon');
+      if (isBookmarked) {
+        icon.style.fontVariationSettings = "'FILL' 1";
+        icon.classList.add('text-primary');
+        icon.classList.remove('text-secondary');
+        showToast('Job saved to your bookmarks.');
+      } else {
+        icon.style.fontVariationSettings = "'FILL' 0";
+        icon.classList.remove('text-primary');
+        icon.classList.add('text-secondary');
+        showToast('Job removed from bookmarks.');
+      }
+    }
+
+    function shareJob() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Junior Frontend Engineer at Stripe',
+          text: 'Check out this 94% matched role on CareerPath!',
+          url: window.location.href
+        }).catch(() => {});
+      } else {
+        showToast('Job link copied to clipboard!');
+      }
+    }
+
+    function handleApplicationSubmit() {
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <span class="material-symbols-outlined animate-spin text-[18px]" data-icon="progress_activity">progress_activity</span>
+        Submitting...
+      `;
+
+      setTimeout(() => {
+        submitBtn.innerHTML = `
+          <span class="material-symbols-outlined text-[18px]" data-icon="check" style="font-variation-settings: 'FILL' 1;">check</span>
+          Application Submitted
+        `;
+        submitBtn.classList.remove('bg-primary', 'hover:bg-primary-container');
+        submitBtn.classList.add('bg-tertiary');
+        showToast('Application sent directly to Stripe Recruiters!');
+      }, 1200);
+    }
+
+    function handleSaveDraft() {
+      showToast('Draft saved successfully to Applications tab.');
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toastMessage');
+      toastMessage.textContent = message;
+      toast.classList.remove('translate-y-32', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-32', 'opacity-0', 'pointer-events-none');
+      }, 3000);
+    }
+  </script>
+</body></html>

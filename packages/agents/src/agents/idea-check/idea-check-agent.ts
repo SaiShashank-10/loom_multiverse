@@ -1,3 +1,5 @@
+import fs from "node:fs/promises";
+import path from "node:path";
 /**
  * @loom/agents — Idea Check Agent V2
  *
@@ -62,7 +64,8 @@ export class IdeaCheckAgent extends BaseAgent {
     super({
       name: "IdeaCheckAgent",
       phase: "idea_check",
-      description: "Validates and refines raw software ideas through interactive conversation and RAG document analysis.",
+      description:
+        "Validates and refines raw software ideas through interactive conversation and RAG document analysis.",
     });
   }
 
@@ -79,23 +82,32 @@ export class IdeaCheckAgent extends BaseAgent {
     }
 
     this.log.info(
-      { ideaLength: rawIdea.length, documentCount: documentPaths.length, interactive: isInteractive },
+      {
+        ideaLength: rawIdea.length,
+        documentCount: documentPaths.length,
+        interactive: isInteractive,
+      },
       "Starting Idea Check V2",
     );
 
-    // ─── Step 1: Ingest Documents (if provided) ───
-    let documentContext = "";
-    if (documentPaths.length > 0) {
-      documentContext = await this.ingestDocuments(input.projectId, documentPaths);
+    const analysisPath = path.resolve("runs", "workspaces", input.projectId, "idea-analysis.json");
+    let savedAnalysis: unknown;
+    if (input.payload.resumeProject) {
+      try {
+        savedAnalysis = JSON.parse(await fs.readFile(analysisPath, "utf8"));
+      } catch (error) {
+        if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
+      }
     }
-
-    // ─── Step 2: Perform Initial Analysis ───
-    const analysis = await this.performInitialAnalysis(
-      rawIdea,
-      documentContext,
-      input.projectId,
-      llm,
-    );
+    let documentContext = "";
+    if (!savedAnalysis && documentPaths.length > 0)
+      documentContext = await this.ingestDocuments(input.projectId, documentPaths);
+    const analysis = savedAnalysis
+      ? IdeaCheckSchema.parse(savedAnalysis)
+      : await this.performInitialAnalysis(rawIdea, documentContext, input.projectId, llm);
+    await fs.mkdir(path.dirname(analysisPath), { recursive: true });
+    await fs.writeFile(`${analysisPath}.tmp`, JSON.stringify(analysis, null, 2));
+    await fs.rename(`${analysisPath}.tmp`, analysisPath);
 
     this.log.info(
       { isValid: analysis.isValid, confidence: analysis.confidenceScore },
@@ -104,13 +116,7 @@ export class IdeaCheckAgent extends BaseAgent {
 
     // ─── Step 3: Interactive Loop (if enabled) ───
     if (isInteractive && input.waitForUserInput) {
-      return this.runInteractiveMode(
-        input,
-        llm,
-        analysis,
-        rawIdea,
-        documentContext,
-      );
+      return this.runInteractiveMode(input, llm, analysis, rawIdea, documentContext);
     }
 
     // ─── Step 3b: Non-Interactive Mode (legacy / automated) ───
@@ -121,10 +127,7 @@ export class IdeaCheckAgent extends BaseAgent {
   // Document Ingestion
   // ─────────────────────────────────────────────
 
-  private async ingestDocuments(
-    projectId: string,
-    documentPaths: string[],
-  ): Promise<string> {
+  private async ingestDocuments(projectId: string, documentPaths: string[]): Promise<string> {
     const processor = new DocumentProcessor();
     const retriever = new RagRetriever();
 
@@ -165,22 +168,19 @@ export class IdeaCheckAgent extends BaseAgent {
     // Build the appropriate task prompt
     let taskPrompt: string;
     if (documentContext) {
-      taskPrompt = TASK_PROMPT_WITH_DOCUMENTS
-        .replace("{idea}", rawIdea || "No raw idea provided — analyze the documents only.")
-        .replace("{documentContext}", documentContext);
+      taskPrompt = TASK_PROMPT_WITH_DOCUMENTS.replace(
+        "{idea}",
+        rawIdea || "No raw idea provided — analyze the documents only.",
+      ).replace("{documentContext}", documentContext);
     } else {
       taskPrompt = TASK_PROMPT.replace("{idea}", rawIdea);
     }
 
-    const messages = [
-      new SystemMessage(ANALYSIS_SYSTEM_PROMPT),
-      new HumanMessage(taskPrompt),
-    ];
+    const messages = [new SystemMessage(ANALYSIS_SYSTEM_PROMPT), new HumanMessage(taskPrompt)];
 
     const response = await llm.invoke(messages);
-    const content = typeof response.content === "string"
-      ? response.content
-      : JSON.stringify(response.content);
+    const content =
+      typeof response.content === "string" ? response.content : JSON.stringify(response.content);
 
     // Clean thinking tags
     const cleanedContent = content.replace(/<think>[\s\S]*?<\/think>/g, "").trim();
@@ -212,12 +212,15 @@ export class IdeaCheckAgent extends BaseAgent {
     const analysisPresentation = this.formatAnalysisForUser(analysis);
 
     // Build the interactive system prompt with analysis results
-    const interactiveSystemPrompt = INTERACTIVE_SYSTEM_PROMPT
-      .replace("{analysisResults}", JSON.stringify(analysis, null, 2));
+    const interactiveSystemPrompt = INTERACTIVE_SYSTEM_PROMPT.replace(
+      "{analysisResults}",
+      JSON.stringify(analysis, null, 2),
+    );
 
     // Run the interactive loop
     const loop = new InteractiveLoop();
     const loopResult = await loop.run({
+      initialHistory: input.resumeChatHistory,
       agentName: "Idea Check Agent",
       phase: "idea_check",
       projectId: input.projectId,
@@ -243,7 +246,9 @@ export class IdeaCheckAgent extends BaseAgent {
       finalValidatedIdea = IdeaCheckSchema.parse(loopResult.finalOutput);
     } catch {
       // If the final output doesn't match schema, use the last known good analysis
-      this.log.warn("Final loop output didn't match schema, using last analysis with user approval");
+      this.log.warn(
+        "Final loop output didn't match schema, using last analysis with user approval",
+      );
       finalValidatedIdea = { ...analysis, isValid: true };
     }
 
@@ -254,6 +259,10 @@ export class IdeaCheckAgent extends BaseAgent {
       success: true,
       data: {
         validatedIdea: finalValidatedIdea,
+        approvedRequirements: `${_rawIdea}\nUser revisions: ${loopResult.chatHistory
+          .filter((m) => m.role === "user")
+          .map((m) => m.content)
+          .join("\n")}`,
       },
       chatHistory: loopResult.chatHistory,
     };
@@ -290,10 +299,7 @@ export class IdeaCheckAgent extends BaseAgent {
   // Helpers
   // ─────────────────────────────────────────────
 
-  private async storeInVectorMemory(
-    projectId: string,
-    analysis: IdeaCheckResult,
-  ): Promise<void> {
+  private async storeInVectorMemory(projectId: string, analysis: IdeaCheckResult): Promise<void> {
     const serializedData = JSON.stringify(analysis, null, 2);
     const embedding = await embedText(serializedData);
 
@@ -317,10 +323,14 @@ export class IdeaCheckAgent extends BaseAgent {
     const parts: string[] = [];
 
     if (analysis.isValid) {
-      parts.push(`I've analyzed your project idea and I believe it's viable! Here's my assessment:\n`);
+      parts.push(
+        `I've analyzed your project idea and I believe it's viable! Here's my assessment:\n`,
+      );
       parts.push(`Confidence: ${analysis.confidenceScore ?? "N/A"}%\n`);
     } else {
-      parts.push(`I've analyzed your project idea and I have some concerns that we should address first:\n`);
+      parts.push(
+        `I've analyzed your project idea and I have some concerns that we should address first:\n`,
+      );
       if (analysis.rejectionReason) {
         parts.push(`Issue: ${analysis.rejectionReason}\n`);
       }

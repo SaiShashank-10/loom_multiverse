@@ -11,7 +11,7 @@
  *
  * 3-Tier Model Strategy:
  * - Tier 1: qwen3:4b — fast tasks (classification, extraction, simple Q&A)
- * - Tier 2: qwen3:8b — complex reasoning (architecture, code generation)
+ * - Tier 2: qwen2.5-coder:7b — architecture, code generation and repair
  * - Tier 3: Cloud API — highest intelligence (if API key is present)
  */
 
@@ -42,6 +42,10 @@ export interface LLMOptions {
   temperature?: number;
   /** Maximum tokens to generate. Default: 4096 */
   maxTokens?: number;
+  /** Ollama context window for requests with large planning documents. */
+  contextWindow?: number;
+  /** Use zero for CPU-only retry after a GPU runner failure. */
+  gpuLayers?: number;
   /** Force specific format (e.g., 'json') */
   format?: "json" | "json_object" | undefined;
 }
@@ -92,6 +96,8 @@ export function createLLM(options: LLMOptions = {}): BaseChatModel {
         model,
         temperature,
         numPredict: maxTokens,
+        numCtx: options.contextWindow,
+        numGpu: options.gpuLayers,
         // Disable thinking/reasoning mode for cleaner output if not explicitly requested
         format: options.format,
       });
@@ -143,10 +149,7 @@ export function createLLM(options: LLMOptions = {}): BaseChatModel {
 
     default: {
       const exhaustive: never = provider;
-      throw new AgentError(
-        `Unknown LLM provider: ${exhaustive}`,
-        "llm-provider",
-      );
+      throw new AgentError(`Unknown LLM provider: ${exhaustive}`, "llm-provider");
     }
   }
 }
@@ -161,9 +164,10 @@ export function createLLM(options: LLMOptions = {}): BaseChatModel {
  * Default: Ollama qwen3:4b
  */
 export function createTier1LLM(overrides: Partial<LLMOptions> = {}): BaseChatModel {
+  const provider = overrides.provider ?? (config.LLM_PROVIDER as LLMProvider);
   return createLLM({
-    provider: "ollama",
-    model: config.OLLAMA_MODEL, // qwen3:4b
+    provider,
+    ...(provider === "ollama" ? { model: config.OLLAMA_MODEL } : {}),
     temperature: 0.2,
     maxTokens: 8192,
     ...overrides,
@@ -173,12 +177,13 @@ export function createTier1LLM(overrides: Partial<LLMOptions> = {}): BaseChatMod
 /**
  * Tier 2 LLM — more capable model for complex reasoning.
  * Uses: architecture design, code generation, multi-step planning.
- * Default: Ollama qwen3:8b
+ * Default: Ollama qwen2.5-coder:7b
  */
 export function createTier2LLM(overrides: Partial<LLMOptions> = {}): BaseChatModel {
+  const provider = overrides.provider ?? (config.LLM_PROVIDER as LLMProvider);
   return createLLM({
-    provider: "ollama",
-    model: config.OLLAMA_CODE_MODEL, // qwen3:8b
+    provider,
+    ...(provider === "ollama" ? { model: config.OLLAMA_CODE_MODEL } : {}),
     temperature: 0.3,
     maxTokens: 4096,
     ...overrides,

@@ -1,0 +1,4 @@
+{
+  "directory": "frontend",
+  "requirements": "Repair the existing Flutter mobile application using Firebase Authentication and Cloud Firestore only. Preserve Firebase configuration, existing screens and user data. Do not restore the obsolete Node backend, MongoDB, or localhost:5000 authentication. Preserve the existing Firebase setup documentation."
+}

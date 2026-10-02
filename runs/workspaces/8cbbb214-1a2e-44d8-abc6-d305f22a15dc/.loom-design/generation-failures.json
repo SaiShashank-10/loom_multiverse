@@ -1,0 +1,10 @@
+{
+  "src/components/Button.tsx": "Error: src/components/Button.tsx: rejected 3 invalid generations. Error: src/components/Button.tsx: undefined utility CSS classes (hover:scale-102, hover:shadow-lg, duration-200, ease-out, text-primary, bg-secondary, hover:bg-secondary-container, hover:text-on-secondary-container). This project uses plain CSS; translate Stitch classes to the existing stylesheet selectors instead of producing an unstyled UI.",
+  "src/components/Card.tsx": "ResponseError: llama runner process has terminated: CUDA error: shared object initialization failed\nCUDA error",
+  "src/components/Modal.tsx": "ResponseError: llama runner process has terminated: CUDA error: shared object initialization failed\nCUDA error",
+  "src/components/InputField.tsx": "Error: src/components/InputField.tsx: rejected 3 invalid generations. Error: src/components/InputField.tsx: undefined utility CSS classes (mb-4, text-sm, text-gray-700, mt-2, text-red-600, mt-1, rounded-md, border-gray-300). This project uses plain CSS; translate Stitch classes to the existing stylesheet selectors instead of producing an unstyled UI.",
+  "src/context/AuthContext.tsx": "ResponseError: llama runner process has terminated: CUDA error: shared object initialization failed\nCUDA error",
+  "src/pages/ProductCatalog.tsx": "Error: Ollama connection failed after 3 attempts: fetch failed; Headers Timeout Error; UND_ERR_HEADERS_TIMEOUT. Resume the same project after restoring Ollama; generated files are preserved.",
+  "src/pages/ProductDetail.tsx": "Error: EPERM: operation not permitted, rename 'C:\\Shashank\\loom_multiverse\\runs\\workspaces\\8cbbb214-1a2e-44d8-abc6-d305f22a15dc\\pipeline-checkpoint.json.tmp' -> 'C:\\Shashank\\loom_multiverse\\runs\\workspaces\\8cbbb214-1a2e-44d8-abc6-d305f22a15dc\\pipeline-checkpoint.json'",
+  "src/pages/CartPage.tsx": "Error: EPERM: operation not permitted, rename 'C:\\Shashank\\loom_multiverse\\runs\\workspaces\\8cbbb214-1a2e-44d8-abc6-d305f22a15dc\\pipeline-checkpoint.json.tmp' -> 'C:\\Shashank\\loom_multiverse\\runs\\workspaces\\8cbbb214-1a2e-44d8-abc6-d305f22a15dc\\pipeline-checkpoint.json'"
+}

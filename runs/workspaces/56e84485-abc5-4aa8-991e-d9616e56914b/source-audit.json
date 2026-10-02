@@ -1,0 +1,120 @@
+{
+  "success": true,
+  "checkedAt": "2026-09-21T13:26:34.410Z",
+  "counts": {
+    "total": 18,
+    "invalid": 0,
+    "valid": 15
+  },
+  "warnings": [],
+  "entries": [
+    {
+      "path": ".gitignore",
+      "bytes": 46,
+      "sha256": "a67281793bd742f160485c679aee666bc088fbdc94a98ec25f500cfdb357f210",
+      "status": "valid"
+    },
+    {
+      "path": "LOCAL-VERIFICATION.md",
+      "bytes": 616,
+      "sha256": "d8368ec9adfe2f89945266057319ea35c72ab8cd60549630335abd1cbc9bdfec",
+      "status": "documentation"
+    },
+    {
+      "path": "README.md",
+      "bytes": 859,
+      "sha256": "0ae5ce7fabac5f1525e64e50db8786c663f47a2497a75dfe6703d13807aaf518",
+      "status": "documentation"
+    },
+    {
+      "path": "index.html",
+      "bytes": 258,
+      "sha256": "48699918ce3829188d820b214965ae681af85494abfcdeea7f61b1795ceea3a0",
+      "status": "valid"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 64161,
+      "sha256": "1f9737c240a482b2b58c043c44dbbed336857c1890c05b83ed1f0e5568713e64",
+      "status": "asset"
+    },
+    {
+      "path": "package.json",
+      "bytes": 594,
+      "sha256": "2f2bf565a7a8a73cf2af3fbdaf7fbd538165a0843b8739a3a2b99b3f43724153",
+      "status": "valid"
+    },
+    {
+      "path": "server/api.mjs",
+      "bytes": 3928,
+      "sha256": "36689986964aeb8de2cc098c48754930ecc4b411e56e42bb23012b4b5aea3ce9",
+      "status": "valid"
+    },
+    {
+      "path": "src/.env.example",
+      "bytes": 342,
+      "sha256": "1dbd95a024f67ecf1ba8b3aa881a0dd6aa9c88f29f603f668ee552f77781db12",
+      "status": "valid"
+    },
+    {
+      "path": "src/App.tsx",
+      "bytes": 2194,
+      "sha256": "b7edc7364706ffedf0ef40fa76d882dc25bcbf592aea14aeb4dae5952ed14f8d",
+      "status": "valid"
+    },
+    {
+      "path": "src/components/EWasteRealTimeAnalyticsDashboard.tsx",
+      "bytes": 5094,
+      "sha256": "c37653d6e8f4f6308e673cf893ce95dfbf4e5c95f966bc2de304abd2fc3e0ef1",
+      "status": "valid"
+    },
+    {
+      "path": "src/components/EWasteReportsAuditing.tsx",
+      "bytes": 4240,
+      "sha256": "c88e7e923a946caf4efc1ee1594c86c411e7f0b088fb23da4f9060c5425a9738",
+      "status": "valid"
+    },
+    {
+      "path": "src/components/EWasteSettingsPreferences.tsx",
+      "bytes": 3442,
+      "sha256": "65986e078406e2193ebf3ebf3abaae65f8feef6a2f830eddd83461a0c20b1e70",
+      "status": "valid"
+    },
+    {
+      "path": "src/data.ts",
+      "bytes": 1283,
+      "sha256": "4fc22cf8211871b4f50b20781506d152ea8b9bb2d19df13d6f7500bf20f2c053",
+      "status": "valid"
+    },
+    {
+      "path": "src/index.css",
+      "bytes": 6938,
+      "sha256": "509f1ac0c2513efb24902260eb103b0cc329c0b7d5a0c02801676e4f8986f156",
+      "status": "valid"
+    },
+    {
+      "path": "src/main.tsx",
+      "bytes": 176,
+      "sha256": "e52d79dd147b7e4eb612cd288e5ad90675de1fa75ee0585d1ed162a1fa3d62a9",
+      "status": "valid"
+    },
+    {
+      "path": "tests/api.test.mjs",
+      "bytes": 1809,
+      "sha256": "80c5683a836ef7ceede76df42e81912ebc7359531b72ddb12e205800fe3f10e5",
+      "status": "valid"
+    },
+    {
+      "path": "tsconfig.json",
+      "bytes": 247,
+      "sha256": "dcab031e56e1ac90f98b0b85f9593c67f9dee4c3441511d89289970ca04ea88f",
+      "status": "valid"
+    },
+    {
+      "path": "vite.config.ts",
+      "bytes": 395,
+      "sha256": "8bdb9ff8ac87e437f757433a98b7d9147b0c65801788da4d82ce1e8b03060628",
+      "status": "valid"
+    }
+  ]
+}

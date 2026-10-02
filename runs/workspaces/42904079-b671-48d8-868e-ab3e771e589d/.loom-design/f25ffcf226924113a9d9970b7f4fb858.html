@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Style OS - Digital Closet</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-dim": "#d7dae3",
+            "inverse-on-surface": "#eef0fa",
+            "surface-container": "#ebeef7",
+            "on-error-container": "#93000a",
+            "on-tertiary-container": "#f7fff2",
+            "background": "#f9f9ff",
+            "outline-variant": "#c1c6d7",
+            "tertiary-container": "#008730",
+            "secondary-fixed": "#dbe4ed",
+            "on-background": "#181c23",
+            "inverse-surface": "#2d3138",
+            "tertiary-fixed-dim": "#66df75",
+            "secondary": "#575f67",
+            "on-tertiary-fixed": "#002106",
+            "on-tertiary-fixed-variant": "#00531a",
+            "tertiary": "#006b24",
+            "on-primary-container": "#fefcff",
+            "error": "#ba1a1a",
+            "on-error": "#ffffff",
+            "inverse-primary": "#adc7ff",
+            "surface-container-highest": "#dfe2ec",
+            "secondary-fixed-dim": "#bfc8d0",
+            "primary-fixed": "#d8e2ff",
+            "on-primary-fixed-variant": "#004493",
+            "surface-container-low": "#f1f3fd",
+            "on-tertiary": "#ffffff",
+            "tertiary-fixed": "#83fc8e",
+            "surface-variant": "#dfe2ec",
+            "primary-container": "#0070ea",
+            "on-secondary-container": "#5b646b",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-high": "#e5e8f2",
+            "on-primary": "#ffffff",
+            "surface-bright": "#f9f9ff",
+            "primary-fixed-dim": "#adc7ff",
+            "error-container": "#ffdad6",
+            "secondary-container": "#d8e1ea",
+            "on-secondary-fixed": "#141d23",
+            "surface-tint": "#005bc0",
+            "on-secondary-fixed-variant": "#3f484f",
+            "outline": "#717786",
+            "on-secondary": "#ffffff",
+            "on-surface-variant": "#414754",
+            "primary": "#0059bb",
+            "surface": "#f9f9ff",
+            "on-surface": "#181c23",
+            "on-primary-fixed": "#001a41"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2.5rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "margin": "1.25rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "label-lg": ["Space Grotesk"],
+            "label-sm": ["Space Grotesk"],
+            "display-lg": ["Space Grotesk"],
+            "body-lg": ["Hanken Grotesk"],
+            "headline-sm": ["Space Grotesk"],
+            "headline-md": ["Space Grotesk"],
+            "display-lg-mobile": ["Space Grotesk"],
+            "body-md": ["Hanken Grotesk"],
+            "body-sm": ["Hanken Grotesk"],
+            "label-md": ["Space Grotesk"],
+            "headline-lg": ["Space Grotesk"]
+          },
+          "fontSize": {
+            "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-lg-mobile": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased flex justify-center min-h-screen">
+<!-- Mobile Viewport Shell (390px Native App Frame) -->
+<div class="w-full max-w-[390px] bg-surface flex flex-col min-h-screen relative shadow-2xl overflow-x-hidden pb-28">
+<!-- 1. Native Status Bar Simulation -->
+<header class="w-full pt-3 px-6 pb-2 flex justify-between items-center bg-surface sticky top-0 z-40">
+<span class="font-label-md text-label-md font-semibold text-on-surface">9:41</span>
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[16px]">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[16px]">wifi</span>
+<span class="material-symbols-outlined text-[18px]">battery_full</span>
+</div>
+</header>
+<!-- Top Navigation Header (Screen Title & Key Actions) -->
+<nav class="px-5 py-2 flex items-center justify-between bg-surface">
+<div class="flex items-center gap-3">
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container active:scale-95 transition-all text-on-surface" id="drawer-toggle">
+<span class="material-symbols-outlined text-[24px]">menu</span>
+</button>
+<div>
+<div class="flex items-center gap-2">
+<h1 class="font-headline-md text-headline-md font-bold tracking-tight text-on-surface">My Wardrobe</h1>
+<span class="bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm px-2 py-0.5 rounded-full font-bold">42</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">Style OS Portfolio Engine</p>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+<button class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">checklist</span>
+</button>
+</div>
+</nav>
+<!-- Interactive Navigation Drawer (Slide-in) -->
+<aside class="fixed inset-y-0 left-0 w-80 max-w-xs rounded-r-2xl bg-surface shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col p-4 space-y-2" id="side-drawer">
+<div class="flex items-center justify-between pb-4 pt-2 px-2 border-b border-surface-container">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Sartorial Profile</h2>
+<p class="font-label-sm text-label-sm text-secondary">Style OS Curated</p>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Versatility Score: 88%</span>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-secondary hover:bg-surface-container" id="drawer-close">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="pt-3 flex flex-col space-y-1">
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-low rounded-full px-4 py-3" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-lg text-label-lg">Home</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-low rounded-full px-4 py-3" href="#">
+<span class="material-symbols-outlined">styler</span>
+<span class="font-label-lg text-label-lg">Virtual Try-on</span>
+</a>
+<a class="flex items-center gap-3 bg-primary-container text-on-primary-container rounded-full px-4 py-3 font-semibold" href="#">
+<span class="material-symbols-outlined">checkroom</span>
+<span class="font-label-lg text-label-lg">My Closet</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-low rounded-full px-4 py-3" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-label-lg text-label-lg">Analytics</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-low rounded-full px-4 py-3" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-lg text-label-lg">Settings</span>
+</a>
+</div>
+</aside>
+<div class="fixed inset-0 bg-on-surface/30 z-40 hidden transition-opacity" id="drawer-backdrop"></div>
+<main class="flex-1 px-5 pt-2 flex flex-col gap-4">
+<!-- 2. Search & Filter Section -->
+<section class="flex flex-col gap-3">
+<!-- Floating Pill Search Bar -->
+<div class="relative flex items-center w-full">
+<span class="material-symbols-outlined absolute left-4 text-outline text-[20px]">search</span>
+<input class="w-full h-12 pl-11 pr-20 bg-surface-container-low border border-surface-container-high rounded-full font-body-md text-body-md text-on-surface placeholder:text-secondary focus:outline-none focus:border-primary transition-all" placeholder="Search brands, fabrics, palettes..." type="text"/>
+<div class="absolute right-3 flex items-center gap-1.5">
+<button class="w-7 h-7 rounded-full flex items-center justify-center text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">mic</span>
+</button>
+<button class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[16px]">center_focus_weak</span>
+</button>
+</div>
+</div>
+<!-- Horizontal Scroll Category Filter Pills -->
+<div class="flex gap-2 overflow-x-auto no-scrollbar py-1">
+<button class="px-4 py-1.5 rounded-full bg-on-surface text-surface-container-lowest font-label-md text-label-md whitespace-nowrap shadow-sm">All (42)</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-low border border-surface-container-high text-secondary font-label-md text-label-md whitespace-nowrap hover:bg-surface-container">Outerwear (8)</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-low border border-surface-container-high text-secondary font-label-md text-label-md whitespace-nowrap hover:bg-surface-container">Tops (14)</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-low border border-surface-container-high text-secondary font-label-md text-label-md whitespace-nowrap hover:bg-surface-container">Bottoms (11)</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-low border border-surface-container-high text-secondary font-label-md text-label-md whitespace-nowrap hover:bg-surface-container">Footwear (5)</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-low border border-surface-container-high text-secondary font-label-md text-label-md whitespace-nowrap hover:bg-surface-container">Dresses (4)</button>
+</div>
+<!-- Quick Attribute Secondary Chips -->
+<div class="flex gap-2 overflow-x-auto no-scrollbar">
+<button class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-label-sm text-label-sm whitespace-nowrap">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Worn Recently
+          </button>
+<button class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-low border border-surface-container-high text-secondary font-label-sm text-label-sm whitespace-nowrap">
+<span class="material-symbols-outlined text-[13px]">auto_awesome</span> High Versatility
+          </button>
+<button class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-low border border-surface-container-high text-secondary font-label-sm text-label-sm whitespace-nowrap">
+            Dormant (&gt;45d)
+          </button>
+<button class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-low border border-surface-container-high text-secondary font-label-sm text-label-sm whitespace-nowrap">
+            Silk &amp; Cashmere
+          </button>
+</div>
+</section>
+<!-- 3. Closet Health & Quick Metrics Snippet -->
+<section class="bg-surface-container-low rounded-2xl p-4 border border-surface-container-high flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">query_stats</span>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Closet Intelligence</h3>
+</div>
+<span class="font-label-sm text-label-sm font-bold text-tertiary bg-tertiary-container/10 px-2.5 py-0.5 rounded-full">Optimal Flow</span>
+</div>
+<div class="grid grid-cols-3 gap-2 pt-1 border-t border-surface-container-high">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-secondary">Active Rate</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">88%</span>
+<span class="font-label-sm text-label-sm text-tertiary font-medium">37/42 items</span>
+</div>
+<div class="flex flex-col border-l border-surface-container-high pl-2">
+<span class="font-body-sm text-body-sm text-secondary">Avg CPW</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">$14.20</span>
+<span class="font-label-sm text-label-sm text-primary font-medium">-18% this mo</span>
+</div>
+<div class="flex flex-col border-l border-surface-container-high pl-2">
+<span class="font-body-sm text-body-sm text-secondary">Dormant</span>
+<span class="font-headline-sm text-headline-sm font-bold text-secondary">5 items</span>
+<button class="font-label-sm text-label-sm text-primary font-semibold text-left underline">Inspect</button>
+</div>
+</div>
+</section>
+<!-- 4. Interactive Wardrobe Clothing Grid (2-Column) -->
+<section class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider font-semibold">Active Catalog</span>
+<div class="flex items-center gap-2 text-secondary">
+<span class="font-body-sm text-body-sm">Sort: <strong class="text-on-surface">Frequency</strong></span>
+<span class="material-symbols-outlined text-[16px]">arrow_downward</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3.5">
+<!-- Garment Card 1: Blazer -->
+<article class="bg-surface-container-lowest rounded-2xl p-2.5 border border-surface-container-high flex flex-col justify-between hover:shadow-md transition-all">
+<div class="relative w-full aspect-[4/5] bg-surface-container-low rounded-xl overflow-hidden mb-2.5 flex items-center justify-center p-3">
+<img class="w-full h-full object-contain mix-blend-multiply" data-alt="High-end editorial studio product photograph of a tailored unstructured sand beige Italian linen blazer neatly presented against an ultra-clean neutral off-white surface with soft high-key commercial lighting and hyper-clean sartorial minimalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzD-Ujz9b5N6vatWQSIZAPeSbMl6JUeTYPzD-HKzAUz0Djd5D48eIN5-QIom_dGCJMMYrgwSjBsNEfik9_kCkgA3AVxN0e-SwGHIj6--nZRJHDOSZO48hsCNQga7b1XwQ0X2-FvInFkXXHCECEekUOhYiEDbB5Pap79CWMiVWaUcJYOQTvqyuSlBeoa27wxs0pGHQZvMnY1ZhxfUtFAPK7mUmYbd9A1KGonz-VWqOvDsWa0AY8JkRgWoEglErn2lN1CR5ooYe6qiU"/>
+<span class="absolute top-2 left-2 bg-surface/90 backdrop-blur-sm px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold text-on-surface shadow-sm">100% Linen</span>
+<button class="absolute top-2 right-2 w-7 h-7 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center text-secondary hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 flex items-center gap-1.5 bg-surface/90 backdrop-blur-sm px-2 py-0.5 rounded-full shadow-sm">
+<span class="w-2 h-2 rounded-full bg-[#D2B48C]"></span>
+<span class="font-label-sm text-label-sm text-secondary">Oat Sand</span>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold leading-tight">Linen Blazer</h4>
+<p class="font-body-sm text-body-sm text-secondary">Brunello Cucinelli</p>
+</div>
+</div>
+<div class="mt-2.5 pt-2 border-t border-surface-container flex items-center justify-between text-secondary">
+<span class="font-label-sm text-label-sm font-medium">Worn 14x</span>
+<span class="font-label-sm text-label-sm font-bold text-primary">$18 / wear</span>
+</div>
+</div>
+</article>
+<!-- Garment Card 2: Silk Blouse -->
+<article class="bg-surface-container-lowest rounded-2xl p-2.5 border border-surface-container-high flex flex-col justify-between hover:shadow-md transition-all">
+<div class="relative w-full aspect-[4/5] bg-surface-container-low rounded-xl overflow-hidden mb-2.5 flex items-center justify-center p-3">
+<img class="w-full h-full object-contain mix-blend-multiply" data-alt="High-end catalog cut-out photograph of an elegant ivory Mulberry silk crepe blouse with delicate drape and mother-of-pearl buttons isolated on an airy soft grey background under bright directional daylight reflecting clean high-fashion minimalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJQdWFZG6nw3lETwPy2-Q8MvBc16xo08TuQBG9B_6BGTVCcQBD761OWCgRwZhlNoyomL4xtkfhCwyggN2M2v2ZK1Z5JfTo94Fm6S8kqE7pEVV98LxBeb4ibWSNPeZy-0mOyqCk2iVGevNcLqpx0typa1Egi36x_PiauHuy2f4tQ5YyivruY01VcrNBQnEzlkEbp0uegPAEZyHONTy_sL_2H4QYoqPHrLqfdNKpU3nz920oHeYTcByOk2QTFc55hEOi_y4o4hRDT_M"/>
+<span class="absolute top-2 left-2 bg-surface/90 backdrop-blur-sm px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold text-on-surface shadow-sm">Mulberry Silk</span>
+<button class="absolute top-2 right-2 w-7 h-7 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center text-secondary hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 flex items-center gap-1.5 bg-surface/90 backdrop-blur-sm px-2 py-0.5 rounded-full shadow-sm">
+<span class="w-2 h-2 rounded-full bg-[#F5F5DC]"></span>
+<span class="font-label-sm text-label-sm text-secondary">Ivory Crepe</span>
+</div>
+</div>
+<div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold leading-tight">Silk Shirt</h4>
+<p class="font-body-sm text-body-sm text-secondary">The Row</p>
+</div>
+<div class="mt-2.5 pt-2 border-t border-surface-container flex items-center justify-between text-secondary">
+<span class="font-label-sm text-label-sm font-medium">Worn 9x</span>
+<span class="font-label-sm text-label-sm font-bold text-primary">$32 / wear</span>
+</div>
+</div>
+</article>
+<!-- Garment Card 3: Tailored Trousers -->
+<article class="bg-surface-container-lowest rounded-2xl p-2.5 border border-surface-container-high flex flex-col justify-between hover:shadow-md transition-all">
+<div class="relative w-full aspect-[4/5] bg-surface-container-low rounded-xl overflow-hidden mb-2.5 flex items-center justify-center p-3">
+<img class="w-full h-full object-contain mix-blend-multiply" data-alt="Studio commercial cutout of modern pleated high-waisted charcoal virgin wool tailored trousers displayed on clean light ash background with natural diffused studio lighting capturing architectural drape and fine sartorial texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1O0ete1uYC2oQPZtUN_yOENLCLK4TzjX2G2ueB5YvZMqvgqYzxHg3mx_VGFfxy8sGoLpeJLiiqEsNDVFRKJL0M2L4dS0FgkAY2V99biQh7IvtaUqF9uY-neTpg2-75LW2nIC3gRYYAska40tNvoBqqDY5Wv7W8sgXTwbwhAAkN-rhwIQyySbutniTvpTFxkjCmPmLVc_i3_b4MmNlEhtPTnOtUhtGCcLsG9bTaqUX1kPEqPpDuvbjysA1d2ZkJJD3Bn2VXGh8RRA"/>
+<span class="absolute top-2 left-2 bg-surface/90 backdrop-blur-sm px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold text-on-surface shadow-sm">Virgin Wool</span>
+<button class="absolute top-2 right-2 w-7 h-7 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center text-secondary hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 flex items-center gap-1.5 bg-surface/90 backdrop-blur-sm px-2 py-0.5 rounded-full shadow-sm">
+<span class="w-2 h-2 rounded-full bg-[#36454F]"></span>
+<span class="font-label-sm text-label-sm text-secondary">Charcoal</span>
+</div>
+</div>
+<div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold leading-tight">Pleated Pants</h4>
+<p class="font-body-sm text-body-sm text-secondary">Lemaire</p>
+</div>
+<div class="mt-2.5 pt-2 border-t border-surface-container flex items-center justify-between text-secondary">
+<span class="font-label-sm text-label-sm font-medium">Worn 22x</span>
+<span class="font-label-sm text-label-sm font-bold text-tertiary">$11 / wear</span>
+</div>
+</div>
+</article>
+<!-- Garment Card 4: Cashmere Knit -->
+<article class="bg-surface-container-lowest rounded-2xl p-2.5 border border-surface-container-high flex flex-col justify-between hover:shadow-md transition-all">
+<div class="relative w-full aspect-[4/5] bg-surface-container-low rounded-xl overflow-hidden mb-2.5 flex items-center justify-center p-3">
+<img class="w-full h-full object-contain mix-blend-multiply" data-alt="E-commerce flat-lay photograph of a premium ribbed crewneck sweater knitted from midnight navy pure Mongolian cashmere presented on a spotless luminous pale surface with soft studio illumination highlighting luxurious soft yarn tactile quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNqKTB7wzxz6g1V__MHNpq_vxTrxBgHM1GIpAyWKH_u9YkgPHOigeMUp6BEgOTI6253Bor3cwU177Sjb7WREuvEjwPb8rbAvgROwxvlJww_LTXtRbF2Sx2OGgbLU1_eEVQuu6d3FmJHoyOFlH3dod4UqLWPQzQwDHOlRzv9fowjcu2F0QeajD7KQqIFSuyCCFnP4zFv1DsDpm2FLEhho5M_UODeEcigcwt23Y-Clt_inM-tDocC_IMDnjyQ1d_qrpmYPUFf8m63c8"/>
+<span class="absolute top-2 left-2 bg-surface/90 backdrop-blur-sm px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold text-on-surface shadow-sm">Cashmere</span>
+<button class="absolute top-2 right-2 w-7 h-7 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center text-secondary hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 flex items-center gap-1.5 bg-surface/90 backdrop-blur-sm px-2 py-0.5 rounded-full shadow-sm">
+<span class="w-2 h-2 rounded-full bg-[#000080]"></span>
+<span class="font-label-sm text-label-sm text-secondary">Deep Navy</span>
+</div>
+</div>
+<div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold leading-tight">Ribbed Crew</h4>
+<p class="font-body-sm text-body-sm text-secondary">Khaite</p>
+</div>
+<div class="mt-2.5 pt-2 border-t border-surface-container flex items-center justify-between text-secondary">
+<span class="font-label-sm text-label-sm font-medium">Worn 16x</span>
+<span class="font-label-sm text-label-sm font-bold text-primary">$21 / wear</span>
+</div>
+</div>
+</article>
+<!-- Garment Card 5: Loafers -->
+<article class="bg-surface-container-lowest rounded-2xl p-2.5 border border-surface-container-high flex flex-col justify-between hover:shadow-md transition-all">
+<div class="relative w-full aspect-[4/5] bg-surface-container-low rounded-xl overflow-hidden mb-2.5 flex items-center justify-center p-3">
+<img class="w-full h-full object-contain mix-blend-multiply" data-alt="Luxury fashion still life photograph of polished black calfskin leather loafers with understated brushed gold horsebit hardware positioned crisply on an immaculate ivory stone background with balanced ambient lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7_yV20ZhZh9W4GNtjrtgTaDbv1UXFRQkvPVi1XHcnhDbh-KT--TxBNALsf5qsSZxrzXGU8AeQ2ScN4Y7d5rRJwmYo-QZJZHqLpPG7Po2FdDFlKqeUm_MWJKfvl7-xjMHOyko2jX7fYwSGEkK-qJUSstSwwtd5ESmE5ZX4Xkvn5QCGvIh8eolRMDduvFgT3iY8pI-r-y3LRC0vpmeiBgTtKR76ZcvxH3E6HJnkkR4bsHuIKsbePVZyPv-O8RSKHkNclS5vwHm0vf4"/>
+<span class="absolute top-2 left-2 bg-surface/90 backdrop-blur-sm px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold text-on-surface shadow-sm">Calfskin</span>
+<button class="absolute top-2 right-2 w-7 h-7 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center text-secondary hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 flex items-center gap-1.5 bg-surface/90 backdrop-blur-sm px-2 py-0.5 rounded-full shadow-sm">
+<span class="w-2 h-2 rounded-full bg-[#181c23]"></span>
+<span class="font-label-sm text-label-sm text-secondary">Nero</span>
+</div>
+</div>
+<div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold leading-tight">Buckle Loafers</h4>
+<p class="font-body-sm text-body-sm text-secondary">Gucci</p>
+</div>
+<div class="mt-2.5 pt-2 border-t border-surface-container flex items-center justify-between text-secondary">
+<span class="font-label-sm text-label-sm font-medium">Worn 31x</span>
+<span class="font-label-sm text-label-sm font-bold text-tertiary">$9 / wear</span>
+</div>
+</div>
+</article>
+<!-- Garment Card 6: Trench Coat -->
+<article class="bg-surface-container-lowest rounded-2xl p-2.5 border border-surface-container-high flex flex-col justify-between hover:shadow-md transition-all">
+<div class="relative w-full aspect-[4/5] bg-surface-container-low rounded-xl overflow-hidden mb-2.5 flex items-center justify-center p-3">
+<img class="w-full h-full object-contain mix-blend-multiply" data-alt="High quality studio shot of a classic structured double-breasted gabardine trench coat in iconic honey tan with storm flap details cleanly isolated against a bright light grey backdrop with crisp contrast and luxury retail clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZxKPXcT8f2UR5el0j-NIgPuRfdR42ATAUg3KI70T_UqB4135yJmLoEIWVvLveM9XGULAac1w5pCDbY0eQP_WHf5boam0DoWKTt6vT-hA2HCVLDB23jzAMdLvTKkwnMCejZ7bNYBpIPmiY2EbHgjLm1m0rhOZAb7eZbMqxlGAAQoL0-Jz97H8uwsCxm8om8PENANJZstMIZ9JIOEkvOZMxmYZmQW5nzPhi2pxknvPAQkb6nwiDIMAq75TMbUNLl43ZI9vsyHl5k9E"/>
+<span class="absolute top-2 left-2 bg-surface/90 backdrop-blur-sm px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold text-on-surface shadow-sm">Gabardine</span>
+<button class="absolute top-2 right-2 w-7 h-7 rounded-full bg-surface/80 backdrop-blur-sm flex items-center justify-center text-secondary hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 flex items-center gap-1.5 bg-surface/90 backdrop-blur-sm px-2 py-0.5 rounded-full shadow-sm">
+<span class="w-2 h-2 rounded-full bg-[#E1A95F]"></span>
+<span class="font-label-sm text-label-sm text-secondary">Honey</span>
+</div>
+</div>
+<div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold leading-tight">Heritage Trench</h4>
+<p class="font-body-sm text-body-sm text-secondary">Burberry</p>
+</div>
+<div class="mt-2.5 pt-2 border-t border-surface-container flex items-center justify-between text-secondary">
+<span class="font-label-sm text-label-sm font-medium">Worn 6x</span>
+<span class="font-label-sm text-label-sm font-bold text-primary">$48 / wear</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- 5. Floating Action Button (FAB) + Rapid Action Sheet Trigger -->
+<div class="fixed bottom-20 right-6 z-40 flex flex-col items-end gap-2 max-w-[390px]">
+<!-- Collapsible Quick Catalog Options -->
+<div class="hidden flex-col items-end gap-2 mb-1" id="fab-menu">
+<button class="flex items-center gap-2 bg-surface-container-lowest text-on-surface px-4 py-2 rounded-full shadow-lg border border-surface-container-high active:scale-95 transition-all">
+<span class="font-label-md text-label-md">Batch Auto-Catalog</span>
+<span class="material-symbols-outlined text-primary text-[18px]">collections_bookmark</span>
+</button>
+<button class="flex items-center gap-2 bg-surface-container-lowest text-on-surface px-4 py-2 rounded-full shadow-lg border border-surface-container-high active:scale-95 transition-all">
+<span class="font-label-md text-label-md">Import from Gallery</span>
+<span class="material-symbols-outlined text-primary text-[18px]">photo_library</span>
+</button>
+<button class="flex items-center gap-2 bg-surface-container-lowest text-on-surface px-4 py-2 rounded-full shadow-lg border border-surface-container-high active:scale-95 transition-all">
+<span class="font-label-md text-label-md">AI Auto-Scan Garment</span>
+<span class="material-symbols-outlined text-primary text-[18px]">document_scanner</span>
+</button>
+</div>
+<!-- Main Trigger FAB -->
+<button class="w-14 h-14 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shadow-2xl active:scale-95 transition-all" id="fab-trigger">
+<span class="material-symbols-outlined text-[28px]" id="fab-icon">photo_camera</span>
+</button>
+</div>
+<!-- 6. Bottom Navigation Bar (Contextual Mapping: Closet Active) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 border-t border-outline-variant/20 bg-surface-container-lowest shadow-lg max-w-[390px] mx-auto right-0">
+<!-- Tab 1: Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:bg-surface-container rounded-full active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<!-- Tab 2: Try-On -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:bg-surface-container rounded-full active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]">view_in_ar</span>
+<span class="font-label-sm text-label-sm">Try-On</span>
+</a>
+<!-- Tab 3: Scan -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:bg-surface-container rounded-full active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]">photo_camera</span>
+<span class="font-label-sm text-label-sm">Scan</span>
+</a>
+<!-- Tab 4: Closet (ACTIVE TARGET) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-3 py-1.5 active:scale-95 transition-transform duration-150 font-semibold shadow-sm" href="#">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">checkroom</span>
+<span class="font-label-sm text-label-sm">Closet</span>
+</a>
+<!-- Tab 5: Health -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:bg-surface-container rounded-full active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]">analytics</span>
+<span class="font-label-sm text-label-sm">Health</span>
+</a>
+</nav>
+</div>
+<script>
+    // Lightweight interactions for drawer and FAB expansion
+    const drawerToggle = document.getElementById('drawer-toggle');
+    const drawerClose = document.getElementById('drawer-close');
+    const sideDrawer = document.getElementById('side-drawer');
+    const drawerBackdrop = document.getElementById('drawer-backdrop');
+
+    function openDrawer() {
+      sideDrawer.classList.remove('-translate-x-full');
+      drawerBackdrop.classList.remove('hidden');
+    }
+
+    function closeDrawer() {
+      sideDrawer.classList.add('-translate-x-full');
+      drawerBackdrop.classList.add('hidden');
+    }
+
+    drawerToggle.addEventListener('click', openDrawer);
+    drawerClose.addEventListener('click', closeDrawer);
+    drawerBackdrop.addEventListener('click', closeDrawer);
+
+    // FAB Speed-dial toggle
+    const fabTrigger = document.getElementById('fab-trigger');
+    const fabMenu = document.getElementById('fab-menu');
+    const fabIcon = document.getElementById('fab-icon');
+    let fabExpanded = false;
+
+    fabTrigger.addEventListener('click', () => {
+      fabExpanded = !fabExpanded;
+      if (fabExpanded) {
+        fabMenu.classList.remove('hidden');
+        fabMenu.classList.add('flex');
+        fabIcon.textContent = 'close';
+      } else {
+        fabMenu.classList.remove('flex');
+        fabMenu.classList.add('hidden');
+        fabIcon.textContent = 'photo_camera';
+      }
+    });
+  </script>
+</body></html>

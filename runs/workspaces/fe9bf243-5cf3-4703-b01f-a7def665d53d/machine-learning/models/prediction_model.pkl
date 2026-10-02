@@ -1,0 +1,12 @@
+import pickle
+from sklearn.ensemble import RandomForestRegressor
+
+# Initialize and train your model here
+# For example:
+# X_train, y_train = load_data()  # Load your training data
+# model = RandomForestRegressor(n_estimators=100)
+# model.fit(X_train, y_train)
+
+# Save the trained model to a file
+with open('prediction_model.pkl', 'wb') as f:
+    pickle.dump(model, f)

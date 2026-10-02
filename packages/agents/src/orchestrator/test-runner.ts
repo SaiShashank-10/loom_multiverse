@@ -9,6 +9,8 @@
  *   npx tsx --env-file=.env packages/agents/src/orchestrator/test-runner.ts --document ./path/to/doc.pdf
  */
 
+import { terminalInput } from "./terminal-input.js";
+import { loadRepairResume, loadProjectResume } from "./resume-project.js";
 import { PipelineRunner } from "./runner.js";
 import "../agents/index.js";
 import { createLogger } from "@loom/shared/logger";
@@ -17,7 +19,7 @@ import fs from "fs";
 import path from "path";
 
 // Force override for terminal environments
-process.env.DATABASE_URL = "postgresql://loom:loom_secret@127.0.0.1:5435/loom_multiverse";
+// DATABASE_URL is supplied by --env-file; never override user configuration.
 
 const log = createLogger("test-runner");
 
@@ -33,15 +35,17 @@ function printBanner() {
   console.log("  Chat with agents to refine your idea.");
   console.log("  Type 'approve' when you're satisfied.");
   console.log("  Type 'quit' to exit at any time.");
+  console.log("  Mobile repair: /paste then /end for multiline errors; /retry or /done.");
   console.log("═".repeat(70) + "\n");
 }
 
 function printPhaseHeader(phase: string) {
   const phaseNames: Record<string, string> = {
-    "document_ingestion": "📄 Document Ingestion",
-    "idea_check": "💡 Idea Check Agent",
-    "planning": "📐 Planning Agent",
-    "code_gen": "💻 Code Generation Agent",
+    document_ingestion: "📄 Document Ingestion",
+    idea_check: "💡 Idea Check Agent",
+    planning: "📐 Planning Agent",
+    stitch: "🎨 Google Stitch Design & Approval",
+    code_gen: "💻 Code Generation Agent",
   };
   console.log("\n" + "─".repeat(70));
   console.log(`  ${phaseNames[phase] || phase}`);
@@ -51,28 +55,6 @@ function printPhaseHeader(phase: string) {
 /**
  * Creates a readline-based user input function.
  */
-function createInputReader(): () => Promise<string> {
-  return () => {
-    return new Promise<string>((resolve) => {
-      const rl = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout,
-      });
-
-      rl.question("\n💬 You: ", (answer: string) => {
-        rl.close();
-        
-        if (answer.trim().toLowerCase() === "quit") {
-          console.log("\n👋 Exiting pipeline. Goodbye!");
-          process.exit(0);
-        }
-        
-        resolve(answer.trim());
-      });
-    });
-  };
-}
-
 /**
  * Asks the user for their project idea via CLI.
  */
@@ -97,11 +79,25 @@ async function askForIdea(): Promise<string> {
 // Parse CLI Arguments
 // ─────────────────────────────────────────────
 
-function parseArgs(): { documents: string[] } {
+function parseArgs(): { documents: string[]; resume?: string; repair?: string } {
   const args = process.argv.slice(2);
   const documents: string[] = [];
-  
+  let resume: string | undefined;
+  let repair: string | undefined;
+
   for (let i = 0; i < args.length; i++) {
+    if (args[i] === "--repair") {
+      repair = args[++i];
+      if (!repair || repair.startsWith("--"))
+        throw new Error("Supply a saved project ID after --repair");
+      continue;
+    }
+    if (args[i] === "--resume") {
+      resume = args[++i];
+      if (!resume || resume.startsWith("--"))
+        throw new Error("Supply the saved project ID after --resume");
+      continue;
+    }
     if (args[i] === "--document" || args[i] === "-d") {
       const docPath = args[i + 1];
       if (docPath && fs.existsSync(docPath)) {
@@ -112,8 +108,11 @@ function parseArgs(): { documents: string[] } {
       }
     }
   }
-  
-  return { documents };
+
+  if (resume && documents.length) throw new Error("Resume uses saved documents; omit --document");
+  if (repair && (resume || documents.length))
+    throw new Error("Use --repair alone with the saved project ID");
+  return { documents, resume, repair };
 }
 
 // ─────────────────────────────────────────────
@@ -121,50 +120,79 @@ function parseArgs(): { documents: string[] } {
 // ─────────────────────────────────────────────
 
 async function run() {
+  const launchArgs = process.argv.slice(2);
+  if (launchArgs.includes("--run")) {
+    if (launchArgs.length !== 2 || launchArgs[0] !== "--run" || !launchArgs[1])
+      throw new Error("Usage: --run <saved-project-id> (without --repair or --resume)");
+    const { runSavedMobile } = await import("./run-mobile.js");
+    await runSavedMobile(launchArgs[1]);
+    return;
+  }
   printBanner();
 
-  const { documents } = parseArgs();
-  const projectId = crypto.randomUUID();
+  const { documents, resume, repair } = parseArgs();
+  const projectId = repair ?? resume ?? crypto.randomUUID();
+  const restored = repair
+    ? await loadRepairResume(repair)
+    : resume
+      ? await loadProjectResume(resume)
+      : undefined;
+  if (restored)
+    console.log(`Resuming ${projectId} at ${restored.resumePhase ?? "stitch"} using saved work.`);
 
   if (documents.length > 0) {
     console.log(`📎 Documents to process: ${documents.length}`);
-    documents.forEach(d => console.log(`   - ${path.basename(d)}`));
+    documents.forEach((d) => console.log(`   - ${path.basename(d)}`));
   }
 
   // Ask the user for their idea
-  const rawIdea = await askForIdea();
+  const rawIdea = restored?.rawIdea ?? (await askForIdea());
 
-  if (!rawIdea && documents.length === 0) {
+  if (!restored && !rawIdea && documents.length === 0) {
     console.log("❌ No idea provided and no documents uploaded. Exiting.");
     process.exit(1);
   }
 
-  log.info({ projectId, rawIdea: rawIdea.substring(0, 100), documents: documents.length }, "Starting Interactive Pipeline");
+  log.info(
+    { projectId, rawIdea: rawIdea.substring(0, 100), documents: documents.length },
+    "Starting Interactive Pipeline",
+  );
 
   try {
+    let displayedPhase: string | undefined;
+    const terminal = terminalInput(process.stdin, process.stdout);
     const finalState = await PipelineRunner.run({
       projectId,
       initialContext: {
         rawIdea,
         documents,
+        ...restored,
       },
-      documents,
+      documents: restored?.resumeDocuments ?? documents,
       interactive: true,
-      waitForUserInput: createInputReader(),
+      waitForUserInput: async () => {
+        const answer = await terminal.read();
+        if (displayedPhase !== "code_gen" && (!answer || answer.toLowerCase() === "quit")) {
+          terminal.close();
+          process.exit(0);
+        }
+        return answer;
+      },
       onMessage: (event, data) => {
         const d = data as any;
-        
+
         switch (event) {
           case "pipeline:started":
             console.log("\n🚀 Pipeline started!");
             break;
           case "pipeline:progress":
-            // Show phase transitions
-            if (d?.currentPhase) {
-              printPhaseHeader(d.currentPhase);
-            }
+            // Progress reports completed nodes; show headings when their messages start.
             break;
           case "agent:message":
+            if (d?.phase && d.phase !== displayedPhase) {
+              displayedPhase = d.phase;
+              printPhaseHeader(d.phase);
+            }
             console.log(`\n🤖 [Agent]: ${d?.message}`);
             break;
           case "phase:approved":
@@ -180,8 +208,9 @@ async function run() {
             break;
         }
       },
-    });
+    }).finally(() => terminal.close());
 
+    if (finalState.error) process.exitCode = 1;
     log.info({ projectId }, "Pipeline Finished");
 
     // Save output to markdown file
@@ -191,27 +220,26 @@ async function run() {
       fs.mkdirSync(outDir);
     }
 
-    const filePath = path.join(outDir, `pipeline-output-${projectId}.md`);
+    const filePath = path.join(
+      outDir,
+      `pipeline-output-${projectId}${repair ? `-repair-${Date.now()}` : resume ? `-resume-${Date.now()}` : ""}.md`,
+    );
     fs.writeFileSync(filePath, md, "utf-8");
     console.log(`\n📄 Output saved to: ${filePath}`);
-
   } catch (error) {
+    process.exitCode = 1;
     log.error({ error }, "Pipeline Failed");
     console.error("\n❌ Pipeline failed:", error);
   }
 
-  process.exit(0);
+  process.exit(process.exitCode ?? 0);
 }
 
 // ─────────────────────────────────────────────
 // Output Markdown Generator
 // ─────────────────────────────────────────────
 
-function generateOutputMarkdown(
-  projectId: string,
-  rawIdea: string,
-  finalState: any,
-): string {
+function generateOutputMarkdown(projectId: string, rawIdea: string, finalState: any): string {
   const lines = [
     `# Pipeline Run: ${projectId}`,
     `**Phase Reached:** ${finalState.currentPhase}`,
@@ -227,31 +255,83 @@ function generateOutputMarkdown(
     `**Target Audience:** ${(finalState.context?.validatedIdea as any)?.targetAudience}`,
     ``,
     `### Core Features`,
-    ...((finalState.context?.validatedIdea as any)?.coreFeatures?.map((f: string) => `- ${f}`) || []),
+    ...((finalState.context?.validatedIdea as any)?.coreFeatures?.map((f: string) => `- ${f}`) ||
+      []),
     ``,
     `### Tech Stack Hints`,
-    ...((finalState.context?.validatedIdea as any)?.techStackHints?.map((h: string) => `- ${h}`) || []),
+    ...((finalState.context?.validatedIdea as any)?.techStackHints?.map((h: string) => `- ${h}`) ||
+      []),
     ``,
   ];
 
   // Add planning section if it exists
   if (finalState.context?.technicalPlan) {
+    const plan = finalState.context.technicalPlan as any;
     lines.push(
-      `## 3. Technical Architecture Plan (Planning Agent)`,
-      `### Tech Stack`,
-      `**Frontend:** ${(finalState.context?.technicalPlan as any)?.techStack?.frontend?.join(", ")}`,
-      `**Backend:** ${(finalState.context?.technicalPlan as any)?.techStack?.backend?.join(", ")}`,
-      `**Database:** ${(finalState.context?.technicalPlan as any)?.techStack?.database?.join(", ")}`,
-      `**Infrastructure:** ${(finalState.context?.technicalPlan as any)?.techStack?.infrastructure?.join(", ")}`,
+      `## 3. Planning Agent V2 — Generated Documents`,
+      `**Documents Path:** ${finalState.context?.documentsPath || "N/A"}`,
       ``,
     );
+
+    if (plan.documentsGenerated) {
+      lines.push(`### Generated Documents`);
+      for (const doc of plan.documentsGenerated as string[]) {
+        lines.push(`- ✅ ${doc}`);
+      }
+      lines.push(``);
+    }
+
+    // Legacy support for old-style tech stack output
+    if (plan.techStack) {
+      lines.push(
+        `### Tech Stack`,
+        `**Frontend:** ${plan.techStack?.frontend?.join(", ") || "N/A"}`,
+        `**Backend:** ${plan.techStack?.backend?.join(", ") || "N/A"}`,
+        `**Database:** ${plan.techStack?.database?.join(", ") || "N/A"}`,
+        `**Infrastructure:** ${plan.techStack?.infrastructure?.join(", ") || "N/A"}`,
+        ``,
+      );
+    }
+  }
+
+  // Add Code Gen section if it exists
+  if (finalState.context?.workspaceRoot) {
+    lines.push(
+      `## 4. Code Gen Agent V2 — Implementation`,
+      `**Workspace Path:** ${finalState.context.workspaceRoot}`,
+    );
+
+    if (finalState.context.stitchUrl) {
+      lines.push(`**Stitch UI URL:** ${finalState.context.stitchUrl}`);
+    }
+
+    if (finalState.context.isRunning !== undefined) {
+      lines.push(
+        `**Validation:** ${finalState.context.validation?.success ? "Passed" : "Failed or not run"}. **App running:** ${finalState.context.isRunning ? "Yes" : "No"}`,
+      );
+    }
+
+    if (finalState.context.generatedFiles) {
+      lines.push(
+        ``,
+        `### Generated Files (${(finalState.context.generatedFiles as string[]).length})`,
+      );
+      const files = finalState.context.generatedFiles as string[];
+      for (const file of files.slice(0, 15)) {
+        lines.push(`- 📄 ${file}`);
+      }
+      if (files.length > 15) {
+        lines.push(`- *... and ${files.length - 15} more files*`);
+      }
+    }
+    lines.push(``);
   }
 
   // Add chat history if available
   if (finalState.chatHistory) {
     for (const [phase, messages] of Object.entries(finalState.chatHistory)) {
       lines.push(`## Chat History: ${phase}`);
-      for (const msg of (messages as any[])) {
+      for (const msg of messages as any[]) {
         const role = msg.role === "agent" ? "🤖 Agent" : "👤 User";
         lines.push(`**${role}** (${msg.timestamp}):`);
         lines.push(`> ${msg.content}`);
@@ -266,4 +346,7 @@ function generateOutputMarkdown(
   return lines.join("\n");
 }
 
-run();
+run().catch((error) => {
+  console.error(String(error));
+  process.exitCode = 1;
+});

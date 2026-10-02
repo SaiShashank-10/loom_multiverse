@@ -1,0 +1,19 @@
+{
+  "isValid": true,
+  "confidenceScore": 95,
+  "rejectionReason": null,
+  "recommendations": null,
+  "coreProblem": "Candidates in the modern entry-level job market lack visibility into which positions align with their competencies and specific technical gaps causing automated rejections, leading to inefficiency, burnout, high screening failure rates, and wasted recruiter resources.",
+  "targetAudience": "Students and fresh graduates applying for entry-level jobs",
+  "coreFeatures": [
+    "Job matching algorithm based on candidate skills and job requirements",
+    "Real-time technical gap analysis for automated rejections",
+    "Personalized career development recommendations"
+  ],
+  "techStackHints": [
+    "Machine learning algorithms for job matching",
+    "Natural language processing (NLP) for technical gap analysis",
+    "Web-based platform with user-friendly interface"
+  ],
+  "questions": null
+}

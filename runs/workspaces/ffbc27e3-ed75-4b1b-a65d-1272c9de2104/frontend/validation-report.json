@@ -1,0 +1,21 @@
+{
+  "success": true,
+  "checks": [
+    {
+      "cwd": "C:\\Shashank\\loom_multiverse\\runs\\workspaces\\ffbc27e3-ed75-4b1b-a65d-1272c9de2104\\frontend",
+      "stage": "install",
+      "command": "flutter pub get"
+    },
+    {
+      "cwd": "C:\\Shashank\\loom_multiverse\\runs\\workspaces\\ffbc27e3-ed75-4b1b-a65d-1272c9de2104\\frontend",
+      "stage": "validate",
+      "command": "flutter analyze"
+    },
+    {
+      "cwd": "C:\\Shashank\\loom_multiverse\\runs\\workspaces\\ffbc27e3-ed75-4b1b-a65d-1272c9de2104\\frontend",
+      "stage": "validate",
+      "command": "flutter test"
+    }
+  ],
+  "attempts": 1
+}

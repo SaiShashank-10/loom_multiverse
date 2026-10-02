@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EcoStream Live - Reports &amp; Audits</title>
+<!-- Fonts: Roboto Flex, Open Sans, Montserrat -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&amp;family=Roboto+Flex:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "text-secondary": "#6c757d",
+            "secondary": "#575f67",
+            "surface-container-highest": "#dde3eb",
+            "secondary-container": "#d8e1ea",
+            "tertiary-container": "#c64f00",
+            "warning": "#ffc107",
+            "secondary-fixed": "#dbe4ed",
+            "on-primary-fixed-variant": "#004493",
+            "primary": "#0059bb",
+            "inverse-on-surface": "#ecf1f9",
+            "error-container": "#ffdad6",
+            "surface": "#f8f9fa",
+            "on-tertiary-container": "#fffbff",
+            "inverse-surface": "#2b3137",
+            "on-secondary": "#ffffff",
+            "surface-bright": "#f7f9ff",
+            "surface-container-lowest": "#ffffff",
+            "error": "#dc3545",
+            "success": "#28a745",
+            "tertiary-fixed": "#ffdbcc",
+            "on-primary": "#ffffff",
+            "outline": "#717786",
+            "on-primary-fixed": "#001a41",
+            "on-secondary-fixed": "#141d23",
+            "on-secondary-container": "#5b646b",
+            "background": "#ffffff",
+            "on-error-container": "#93000a",
+            "surface-dim": "#d5dae2",
+            "outline-variant": "#c1c6d7",
+            "on-error": "#ffffff",
+            "border": "#dee2e6",
+            "on-tertiary": "#ffffff",
+            "surface-container": "#e9eef6",
+            "primary-fixed-dim": "#adc7ff",
+            "surface-tint": "#005bc0",
+            "surface-container-low": "#eff4fc",
+            "primary-fixed": "#d8e2ff",
+            "on-surface-variant": "#414754",
+            "on-secondary-fixed-variant": "#3f484f",
+            "text-primary": "#343a40",
+            "surface-container-high": "#e3e9f0",
+            "on-primary-container": "#fefcff",
+            "on-tertiary-fixed": "#351000",
+            "tertiary-fixed-dim": "#ffb695",
+            "secondary-fixed-dim": "#bfc8d0",
+            "on-background": "#161c22",
+            "primary-container": "#0070ea",
+            "tertiary": "#9e3d00",
+            "surface-variant": "#dde3eb",
+            "inverse-primary": "#adc7ff",
+            "on-tertiary-fixed-variant": "#7c2e00",
+            "on-surface": "#161c22"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2rem",
+            "space-lg": "1.5rem",
+            "margin-mobile": "1.5rem",
+            "margin": "3rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "headline-lg-mobile": ["Roboto Flex"],
+            "body-lg": ["Montserrat"],
+            "label-md": ["Open Sans"],
+            "headline-lg": ["Roboto Flex"],
+            "body-md": ["Montserrat"],
+            "label-sm": ["Open Sans"],
+            "headline-sm": ["Open Sans"],
+            "headline-md": ["Open Sans"],
+            "caption": ["Montserrat"]
+          },
+          "fontSize": {
+            "headline-lg-mobile": ["26px", { "lineHeight": "32px", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-md": ["14px", { "lineHeight": "18px", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "38px", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "headline-sm": ["20px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "31px", "fontWeight": "600" }],
+            "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-text-primary antialiased selection:bg-primary selection:text-white pb-28 md:pb-12 pt-16">
+<!-- TOP APP BAR -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 py-3 bg-surface dark:bg-inverse-surface shadow-sm dark:shadow-none transition-all duration-150">
+<div class="flex items-center space-x-3">
+<div class="w-9 h-9 rounded-lg bg-primary-container text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[22px]" data-icon="recycling">recycling</span>
+</div>
+<div>
+<div class="flex items-center space-x-2">
+<span class="text-headline-sm font-headline-sm text-primary dark:text-inverse-primary font-bold tracking-tight">EcoStream Live</span>
+<span class="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-caption font-caption bg-surface-variant text-text-secondary">v2.4 Core</span>
+</div>
+<p class="text-caption font-caption text-text-secondary leading-none">Reports &amp; Audits Compliance Console</p>
+</div>
+</div>
+<!-- Trailing Actions & Desktop Navigation -->
+<div class="flex items-center space-x-1 sm:space-x-3">
+<div class="hidden md:flex items-center space-x-1 mr-4">
+<a class="px-3 py-1.5 rounded-lg text-label-md font-label-md text-text-secondary hover:bg-surface-variant hover:text-on-surface transition-all" href="#">Dashboard</a>
+<a class="px-3 py-1.5 rounded-lg text-label-md font-label-md text-primary font-bold bg-primary-fixed hover:bg-primary-fixed-dim transition-all" href="#">Reports</a>
+<a class="px-3 py-1.5 rounded-lg text-label-md font-label-md text-text-secondary hover:bg-surface-variant hover:text-on-surface transition-all" href="#">Settings</a>
+</div>
+<button aria-label="Quick Search" class="w-9 h-9 flex items-center justify-center rounded-lg text-text-secondary hover:bg-surface-variant hover:text-on-surface active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+</button>
+<button aria-label="Notifications" class="w-9 h-9 relative flex items-center justify-center rounded-lg text-text-secondary hover:bg-surface-variant hover:text-on-surface active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full ring-2 ring-surface"></span>
+</button>
+<div class="h-6 w-px bg-border hidden sm:block"></div>
+<div class="hidden sm:flex items-center space-x-2 pl-1">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-secondary flex items-center justify-center text-label-sm font-label-sm font-bold border border-border">
+          EC
+        </div>
+</div>
+</div>
+</header>
+<!-- MAIN CANVAS -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+<!-- PAGE TITLE & BREADCRUMB HERO -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+<div>
+<div class="flex items-center space-x-2 text-caption font-caption text-text-secondary mb-1">
+<span>Enterprise Console</span>
+<span>/</span>
+<span>Environmental Compliance</span>
+<span>/</span>
+<span class="text-primary font-semibold">Verification Reports</span>
+</div>
+<h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg-mobile md:font-headline-lg text-text-primary tracking-tight">
+          Reports &amp; Audits
+        </h1>
+<p class="text-body-md font-body-md text-text-secondary mt-0.5">
+          Verify chain of custody, recovery yields, and automated environmental protection logs across regional depots.
+        </p>
+</div>
+<!-- Live Sync Indicator Badge -->
+<div class="flex items-center self-start sm:self-auto space-x-2 bg-surface px-3 py-1.5 rounded-full border border-border">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-success"></span>
+</span>
+<span class="text-caption font-caption text-secondary font-medium">Telemetry Synced: 2 mins ago</span>
+</div>
+</div>
+<!-- SUMMARY METRICS BAR / QUICK STATS (Bento Strip) -->
+<section class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<!-- Metric 1 -->
+<div class="bg-surface rounded-lg p-space-md border border-border shadow-sm flex items-start justify-between">
+<div class="space-y-1">
+<span class="text-caption font-caption uppercase tracking-wider text-text-secondary">Total Audited Volume</span>
+<div class="flex items-baseline space-x-2">
+<span class="text-headline-md font-headline-md font-bold text-text-primary">148.6</span>
+<span class="text-label-md font-label-md text-text-secondary">Tons</span>
+</div>
+<div class="flex items-center space-x-1.5 pt-1">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm font-bold bg-success/10 text-success">
+<span class="material-symbols-outlined text-[14px] mr-0.5" data-icon="verified">verified</span>
+              100% Compliance
+            </span>
+</div>
+</div>
+<div class="p-2.5 bg-surface-container rounded-lg text-primary">
+<span class="material-symbols-outlined text-[24px]" data-icon="scale">scale</span>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="bg-surface rounded-lg p-space-md border border-border shadow-sm flex items-start justify-between">
+<div class="space-y-1">
+<span class="text-caption font-caption uppercase tracking-wider text-text-secondary">Total Reports Generated</span>
+<div class="flex items-baseline space-x-2">
+<span class="text-headline-md font-headline-md font-bold text-text-primary">42</span>
+<span class="text-caption font-caption text-text-secondary">Official Dossiers</span>
+</div>
+<div class="flex items-center space-x-1.5 pt-1">
+<span class="text-caption font-caption text-text-secondary">
+<span class="text-primary font-semibold">+8 new</span> during Q1 2025 cycle
+            </span>
+</div>
+</div>
+<div class="p-2.5 bg-surface-container rounded-lg text-primary">
+<span class="material-symbols-outlined text-[24px]" data-icon="description">description</span>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="bg-surface rounded-lg p-space-md border border-border shadow-sm flex items-start justify-between">
+<div class="space-y-1">
+<span class="text-caption font-caption uppercase tracking-wider text-text-secondary">Net Carbon Offset Verified</span>
+<div class="flex items-baseline space-x-2">
+<span class="text-headline-md font-headline-md font-bold text-text-primary">412</span>
+<span class="text-label-md font-label-md text-text-secondary">MT CO₂e</span>
+</div>
+<div class="flex items-center space-x-1.5 pt-1">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm font-bold bg-primary-fixed text-on-primary-fixed-variant">
+              EPA Standard Tier 1
+            </span>
+</div>
+</div>
+<div class="p-2.5 bg-surface-container rounded-lg text-primary">
+<span class="material-symbols-outlined text-[24px]" data-icon="eco">eco</span>
+</div>
+</div>
+</section>
+<!-- EXPORT ACTIONS BAR -->
+<section class="bg-surface-container-low rounded-lg p-3 sm:p-4 border border-border flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
+<div class="flex items-center space-x-2 text-text-secondary">
+<span class="material-symbols-outlined text-[20px] text-primary" data-icon="file_download">file_download</span>
+<span class="text-label-md font-label-md text-text-primary font-semibold">Report Actions &amp; Export Tools</span>
+<span class="text-caption font-caption hidden lg:inline text-text-secondary">| Audit-ready formats with verifiable cryptographic signatures</span>
+</div>
+<div class="flex flex-wrap items-center gap-2">
+<button class="flex-1 sm:flex-none inline-flex items-center justify-center space-x-1.5 px-3.5 py-2 bg-background border border-border rounded-lg text-label-md font-label-md text-text-primary hover:bg-surface hover:border-outline transition-all active:scale-95 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="table_chart">table_chart</span>
+<span>Export CSV</span>
+</button>
+<button class="flex-1 sm:flex-none inline-flex items-center justify-center space-x-1.5 px-3.5 py-2 bg-background border border-border rounded-lg text-label-md font-label-md text-text-primary hover:bg-surface hover:border-outline transition-all active:scale-95 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-error" data-icon="picture_as_pdf">picture_as_pdf</span>
+<span>Export PDF Summary</span>
+</button>
+<button class="w-full sm:w-auto inline-flex items-center justify-center space-x-1.5 px-4 py-2 bg-primary text-on-primary rounded-lg text-label-md font-label-md hover:bg-primary-container transition-all active:scale-95 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="schedule">schedule</span>
+<span>Schedule Automated Report</span>
+</button>
+</div>
+</section>
+<!-- FILTERS & PARAMETERS PANEL -->
+<section class="bg-surface rounded-lg border border-border shadow-sm p-4 sm:p-5">
+<div class="flex items-center justify-between pb-3 border-b border-border mb-4">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="tune">tune</span>
+<h2 class="text-headline-sm font-headline-sm text-text-primary">Filter &amp; Parameter Scope</h2>
+</div>
+<button class="text-label-sm font-label-sm text-text-secondary hover:text-error transition-colors flex items-center space-x-1" id="reset-filters" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="restart_alt">restart_alt</span>
+<span>Reset All</span>
+</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Time Period Selector -->
+<div>
+<label class="block text-label-sm font-label-sm text-text-secondary mb-1.5">Time Period</label>
+<div class="relative">
+<select class="w-full appearance-none bg-background border border-border text-text-primary text-label-md font-label-md rounded-lg py-2 pl-3 pr-9 focus:ring-2 focus:ring-primary/20 focus:border-primary">
+<option selected="">Last 30 Days</option>
+<option>Q1 2025 (Current)</option>
+<option>Q4 2024</option>
+<option>Fiscal Year 2024-2025</option>
+<option>Custom Date Range...</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-text-secondary">
+<span class="material-symbols-outlined text-[18px]" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Facility / Depot Location Filter -->
+<div>
+<label class="block text-label-sm font-label-sm text-text-secondary mb-1.5">Depot / Facility</label>
+<div class="relative">
+<select class="w-full appearance-none bg-background border border-border text-text-primary text-label-md font-label-md rounded-lg py-2 pl-3 pr-9 focus:ring-2 focus:ring-primary/20 focus:border-primary">
+<option selected="">All Depots (Universal)</option>
+<option>Metro Hub North (Sector 1)</option>
+<option>Sector 4 Depository</option>
+<option>Pacific Port Dock Yard</option>
+<option>Eastern Valley Smelting Plant</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-text-secondary">
+<span class="material-symbols-outlined text-[18px]" data-icon="location_on">location_on</span>
+</div>
+</div>
+</div>
+<!-- Waste Category Filter -->
+<div>
+<label class="block text-label-sm font-label-sm text-text-secondary mb-1.5">Waste Stream Category</label>
+<div class="relative">
+<select class="w-full appearance-none bg-background border border-border text-text-primary text-label-md font-label-md rounded-lg py-2 pl-3 pr-9 focus:ring-2 focus:ring-primary/20 focus:border-primary">
+<option selected="">All Categories</option>
+<option>IT &amp; Telecom Infrastructure</option>
+<option>Consumer Electronics (Small Appliances)</option>
+<option>Heavy Industrial Appliances</option>
+<option>Li-Ion Batteries &amp; Cells</option>
+<option>Precious Metal Printed Circuit Boards</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-text-secondary">
+<span class="material-symbols-outlined text-[18px]" data-icon="category">category</span>
+</div>
+</div>
+</div>
+<!-- Compliance Status Filter -->
+<div>
+<label class="block text-label-sm font-label-sm text-text-secondary mb-1.5">Compliance Status</label>
+<div class="relative">
+<select class="w-full appearance-none bg-background border border-border text-text-primary text-label-md font-label-md rounded-lg py-2 pl-3 pr-9 focus:ring-2 focus:ring-primary/20 focus:border-primary">
+<option selected="">All Audit States</option>
+<option>Certified Recovered</option>
+<option>Hazardous Neutralized</option>
+<option>Under Active Audit</option>
+<option>Pending Chain of Custody</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-text-secondary">
+<span class="material-symbols-outlined text-[18px]" data-icon="filter_alt">filter_alt</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Chips & Action Footer -->
+<div class="mt-4 pt-3 border-t border-border flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+<div class="flex flex-wrap items-center gap-1.5">
+<span class="text-caption font-caption text-text-secondary mr-1">Active Presets:</span>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-surface-container text-text-primary border border-border">
+            Hazardous Li-Ion
+            <button class="ml-1 text-text-secondary hover:text-error">×</button>
+</span>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-surface-container text-text-primary border border-border">
+            Yield &gt; 80%
+            <button class="ml-1 text-text-secondary hover:text-error">×</button>
+</span>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-surface-container text-text-primary border border-border">
+            Q1 2025
+            <button class="ml-1 text-text-secondary hover:text-error">×</button>
+</span>
+</div>
+<div class="flex items-center space-x-2">
+<button class="w-full sm:w-auto px-4 py-2 bg-primary text-on-primary rounded-lg text-label-md font-label-md font-semibold hover:bg-primary-container active:scale-95 transition-all" type="button">
+            Apply Filters
+          </button>
+</div>
+</div>
+</section>
+<!-- AUDIT DATA TABLE & BREAKDOWN -->
+<section class="bg-surface rounded-lg border border-border shadow-sm overflow-hidden">
+<!-- Section Header -->
+<div class="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-border bg-surface-container-lowest">
+<div>
+<div class="flex items-center space-x-2">
+<h2 class="text-headline-sm font-headline-sm text-text-primary">Audited Streams &amp; Manifests</h2>
+<span class="px-2 py-0.5 bg-primary-fixed text-on-primary-fixed-variant rounded-full text-label-sm font-label-sm font-bold">48 Records Found</span>
+</div>
+<p class="text-caption font-caption text-text-secondary mt-0.5">Comprehensive environmental recovery logs matching criteria</p>
+</div>
+<!-- Table Search Bar -->
+<div class="relative w-full sm:w-64">
+<span class="material-symbols-outlined absolute left-2.5 top-2.5 text-[18px] text-text-secondary" data-icon="search">search</span>
+<input class="w-full pl-8 pr-3 py-1.5 text-body-md font-body-md bg-surface border border-border rounded-lg text-text-primary placeholder:text-text-secondary focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="Search manifest or lot #..." type="text"/>
+</div>
+</div>
+<!-- Responsive Table Container -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface border-b border-border text-label-sm font-label-sm text-text-secondary uppercase tracking-wider">
+<th class="py-3 px-4" scope="col">Report ID &amp; Timestamp</th>
+<th class="py-3 px-4" scope="col">Waste Stream</th>
+<th class="py-3 px-4" scope="col">Source Depot</th>
+<th class="py-3 px-4" scope="col">Volume</th>
+<th class="py-3 px-4" scope="col">Recovery Rate</th>
+<th class="py-3 px-4" scope="col">Compliance Status</th>
+<th class="py-3 px-4 text-right" scope="col">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border text-body-md font-body-md">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-3.5 px-4 whitespace-nowrap">
+<div class="font-semibold text-text-primary text-label-md font-label-md flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="task_alt">task_alt</span>
+<span>#REP-2025-084</span>
+</div>
+<div class="text-caption font-caption text-text-secondary">Today, 09:30 AM</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-text-primary">Enterprise Server Racks</div>
+<div class="text-caption font-caption text-text-secondary">High Density PCBs &amp; Copper</div>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-secondary">
+                Metro Hub North
+              </td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="font-bold text-text-primary">18.4</span>
+<span class="text-caption font-caption text-text-secondary">Tons</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<div class="flex items-center space-x-2">
+<span class="font-semibold text-text-primary">91.4%</span>
+<div class="w-16 bg-surface-variant rounded-full h-1.5">
+<div class="bg-success h-1.5 rounded-full" style="width: 91.4%"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm font-bold bg-success/10 text-success">
+<span class="w-1.5 h-1.5 rounded-full bg-success mr-1.5"></span>
+                  Certified
+                </span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-right">
+<button aria-label="View Report Detail" class="p-1.5 text-text-secondary hover:text-primary hover:bg-surface-variant rounded transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-3.5 px-4 whitespace-nowrap">
+<div class="font-semibold text-text-primary text-label-md font-label-md flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="task_alt">task_alt</span>
+<span>#REP-2025-083</span>
+</div>
+<div class="text-caption font-caption text-text-secondary">Yesterday, 04:15 PM</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-text-primary">Lithium Pack Lot B</div>
+<div class="text-caption font-caption text-text-secondary">Industrial Energy Cells (NMC)</div>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-secondary">
+                Sector 4 Depository
+              </td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="font-bold text-text-primary">32.1</span>
+<span class="text-caption font-caption text-text-secondary">Tons</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<div class="flex items-center space-x-2">
+<span class="font-semibold text-text-primary">84.2%</span>
+<div class="w-16 bg-surface-variant rounded-full h-1.5">
+<div class="bg-primary h-1.5 rounded-full" style="width: 84.2%"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm font-bold bg-primary-fixed text-on-primary-fixed-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mr-1.5"></span>
+                  Audited
+                </span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-right">
+<button aria-label="View Report Detail" class="p-1.5 text-text-secondary hover:text-primary hover:bg-surface-variant rounded transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-3.5 px-4 whitespace-nowrap">
+<div class="font-semibold text-text-primary text-label-md font-label-md flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-[16px] text-text-secondary" data-icon="pending_actions">pending_actions</span>
+<span>#REP-2025-082</span>
+</div>
+<div class="text-caption font-caption text-text-secondary">Oct 24, 11:20 AM</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-text-primary">Mixed Copper Wire Harnesses</div>
+<div class="text-caption font-caption text-text-secondary">Automotive Loom Scrap</div>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-secondary">
+                Pacific Port Dock Yard
+              </td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="font-bold text-text-primary">24.5</span>
+<span class="text-caption font-caption text-text-secondary">Tons</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<div class="flex items-center space-x-2">
+<span class="font-semibold text-text-primary">79.0%</span>
+<div class="w-16 bg-surface-variant rounded-full h-1.5">
+<div class="bg-warning h-1.5 rounded-full" style="width: 79%"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm font-bold bg-warning/15 text-[#856404]">
+<span class="w-1.5 h-1.5 rounded-full bg-warning mr-1.5"></span>
+                  Pending Verification
+                </span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-right">
+<button aria-label="View Report Detail" class="p-1.5 text-text-secondary hover:text-primary hover:bg-surface-variant rounded transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-3.5 px-4 whitespace-nowrap">
+<div class="font-semibold text-text-primary text-label-md font-label-md flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="task_alt">task_alt</span>
+<span>#REP-2025-081</span>
+</div>
+<div class="text-caption font-caption text-text-secondary">Oct 23, 02:40 PM</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-text-primary">Telecom Base Stations</div>
+<div class="text-caption font-caption text-text-secondary">RF Transceivers &amp; Gold Fingers</div>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-secondary">
+                Metro Hub North
+              </td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="font-bold text-text-primary">12.8</span>
+<span class="text-caption font-caption text-text-secondary">Tons</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<div class="flex items-center space-x-2">
+<span class="font-semibold text-text-primary">95.2%</span>
+<div class="w-16 bg-surface-variant rounded-full h-1.5">
+<div class="bg-success h-1.5 rounded-full" style="width: 95.2%"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm font-bold bg-success/10 text-success">
+<span class="w-1.5 h-1.5 rounded-full bg-success mr-1.5"></span>
+                  Certified
+                </span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-right">
+<button aria-label="View Report Detail" class="p-1.5 text-text-secondary hover:text-primary hover:bg-surface-variant rounded transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-3.5 px-4 whitespace-nowrap">
+<div class="font-semibold text-text-primary text-label-md font-label-md flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="task_alt">task_alt</span>
+<span>#REP-2025-080</span>
+</div>
+<div class="text-caption font-caption text-text-secondary">Oct 21, 08:10 AM</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-text-primary">Cathode Ray Units (Heavy CRT)</div>
+<div class="text-caption font-caption text-text-secondary">Leaded Glass Neutralization</div>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-secondary">
+                Sector 4 Depository
+              </td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="font-bold text-text-primary">40.2</span>
+<span class="text-caption font-caption text-text-secondary">Tons</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<div class="flex items-center space-x-2">
+<span class="font-semibold text-text-primary">88.7%</span>
+<div class="w-16 bg-surface-variant rounded-full h-1.5">
+<div class="bg-primary h-1.5 rounded-full" style="width: 88.7%"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm font-bold bg-primary-fixed text-on-primary-fixed-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mr-1.5"></span>
+                  Audited
+                </span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-right">
+<button aria-label="View Report Detail" class="p-1.5 text-text-secondary hover:text-primary hover:bg-surface-variant rounded transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-3.5 px-4 whitespace-nowrap">
+<div class="font-semibold text-text-primary text-label-md font-label-md flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="task_alt">task_alt</span>
+<span>#REP-2025-079</span>
+</div>
+<div class="text-caption font-caption text-text-secondary">Oct 19, 05:00 PM</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-text-primary">Commercial Solar Inverters</div>
+<div class="text-caption font-caption text-text-secondary">High Current Silicon &amp; Aluminum</div>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-secondary">
+                Pacific Port Dock Yard
+              </td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="font-bold text-text-primary">20.6</span>
+<span class="text-caption font-caption text-text-secondary">Tons</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<div class="flex items-center space-x-2">
+<span class="font-semibold text-text-primary">93.1%</span>
+<div class="w-16 bg-surface-variant rounded-full h-1.5">
+<div class="bg-success h-1.5 rounded-full" style="width: 93.1%"></div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm font-bold bg-success/10 text-success">
+<span class="w-1.5 h-1.5 rounded-full bg-success mr-1.5"></span>
+                  Certified
+                </span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-right">
+<button aria-label="View Report Detail" class="p-1.5 text-text-secondary hover:text-primary hover:bg-surface-variant rounded transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination & Row Count Indicator -->
+<div class="px-4 py-3 bg-surface-container-low border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3">
+<div class="text-label-sm font-label-sm text-text-secondary">
+          Showing <span class="font-bold text-text-primary">1-6</span> of <span class="font-bold text-text-primary">48</span> records
+        </div>
+<div class="flex items-center space-x-2">
+<button class="px-3 py-1.5 bg-background border border-border rounded text-label-sm font-label-sm text-text-secondary hover:bg-surface hover:text-text-primary disabled:opacity-40" disabled="" type="button">
+            Previous
+          </button>
+<div class="flex items-center space-x-1">
+<button class="w-8 h-8 rounded bg-primary text-on-primary text-label-sm font-label-sm font-bold flex items-center justify-center" type="button">1</button>
+<button class="w-8 h-8 rounded bg-background border border-border text-text-secondary text-label-sm font-label-sm hover:bg-surface flex items-center justify-center" type="button">2</button>
+<button class="w-8 h-8 rounded bg-background border border-border text-text-secondary text-label-sm font-label-sm hover:bg-surface flex items-center justify-center" type="button">3</button>
+<span class="text-text-secondary px-1">...</span>
+<button class="w-8 h-8 rounded bg-background border border-border text-text-secondary text-label-sm font-label-sm hover:bg-surface flex items-center justify-center" type="button">8</button>
+</div>
+<button class="px-3 py-1.5 bg-background border border-border rounded text-label-sm font-label-sm text-text-primary hover:bg-surface font-medium" type="button">
+            Next
+          </button>
+</div>
+</div>
+</section>
+<!-- ENVIRONMENTAL AUDITING STANDARD BANNER -->
+<section class="bg-surface rounded-lg border border-border p-4 sm:p-5 flex items-center space-x-4">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex-shrink-0 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]" data-icon="policy">policy</span>
+</div>
+<div class="flex-1">
+<h3 class="text-headline-sm font-headline-sm text-text-primary">Basel Convention &amp; ISO 14001 Compliant Manifest</h3>
+<p class="text-caption font-caption text-text-secondary mt-0.5">
+          All waste logs generated are timestamped against immutable regional registries. Official PDF certificates contain digital watermarks suitable for submission to environmental protection agencies.
+        </p>
+</div>
+<div class="hidden md:block">
+<button class="px-3.5 py-2 bg-background border border-border rounded-lg text-label-md font-label-md text-text-primary hover:bg-surface transition-all" type="button">
+          View Protocol Specs
+        </button>
+</div>
+</section>
+</main>
+<!-- BOTTOM NAVIGATION BAR (Mobile only per Responsive Pivot and Destination rule) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface dark:bg-inverse-surface pb-safe shadow-sm dark:shadow-none">
+<!-- Tab 1: Dashboard -->
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-secondary-fixed-dim px-3 py-1.5 hover:bg-surface-variant hover:text-on-surface active:scale-95 transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]" data-icon="dashboard">dashboard</span>
+<span class="text-label-sm font-label-sm mt-0.5">Dashboard</span>
+</a>
+<!-- Tab 2: Reports (ACTIVE ITEM) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-lg px-3 py-1.5 active:scale-95 transition-all duration-150 shadow-sm" href="#">
+<span class="material-symbols-outlined text-[22px]" data-icon="assessment" data-weight="fill" style="font-variation-settings: 'FILL' 1;">assessment</span>
+<span class="text-label-sm font-label-sm mt-0.5 font-bold">Reports</span>
+</a>
+<!-- Tab 3: Settings -->
+<a class="flex flex-col items-center justify-center text-text-secondary dark:text-secondary-fixed-dim px-3 py-1.5 hover:bg-surface-variant hover:text-on-surface active:scale-95 transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]" data-icon="settings">settings</span>
+<span class="text-label-sm font-label-sm mt-0.5">Settings</span>
+</a>
+</nav>
+<script>
+    // Lightweight interactivity for Reset button
+    document.getElementById('reset-filters')?.addEventListener('click', () => {
+      const selects = document.querySelectorAll('select');
+      selects.forEach(select => {
+        select.selectedIndex = 0;
+      });
+    });
+  </script>
+</body></html>

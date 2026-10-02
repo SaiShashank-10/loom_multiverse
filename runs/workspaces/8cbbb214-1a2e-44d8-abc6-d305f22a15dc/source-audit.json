@@ -1,0 +1,137 @@
+{
+  "success": false,
+  "checkedAt": "2026-10-02T07:37:41.661Z",
+  "counts": {
+    "total": 19,
+    "invalid": 11,
+    "valid": 8
+  },
+  "warnings": [],
+  "entries": [
+    {
+      "path": "index.html",
+      "bytes": 0,
+      "sha256": "",
+      "status": "missing",
+      "reason": "Manifest file has not been generated"
+    },
+    {
+      "path": "package.json",
+      "bytes": 349,
+      "sha256": "f191373685d8687c0cc413daf9b1b8a81763ccf5ca5af8efe80c2130634a3ac0",
+      "status": "valid"
+    },
+    {
+      "path": "src/.env.example",
+      "bytes": 447,
+      "sha256": "608e45233acf380aaf2c71cdeb5a980ed784039a41fde782caefe5b7f1e387a5",
+      "status": "valid"
+    },
+    {
+      "path": "src/App.tsx",
+      "bytes": 0,
+      "sha256": "",
+      "status": "missing",
+      "reason": "Manifest file has not been generated"
+    },
+    {
+      "path": "src/components/Button.tsx",
+      "bytes": 501,
+      "sha256": "79973141fb46cf192ec10e34e24fbd86a28e91b1b7446f0eeead5ca2e99e935d",
+      "status": "valid"
+    },
+    {
+      "path": "src/components/Card.tsx",
+      "bytes": 1094,
+      "sha256": "8336c56e44ed31ff66b34796601a327644697f850bbab16df366ea270b773594",
+      "status": "valid"
+    },
+    {
+      "path": "src/components/InputField.tsx",
+      "bytes": 0,
+      "sha256": "",
+      "status": "missing",
+      "reason": "Manifest file has not been generated"
+    },
+    {
+      "path": "src/components/Modal.tsx",
+      "bytes": 0,
+      "sha256": "",
+      "status": "missing",
+      "reason": "Manifest file has not been generated"
+    },
+    {
+      "path": "src/context/AuthContext.tsx",
+      "bytes": 0,
+      "sha256": "",
+      "status": "missing",
+      "reason": "Manifest file has not been generated"
+    },
+    {
+      "path": "src/main.tsx",
+      "bytes": 0,
+      "sha256": "",
+      "status": "missing",
+      "reason": "Manifest file has not been generated"
+    },
+    {
+      "path": "src/pages/CartPage.tsx",
+      "bytes": 0,
+      "sha256": "",
+      "status": "missing",
+      "reason": "Manifest file has not been generated"
+    },
+    {
+      "path": "src/pages/CheckoutPage.tsx",
+      "bytes": 0,
+      "sha256": "",
+      "status": "missing",
+      "reason": "Manifest file has not been generated"
+    },
+    {
+      "path": "src/pages/ProductCatalog.tsx",
+      "bytes": 0,
+      "sha256": "",
+      "status": "missing",
+      "reason": "Manifest file has not been generated"
+    },
+    {
+      "path": "src/pages/ProductDetail.tsx",
+      "bytes": 0,
+      "sha256": "",
+      "status": "missing",
+      "reason": "Manifest file has not been generated"
+    },
+    {
+      "path": "src/styles/global.css",
+      "bytes": 762,
+      "sha256": "dbd6a5a4e3fa14777ff84ba85c090a3c8fffdab5ebd842399e4f74f8e3ee61b7",
+      "status": "valid"
+    },
+    {
+      "path": "src/styles/theme.css",
+      "bytes": 3161,
+      "sha256": "30688ac9971d8c8a7b64c37a6f3d54429bd0678be21ee7500d4943067f244dc8",
+      "status": "valid"
+    },
+    {
+      "path": "src/types.ts",
+      "bytes": 306,
+      "sha256": "0e8c7c92fd2a1c76d58beb9385bd5bc9d3b279e439250da2758eac0211eb89c5",
+      "status": "valid"
+    },
+    {
+      "path": "tests/app.behavior.test.tsx",
+      "bytes": 0,
+      "sha256": "",
+      "status": "missing",
+      "reason": "Manifest file has not been generated"
+    },
+    {
+      "path": "vite.config.ts",
+      "bytes": 532,
+      "sha256": "fb9952dbc685cf3f0854f2176a30457bd81c8d3b80d67ef71c74bf0765b7a696",
+      "status": "valid"
+    }
+  ]
+}

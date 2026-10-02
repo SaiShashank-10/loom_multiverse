@@ -1,7 +1,3 @@
-import { createLogger } from "@loom/shared/logger";
-
-const log = createLogger("scorer");
-
 export interface ScoringContext {
   keywords: string[];
   credibilityMultiplier: number; // e.g., 1.5 for HN, 1.0 for general news

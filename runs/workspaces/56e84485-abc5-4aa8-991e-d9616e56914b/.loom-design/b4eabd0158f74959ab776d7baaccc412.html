@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EcoStream Live - E-Waste Overview Dashboard</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Open+Sans:wght@400;500;600;700&amp;family=Roboto+Flex:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Theme Injection -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-container": "#c64f00",
+            "secondary": "#575f67",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed": "#351000",
+            "on-secondary-container": "#5b646b",
+            "secondary-fixed": "#dbe4ed",
+            "inverse-primary": "#adc7ff",
+            "surface-tint": "#005bc0",
+            "on-background": "#161c22",
+            "surface": "#f8f9fa",
+            "surface-bright": "#f7f9ff",
+            "on-tertiary-fixed-variant": "#7c2e00",
+            "on-primary-container": "#fefcff",
+            "primary-fixed-dim": "#adc7ff",
+            "outline": "#717786",
+            "surface-dim": "#d5dae2",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-container": "#fffbff",
+            "surface-container-high": "#e3e9f0",
+            "text-primary": "#343a40",
+            "on-error-container": "#93000a",
+            "on-primary-fixed-variant": "#004493",
+            "on-surface-variant": "#414754",
+            "primary-container": "#0070ea",
+            "inverse-on-surface": "#ecf1f9",
+            "warning": "#ffc107",
+            "inverse-surface": "#2b3137",
+            "border": "#dee2e6",
+            "background": "#ffffff",
+            "tertiary-fixed": "#ffdbcc",
+            "error-container": "#ffdad6",
+            "outline-variant": "#c1c6d7",
+            "on-secondary": "#ffffff",
+            "secondary-fixed-dim": "#bfc8d0",
+            "error": "#dc3545",
+            "primary-fixed": "#d8e2ff",
+            "tertiary-fixed-dim": "#ffb695",
+            "on-secondary-fixed": "#141d23",
+            "surface-container-low": "#eff4fc",
+            "on-primary-fixed": "#001a41",
+            "text-secondary": "#6c757d",
+            "tertiary": "#9e3d00",
+            "on-error": "#ffffff",
+            "secondary-container": "#d8e1ea",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed-variant": "#3f484f",
+            "surface-variant": "#dde3eb",
+            "primary": "#0059bb",
+            "success": "#28a745",
+            "on-surface": "#161c22",
+            "surface-container-highest": "#dde3eb",
+            "surface-container": "#e9eef6"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "margin-mobile": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2rem",
+            "space-lg": "1.5rem",
+            "margin": "3rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "body-md": ["Montserrat", "sans-serif"],
+            "headline-lg": ["Roboto Flex", "sans-serif"],
+            "label-md": ["Open Sans", "sans-serif"],
+            "body-lg": ["Montserrat", "sans-serif"],
+            "headline-lg-mobile": ["Roboto Flex", "sans-serif"],
+            "headline-md": ["Open Sans", "sans-serif"],
+            "headline-sm": ["Open Sans", "sans-serif"],
+            "caption": ["Montserrat", "sans-serif"],
+            "label-sm": ["Open Sans", "sans-serif"]
+          },
+          "fontSize": {
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-lg": ["32px", { "lineHeight": "38px", "fontWeight": "700" }],
+            "label-md": ["14px", { "lineHeight": "18px", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "32px", "fontWeight": "700" }],
+            "headline-md": ["24px", { "lineHeight": "31px", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-text-primary antialiased font-body-md text-body-md min-h-screen flex flex-col pb-24">
+<!-- Top Navigation Bar from Shared Components JSON -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 py-3 bg-surface shadow-sm border-b border-border">
+<div class="flex items-center space-x-2.5">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="recycling">recycling</span>
+<div>
+<h1 class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight">EcoStream Live</h1>
+</div>
+</div>
+<div class="flex items-center space-x-2">
+<div class="flex items-center space-x-1.5 bg-surface-container-low px-2 py-1 rounded-full border border-border">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-success"></span>
+</span>
+<span class="font-label-sm text-caption text-text-secondary font-medium tracking-tight">Real-time sync</span>
+</div>
+<button aria-label="Notifications" class="p-1.5 rounded-lg text-text-secondary hover:bg-surface-variant hover:text-on-surface transition-all duration-150 relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full ring-2 ring-surface"></span>
+</button>
+</div>
+</header>
+<!-- Main Content Container: Mobile Optimized Stack -->
+<main class="mt-14 px-4 pt-4 flex flex-col space-y-5 max-w-md mx-auto w-full">
+<!-- Section 1: Quick Time Filter Chips -->
+<section aria-label="Time Filter Controls" class="w-full">
+<div class="flex items-center space-x-2 overflow-x-auto pb-1 scrollbar-none text-text-secondary font-label-md text-label-md">
+<button class="px-3.5 py-1.5 rounded-lg border border-border bg-surface text-text-secondary hover:bg-surface-variant transition-all duration-150 whitespace-nowrap">
+          Today
+        </button>
+<button class="px-3.5 py-1.5 rounded-lg border border-border bg-surface text-text-secondary hover:bg-surface-variant transition-all duration-150 whitespace-nowrap">
+          This Week
+        </button>
+<button class="px-3.5 py-1.5 rounded-lg bg-primary text-on-primary font-bold shadow-sm transition-all duration-150 whitespace-nowrap">
+          This Month
+        </button>
+<button class="px-3.5 py-1.5 rounded-lg border border-border bg-surface text-text-secondary hover:bg-surface-variant transition-all duration-150 whitespace-nowrap">
+          Year-to-Date
+        </button>
+</div>
+</section>
+<!-- Section 2: Key Metrics Cards (Bento/Card Grid) -->
+<section aria-label="Key Environmental Metrics" class="grid grid-cols-2 gap-3">
+<!-- Metric Card 1 -->
+<article class="bg-surface p-3.5 rounded-lg border border-border shadow-sm flex flex-col justify-between hover:scale-[1.02] active:scale-95 transition-all duration-150">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-label-sm text-caption text-text-secondary font-medium uppercase tracking-wider">Total Collected</span>
+<span class="material-symbols-outlined text-primary text-lg" data-icon="delete_outline">delete_outline</span>
+</div>
+<div class="space-y-1">
+<span class="font-headline-md text-headline-sm font-bold text-text-primary block">148.6 <span class="font-label-sm text-label-sm font-medium text-text-secondary">Tons</span></span>
+<div class="inline-flex items-center px-1.5 py-0.5 rounded-full bg-[rgba(40,167,69,0.12)] text-success font-label-sm text-caption font-bold">
+<span class="material-symbols-outlined text-xs mr-0.5" data-icon="trending_up">trending_up</span>
+            +12.4% vs lm
+          </div>
+</div>
+</article>
+<!-- Metric Card 2 -->
+<article class="bg-surface p-3.5 rounded-lg border border-border shadow-sm flex flex-col justify-between hover:scale-[1.02] active:scale-95 transition-all duration-150">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-label-sm text-caption text-text-secondary font-medium uppercase tracking-wider">Recovery Rate</span>
+<span class="material-symbols-outlined text-primary text-lg" data-icon="autorenew">autorenew</span>
+</div>
+<div class="space-y-1">
+<span class="font-headline-md text-headline-sm font-bold text-text-primary block">84.2%</span>
+<div class="inline-flex items-center px-1.5 py-0.5 rounded-full bg-[rgba(40,167,69,0.12)] text-success font-label-sm text-caption font-bold">
+<span class="material-symbols-outlined text-xs mr-0.5" data-icon="check_circle">check_circle</span>
+            +3.1% target
+          </div>
+</div>
+</article>
+<!-- Metric Card 3 -->
+<article class="bg-surface p-3.5 rounded-lg border border-border shadow-sm flex flex-col justify-between hover:scale-[1.02] active:scale-95 transition-all duration-150">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-label-sm text-caption text-text-secondary font-medium uppercase tracking-wider">Hazardous Neut.</span>
+<span class="material-symbols-outlined text-tertiary-container text-lg" data-icon="shield">shield</span>
+</div>
+<div class="space-y-1">
+<span class="font-headline-md text-headline-sm font-bold text-text-primary block">18.3 <span class="font-label-sm text-label-sm font-medium text-text-secondary">Tons</span></span>
+<div class="inline-flex items-center px-1.5 py-0.5 rounded-full bg-surface-container-high text-text-secondary font-label-sm text-caption font-medium">
+<span class="material-symbols-outlined text-xs mr-0.5 text-primary" data-icon="verified">verified</span>
+            Certified safe
+          </div>
+</div>
+</article>
+<!-- Metric Card 4 -->
+<article class="bg-surface p-3.5 rounded-lg border border-border shadow-sm flex flex-col justify-between hover:scale-[1.02] active:scale-95 transition-all duration-150">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-label-sm text-caption text-text-secondary font-medium uppercase tracking-wider">Carbon Offset</span>
+<span class="material-symbols-outlined text-success text-lg" data-icon="eco">eco</span>
+</div>
+<div class="space-y-1">
+<span class="font-headline-md text-headline-sm font-bold text-text-primary block">412 <span class="font-label-sm text-label-sm font-medium text-text-secondary">MT</span></span>
+<div class="inline-flex items-center px-1.5 py-0.5 rounded-full bg-surface-container-high text-text-secondary font-label-sm text-caption font-medium">
+            CO2e Saved
+          </div>
+</div>
+</article>
+</section>
+<!-- Section 3: Real-Time Stream Inflow & Recycled Volume Chart -->
+<section class="bg-surface p-4 rounded-lg border border-border shadow-sm">
+<div class="flex items-center justify-between mb-3">
+<div>
+<h2 class="font-headline-sm text-label-md font-bold text-text-primary">Stream Inflow vs Recycled Volume</h2>
+<p class="font-body-md text-caption text-text-secondary">Measured in metric tons</p>
+</div>
+<!-- Chart Toggle Pills -->
+<div class="flex p-0.5 bg-surface-container rounded border border-border">
+<button class="px-2 py-0.5 text-caption font-label-md bg-white text-primary rounded shadow-xs font-bold transition-all">Volume</button>
+<button class="px-2 py-0.5 text-caption font-label-md text-text-secondary rounded hover:text-text-primary transition-all">Efficiency</button>
+</div>
+</div>
+<!-- High Fidelity SVG Visualization -->
+<div class="relative w-full h-44 bg-surface-container-lowest rounded border border-border/60 p-2 overflow-hidden">
+<!-- SVG Dual-Stream Chart -->
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 340 140">
+<defs>
+<lineargradient id="gradientInflow" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#0070ea" stop-opacity="0.32"></stop>
+<stop offset="100%" stop-color="#0070ea" stop-opacity="0.0"></stop>
+</lineargradient>
+<lineargradient id="gradientRecycled" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#28a745" stop-opacity="0.25"></stop>
+<stop offset="100%" stop-color="#28a745" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<!-- Horizontal Reference Grid Lines -->
+<line stroke="#dee2e6" stroke-dasharray="3,3" stroke-width="0.8" x1="0" x2="340" y1="20" y2="20"></line>
+<line stroke="#dee2e6" stroke-dasharray="3,3" stroke-width="0.8" x1="0" x2="340" y1="60" y2="60"></line>
+<line stroke="#dee2e6" stroke-dasharray="3,3" stroke-width="0.8" x1="0" x2="340" y1="100" y2="100"></line>
+<!-- Area Fills -->
+<path d="M 0,110 Q 55,75 110,85 T 220,40 T 340,25 L 340,130 L 0,130 Z" fill="url(#gradientInflow)"></path>
+<path d="M 0,120 Q 55,95 110,100 T 220,60 T 340,42 L 340,130 L 0,130 Z" fill="url(#gradientRecycled)"></path>
+<!-- Trajectory Stroke Lines -->
+<path d="M 0,110 Q 55,75 110,85 T 220,40 T 340,25" fill="none" stroke="#0070ea" stroke-linecap="round" stroke-width="2"></path>
+<path d="M 0,120 Q 55,95 110,100 T 220,60 T 340,42" fill="none" stroke="#28a745" stroke-linecap="round" stroke-width="2"></path>
+<!-- Data Points & Active Inspection Markers -->
+<circle cx="220" cy="40" fill="#ffffff" r="3.5" stroke="#0070ea" stroke-width="2"></circle>
+<circle cx="220" cy="60" fill="#ffffff" r="3.5" stroke="#28a745" stroke-width="2"></circle>
+<line stroke="#0070ea" stroke-dasharray="2,2" stroke-width="1" x1="220" x2="220" y1="20" y2="130"></line>
+</svg>
+<!-- Floating Data Tooltip Indicator -->
+<div class="absolute top-2 left-[50%] -translate-x-1/2 bg-inverse-surface text-inverse-on-surface text-caption px-2 py-1 rounded shadow-md pointer-events-none flex space-x-2">
+<span class="text-primary-fixed font-bold">In: 38.4T</span>
+<span class="text-success font-bold">Rec: 32.8T</span>
+</div>
+</div>
+<!-- Chart Legend & Time Ticks -->
+<div class="flex items-center justify-between mt-2 pt-2 border-t border-border/80 text-caption font-body-md text-text-secondary">
+<div class="flex items-center space-x-3">
+<span class="inline-flex items-center"><span class="w-2 h-2 rounded-full bg-primary-container mr-1"></span> Inflow Stream</span>
+<span class="inline-flex items-center"><span class="w-2 h-2 rounded-full bg-success mr-1"></span> Processed</span>
+</div>
+<div class="flex space-x-2 text-text-secondary font-label-sm">
+<span>W1</span>
+<span>W2</span>
+<span class="text-primary font-bold">W3</span>
+<span>W4</span>
+</div>
+</div>
+</section>
+<!-- Section 4: Material Category Breakdown -->
+<section class="bg-surface p-4 rounded-lg border border-border shadow-sm space-y-3">
+<div class="flex justify-between items-center">
+<h2 class="font-headline-sm text-label-md font-bold text-text-primary">Material Composition</h2>
+<span class="font-caption text-caption text-text-secondary font-medium">100% Accounted</span>
+</div>
+<div class="space-y-2.5">
+<!-- Item 1 -->
+<div>
+<div class="flex justify-between text-caption font-label-md mb-1 text-text-primary">
+<span class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-sm text-primary" data-icon="devices">devices</span>
+<span>IT &amp; Telecom</span>
+</span>
+<span class="font-bold">42% (62.4 T)</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 42%;"></div>
+</div>
+</div>
+<!-- Item 2 -->
+<div>
+<div class="flex justify-between text-caption font-label-md mb-1 text-text-primary">
+<span class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-sm text-secondary" data-icon="tv">tv</span>
+<span>Consumer Electronics</span>
+</span>
+<span class="font-bold">28% (41.6 T)</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 28%;"></div>
+</div>
+</div>
+<!-- Item 3 -->
+<div>
+<div class="flex justify-between text-caption font-label-md mb-1 text-text-primary">
+<span class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-sm text-text-secondary" data-icon="kitchen">kitchen</span>
+<span>Large Appliances</span>
+</span>
+<span class="font-bold">18% (26.7 T)</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 18%;"></div>
+</div>
+</div>
+<!-- Item 4 -->
+<div>
+<div class="flex justify-between text-caption font-label-md mb-1 text-text-primary">
+<span class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-sm text-tertiary-container" data-icon="battery_charging_full">battery_charging_full</span>
+<span>Batteries &amp; Components</span>
+</span>
+<span class="font-bold">12% (17.8 T)</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container rounded-full" style="width: 12%;"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5: Detailed E-Waste Stream Activity Table / List -->
+<section class="bg-surface rounded-lg border border-border shadow-sm overflow-hidden">
+<div class="px-4 py-3 border-b border-border flex justify-between items-center bg-surface-container-lowest">
+<div>
+<h2 class="font-headline-sm text-label-md font-bold text-text-primary">Live Stream Activity</h2>
+<p class="font-body-md text-caption text-text-secondary">Recent processing intake</p>
+</div>
+<button class="flex items-center space-x-1 bg-primary text-on-primary px-2.5 py-1.5 rounded text-caption font-label-md hover:bg-primary-container active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+<span>Export CSV</span>
+</button>
+</div>
+<!-- Mobile Data Table / Stack -->
+<div class="divide-y divide-border">
+<!-- Row 1 -->
+<div class="p-3.5 hover:bg-surface-container-low transition-colors duration-100 flex items-center justify-between">
+<div class="space-y-0.5">
+<div class="flex items-center space-x-2">
+<span class="font-label-md text-label-sm font-bold text-text-primary">#EW-9024</span>
+<span class="inline-flex items-center px-2 py-0.2 rounded-full bg-[rgba(40,167,69,0.12)] text-success font-label-sm text-caption font-bold">
+                Processed
+              </span>
+</div>
+<p class="font-caption text-caption text-text-secondary">IT Server Racks • Metro Hub North</p>
+</div>
+<div class="text-right">
+<span class="font-headline-sm text-label-md font-bold text-text-primary">4.8 T</span>
+<span class="block text-caption text-text-secondary font-caption">12m ago</span>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="p-3.5 hover:bg-surface-container-low transition-colors duration-100 flex items-center justify-between">
+<div class="space-y-0.5">
+<div class="flex items-center space-x-2">
+<span class="font-label-md text-label-sm font-bold text-text-primary">#EW-9023</span>
+<span class="inline-flex items-center px-2 py-0.2 rounded-full bg-[rgba(255,193,7,0.15)] text-[#856404] font-label-sm text-caption font-bold">
+                In Sorting
+              </span>
+</div>
+<p class="font-caption text-caption text-text-secondary">Li-Ion Pack • Sector 4 Depository</p>
+</div>
+<div class="text-right">
+<span class="font-headline-sm text-label-md font-bold text-text-primary">2.1 T</span>
+<span class="block text-caption text-text-secondary font-caption">34m ago</span>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="p-3.5 hover:bg-surface-container-low transition-colors duration-100 flex items-center justify-between">
+<div class="space-y-0.5">
+<div class="flex items-center space-x-2">
+<span class="font-label-md text-label-sm font-bold text-text-primary">#EW-9022</span>
+<span class="inline-flex items-center px-2 py-0.2 rounded-full bg-primary-fixed text-primary font-label-sm text-caption font-bold">
+                En Route
+              </span>
+</div>
+<p class="font-caption text-caption text-text-secondary">Mixed Appliances • Yard B Terminal</p>
+</div>
+<div class="text-right">
+<span class="font-headline-sm text-label-md font-bold text-text-primary">8.6 T</span>
+<span class="block text-caption text-text-secondary font-caption">1h 05m ago</span>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="p-3.5 hover:bg-surface-container-low transition-colors duration-100 flex items-center justify-between">
+<div class="space-y-0.5">
+<div class="flex items-center space-x-2">
+<span class="font-label-md text-label-sm font-bold text-text-primary">#EW-9021</span>
+<span class="inline-flex items-center px-2 py-0.2 rounded-full bg-[rgba(40,167,69,0.12)] text-success font-label-sm text-caption font-bold">
+                Processed
+              </span>
+</div>
+<p class="font-caption text-caption text-text-secondary">Telecom Relay • Pacific Port Dock</p>
+</div>
+<div class="text-right">
+<span class="font-headline-sm text-label-md font-bold text-text-primary">3.2 T</span>
+<span class="block text-caption text-text-secondary font-caption">2h 18m ago</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar from Shared Components JSON -->
+<!-- Active state strictly mapped to 'Dashboard' -->
+<nav aria-label="Bottom Navigation" class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface shadow-sm border-t border-border">
+<!-- Navigation Destination 1: Dashboard (Active) -->
+<a aria-current="page" class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-lg px-3 py-1.5 active:scale-95 transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-caption font-bold mt-0.5">Dashboard</span>
+</a>
+<!-- Navigation Destination 2: Reports (Inactive) -->
+<a class="flex flex-col items-center justify-center text-text-secondary px-3 py-1.5 hover:bg-surface-variant hover:text-on-surface rounded-lg active:scale-95 transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="assessment">assessment</span>
+<span class="font-label-sm text-caption font-medium mt-0.5">Reports</span>
+</a>
+<!-- Navigation Destination 3: Settings (Inactive) -->
+<a class="flex flex-col items-center justify-center text-text-secondary px-3 py-1.5 hover:bg-surface-variant hover:text-on-surface rounded-lg active:scale-95 transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="settings">settings</span>
+<span class="font-label-sm text-caption font-medium mt-0.5">Settings</span>
+</a>
+</nav>
+</body></html>

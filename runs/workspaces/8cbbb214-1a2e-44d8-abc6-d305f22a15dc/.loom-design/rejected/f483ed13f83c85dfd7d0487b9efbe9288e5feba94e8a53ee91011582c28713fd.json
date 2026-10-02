@@ -1,0 +1,8 @@
+{
+  "file": "src/components/Modal.tsx",
+  "design": "e542aba9b34c8599240c7e394dd14245316b3b495fe0e9257fb2599de934c570",
+  "source": "import React, { useState } from 'react';\n\nconst Modal = ({ isOpen, onClose, children }) => {\n  const [isAnimating, setIsAnimating] = useState(isOpen);\n\n  useEffect(() => {\n    if (isOpen) {\n      setIsAnimating(true);\n    } else {\n      setTimeout(() => setIsAnimating(false), 300);\n    }\n  }, [isOpen]);\n\n  return (\n    <div className={`modal ${isAnimating ? 'animate-open' : 'animate-close'}`}\n         onClick={onClose}\n    >\n      <div className='modal-content'\n           onClick={(e) => e.stopPropagation()}\n      >\n        {children}\n      </div>\n    </div>\n  );\n};\n\nexport default Modal;\n",
+  "issues": [
+    "Source checkpoint: design review is pending"
+  ]
+}

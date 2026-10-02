@@ -1,0 +1,453 @@
+{
+  "fingerprint": "d45b264a3e42401361d1b1848521f01e0a743d68b38649ff3ab4a19e8baafce0",
+  "batches": [
+    {
+      "files": [
+        {
+          "path": "src/.env.example",
+          "description": "Example environment variables file for React.js application."
+        },
+        {
+          "path": "src/App.tsx",
+          "description": "Main entry point of the React.js application."
+        },
+        {
+          "path": "src/components/EWasteRealTimeAnalyticsDashboard.tsx",
+          "description": "Component for displaying real-time analytics dashboard."
+        },
+        {
+          "path": "src/components/EWasteSettingsPreferences.tsx",
+          "description": "Component for managing settings and preferences."
+        },
+        {
+          "path": "src/components/EWasteReportsAuditing.tsx",
+          "description": "Component for generating reports and auditing e-waste data."
+        },
+        {
+          "path": "src/hooks/useEWWasteData.ts",
+          "description": "Custom hook to fetch and manage e-waste data."
+        },
+        {
+          "path": "src/store/index.ts",
+          "description": "Redux store configuration for managing application state."
+        },
+        {
+          "path": "src/types/EWasteData.d.ts",
+          "description": "Type definitions for e-waste data."
+        },
+        {
+          "path": "src/utils/api.ts",
+          "description": "Utility functions for making API calls to backend services."
+        },
+        {
+          "path": "src/utils/dataUtils.ts",
+          "description": "Utility functions for processing and analyzing e-waste data."
+        },
+        {
+          "path": "src/App.test.tsx",
+          "description": "Unit tests for the main application component."
+        },
+        {
+          "path": "src/components/EWasteRealTimeAnalyticsDashboard.test.tsx",
+          "description": "Unit tests for the real-time analytics dashboard component."
+        },
+        {
+          "path": "src/components/EWasteSettingsPreferences.test.tsx",
+          "description": "Unit tests for the settings and preferences component."
+        },
+        {
+          "path": "src/components/EWasteReportsAuditing.test.tsx",
+          "description": "Unit tests for the reports and auditing component."
+        },
+        {
+          "path": "package.json",
+          "description": "Package manifest file with real dependency and build/test/start scripts."
+        }
+      ]
+    },
+    {
+      "files": [
+        {
+          "path": "src/.env.example",
+          "description": "Example environment variables file with placeholder values."
+        },
+        {
+          "path": "src/App.tsx",
+          "description": "Main application component that renders the layout and routes."
+        },
+        {
+          "path": "src/components/EWasteRealTimeAnalyticsDashboard.tsx",
+          "description": "Component for displaying the e-waste real-time analytics dashboard."
+        },
+        {
+          "path": "src/components/EWasteSettingsPreferences.tsx",
+          "description": "Component for managing user settings and preferences."
+        },
+        {
+          "path": "src/components/EWasteReportsAuditing.tsx",
+          "description": "Component for generating and viewing reports based on e-waste data."
+        },
+        {
+          "path": "src/hooks/useEWWasteData.ts",
+          "description": "Custom hook to fetch and manage e-waste data."
+        },
+        {
+          "path": "src/store/index.ts",
+          "description": "Redux store configuration for managing application state."
+        },
+        {
+          "path": "src/types/EWasteData.d.ts",
+          "description": "Type definitions for e-waste data objects."
+        },
+        {
+          "path": "src/utils/api.ts",
+          "description": "Utility functions for making API requests to fetch e-waste data."
+        },
+        {
+          "path": "src/utils/dataUtils.ts",
+          "description": "Utility functions for processing and formatting e-waste data."
+        },
+        {
+          "path": "src/App.test.tsx",
+          "description": "Unit tests for the main application component."
+        },
+        {
+          "path": "src/components/EWasteRealTimeAnalyticsDashboard.test.tsx",
+          "description": "Unit tests for the e-waste real-time analytics dashboard component."
+        },
+        {
+          "path": "src/components/EWasteSettingsPreferences.test.tsx",
+          "description": "Unit tests for the e-waste settings and preferences component."
+        },
+        {
+          "path": "src/components/EWasteReportsAuditing.test.tsx",
+          "description": "Unit tests for the e-waste reports and auditing component."
+        },
+        {
+          "path": "package.json",
+          "description": "Package manifest with real dependency, build/test/start scripts."
+        }
+      ]
+    },
+    {
+      "files": [
+        {
+          "path": "src/.env.example",
+          "description": "Example environment variables file with placeholder values."
+        },
+        {
+          "path": "src/App.tsx",
+          "description": "Main application component that renders the root layout and routes."
+        },
+        {
+          "path": "src/components/EWasteRealTimeAnalyticsDashboard.tsx",
+          "description": "Component for displaying real-time analytics dashboard."
+        },
+        {
+          "path": "src/components/EWasteSettingsPreferences.tsx",
+          "description": "Component for managing settings and preferences."
+        },
+        {
+          "path": "src/components/EWasteReportsAuditing.tsx",
+          "description": "Component for generating and auditing reports."
+        },
+        {
+          "path": "src/hooks/useEWWasteData.ts",
+          "description": "Custom hook to fetch e-waste data from the API."
+        },
+        {
+          "path": "src/store/index.ts",
+          "description": "Redux store configuration file."
+        },
+        {
+          "path": "src/types/EWasteData.d.ts",
+          "description": "Type definitions for e-waste data."
+        },
+        {
+          "path": "src/utils/api.ts",
+          "description": "Utility functions for making API requests."
+        },
+        {
+          "path": "src/utils/dataUtils.ts",
+          "description": "Utility functions for processing and formatting data."
+        },
+        {
+          "path": "src/App.test.tsx",
+          "description": "Unit tests for the main application component."
+        },
+        {
+          "path": "src/components/EWasteRealTimeAnalyticsDashboard.test.tsx",
+          "description": "Unit tests for the real-time analytics dashboard component."
+        },
+        {
+          "path": "src/components/EWasteSettingsPreferences.test.tsx",
+          "description": "Unit tests for the settings and preferences component."
+        },
+        {
+          "path": "src/components/EWasteReportsAuditing.test.tsx",
+          "description": "Unit tests for the reports and auditing component."
+        },
+        {
+          "path": "package.json",
+          "description": "Package manifest with real dependency and build/test/start scripts."
+        }
+      ]
+    },
+    {
+      "files": [
+        {
+          "path": "src/.env.example",
+          "description": "Example environment variables file with placeholder values."
+        },
+        {
+          "path": "src/App.tsx",
+          "description": "Main application component that renders the root layout and routes."
+        },
+        {
+          "path": "src/components/EWasteRealTimeAnalyticsDashboard.tsx",
+          "description": "Component for displaying real-time analytics of e-waste generation by department."
+        },
+        {
+          "path": "src/components/EWasteSettingsPreferences.tsx",
+          "description": "Component for managing settings and preferences related to e-waste management."
+        },
+        {
+          "path": "src/components/EWasteReportsAuditing.tsx",
+          "description": "Component for generating and auditing reports on e-waste data."
+        },
+        {
+          "path": "src/hooks/useEWWasteData.ts",
+          "description": "Custom hook to fetch and manage e-waste data from the backend."
+        },
+        {
+          "path": "src/store/index.ts",
+          "description": "Redux store configuration for managing application state."
+        },
+        {
+          "path": "src/types/EWasteData.d.ts",
+          "description": "Type definitions for e-waste data structures."
+        },
+        {
+          "path": "src/utils/api.ts",
+          "description": "Utility functions for making API calls to the backend."
+        },
+        {
+          "path": "src/utils/dataUtils.ts",
+          "description": "Utility functions for processing and analyzing e-waste data."
+        },
+        {
+          "path": "src/App.test.tsx",
+          "description": "Unit tests for the main application component."
+        },
+        {
+          "path": "src/components/EWasteRealTimeAnalyticsDashboard.test.tsx",
+          "description": "Unit tests for the real-time analytics dashboard component."
+        },
+        {
+          "path": "src/components/EWasteSettingsPreferences.test.tsx",
+          "description": "Unit tests for the settings and preferences component."
+        },
+        {
+          "path": "src/components/EWasteReportsAuditing.test.tsx",
+          "description": "Unit tests for the reports and auditing component."
+        },
+        {
+          "path": "package.json",
+          "description": "Package manifest with real dependency, build/test/start scripts."
+        }
+      ]
+    },
+    {
+      "files": [
+        {
+          "path": "src/.env.example",
+          "description": "Example environment variables file with placeholder values."
+        },
+        {
+          "path": "src/App.tsx",
+          "description": "Main application component that renders the root layout and routes."
+        },
+        {
+          "path": "src/components/EWasteRealTimeAnalyticsDashboard.tsx",
+          "description": "Component for displaying real-time analytics dashboard."
+        },
+        {
+          "path": "src/components/EWasteSettingsPreferences.tsx",
+          "description": "Component for managing settings and preferences."
+        },
+        {
+          "path": "src/components/EWasteReportsAuditing.tsx",
+          "description": "Component for generating reports and auditing e-waste data."
+        },
+        {
+          "path": "src/hooks/useEWWasteData.ts",
+          "description": "Custom hook to fetch and manage e-waste data."
+        },
+        {
+          "path": "src/store/index.ts",
+          "description": "Redux store configuration for managing application state."
+        },
+        {
+          "path": "src/types/EWasteData.d.ts",
+          "description": "Type definitions for e-waste data objects."
+        },
+        {
+          "path": "src/utils/api.ts",
+          "description": "Utility functions for making API calls to the backend."
+        },
+        {
+          "path": "src/utils/dataUtils.ts",
+          "description": "Utility functions for processing and manipulating e-waste data."
+        },
+        {
+          "path": "src/App.test.tsx",
+          "description": "Unit tests for the main application component."
+        },
+        {
+          "path": "src/components/EWasteRealTimeAnalyticsDashboard.test.tsx",
+          "description": "Unit tests for the real-time analytics dashboard component."
+        },
+        {
+          "path": "src/components/EWasteSettingsPreferences.test.tsx",
+          "description": "Unit tests for the settings and preferences component."
+        },
+        {
+          "path": "src/components/EWasteReportsAuditing.test.tsx",
+          "description": "Unit tests for the reports and auditing component."
+        },
+        {
+          "path": "package.json",
+          "description": "Package manifest with real dependency and build/test/start scripts."
+        }
+      ]
+    },
+    {
+      "files": [
+        {
+          "path": "src/.env.example",
+          "description": "Example environment variables file with placeholder values."
+        },
+        {
+          "path": "src/App.tsx",
+          "description": "Main application component that renders the root layout and routes."
+        },
+        {
+          "path": "src/components/EWasteRealTimeAnalyticsDashboard.tsx",
+          "description": "Component for displaying real-time analytics dashboard."
+        },
+        {
+          "path": "src/components/EWasteSettingsPreferences.tsx",
+          "description": "Component for managing settings and preferences."
+        },
+        {
+          "path": "src/components/EWasteReportsAuditing.tsx",
+          "description": "Component for generating and displaying reports and auditing data."
+        },
+        {
+          "path": "src/hooks/useEWWasteData.ts",
+          "description": "Custom hook to fetch e-waste data from the API."
+        },
+        {
+          "path": "src/store/index.ts",
+          "description": "Redux store configuration for managing application state."
+        },
+        {
+          "path": "src/types/EWasteData.d.ts",
+          "description": "Type definitions for e-waste data objects."
+        },
+        {
+          "path": "src/utils/api.ts",
+          "description": "Utility functions for making API requests."
+        },
+        {
+          "path": "src/utils/dataUtils.ts",
+          "description": "Utility functions for processing and manipulating data."
+        },
+        {
+          "path": "src/App.test.tsx",
+          "description": "Unit tests for the main application component."
+        },
+        {
+          "path": "src/components/EWasteRealTimeAnalyticsDashboard.test.tsx",
+          "description": "Unit tests for the real-time analytics dashboard component."
+        },
+        {
+          "path": "src/components/EWasteSettingsPreferences.test.tsx",
+          "description": "Unit tests for the settings and preferences component."
+        },
+        {
+          "path": "src/components/EWasteReportsAuditing.test.tsx",
+          "description": "Unit tests for the reports and auditing component."
+        },
+        {
+          "path": "package.json",
+          "description": "Package manifest with real dependency, build/test/start scripts."
+        }
+      ]
+    },
+    {
+      "files": [
+        {
+          "path": "src/.env.example",
+          "description": "Example environment variables for development, staging, and production environments."
+        },
+        {
+          "path": "src/App.tsx",
+          "description": "The main application component that renders the root layout and routes."
+        },
+        {
+          "path": "src/components/EWasteRealTimeAnalyticsDashboard.tsx",
+          "description": "Component for displaying real-time analytics dashboard."
+        },
+        {
+          "path": "src/components/EWasteSettingsPreferences.tsx",
+          "description": "Component for managing settings and preferences."
+        },
+        {
+          "path": "src/components/EWasteReportsAuditing.tsx",
+          "description": "Component for generating and auditing reports."
+        },
+        {
+          "path": "src/hooks/useEWWasteData.ts",
+          "description": "Custom hook to fetch and manage E-Waste data using WebSockets."
+        },
+        {
+          "path": "src/store/index.ts",
+          "description": "Redux store configuration for managing application state."
+        },
+        {
+          "path": "src/types/EWasteData.d.ts",
+          "description": "Type definitions for E-Waste data objects."
+        },
+        {
+          "path": "src/utils/api.ts",
+          "description": "Utility functions for making API calls and handling responses."
+        },
+        {
+          "path": "src/utils/dataUtils.ts",
+          "description": "Utility functions for processing and validating E-Waste data."
+        },
+        {
+          "path": "src/App.test.tsx",
+          "description": "Unit tests for the main application component."
+        },
+        {
+          "path": "src/components/EWasteRealTimeAnalyticsDashboard.test.tsx",
+          "description": "Unit tests for the real-time analytics dashboard component."
+        },
+        {
+          "path": "src/components/EWasteSettingsPreferences.test.tsx",
+          "description": "Unit tests for the settings and preferences component."
+        },
+        {
+          "path": "src/components/EWasteReportsAuditing.test.tsx",
+          "description": "Unit tests for the reports and auditing component."
+        },
+        {
+          "path": "package.json",
+          "description": "Package manifest with dependencies, build scripts, and test commands."
+        }
+      ]
+    }
+  ]
+}

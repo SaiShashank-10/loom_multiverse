@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Style OS - Modern Wardrobe Intelligence</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Space Grotesk & Hanken Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary": "#ffffff",
+            "on-secondary-container": "#5b646b",
+            "on-tertiary-container": "#f7fff2",
+            "surface-container-highest": "#dfe2ec",
+            "error": "#ba1a1a",
+            "on-error": "#ffffff",
+            "primary-fixed-dim": "#adc7ff",
+            "surface-tint": "#005bc0",
+            "tertiary-fixed": "#83fc8e",
+            "on-background": "#181c23",
+            "outline": "#717786",
+            "secondary-fixed-dim": "#bfc8d0",
+            "outline-variant": "#c1c6d7",
+            "on-secondary-fixed": "#141d23",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed-variant": "#004493",
+            "on-primary-container": "#fefcff",
+            "on-surface": "#181c23",
+            "on-tertiary-fixed-variant": "#00531a",
+            "inverse-primary": "#adc7ff",
+            "surface-variant": "#dfe2ec",
+            "on-secondary-fixed-variant": "#3f484f",
+            "on-tertiary-fixed": "#002106",
+            "on-surface-variant": "#414754",
+            "tertiary-fixed-dim": "#66df75",
+            "surface-bright": "#f9f9ff",
+            "tertiary": "#006b24",
+            "inverse-on-surface": "#eef0fa",
+            "tertiary-container": "#008730",
+            "inverse-surface": "#2d3138",
+            "surface-container-lowest": "#ffffff",
+            "secondary-container": "#d8e1ea",
+            "primary": "#0059bb",
+            "surface-container-high": "#e5e8f2",
+            "on-error-container": "#93000a",
+            "secondary-fixed": "#dbe4ed",
+            "on-primary": "#ffffff",
+            "primary-fixed": "#d8e2ff",
+            "on-primary-fixed": "#001a41",
+            "secondary": "#575f67",
+            "error-container": "#ffdad6",
+            "surface-container-low": "#f1f3fd",
+            "background": "#f9f9ff",
+            "surface-container": "#ebeef7",
+            "surface-dim": "#d7dae3",
+            "surface": "#f9f9ff",
+            "primary-container": "#0070ea"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "gutter": "1rem",
+            "margin": "1.25rem",
+            "space-xl": "2.5rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "display-lg-mobile": ["Space Grotesk"],
+            "display-lg": ["Space Grotesk"],
+            "headline-lg": ["Space Grotesk"],
+            "headline-md": ["Space Grotesk"],
+            "headline-sm": ["Space Grotesk"],
+            "label-lg": ["Space Grotesk"],
+            "label-md": ["Space Grotesk"],
+            "label-sm": ["Space Grotesk"],
+            "body-lg": ["Hanken Grotesk"],
+            "body-md": ["Hanken Grotesk"],
+            "body-sm": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+            "display-lg-mobile": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .custom-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-low text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Frame Container (Flutter Native Viewport Mockup ~414px max centered) -->
+<div class="mx-auto min-h-screen max-w-[430px] bg-background shadow-2xl relative flex flex-col overflow-x-hidden border-x border-outline-variant/30">
+<!-- Top Status Bar & Pinned SliverAppBar -->
+<header class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md transition-all">
+<!-- Phone System Indicators -->
+<div class="flex items-center justify-between px-6 pt-3 pb-1 text-on-surface">
+<span class="font-label-md text-label-md font-semibold tracking-tight">9:41</span>
+<div class="flex items-center space-x-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[16px]">signal_cellular_4_bar</span>
+<span class="material-symbols-outlined text-[16px]">wifi</span>
+<span class="material-symbols-outlined text-[18px]">battery_full</span>
+</div>
+</div>
+<!-- TopAppBar Shared Component Executed -->
+<div class="flex justify-between items-center w-full px-5 py-3">
+<div class="flex items-center gap-3">
+<!-- Drawer / Navigation Rail Toggle Trigger -->
+<button aria-label="Toggle Navigation Drawer" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-transform duration-150" id="drawerToggle">
+<span class="material-symbols-outlined text-[24px]">menu</span>
+</button>
+<!-- Brand Anchor -->
+<div>
+<span class="text-headline-sm font-headline-sm font-bold text-on-surface tracking-tight">Style OS</span>
+<div class="flex items-center gap-1.5">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-tertiary-container animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-secondary tracking-wide uppercase">AI Active</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2.5">
+<!-- Live Weather Pill Mini -->
+<div class="flex items-center gap-1 bg-surface-container-lowest px-2.5 py-1 rounded-full border border-outline-variant/30 shadow-sm">
+<span class="material-symbols-outlined text-amber-500 text-[16px]" style="font-variation-settings: 'FILL' 1;">wb_sunny</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">72°F</span>
+</div>
+<!-- Trailing Notifications with unread badge -->
+<button class="relative w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-surface-container active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-[24px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-error ring-2 ring-surface"></span>
+</button>
+</div>
+</div>
+</header>
+<!-- Interactive Navigation Drawer (Overlay & Persistent Rail Hybrid) -->
+<aside class="fixed inset-y-0 left-0 w-80 max-w-[80vw] bg-surface z-50 rounded-r-2xl shadow-2xl transform -translate-x-full transition-transform duration-300 ease-out flex flex-col p-4 space-y-2 border-r border-outline-variant/20" id="navDrawer">
+<!-- Drawer Profile Header -->
+<div class="flex items-center justify-between pb-4 border-b border-outline-variant/20 pt-2 px-2">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="w-12 h-12 rounded-full object-cover ring-2 ring-primary-container/40" data-alt="Sophisticated professional portrait of Sarah Thompson with modern tailored blazer in a bright warm studio environment with soft natural lighting and minimalist architectural accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCe3gMc0Wd4HjtnKcenTmRneOVBRRcGzCOdvQ6NLu8wvlNta4j6k2uahmF4qporf5BliNqbCq2pjbx7q4_rqTR65C5vBUrO0vmS-feTUQNtJ5xSJgdmFJKi7-dXk7bZ821trHQzbdAP6R-aN1S7rI66r3ZAaHAqKpbbdYRrpVaVf4U21-fxnLm6sVIi1Vz-ANWWqWYJQg_6IPMBgQRfK7E9vxSZ2-Clwkkp11GifqfnJxsqD_I_XskePMJi1TQ5AkJYa7D1jElzcF8"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 bg-tertiary-container rounded-full ring-2 ring-surface"></span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold leading-tight">Sarah Thompson</h4>
+<p class="font-label-md text-label-md text-on-surface-variant">Sartorial Profile</p>
+<p class="font-label-sm text-label-sm text-primary font-medium mt-0.5">Versatility Score: 88%</p>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container" id="drawerClose">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Navigation Drawer Links (Using Shared Components JSON Exact Structure) -->
+<nav class="flex-1 py-4 space-y-1">
+<!-- Home (Active Item based on intent) -->
+<a class="flex items-center gap-3 bg-primary-container text-on-primary-container rounded-full px-4 py-3 font-semibold text-label-lg font-label-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">home</span>
+<span>Home</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-low rounded-full px-4 py-3 text-label-lg font-label-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[22px]">styler</span>
+<span>Virtual Try-on</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-low rounded-full px-4 py-3 text-label-lg font-label-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[22px]">checkroom</span>
+<span>My Closet</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-low rounded-full px-4 py-3 text-label-lg font-label-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[22px]">insights</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-container-low rounded-full px-4 py-3 text-label-lg font-label-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined text-[22px]">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<!-- Drawer Footer Meta -->
+<div class="bg-surface-container-low p-4 rounded-xl">
+<div class="flex justify-between items-center text-label-sm font-label-sm text-secondary">
+<span>Style OS Curated</span>
+<span class="text-primary font-bold">v3.4 PRO</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 88%"></div>
+</div>
+</div>
+</aside>
+<!-- Drawer Backdrop -->
+<div class="fixed inset-0 bg-on-background/40 backdrop-blur-sm z-40 hidden transition-opacity" id="drawerBackdrop"></div>
+<!-- MAIN TWO-COLUMN / DUAL PANEL MOBILE LAYOUT -->
+<!-- Incorporates a tactile quick-access mini-rail alongside the high-density scrollable feed -->
+<main class="flex-1 flex pb-28">
+<!-- Tactile Left Quick-Action Sidebar Dock (Two-Column Mobile Rail) -->
+<div class="w-14 flex-shrink-0 flex flex-col items-center py-4 bg-surface-container-lowest/80 border-r border-outline-variant/20 space-y-5">
+<!-- Quick User Avatar Indicator -->
+<div class="relative group">
+<div class="w-9 h-9 rounded-full bg-primary-fixed flex items-center justify-center ring-2 ring-primary">
+<span class="font-headline-sm text-[13px] font-bold text-on-primary-fixed">ST</span>
+</div>
+<span class="absolute -bottom-1 -right-1 bg-tertiary text-on-tertiary font-label-sm text-[8px] font-bold px-1 rounded-full">88%</span>
+</div>
+<div class="w-6 h-[1px] bg-outline-variant/40 my-1"></div>
+<!-- Rail Shortcut Icons -->
+<button class="w-10 h-10 rounded-full flex flex-col items-center justify-center bg-primary-container text-on-primary-container shadow-sm active:scale-95 transition-transform" title="Home">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">home</span>
+</button>
+<button class="w-10 h-10 rounded-full flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container active:scale-95 transition-transform" title="Virtual Try-On">
+<span class="material-symbols-outlined text-[20px]">styler</span>
+</button>
+<button class="w-10 h-10 rounded-full flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container active:scale-95 transition-transform" title="My Closet">
+<span class="material-symbols-outlined text-[20px]">checkroom</span>
+</button>
+<button class="w-10 h-10 rounded-full flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container active:scale-95 transition-transform" title="Wardrobe Health">
+<span class="material-symbols-outlined text-[20px]">insights</span>
+</button>
+<div class="flex-1"></div>
+<button class="w-9 h-9 rounded-full flex items-center justify-center text-secondary hover:text-on-surface active:scale-95 transition-transform" title="App Settings">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+<!-- Primary Content Stream / Scrollable Canvas -->
+<div class="flex-1 overflow-y-auto px-4 pt-3 space-y-5 custom-scrollbar">
+<!-- User Greeting & Real-time Live Weather Forecast Banner -->
+<section class="space-y-3">
+<div class="flex items-center justify-between">
+<div>
+<h1 class="font-headline-md text-headline-md text-on-surface font-bold">Good morning, Sarah</h1>
+<p class="font-body-sm text-body-sm text-secondary">London · Schedule has 3 styling syncs today</p>
+</div>
+</div>
+<!-- Dynamic Weather & Climate Insight Card -->
+<div class="bg-surface-container-lowest rounded-2xl p-3.5 border border-outline-variant/30 shadow-[0px_4px_20px_rgba(30,34,41,0.04)] flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">light_mode</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">72°F Sunny</span>
+<span class="bg-surface-container px-2 py-0.5 rounded-md text-label-sm font-label-sm text-secondary font-medium">Mild Humidity</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Lightweight breathable layers recommended</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px]">thermostat</span>
+</div>
+</section>
+<!-- Occasion Filter Horizontal Carousel -->
+<section class="space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider font-semibold">Today's Agenda</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Edit Context</span>
+</div>
+<div class="flex items-center gap-2 overflow-x-auto custom-scrollbar pb-1 -mx-1 px-1">
+<!-- Selected Pill -->
+<button class="flex-shrink-0 flex items-center gap-1.5 bg-on-surface text-surface-container-lowest px-3.5 py-1.5 rounded-full font-label-md text-label-md font-medium shadow-sm transition-transform active:scale-95">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">work</span>
+<span>Work Meeting</span>
+</button>
+<!-- Inactive Pills -->
+<button class="flex-shrink-0 flex items-center gap-1.5 bg-surface-container-lowest border border-outline-variant/40 text-secondary px-3.5 py-1.5 rounded-full font-label-md text-label-md font-medium hover:bg-surface-container active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[15px]">coffee</span>
+<span>Casual Coffee</span>
+</button>
+<button class="flex-shrink-0 flex items-center gap-1.5 bg-surface-container-lowest border border-outline-variant/40 text-secondary px-3.5 py-1.5 rounded-full font-label-md text-label-md font-medium hover:bg-surface-container active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[15px]">wine_bar</span>
+<span>Evening Dinner</span>
+</button>
+<button class="flex-shrink-0 flex items-center gap-1.5 bg-surface-container-lowest border border-outline-variant/40 text-secondary px-3.5 py-1.5 rounded-full font-label-md text-label-md font-medium hover:bg-surface-container active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[15px]">flight</span>
+<span>Weekend Travel</span>
+</button>
+</div>
+</section>
+<!-- PRIMARY FEATURED CARD: Outfit Recommendation -->
+<section class="bg-surface-container-lowest rounded-2xl border border-outline-variant/30 p-4 shadow-[0px_4px_20px_rgba(30,34,41,0.06)] space-y-4 relative overflow-hidden">
+<!-- Ambient subtle cobalt top badge -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5 bg-primary-fixed/60 text-on-primary-fixed px-2.5 py-1 rounded-full">
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-label-sm text-label-sm font-bold tracking-wide">98% AI Match</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-secondary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-error hover:bg-error-container/20 transition-colors">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+</div>
+<!-- Look Title & AI Reasoning -->
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight">The Modern Executive</h2>
+<div class="flex items-start gap-1.5 mt-1.5 bg-surface-container-low p-2 rounded-xl text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-primary text-[18px] flex-shrink-0 mt-0.5">smart_toy</span>
+<p>Tailored for your 2:00 PM boardroom presentation &amp; 72°F mild afternoon humidity.</p>
+</div>
+</div>
+<!-- Layered Outfit Item Breakdown Grid -->
+<div class="grid grid-cols-2 gap-2.5">
+<!-- Item 1 -->
+<div class="bg-surface rounded-xl p-2.5 border border-outline-variant/20 flex flex-col justify-between">
+<div class="h-24 w-full bg-surface-container-low rounded-lg flex items-center justify-center overflow-hidden mb-2">
+<img class="h-full w-full object-cover" data-alt="Close up photograph of a sharp Italian linen charcoal navy blazer resting on a clean white pedestal with crisp modern lighting and rich fabric textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMKaEU3tlq9WvN9lo3p9o983aonVcXVTYNprKa2ohlI8VB9gy0uJPU-3sGyOHojdERDJGFsQtw3B6vj9Vz0J8iknoyNnY-hm95JOflPpTCvai053LQdDLXbFeH0UfgfMcMq4jW-BByRA7cOv9bKc_mkMi7I4D-PgClInSe95Jy9UFvEBfXtx2KxUQ58Bdff6ehvFhH4M4Ygav5AtuMjDrIIs0OXaJVXhum9yPFFuB40q8-UDtcMjrf-JaSlYKCiYMculDwVxfzPHE"/>
+</div>
+<div>
+<p class="font-headline-sm text-[13px] font-semibold text-on-surface line-clamp-1">Italian Linen Blazer</p>
+<div class="flex justify-between items-center mt-1">
+<span class="font-label-sm text-label-sm text-secondary">Charcoal Navy</span>
+<span class="bg-surface-container px-1.5 py-0.5 rounded text-[9px] font-bold text-primary">Worn 4x</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface rounded-xl p-2.5 border border-outline-variant/20 flex flex-col justify-between">
+<div class="h-24 w-full bg-surface-container-low rounded-lg flex items-center justify-center overflow-hidden mb-2">
+<img class="h-full w-full object-cover" data-alt="High fashion studio still life of an elegant ivory silk crepe blouse draped neatly under gentle studio rim illumination against a neutral slate background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8x1d4oRYif7QkB0lpPVdwV9nwQqXKTPq74P70IRiLx1DmPCarLE9tqZuncwNxhml4lBeokK_WmVCkheifBL3JhKcC4qxR-zy5fBN8IgXJx8XLMVSHwcNYYfjKW-CpfkpdwcwN7-rjxQslbg7VjY2qP8lhji7dn_-Lz8pR9UymkAccznLzkhfhu4KcwawvR3fkyOcDHsvvy9jJJB8TRCtNtrro6jSTvMqsulaQJcq2UCo_XQjvhKrRC56ubFSzSFhe4RcdFC1Fk7w"/>
+</div>
+<div>
+<p class="font-headline-sm text-[13px] font-semibold text-on-surface line-clamp-1">Silk Crepe Blouse</p>
+<div class="flex justify-between items-center mt-1">
+<span class="font-label-sm text-label-sm text-secondary">Ivory White</span>
+<span class="bg-surface-container px-1.5 py-0.5 rounded text-[9px] font-bold text-primary">Worn 2x</span>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="bg-surface rounded-xl p-2.5 border border-outline-variant/20 flex flex-col justify-between">
+<div class="h-24 w-full bg-surface-container-low rounded-lg flex items-center justify-center overflow-hidden mb-2">
+<img class="h-full w-full object-cover" data-alt="Flat lay photograph of tailored olive sand high waisted wide leg trousers made of luxurious cotton wool blend arranged in an artistic fashion catalog style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8hMtozCid18kDvaUHKZWoQkr_T3V1RrlQj3cHPV7K4M76UnOIVgBcQzN2F91kfH1dk4jIUXhJQ0JePZ1DSddFxC_k4iJ-XwENp_jzS660BGdng8olM2jD9iE7waVpBDXt_J9meU6BifruVCIU9cPc9cv8EpDeHGKeWLCgPnRjGhZepxmnh2oilLBdhb-4L2lNFUDoAJ1AuzA7gcSeVcsQeQOzkBe3gIY6ZAQy194PadRH88FKABSqM3YiVWtQQYAvePRiIHHKLYY"/>
+</div>
+<div>
+<p class="font-headline-sm text-[13px] font-semibold text-on-surface line-clamp-1">Wide Leg Trousers</p>
+<div class="flex justify-between items-center mt-1">
+<span class="font-label-sm text-label-sm text-secondary">Olive Sand</span>
+<span class="bg-surface-container px-1.5 py-0.5 rounded text-[9px] font-bold text-primary">Worn 7x</span>
+</div>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="bg-surface rounded-xl p-2.5 border border-outline-variant/20 flex flex-col justify-between">
+<div class="h-24 w-full bg-surface-container-low rounded-lg flex items-center justify-center overflow-hidden mb-2">
+<img class="h-full w-full object-cover" data-alt="Product photograph of handcrafted burnished leather loafers with polished gold buckle detail displayed on a minimalist concrete architectural surface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK4GDqfsHkSHQAYIbtgr-w6rrlFS0tfIUhAHwX4aOzfdjP0tj5_Byx_qPocXJsFG-9qy2GsXGKkjb4X-5dYsshPWJ6GElEYASTpkuHSTrmtcbrYMlP4qWVdDZxn7MlU0lOrAiJYdt5mxJQb5gJ0bY-aomXkkOjrHV0VxVz05Of-G4H2YLjRJQKXM-luehriZkpzTomHHhXrF9VzMOODXSfF5VVGPbw49s_EJmVL47tLBSwwDpOJzCbHi3XQYl1WRdmj2UUJTLaS-A"/>
+</div>
+<div>
+<p class="font-headline-sm text-[13px] font-semibold text-on-surface line-clamp-1">Gold-Buckle Loafers</p>
+<div class="flex justify-between items-center mt-1">
+<span class="font-label-sm text-label-sm text-secondary">Deep Cognac</span>
+<span class="bg-surface-container px-1.5 py-0.5 rounded text-[9px] font-bold text-primary">Worn 12x</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card Action Triggers -->
+<div class="pt-1 flex gap-2">
+<button class="flex-1 bg-primary text-on-primary font-label-lg text-label-lg font-semibold py-3 px-4 rounded-full flex items-center justify-center gap-2 active:scale-98 transition-transform shadow-md">
+<span class="material-symbols-outlined text-[18px]">styler</span>
+<span>Try On Virtually</span>
+</button>
+<button class="w-12 h-12 rounded-full border-2 border-outline-variant/40 flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-transform" title="Save to Diary">
+<span class="material-symbols-outlined text-[20px]">bookmark_add</span>
+</button>
+</div>
+</section>
+<!-- VIRTUAL TRY-ON INTERACTIVE MODULE -->
+<section class="bg-surface-container-lowest rounded-2xl border border-outline-variant/30 p-4 shadow-[0px_4px_20px_rgba(30,34,41,0.04)] space-y-3.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-primary-fixed flex items-center justify-center text-primary font-bold">
+<span class="material-symbols-outlined text-[16px]">view_in_ar</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">3D Digital Twin Preview</h3>
+</div>
+<span class="bg-tertiary-container/10 text-tertiary px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold">Live Fit Synced</span>
+</div>
+<!-- Digital Twin Visual Canvas with Controls -->
+<div class="relative w-full h-56 rounded-xl overflow-hidden bg-surface-container-high border border-outline-variant/30">
+<img class="w-full h-full object-cover object-top" data-alt="Full body photorealistic 3D rendered avatar of a stylish professional woman in an ultra-modern virtual dressing room wearing a navy blazer and high-waisted trousers with soft studio rim highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIKfPhaoxCXC7zdC71FVoR6NgBgZy6hPAZLh9q5bXSxE1QkeFI8MotVvUqZT3uH1mkkH6vgGbn2W0sfgFytSyDUxWq36p6vPctQ7MGQ-NakGXv_hCyauK0Oq5IygR4RInz9YOomnRJfNHeIgRuA4OYEFYqGOGaIGtuXjycy4D8x0tGBx92gF5NL2GtNtCBYOFz7TYzJRcIt8wD2ihtICGmJi1fsYVP2xuNL4REk2SyhnlqMSAdwQCl9HAUhzvRqRGUAbKONzJh7CA"/>
+<!-- Floating Try-on Mode Switcher -->
+<div class="absolute top-2.5 left-2.5 flex items-center gap-1 bg-on-background/70 backdrop-blur-md p-1 rounded-full text-white">
+<button class="bg-primary text-white px-2.5 py-1 rounded-full font-label-sm text-[11px] font-semibold shadow-sm">Front View</button>
+<button class="text-white/80 hover:text-white px-2.5 py-1 rounded-full font-label-sm text-[11px] font-medium">360° Rotate</button>
+<button class="text-white/80 hover:text-white px-2.5 py-1 rounded-full font-label-sm text-[11px] font-medium">Swap Layer</button>
+</div>
+<!-- Fit Confidence Indicator Overlay -->
+<div class="absolute bottom-2.5 right-2.5 bg-surface/90 backdrop-blur-md px-3 py-1 rounded-full border border-outline-variant/30 flex items-center gap-1.5 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-label-sm text-label-sm font-bold text-on-surface">Fit Index: 9.6/10</span>
+</div>
+</div>
+<!-- Interactive Action Controls -->
+<div class="grid grid-cols-2 gap-2 pt-1">
+<button class="w-full py-2.5 px-3 bg-surface-container rounded-full text-on-surface font-label-md text-label-md font-semibold flex items-center justify-center gap-1.5 hover:bg-surface-container-high active:scale-98 transition-all">
+<span class="material-symbols-outlined text-[18px] text-primary">sensors</span>
+<span>Launch 3D Mirror</span>
+</button>
+<button class="w-full py-2.5 px-3 bg-surface-container-lowest border border-outline-variant/40 rounded-full text-on-surface font-label-md text-label-md font-semibold flex items-center justify-center gap-1.5 hover:bg-surface-container active:scale-98 transition-all">
+<span class="material-symbols-outlined text-[18px] text-secondary">add_photo_alternate</span>
+<span>Upload Pose Fit</span>
+</button>
+</div>
+</section>
+<!-- CLOSET HEALTH & WARDROBE ANALYTICS MODULE -->
+<section class="bg-surface-container-lowest rounded-2xl border border-outline-variant/30 p-4 shadow-[0px_4px_20px_rgba(30,34,41,0.04)] space-y-3.5">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Closet Health &amp; Insights</h3>
+<p class="font-body-sm text-body-sm text-secondary">Active Wardrobe Utilization</p>
+</div>
+<a class="font-label-sm text-label-sm text-primary font-bold hover:underline" href="#">View Full Audit</a>
+</div>
+<!-- Versatility Ring & Key Metrics Matrix -->
+<div class="flex items-center gap-4 bg-surface-container-low p-3.5 rounded-xl border border-outline-variant/20">
+<!-- Versatility Gauge Ring -->
+<div class="relative w-16 h-16 flex-shrink-0 flex items-center justify-center">
+<svg class="w-16 h-16 transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container-highest stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3.5"></path>
+<path class="text-primary stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-dasharray="88, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="font-headline-sm text-[13px] font-bold text-on-surface leading-tight">88%</span>
+<span class="font-label-sm text-[8px] text-secondary">OPTIMIZED</span>
+</div>
+</div>
+<!-- Key Metric Chips -->
+<div class="flex-1 grid grid-cols-2 gap-2">
+<div class="bg-surface-container-lowest p-2 rounded-lg border border-outline-variant/20">
+<span class="font-label-sm text-[10px] text-secondary block">In Rotation</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">42 Items</span>
+</div>
+<div class="bg-surface-container-lowest p-2 rounded-lg border border-outline-variant/20">
+<span class="font-label-sm text-[10px] text-error font-medium block">Dormant (&gt;45d)</span>
+<span class="font-headline-sm text-headline-sm font-bold text-error">3 Items</span>
+</div>
+</div>
+</div>
+<!-- Wardrobe Gap Identified Callout -->
+<div class="bg-surface p-3 rounded-xl border border-primary/20 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[20px] flex-shrink-0 mt-0.5">tips_and_updates</span>
+<div>
+<span class="font-label-md text-label-md font-bold text-on-surface block">Wardrobe Gap Identified</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                Missing: <span class="font-semibold text-primary">Breathable Spring Trench Coat</span> to complete 6 seasonal business looks.
+              </p>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Contextual Floating Action Button (FAB) for Item Capture & Inventory Scanning -->
+<!-- Integrated cleanly in accordance with Flutter elevated quick action pattern -->
+<div class="fixed bottom-20 right-6 z-40">
+<button aria-label="Scan or Add Clothing Item" class="w-14 h-14 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-[0px_12px_32px_rgba(0,123,255,0.35)] active:scale-90 transition-transform duration-200 group">
+<span class="material-symbols-outlined text-[28px]" data-icon="photo_camera">photo_camera</span>
+</button>
+</div>
+<!-- BottomNavBar Shared Component Executed Exactly -->
+<!-- Destination count: 5 with Home active -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 border-t border-outline-variant/20 bg-surface-container-lowest shadow-lg">
+<!-- Tab 1: Home (Active based on context) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-3 py-1.5 transition-transform duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm font-bold mt-0.5">Home</span>
+</a>
+<!-- Tab 2: Try-On -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:bg-surface-container rounded-full transition-transform duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="view_in_ar">view_in_ar</span>
+<span class="font-label-sm text-label-sm font-medium mt-0.5">Try-On</span>
+</a>
+<!-- Tab 3: Scan -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:bg-surface-container rounded-full transition-transform duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="photo_camera">photo_camera</span>
+<span class="font-label-sm text-label-sm font-medium mt-0.5">Scan</span>
+</a>
+<!-- Tab 4: Closet -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:bg-surface-container rounded-full transition-transform duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="checkroom">checkroom</span>
+<span class="font-label-sm text-label-sm font-medium mt-0.5">Closet</span>
+</a>
+<!-- Tab 5: Health / Analytics -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:bg-surface-container rounded-full transition-transform duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="analytics">analytics</span>
+<span class="font-label-sm text-label-sm font-medium mt-0.5">Health</span>
+</a>
+</nav>
+</div>
+<!-- Inline Interaction Logic for Drawer & Micro-interactions -->
+<script>
+    const drawerToggle = document.getElementById('drawerToggle');
+    const drawerClose = document.getElementById('drawerClose');
+    const navDrawer = document.getElementById('navDrawer');
+    const drawerBackdrop = document.getElementById('drawerBackdrop');
+
+    function openDrawer() {
+      navDrawer.classList.remove('-translate-x-full');
+      drawerBackdrop.classList.remove('hidden');
+    }
+
+    function closeDrawer() {
+      navDrawer.classList.add('-translate-x-full');
+      drawerBackdrop.classList.add('hidden');
+    }
+
+    if (drawerToggle) drawerToggle.addEventListener('click', openDrawer);
+    if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+    if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeDrawer);
+  </script>
+</body></html>

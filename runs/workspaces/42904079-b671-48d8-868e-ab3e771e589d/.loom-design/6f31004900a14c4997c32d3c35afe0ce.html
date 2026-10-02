@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Virtual Try-On Studio - Style OS</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-primary": "#adc7ff",
+            "surface-container": "#ebeef7",
+            "on-error": "#ffffff",
+            "inverse-on-surface": "#eef0fa",
+            "surface-dim": "#d7dae3",
+            "on-surface": "#181c23",
+            "error": "#ba1a1a",
+            "on-primary-container": "#fefcff",
+            "surface-bright": "#f9f9ff",
+            "tertiary-fixed": "#83fc8e",
+            "secondary-fixed-dim": "#bfc8d0",
+            "on-tertiary-container": "#f7fff2",
+            "tertiary-fixed-dim": "#66df75",
+            "on-tertiary-fixed-variant": "#00531a",
+            "on-secondary-fixed": "#141d23",
+            "primary-container": "#0070ea",
+            "outline-variant": "#c1c6d7",
+            "outline": "#717786",
+            "surface-tint": "#005bc0",
+            "surface-variant": "#dfe2ec",
+            "surface-container-high": "#e5e8f2",
+            "on-secondary-container": "#5b646b",
+            "surface": "#f9f9ff",
+            "surface-container-low": "#f1f3fd",
+            "on-error-container": "#93000a",
+            "inverse-surface": "#2d3138",
+            "secondary-container": "#d8e1ea",
+            "on-secondary": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "primary-fixed": "#d8e2ff",
+            "on-primary-fixed-variant": "#004493",
+            "on-background": "#181c23",
+            "error-container": "#ffdad6",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed-dim": "#adc7ff",
+            "tertiary-container": "#008730",
+            "on-tertiary-fixed": "#002106",
+            "secondary-fixed": "#dbe4ed",
+            "primary": "#0059bb",
+            "on-surface-variant": "#414754",
+            "on-primary": "#ffffff",
+            "background": "#f9f9ff",
+            "tertiary": "#006b24",
+            "secondary": "#575f67",
+            "on-secondary-fixed-variant": "#3f484f",
+            "on-primary-fixed": "#001a41",
+            "surface-container-highest": "#dfe2ec"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2.5rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "margin": "1.25rem"
+          },
+          "fontFamily": {
+            "body-md": ["Hanken Grotesk"],
+            "body-lg": ["Hanken Grotesk"],
+            "headline-md": ["Space Grotesk"],
+            "label-lg": ["Space Grotesk"],
+            "label-md": ["Space Grotesk"],
+            "display-lg-mobile": ["Space Grotesk"],
+            "body-sm": ["Hanken Grotesk"],
+            "headline-sm": ["Space Grotesk"],
+            "display-lg": ["Space Grotesk"],
+            "label-sm": ["Space Grotesk"],
+            "headline-lg": ["Space Grotesk"]
+          },
+          "fontSize": {
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+            "display-lg-mobile": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Viewport Shell (Flutter Max Width Container) -->
+<div class="w-full max-w-md bg-surface flex flex-col min-h-screen relative shadow-2xl overflow-x-hidden pb-28">
+<!-- Top App Bar (Customized with Contextual Back & Action Header) -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md flex justify-between items-center w-full px-5 py-3.5 transition-all">
+<div class="flex items-center gap-3">
+<button aria-label="Go Back" class="w-9 h-9 flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[22px]">arrow_back</span>
+</button>
+<div>
+<h1 class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight">Virtual Try-On Studio</h1>
+<p class="font-label-sm text-label-sm text-outline">Digital Twin #ST-9042</p>
+</div>
+</div>
+<div class="flex items-center gap-1.5">
+<button aria-label="Share Look" class="w-9 h-9 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[20px]">ios_share</span>
+</button>
+<button aria-label="Save to Lookbook Diary" class="w-9 h-9 flex items-center justify-center rounded-full text-primary hover:bg-surface-container active:scale-95 transition-transform duration-150" id="likeBtn" onclick="toggleSaveHeart()" type="button">
+<span class="material-symbols-outlined text-[22px]" id="heartIcon" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+</header>
+<!-- Main Content Flow -->
+<main class="flex-1 px-4 pt-1 pb-4 flex flex-col gap-4">
+<!-- Viewport Simulation Canvas (The Avatar Stage) -->
+<section class="relative w-full rounded-2xl bg-surface-container-lowest border border-outline-variant/30 overflow-hidden shadow-sm flex flex-col">
+<!-- Live Status Badges & HUD Elements -->
+<div class="absolute top-3 inset-x-3 z-20 flex justify-between items-start pointer-events-none">
+<!-- Fit Analysis Tag -->
+<div class="pointer-events-auto flex items-center gap-1.5 bg-surface-container-lowest/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-outline-variant/40 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Fit Score: 98% Optimal</span>
+</div>
+<!-- Weather Match Pill -->
+<div class="pointer-events-auto flex items-center gap-1.5 bg-surface-container-lowest/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-outline-variant/40 shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-amber-500" style="font-variation-settings: 'FILL' 1;">wb_sunny</span>
+<span class="font-label-md text-label-md font-medium text-on-surface">72°F Sunny Match</span>
+</div>
+</div>
+<!-- Realistic 3D Avatar Display -->
+<div class="relative w-full h-[380px] bg-gradient-to-b from-surface-container-low via-surface-container-lowest to-surface-container-low flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover object-top filter contrast-[1.02]" data-alt="Photorealistic full-body 3D digital twin of a stylish woman named Sarah Thompson with neat hair standing in a modern, ultra-clean minimalist studio. She wears a tailored navy blue linen blazer over a pristine off-white silk crepe top, paired with relaxed high-waisted wide-leg trousers and dark polished leather buckle loafers. Crisp daylight illumination, cinematic composition, pristine light mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA95m-io9d5nIkBxylk7rD0CECzP_7a6sW64BvYR83m3c1C0b0gV447tPfyYE24P8m-q8tZPjM5RAcVBtfiIeQxS2rQkfgMaewMdumtaY-o8CA2VNMNUMB2wUL0ELPUAwi-S3FLHSxKN_FhL22PhHB2km7M4BdqjVtKg25GE5Gz9eRKGwwz3b7lJ6ZOnyTcTwKFTAxV5iyshLUZ2VV-R5OIObSPWpeR2GvOYr34cIf6F1xeX4gTSU2SdRPxqHKvwr2o8jeauFmV5fY"/>
+<!-- Subtle Avatar Lighting Overlay Scrim -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/90 via-transparent to-transparent pointer-events-none"></div>
+<!-- Hotspot Markers on Avatar (Garment Interactivity) -->
+<div class="absolute top-[32%] left-[34%] z-10">
+<button aria-label="Inspect Navy Blazer" class="group relative flex items-center justify-center" type="button">
+<span class="absolute w-6 h-6 rounded-full bg-primary/20 animate-ping"></span>
+<span class="w-5 h-5 rounded-full bg-primary border-2 border-surface-container-lowest flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-[11px]">crop_free</span>
+</span>
+<span class="hidden group-hover:flex absolute left-7 top-1/2 -translate-y-1/2 bg-inverse-surface text-inverse-on-surface font-label-sm text-label-sm px-2 py-0.5 rounded shadow whitespace-nowrap">Navy Linen Blazer</span>
+</button>
+</div>
+<div class="absolute bottom-[22%] right-[38%] z-10">
+<button aria-label="Inspect Wide Leg Trousers" class="group relative flex items-center justify-center" type="button">
+<span class="w-5 h-5 rounded-full bg-primary/90 border-2 border-surface-container-lowest flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-[11px]">crop_free</span>
+</span>
+<span class="hidden group-hover:flex absolute right-7 top-1/2 -translate-y-1/2 bg-inverse-surface text-inverse-on-surface font-label-sm text-label-sm px-2 py-0.5 rounded shadow whitespace-nowrap">Wide Leg Trousers</span>
+</button>
+</div>
+<!-- Bottom Viewport Info Float -->
+<div class="absolute bottom-3 left-3 z-10 flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Sarah Thompson</span>
+<span class="bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm px-2 py-0.5 rounded-full">Proportion Twin</span>
+</div>
+</div>
+<!-- Mode Switcher Pills (Perspective & Simulation Controls) -->
+<div class="p-2.5 bg-surface-container-low/60 border-t border-outline-variant/30 flex items-center justify-between gap-1.5">
+<button class="flex-1 py-1.5 px-2 rounded-full bg-on-surface text-surface font-label-md text-label-md font-medium text-center shadow-sm active:scale-98 transition-transform" type="button">
+            Front View
+          </button>
+<button class="flex-1 py-1.5 px-2 rounded-full bg-surface-container-lowest border border-outline-variant/40 text-on-surface-variant font-label-md text-label-md font-medium text-center hover:bg-surface-container active:scale-98 transition-transform flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[15px]">360</span>
+<span>360° Rotate</span>
+</button>
+<button class="flex-1 py-1.5 px-2 rounded-full bg-surface-container-lowest border border-outline-variant/40 text-on-surface-variant font-label-md text-label-md font-medium text-center hover:bg-surface-container active:scale-98 transition-transform flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[15px]">air</span>
+<span>Microclimate</span>
+</button>
+</div>
+</section>
+<!-- Outfit Synthesis Breakdown & Layer Tray Carousel -->
+<section class="flex flex-col gap-2.5">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Outfit Layers</h2>
+<span class="bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm px-2 py-0.5 rounded-full">4 pieces</span>
+</div>
+<button class="text-primary font-label-md text-label-md font-semibold flex items-center gap-0.5 hover:underline" type="button">
+<span>Remix All</span>
+<span class="material-symbols-outlined text-[16px]">auto_awesome</span>
+</button>
+</div>
+<!-- Horizontal Layer Switcher Carousel -->
+<div class="flex gap-2.5 overflow-x-auto hide-scrollbar pb-1 pt-0.5 -mx-4 px-4">
+<!-- Outerwear Card -->
+<div class="min-w-[136px] max-w-[136px] bg-surface-container-lowest rounded-2xl p-2.5 border border-outline-variant/40 shadow-sm flex flex-col justify-between relative group hover:border-primary/50 transition-colors">
+<div class="relative w-full h-24 rounded-xl bg-surface-container-low overflow-hidden mb-2">
+<img class="w-full h-full object-cover" data-alt="Single isolated studio photograph of a structured midnight navy blue linen blazer jacket cleanly displayed against a light neutral background, high-end catalog presentation, soft ambient illumination." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP7j0dWOsIy4L6myJZzHTPHAUI6Y8_8jzPo5l4ByabCKwtrEV_Bc4DNgqqwEeLyA1_am34rF-hQD0k292A7KJJ8kUS9ubw5nIrRRihUzSYQBGAD2iah4k_8BjJxPEzr4DLmtXBwtf-c2t7wFmu2kX9AywaYRfJIlFBA6XgBKHADtrFplzntgiRZW_VszlZ_7aIEQwNgLrLvxPCJ8RIoBUE2K6j1exIwRZ28ZBRRCOn3ccSG4cerjOs6Cvo5N0aoLYBIxuxQVV6exQ"/>
+<span class="absolute top-1.5 left-1.5 bg-surface-container-lowest/90 backdrop-blur-sm font-label-sm text-label-sm px-1.5 py-0.5 rounded text-on-surface font-semibold">Outer</span>
+<button aria-label="Swap Outerwear" class="absolute bottom-1.5 right-1.5 w-6 h-6 rounded-full bg-surface-container-lowest text-primary shadow flex items-center justify-center hover:scale-110 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[14px]">sync</span>
+</button>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface truncate">Navy Linen Blazer</p>
+<p class="font-body-sm text-body-sm text-outline truncate">Acne Studios</p>
+</div>
+</div>
+<!-- Top Card -->
+<div class="min-w-[136px] max-w-[136px] bg-surface-container-lowest rounded-2xl p-2.5 border border-outline-variant/40 shadow-sm flex flex-col justify-between relative group hover:border-primary/50 transition-colors">
+<div class="relative w-full h-24 rounded-xl bg-surface-container-low overflow-hidden mb-2">
+<img class="w-full h-full object-cover" data-alt="Minimalist product image of an elegant ivory cream silk crepe sleeveless shell top isolated on clean studio backdrop, luxury designer finish, subtle satin textures and soft light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5S9KuosNoordXWYg10sUNRToCP5U7As9uf4rZmCjFAuj-X5d98lPGogmfo07aid0BT8pJqDOkHqostPX0jGlJRR891eld7Kx6Pxw9y-pr22lLi6kSN3vUrGiILcwoj3M8EIDDZDdpAzImxxEARH6-d1UpuhT4GQXAy0JOiiTzZvo9zOZDYTgmH0iuQW0CyTDYp3_6omRtXnbUCI0cmJrp0fAi8Q-4Hj2RVFduMfN6AMLgR9v4JwdsLUClpltE8enhTTq_7j-u6z8"/>
+<span class="absolute top-1.5 left-1.5 bg-surface-container-lowest/90 backdrop-blur-sm font-label-sm text-label-sm px-1.5 py-0.5 rounded text-on-surface font-semibold">Top</span>
+<button aria-label="Swap Top" class="absolute bottom-1.5 right-1.5 w-6 h-6 rounded-full bg-surface-container-lowest text-primary shadow flex items-center justify-center hover:scale-110 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[14px]">sync</span>
+</button>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface truncate">Silk Crepe Top</p>
+<p class="font-body-sm text-body-sm text-outline truncate">TOTÊME</p>
+</div>
+</div>
+<!-- Bottom Card -->
+<div class="min-w-[136px] max-w-[136px] bg-surface-container-lowest rounded-2xl p-2.5 border border-outline-variant/40 shadow-sm flex flex-col justify-between relative group hover:border-primary/50 transition-colors">
+<div class="relative w-full h-24 rounded-xl bg-surface-container-low overflow-hidden mb-2">
+<img class="w-full h-full object-cover" data-alt="Studio catalog photo of tailored high-waisted relaxed wide-leg slate charcoal trousers on a neutral clean setting, crisp pleats, modern architectural menswear-inspired garment design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTFNhlu2Cc5W7H_ZWn745prawHXmx1HpumIS8WCLX7cbrIq3NweXcvbi3Bq5jgueltdMW8Nlh7ZgmyJEifxLnws8wHmmIc79gz9o2SNsp3SoWSPwzllj7yfNmmJloJVC5y6haOkMM-S8OLaKSNxGp_yOQsvaQsuCqgol1X6M-J2dMkb0N0GHiNs0PxDZE1ec84xiaLGi_6sEB7OeBJ--SWHpDOxLKvdE0I_iu1LDZXZDuMxer5WCqKARuWzvXQvO5vVuAT2VlETlE"/>
+<span class="absolute top-1.5 left-1.5 bg-surface-container-lowest/90 backdrop-blur-sm font-label-sm text-label-sm px-1.5 py-0.5 rounded text-on-surface font-semibold">Bottom</span>
+<button aria-label="Swap Bottom" class="absolute bottom-1.5 right-1.5 w-6 h-6 rounded-full bg-surface-container-lowest text-primary shadow flex items-center justify-center hover:scale-110 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[14px]">sync</span>
+</button>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface truncate">Wide Leg Trousers</p>
+<p class="font-body-sm text-body-sm text-outline truncate">COS Atelier</p>
+</div>
+</div>
+<!-- Footwear Card -->
+<div class="min-w-[136px] max-w-[136px] bg-surface-container-lowest rounded-2xl p-2.5 border border-outline-variant/40 shadow-sm flex flex-col justify-between relative group hover:border-primary/50 transition-colors">
+<div class="relative w-full h-24 rounded-xl bg-surface-container-low overflow-hidden mb-2">
+<img class="w-full h-full object-cover" data-alt="Product photograph of high-end black brushed calfskin loafers featuring a subtle silver buckle clasp, photographed side profile against a pristine white studio background with gentle shadow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFObk17g1olkESa25CfbfNM0RXmBozAbPNem7-7vM4t8yOplcM63-2bpG3miA7bcxnP8J355xh7rwf_QZkBrv_EAhQSqJXyAHTTF_GtyVvogUULLQBHdGygqpzah_jq-4xIMt84UdaDzK7cDmRo-XSH3srXTPPuwLE_M74iAxnpkYPIIRyJCiVr0MCuiAKWJ4ACSDHG2lcBJ6WYyn1eifQM5UVw0dBJIJzv3IEIOKmQgnI-8ZEX1rI8crrTk0KIxXLZ_J8ohWU8SU"/>
+<span class="absolute top-1.5 left-1.5 bg-surface-container-lowest/90 backdrop-blur-sm font-label-sm text-label-sm px-1.5 py-0.5 rounded text-on-surface font-semibold">Footwear</span>
+<button aria-label="Swap Footwear" class="absolute bottom-1.5 right-1.5 w-6 h-6 rounded-full bg-surface-container-lowest text-primary shadow flex items-center justify-center hover:scale-110 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[14px]">sync</span>
+</button>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface truncate">Buckle Loafers</p>
+<p class="font-body-sm text-body-sm text-outline truncate">Jil Sander</p>
+</div>
+</div>
+<!-- Add Layer Slot -->
+<button class="min-w-[96px] max-w-[96px] border border-dashed border-outline-variant rounded-2xl p-2 flex flex-col items-center justify-center gap-1.5 text-outline hover:text-primary hover:border-primary transition-colors active:scale-95" type="button">
+<span class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</span>
+<span class="font-label-sm text-label-sm font-medium">Add Layer</span>
+</button>
+</div>
+</section>
+<!-- Stylist Diagnostic Matrix (Bento Micro Insight) -->
+<section class="grid grid-cols-2 gap-2.5 mt-1">
+<div class="bg-surface-container-low p-3 rounded-2xl border border-outline-variant/30 flex flex-col justify-between">
+<div class="flex items-center gap-1.5 text-outline mb-1">
+<span class="material-symbols-outlined text-[16px]">hourglass_empty</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Silhouette</span>
+</div>
+<div>
+<p class="font-headline-sm text-headline-sm font-bold text-on-surface">Structured A-Line</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Elongates torso +4.2%</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-3 rounded-2xl border border-outline-variant/30 flex flex-col justify-between">
+<div class="flex items-center gap-1.5 text-outline mb-1">
+<span class="material-symbols-outlined text-[16px]">palette</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Palette Harmonics</span>
+</div>
+<div>
+<p class="font-headline-sm text-headline-sm font-bold text-on-surface">Deep Cold Neutral</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">88% Seasonal Alignment</p>
+</div>
+</div>
+</section>
+<!-- Action Button Group (Sticky Above Bottom Navigation Bar) -->
+<section class="flex flex-col gap-2.5 pt-2">
+<button class="w-full py-3.5 px-6 rounded-full bg-primary text-on-primary font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 shadow-md hover:bg-primary-container active:scale-[0.98] transition-all duration-150" onclick="saveToLookbook()" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">bookmark_add</span>
+<span>Save to Outfit Diary</span>
+</button>
+<button class="w-full py-3 px-6 rounded-full bg-surface-container-lowest border border-outline-variant text-on-surface font-label-lg text-label-lg font-medium flex items-center justify-center gap-2 hover:bg-surface-container active:scale-[0.98] transition-all duration-150" onclick="logAsWorn()" type="button">
+<span class="material-symbols-outlined text-[20px] text-primary">check_circle</span>
+<span>Log as Today's Worn Look</span>
+</button>
+<p class="text-center font-body-sm text-body-sm text-outline">Logging reduces Cost-Per-Wear by -$1.42 and updates Closet Health index.</p>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mandated Shared Component) -->
+<!-- Style OS Bottom Navigation Bar: active on 'Try-On' -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 border-t border-outline-variant/20 dark:border-outline/20 bg-surface-container-lowest dark:bg-inverse-surface shadow-lg dark:shadow-none">
+<!-- Home Tab (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1.5 active:scale-95 transition-transform duration-150 hover:bg-surface-container dark:hover:bg-surface-variant rounded-full" type="button">
+<span class="material-symbols-outlined text-[22px]">home</span>
+<span class="font-label-sm text-label-sm mt-0.5">Home</span>
+</button>
+<!-- Try-On Tab (ACTIVE: Exact Match to Intent) -->
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container dark:bg-primary-fixed dark:text-on-primary-fixed rounded-full px-3 py-1.5 active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">view_in_ar</span>
+<span class="font-label-sm text-label-sm mt-0.5 font-bold">Try-On</span>
+</button>
+<!-- Scan Tab (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1.5 active:scale-95 transition-transform duration-150 hover:bg-surface-container dark:hover:bg-surface-variant rounded-full" type="button">
+<span class="material-symbols-outlined text-[22px]">photo_camera</span>
+<span class="font-label-sm text-label-sm mt-0.5">Scan</span>
+</button>
+<!-- Closet Tab (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1.5 active:scale-95 transition-transform duration-150 hover:bg-surface-container dark:hover:bg-surface-variant rounded-full" type="button">
+<span class="material-symbols-outlined text-[22px]">checkroom</span>
+<span class="font-label-sm text-label-sm mt-0.5">Closet</span>
+</button>
+<!-- Health Tab (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1.5 active:scale-95 transition-transform duration-150 hover:bg-surface-container dark:hover:bg-surface-variant rounded-full" type="button">
+<span class="material-symbols-outlined text-[22px]">analytics</span>
+<span class="font-label-sm text-label-sm mt-0.5">Health</span>
+</button>
+</nav>
+<!-- Toast Notification Overlay (Micro-interaction feedback) -->
+<div class="fixed top-16 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-4 py-2.5 rounded-full text-label-md font-label-md shadow-xl flex items-center gap-2 pointer-events-none opacity-0 transition-opacity duration-200 z-50" id="toastNotification">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[18px]">verified</span>
+<span id="toastMessage">Look saved to Outfit Diary</span>
+</div>
+</div>
+<!-- Microinteraction Handlers -->
+<script>
+    function triggerToast(message) {
+      const toast = document.getElementById('toastNotification');
+      const msg = document.getElementById('toastMessage');
+      msg.textContent = message;
+      toast.classList.remove('opacity-0');
+      toast.classList.add('opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0');
+      }, 2200);
+    }
+
+    let isHearted = true;
+    function toggleSaveHeart() {
+      const heart = document.getElementById('heartIcon');
+      isHearted = !isHearted;
+      if (isHearted) {
+        heart.style.fontVariationSettings = "'FILL' 1";
+        triggerToast("Saved to favorites!");
+      } else {
+        heart.style.fontVariationSettings = "'FILL' 0";
+        triggerToast("Removed from favorites");
+      }
+    }
+
+    function saveToLookbook() {
+      triggerToast("Look #ST-9042 successfully added to Diary!");
+    }
+
+    function logAsWorn() {
+      triggerToast("Logged for Today! Metrics updated in Health tab.");
+    }
+  </script>
+</body></html>

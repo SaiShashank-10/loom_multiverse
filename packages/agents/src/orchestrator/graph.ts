@@ -1,3 +1,4 @@
+import { saveCheckpoint, phases, type Phase } from "./checkpoint.js";
 /**
  * @loom/agents — Orchestrator Graph V2
  *
@@ -46,7 +47,7 @@ async function documentIngestionNode(
   state: OrchestratorStateType,
 ): Promise<Partial<OrchestratorStateType>> {
   const documents = state.uploadedDocuments || [];
-  
+
   if (documents.length === 0) {
     log.info("No documents to ingest, skipping to idea_check");
     return { currentPhase: "document_ingestion" };
@@ -78,23 +79,65 @@ async function documentIngestionNode(
 function createPhaseNode(phase: string) {
   return async (state: OrchestratorStateType): Promise<Partial<OrchestratorStateType>> => {
     log.info({ projectId: state.projectId, phase }, "Executing graph node");
-    
+
+    const history = { ...state.chatHistory };
+    history[phase] = [...(history[phase] ?? [])];
+    const persist = (
+      status: "running" | "failed" | "completed",
+      data: Record<string, unknown> = {},
+    ) =>
+      saveCheckpoint({
+        version: 1,
+        projectId: state.projectId,
+        phase: phase as Phase,
+        status,
+        context: { ...state.context, ...data },
+        chatHistory: history,
+        documents: state.uploadedDocuments,
+      });
+    persist("running");
     try {
       const agent = agentRegistry.get(phase);
-      
+
       const result = await agent.run({
         projectId: state.projectId,
         phase,
         payload: state.context,
-        onMessage: _onMessage,
-        waitForUserInput: _waitForUserInput,
+        resumeChatHistory: history[phase],
+        onMessage: (event: string, data: unknown) => {
+          if (event === "agent:message" && typeof (data as any)?.message === "string") {
+            history[phase]!.push({
+              role: "agent",
+              content: (data as any).message,
+              timestamp: new Date().toISOString(),
+            });
+            persist("running");
+          }
+          _onMessage?.(event, data);
+        },
+        waitForUserInput: _waitForUserInput
+          ? async () => {
+              const message = await _waitForUserInput!();
+              history[phase]!.push({
+                role: "user",
+                content: message,
+                timestamp: new Date().toISOString(),
+              });
+              persist("running");
+              return message;
+            }
+          : undefined,
         interactive: _interactive,
       });
 
+      if (result.chatHistory) history[phase] = result.chatHistory;
+      persist(result.success ? "completed" : "failed", result.data);
       if (!result.success) {
         log.warn({ phase, error: result.error }, "Phase failed");
         return {
           error: result.error ?? `Phase ${phase} failed without a specific error message.`,
+          currentPhase: phase,
+          context: result.data ?? {},
         };
       }
 
@@ -113,11 +156,11 @@ function createPhaseNode(phase: string) {
       updates.approvals = { [phase]: true };
 
       return updates;
-      
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
+      persist("failed");
       log.error({ phase, error: message }, "Uncaught error in phase node");
-      return { error: message };
+      return { error: message, currentPhase: phase };
     }
   };
 }
@@ -128,6 +171,7 @@ function createPhaseNode(phase: string) {
 
 const ideaCheckNode = createPhaseNode("idea_check");
 const planningNode = createPhaseNode("planning");
+const stitchNode = createPhaseNode("stitch");
 const codeGenNode = createPhaseNode("code_gen");
 
 // ─────────────────────────────────────────────
@@ -146,6 +190,11 @@ function routeAfterIdeaCheck(state: OrchestratorStateType): string {
 
 function routeAfterPlanning(state: OrchestratorStateType): string {
   if (state.error) return END;
+  return "stitch";
+}
+
+function routeAfterStitch(state: OrchestratorStateType): string {
+  if (state.error) return END;
   return "code_gen";
 }
 
@@ -163,13 +212,21 @@ const workflow = new StateGraph(OrchestratorState)
   .addNode("document_ingestion", documentIngestionNode)
   .addNode("idea_check", ideaCheckNode)
   .addNode("planning", planningNode)
+  .addNode("stitch", stitchNode)
   .addNode("code_gen", codeGenNode)
-  
+
   // Add Edges
-  .addEdge("__start__", "document_ingestion")
+  .addConditionalEdges("__start__", (state) =>
+    phases.includes(state.context.resumePhase as Phase)
+      ? (state.context.resumePhase as Phase)
+      : state.context.resumeStitch === true
+        ? "stitch"
+        : "document_ingestion",
+  )
   .addConditionalEdges("document_ingestion", routeAfterDocIngestion)
   .addConditionalEdges("idea_check", routeAfterIdeaCheck)
   .addConditionalEdges("planning", routeAfterPlanning)
+  .addConditionalEdges("stitch", routeAfterStitch)
   .addConditionalEdges("code_gen", routeAfterCodeGen);
 
 /**

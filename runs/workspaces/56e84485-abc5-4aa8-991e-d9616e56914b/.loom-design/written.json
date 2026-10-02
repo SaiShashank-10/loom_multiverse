@@ -1,0 +1,10 @@
+{
+  "src/App.tsx": {
+    "design": "36b4afbcac6b6b75d4848f6aa4fdad2d4dea9e75bbd039a1cc7a6e036b247911",
+    "source": "d00ab8d5eb5ecf620d977fe81721d40933e516afde632e819b489dd243cf80aa"
+  },
+  "index.html": {
+    "design": "36b4afbcac6b6b75d4848f6aa4fdad2d4dea9e75bbd039a1cc7a6e036b247911",
+    "source": "764c6a117ed14e089d86e3fcf5432fcfa88c2517507ab0468080f859f2ce7521"
+  }
+}

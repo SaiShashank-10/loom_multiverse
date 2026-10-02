@@ -1,0 +1,60 @@
+{
+  "files": [
+    {
+      "path": "package.json",
+      "description": "Installed dependencies and verified dev/start/build/typecheck/test commands"
+    },
+    {
+      "path": "vite.config.ts",
+      "description": "Vite React with same-origin local persistent API middleware for development and preview"
+    },
+    {
+      "path": "tsconfig.json",
+      "description": "Strict TypeScript application checking"
+    },
+    {
+      "path": "index.html",
+      "description": "Browser application entry"
+    },
+    {
+      "path": "src/main.tsx",
+      "description": "React root and application stylesheet"
+    },
+    {
+      "path": "src/App.tsx",
+      "description": "Shared navigation, routes, data context, polling, error and loading states"
+    },
+    {
+      "path": "src/data.ts",
+      "description": "Typed record contract, API client and escaped CSV/JSON export"
+    },
+    {
+      "path": "src/index.css",
+      "description": "Responsive layout, colors, spacing, controls, charts and tables"
+    },
+    {
+      "path": "src/components/EWasteRealTimeAnalyticsDashboard.tsx",
+      "description": "Record collection, truthful mass metrics, grouped bars, composition and activity"
+    },
+    {
+      "path": "src/components/EWasteSettingsPreferences.tsx",
+      "description": "Persistent local preferences and explicit external service boundaries"
+    },
+    {
+      "path": "src/components/EWasteReportsAuditing.tsx",
+      "description": "Filter scope, audit table, search, pagination, export, detail and deletion"
+    },
+    {
+      "path": "server/api.mjs",
+      "description": "Local API with serialized atomic JSON persistence and measurement validation"
+    },
+    {
+      "path": "tests/api.test.mjs",
+      "description": "Real HTTP validation, persistence across server restarts and deletion tests"
+    },
+    {
+      "path": "README.md",
+      "description": "Local run instructions and verified scope"
+    }
+  ]
+}

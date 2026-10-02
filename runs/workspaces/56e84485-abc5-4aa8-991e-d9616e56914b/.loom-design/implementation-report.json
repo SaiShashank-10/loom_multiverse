@@ -1,0 +1,30 @@
+{
+  "fingerprint": "36b4afbcac6b6b75d4848f6aa4fdad2d4dea9e75bbd039a1cc7a6e036b247911",
+  "checkedAt": "2026-09-21T13:26:34.418Z",
+  "sourceChecksPassed": true,
+  "visualComparison": "not_performed",
+  "coverage": [
+    {
+      "screen": "b4eabd0158f74959ab776d7baaccc412",
+      "title": "E-Waste Real-time Analytics Dashboard",
+      "files": [
+        "src/components/EWasteRealTimeAnalyticsDashboard.tsx"
+      ]
+    },
+    {
+      "screen": "a89388fff35c45bca5ccb7f9d4cb84e8",
+      "title": "E-Waste Settings & Preferences",
+      "files": [
+        "src/components/EWasteSettingsPreferences.tsx"
+      ]
+    },
+    {
+      "screen": "340de51a65504f5ba637952a63a01aa4",
+      "title": "E-Waste Reports & Auditing",
+      "files": [
+        "src/components/EWasteReportsAuditing.tsx"
+      ]
+    }
+  ],
+  "problems": []
+}

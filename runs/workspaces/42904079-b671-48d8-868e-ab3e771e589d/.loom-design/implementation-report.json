@@ -1,0 +1,51 @@
+{
+  "fingerprint": "372c49b74e13f1e7e550240d11cf5201fca7bb28f57b7872d655d84208d3cac9",
+  "checkedAt": "2026-09-21T14:23:09.998Z",
+  "sourceChecksPassed": true,
+  "visualComparison": "not_performed",
+  "coverage": [
+    {
+      "screen": "92158cd393c44d51a72f25ff9db28d8e",
+      "title": "Style OS - Closet Health & Wardrobe Analytics",
+      "files": [
+        "lib/screens/closet_health_and_analytics_screen.dart"
+      ]
+    },
+    {
+      "screen": "ddaffde2a6fc441dbde161885848eb41",
+      "title": "Style OS - AI Wardrobe Scan & Auto-Detection",
+      "files": [
+        "lib/screens/ai_wardrobe_scan_and_auto_detection_screen.dart"
+      ]
+    },
+    {
+      "screen": "478cab51f9444a99b4fe3d68a8acbf76",
+      "title": "Style OS - Mobile Settings & Wardrobe Management",
+      "files": [
+        "lib/screens/mobile_settings_and_wardrobe_management_screen.dart"
+      ]
+    },
+    {
+      "screen": "6f31004900a14c4997c32d3c35afe0ce",
+      "title": "Style OS - Virtual Try-On & Outfit Diary",
+      "files": [
+        "lib/screens/virtual_try_on_and_outfit_diary_screen.dart"
+      ]
+    },
+    {
+      "screen": "ffc4be0e3da14ef69d619f0b475ffb3e",
+      "title": "Style OS - Mobile Home",
+      "files": [
+        "lib/screens/mobile_home_screen.dart"
+      ]
+    },
+    {
+      "screen": "f25ffcf226924113a9d9970b7f4fb858",
+      "title": "Style OS - Mobile Closet & Wardrobe Grid",
+      "files": [
+        "lib/screens/mobile_closet_and_wardrobe_grid_screen.dart"
+      ]
+    }
+  ],
+  "problems": []
+}

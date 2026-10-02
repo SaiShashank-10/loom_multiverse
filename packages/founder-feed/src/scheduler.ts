@@ -2,7 +2,7 @@ import cron from "node-cron";
 import { createLogger } from "@loom/shared/logger";
 import { FeedAggregator } from "./aggregator.js";
 import { createDatabaseClient, projects } from "@loom/database";
-import { eq, inArray } from "drizzle-orm";
+import { inArray } from "drizzle-orm";
 
 const log = createLogger("feed-scheduler");
 

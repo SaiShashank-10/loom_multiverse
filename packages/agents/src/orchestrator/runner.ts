@@ -1,3 +1,4 @@
+import { saveCheckpoint } from "./checkpoint.js";
 /**
  * @loom/agents — Orchestrator Runner V2
  *
@@ -37,22 +38,24 @@ export interface RunPipelineOptions {
 }
 
 export class PipelineRunner {
-  
   /**
    * Starts a new pipeline execution or resumes an existing one.
-   * 
+   *
    * @param options Project ID, context, and interactive mode config
    * @returns The final state of the pipeline
    */
   static async run(options: RunPipelineOptions): Promise<OrchestratorStateType> {
     const threadId = options.threadId ?? `thread-${options.projectId}`;
-    
-    log.info({ 
-      projectId: options.projectId, 
-      threadId,
-      interactive: options.interactive ?? false,
-      documentCount: options.documents?.length ?? 0,
-    }, "Starting pipeline execution V2");
+
+    log.info(
+      {
+        projectId: options.projectId,
+        threadId,
+        interactive: options.interactive ?? false,
+        documentCount: options.documents?.length ?? 0,
+      },
+      "Starting pipeline execution V2",
+    );
 
     // Set interactive callbacks on the graph module
     setInteractiveCallbacks({
@@ -63,58 +66,80 @@ export class PipelineRunner {
 
     try {
       const config = { configurable: { thread_id: threadId } };
-      
+
       const initialState: Partial<OrchestratorStateType> = {
         projectId: options.projectId,
         context: options.initialContext ?? {},
         uploadedDocuments: options.documents ?? [],
       };
 
+      initialState.chatHistory = (options.initialContext?.resumeHistory ??
+        {}) as OrchestratorStateType["chatHistory"];
+      initialState.error = null;
+      if (!options.initialContext?.resumePhase && !options.initialContext?.resumeStitch)
+        saveCheckpoint({
+          version: 1,
+          projectId: options.projectId,
+          phase: "document_ingestion",
+          status: "running",
+          context: initialState.context!,
+          chatHistory: {},
+          documents: options.documents ?? [],
+        });
       // Stream mode for progress tracking
       if (options.onProgress || options.onMessage) {
         const progressFn = options.onMessage ?? options.onProgress!;
         progressFn("pipeline:started", { projectId: options.projectId });
-        
-        const stream = await compiledGraph.stream(initialState, config);
-        
+
+        const stream = await compiledGraph.stream(initialState, {
+          ...config,
+          streamMode: "values",
+        });
+
         let finalState: OrchestratorStateType | null = null;
         for await (const chunk of stream) {
           progressFn("pipeline:progress", chunk);
-          finalState = Object.values(chunk)[0] as OrchestratorStateType;
+          finalState = chunk as OrchestratorStateType;
         }
-        
-        progressFn("pipeline:completed", { finalPhase: finalState?.currentPhase });
-        
-        log.info({ 
-          projectId: options.projectId, 
-          finalPhase: finalState?.currentPhase,
-          hasError: !!finalState?.error 
-        }, "Pipeline execution completed");
-        
+
+        if (finalState?.error) progressFn("pipeline:error", { error: finalState.error });
+        else progressFn("pipeline:completed", { finalPhase: finalState?.currentPhase });
+
+        log.info(
+          {
+            projectId: options.projectId,
+            finalPhase: finalState?.currentPhase,
+            hasError: !!finalState?.error,
+          },
+          "Pipeline execution completed",
+        );
+
         return finalState!;
       }
 
       // Direct invoke mode
       const finalState = await compiledGraph.invoke(initialState, config);
-      
-      log.info({ 
-        projectId: options.projectId, 
-        finalPhase: finalState.currentPhase,
-        hasError: !!finalState.error 
-      }, "Pipeline execution completed");
-      
+
+      log.info(
+        {
+          projectId: options.projectId,
+          finalPhase: finalState.currentPhase,
+          hasError: !!finalState.error,
+        },
+        "Pipeline execution completed",
+      );
+
       return finalState;
-      
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
-      log.error({ projectId: options.projectId, error: message }, "Pipeline execution failed catastrophically");
-      
-      throw new AgentError(
-        `Pipeline execution failed: ${message}`,
-        "orchestrator",
-        undefined,
-        { projectId: options.projectId }
+      log.error(
+        { projectId: options.projectId, error: message },
+        "Pipeline execution failed catastrophically",
       );
+
+      throw new AgentError(`Pipeline execution failed: ${message}`, "orchestrator", undefined, {
+        projectId: options.projectId,
+      });
     }
   }
 }

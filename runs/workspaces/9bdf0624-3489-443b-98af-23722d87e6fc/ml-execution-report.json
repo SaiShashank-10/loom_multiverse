@@ -1,0 +1,4 @@
+{
+  "status": "blocked",
+  "error": "Real training needs a dataset. Set dataset in ml-run.json (see ml/README.md for its schema), then resume this project. No training results were fabricated."
+}

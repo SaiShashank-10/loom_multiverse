@@ -1,0 +1,8 @@
+{
+  "file": "src/context/AuthContext.tsx",
+  "design": "e542aba9b34c8599240c7e394dd14245316b3b495fe0e9257fb2599de934c570",
+  "source": "import React, { createContext, useContext, useState } from 'react';\n\ninterface AuthContextType {\n  user: any | null;\n  login: (user: any) => void;\n  logout: () => void;\n}\n\nconst AuthContext = createContext<AuthContextType>({ user: null, login: () => {}, logout: () => {} });\n\nexport const useAuth = () => useContext(AuthContext);\n\ninterface AuthProviderProps {\n  children: React.ReactNode;\n}\n\nconst AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {\n  const [user, setUser] = useState<any | null>(null);\n\n  const login = (user: any) => {\n    setUser(user);\n  };\n\n  const logout = () => {\n    setUser(null);\n  };\n\n  return (\n    <AuthContext.Provider value={{ user, login, logout }}>\n      {children}\n    </AuthContext.Provider>\n  );\n};\n\nexport default AuthProvider;\n",
+  "issues": [
+    "Source checkpoint: design review is pending"
+  ]
+}

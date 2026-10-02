@@ -13,6 +13,11 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "dev:web": "pnpm --filter @loom/web dev",
+    "dev:studio": "node scripts/dev-studio.mjs",
+    "test:auth": "node --env-file=.env scripts/test-auth.mjs",
+    "dev:api": "node apps/api/node_modules/tsx/dist/cli.mjs watch --env-file=.env apps/api/src/index.ts",
+    "build:studio": "pnpm --filter @loom/api... build && pnpm --filter @loom/web build",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",
     "typecheck": "turbo run typecheck",

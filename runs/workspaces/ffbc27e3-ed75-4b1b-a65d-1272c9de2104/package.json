@@ -1,0 +1,9 @@
+{
+  "name": "expense-master-workspace",
+  "private": true,
+  "scripts": {
+    "start": "npm --prefix backend start",
+    "test": "npm --prefix backend test",
+    "client": "cd frontend && flutter run -d chrome"
+  }
+}

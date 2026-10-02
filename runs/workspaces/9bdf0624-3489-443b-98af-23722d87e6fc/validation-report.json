@@ -1,0 +1,41 @@
+{
+  "success": true,
+  "checks": [
+    {
+      "cwd": "C:\\Shashank\\loom_multiverse\\runs\\workspaces\\9bdf0624-3489-443b-98af-23722d87e6fc\\ml",
+      "stage": "install",
+      "command": "python -m venv .venv"
+    },
+    {
+      "cwd": "C:\\Shashank\\loom_multiverse\\runs\\workspaces\\9bdf0624-3489-443b-98af-23722d87e6fc\\ml",
+      "stage": "install",
+      "command": ".venv\\Scripts\\python.exe -m pip install -r requirements.txt"
+    },
+    {
+      "cwd": "C:\\Shashank\\loom_multiverse\\runs\\workspaces\\9bdf0624-3489-443b-98af-23722d87e6fc\\ml",
+      "stage": "validate",
+      "command": ".venv\\Scripts\\python.exe -m compileall -q -x \"[\\\\/](.venv|venv)[\\\\/]\" ."
+    },
+    {
+      "cwd": "C:\\Shashank\\loom_multiverse\\runs\\workspaces\\9bdf0624-3489-443b-98af-23722d87e6fc\\ml",
+      "stage": "validate",
+      "command": ".venv\\Scripts\\python.exe -m pytest"
+    },
+    {
+      "cwd": "C:\\Shashank\\loom_multiverse\\runs\\workspaces\\9bdf0624-3489-443b-98af-23722d87e6fc",
+      "stage": "install",
+      "command": "npm install"
+    },
+    {
+      "cwd": "C:\\Shashank\\loom_multiverse\\runs\\workspaces\\9bdf0624-3489-443b-98af-23722d87e6fc",
+      "stage": "validate",
+      "command": "npm run build"
+    },
+    {
+      "cwd": "C:\\Shashank\\loom_multiverse\\runs\\workspaces\\9bdf0624-3489-443b-98af-23722d87e6fc",
+      "stage": "validate",
+      "command": "npm run test"
+    }
+  ],
+  "attempts": 1
+}

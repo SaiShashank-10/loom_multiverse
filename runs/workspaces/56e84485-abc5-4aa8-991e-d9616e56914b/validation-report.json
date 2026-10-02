@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "checks": [
+    {
+      "cwd": "C:\\Shashank\\loom_multiverse\\runs\\workspaces\\56e84485-abc5-4aa8-991e-d9616e56914b",
+      "stage": "install",
+      "command": "npm install"
+    },
+    {
+      "cwd": "C:\\Shashank\\loom_multiverse\\runs\\workspaces\\56e84485-abc5-4aa8-991e-d9616e56914b",
+      "stage": "validate",
+      "command": "npm run typecheck"
+    },
+    {
+      "cwd": "C:\\Shashank\\loom_multiverse\\runs\\workspaces\\56e84485-abc5-4aa8-991e-d9616e56914b",
+      "stage": "validate",
+      "command": "npm run build"
+    },
+    {
+      "cwd": "C:\\Shashank\\loom_multiverse\\runs\\workspaces\\56e84485-abc5-4aa8-991e-d9616e56914b",
+      "stage": "validate",
+      "command": "npm run test"
+    }
+  ],
+  "attempts": 1
+}

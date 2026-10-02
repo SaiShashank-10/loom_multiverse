@@ -1,0 +1,26 @@
+{
+  "fingerprint": "36b4afbcac6b6b75d4848f6aa4fdad2d4dea9e75bbd039a1cc7a6e036b247911",
+  "screens": [
+    {
+      "id": "b4eabd0158f74959ab776d7baaccc412",
+      "title": "E-Waste Real-time Analytics Dashboard",
+      "device": "MOBILE",
+      "sha256": "90a7ba124e7aa0b8999ecb6bce14ff95fed9a319f078f6809b61de3f5a18e165",
+      "screenshotUrl": "https://lh3.googleusercontent.com/aida/AEtjO1Xi3xpqUZPqeOZeqVuqTBLSlJmmq28dqftwqaOKqLh5ZIKk71gno17ILHZdJVJl8hDx56vrUy6Y-Akx3J7iit0CBe1sjjwMlDS6cTO62mEtW3bOQyMI2yeBVP1r-sy5paTZe9uwpBK-2YS5aEN6gl3BfLXX0Jx7YIprSoMaWoKOS-98pmSNEnaRbn8lWLNebmmJ30yC4ouut0ckOh9mX1iwo-8q5B9oY-bTBbSAEStUw7emORsOltcInNoa"
+    },
+    {
+      "id": "a89388fff35c45bca5ccb7f9d4cb84e8",
+      "title": "E-Waste Settings & Preferences",
+      "device": "MOBILE",
+      "sha256": "72954a92268deb7252dc5d602de4d62185281e8f0583a9c166f30ae7c09746e3",
+      "screenshotUrl": "https://lh3.googleusercontent.com/aida/AEtjO1VyxA4KOZiiNJ-2VdEarHW5Sm21QeoG_Vt3Urh0lqpr72FDkJuDlPUJcvj2SezJsBLi32ggXekE-Uy1WPS_Wv53k6pUp7S8FI5q8hlOKBlkKqYBLV6dq4cTYNo2ozQHYxUVoZECuEysZQ63LXMyl0x6wduJtv2GsQNy8pAHXuTluXZPCwrS13PAtxXaTNfth2WewDCkdDCuQxxj0IbcKpt-f5EEhARBOv0lUkm1qrLzSA0l0Mjl6cw5TbRo"
+    },
+    {
+      "id": "340de51a65504f5ba637952a63a01aa4",
+      "title": "E-Waste Reports & Auditing",
+      "device": "MOBILE",
+      "sha256": "c7ee2b4c27c3d57e6db96a772389ae5c22040fd0b3829c8fd9080f69df469f1b",
+      "screenshotUrl": "https://lh3.googleusercontent.com/aida/AEtjO1U9X7UUIAJDgpAgEjBcsXFETgN3iqHIELw_yCbFbEQQYPocasJkpvGsVTu8fADY3EZDjsTO_UJ4-mE7C8sO869lQiRT3r1dSj4G3cPk_IsrtFF0QjemmrMPmUADWXMhcuS0Jx4mGozK40e6conApakomILLfNGg8KJafUaq3iy1G_bhn5rx78439-gqtBIO4hSu5rLOM5QULslHUeShEhi8ikSHsn2-dnzG0rojaFN6FI_NmLBQJhJBhKGP"
+    }
+  ]
+}

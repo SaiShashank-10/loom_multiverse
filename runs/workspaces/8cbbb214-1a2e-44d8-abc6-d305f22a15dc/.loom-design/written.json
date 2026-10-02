@@ -1,0 +1,10 @@
+{
+  "src/styles/global.css": {
+    "design": "e542aba9b34c8599240c7e394dd14245316b3b495fe0e9257fb2599de934c570",
+    "source": "dbd6a5a4e3fa14777ff84ba85c090a3c8fffdab5ebd842399e4f74f8e3ee61b7"
+  },
+  "src/styles/theme.css": {
+    "design": "e542aba9b34c8599240c7e394dd14245316b3b495fe0e9257fb2599de934c570",
+    "source": "30688ac9971d8c8a7b64c37a6f3d54429bd0678be21ee7500d4943067f244dc8"
+  }
+}

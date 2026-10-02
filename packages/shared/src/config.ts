@@ -28,7 +28,8 @@ const configSchema = z.object({
   // Ollama (Local — FREE)
   OLLAMA_BASE_URL: z.string().url().default("http://127.0.0.1:11434"),
   OLLAMA_MODEL: z.string().default("qwen3:4b"),
-  OLLAMA_CODE_MODEL: z.string().default("qwen3:8b"),
+  OLLAMA_CODE_MODEL: z.string().default("qwen2.5-coder:7b"),
+  OLLAMA_REPAIR_MODEL: z.string().optional(),
   OLLAMA_EMBED_MODEL: z.string().default("nomic-embed-text"),
 
   // Embedding Provider — "ollama" uses nomic-embed-text (768 dims, FREE)

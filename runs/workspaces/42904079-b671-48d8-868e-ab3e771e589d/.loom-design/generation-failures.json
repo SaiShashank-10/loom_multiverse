@@ -1,0 +1,10 @@
+{
+  "lib/screens/closet_health_and_analytics_screen.dart": "ResponseError: model requires more system memory (5.2 GiB) than is available (4.0 GiB)",
+  "lib/screens/ai_wardrobe_scan_and_auto_detection_screen.dart": "ResponseError: model requires more system memory (5.2 GiB) than is available (4.0 GiB)",
+  "lib/screens/mobile_settings_and_wardrobe_management_screen.dart": "ResponseError: model requires more system memory (5.2 GiB) than is available (3.9 GiB)",
+  "lib/screens/virtual_try_on_and_outfit_diary_screen.dart": "ResponseError: model requires more system memory (5.2 GiB) than is available (4.0 GiB)",
+  "lib/screens/mobile_home_screen.dart": "ResponseError: model requires more system memory (5.2 GiB) than is available (4.0 GiB)",
+  "lib/screens/mobile_closet_and_wardrobe_grid_screen.dart": "ResponseError: model requires more system memory (5.2 GiB) than is available (4.1 GiB)",
+  "lib/main.dart": "Error: lib/main.dart: Stitch source review still fails: The `MyApp` class does not implement the required layout hierarchy and components as per the approved reference. The reference includes a detailed layout with multiple sections such as Closet Health, Wardrobe Gaps, Dormant Items, Category Utilization, and Economic & Eco Impact. The current implementation only shows a simple 'Welcome to Style OS!' message in the center of the screen.; The `MobileHomeScreen` class does not include any of the required components or sections mentioned in the approved reference. It lacks the detailed layout, navigation elements, and interactive features present in the reference design.",
+  "lib/widgets/style_components.dart": "ResponseError: model requires more system memory (5.2 GiB) than is available (4.1 GiB)"
+}

@@ -56,7 +56,7 @@ export class ProductHuntAdapter implements FeedSource {
         if (textContent.length > 0) {
            const parts = textContent.split("—"); // em dash
            if (parts.length > 1) {
-             title = parts[0].trim();
+             title = parts[0]!.trim();
              snippet = parts.slice(1).join("—").trim();
            } else {
              title = textContent.substring(0, 50) + (textContent.length > 50 ? "..." : "");

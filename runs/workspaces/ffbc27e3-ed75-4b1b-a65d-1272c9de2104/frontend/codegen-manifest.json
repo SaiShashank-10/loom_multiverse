@@ -1,0 +1,180 @@
+{
+  "files": [
+    {
+      "path": ".flutter-plugins-dependencies",
+      "description": "Existing project file: .flutter-plugins-dependencies. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": ".gitignore",
+      "description": "Existing project file: .gitignore. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": ".metadata",
+      "description": "Existing project file: .metadata. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "FIREBASE_SETUP.md",
+      "description": "Existing project file: FIREBASE_SETUP.md. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "README.md",
+      "description": "Existing project file: README.md. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "analysis_options.yaml",
+      "description": "Existing project file: analysis_options.yaml. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "android/.gitignore",
+      "description": "Existing project file: android/.gitignore. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "android/app/build.gradle.kts",
+      "description": "Existing project file: android/app/build.gradle.kts. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "android/app/google-services.json",
+      "description": "Existing project file: android/app/google-services.json. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "android/app/src/debug/AndroidManifest.xml",
+      "description": "Existing project file: android/app/src/debug/AndroidManifest.xml. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "android/app/src/main/AndroidManifest.xml",
+      "description": "Existing project file: android/app/src/main/AndroidManifest.xml. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java",
+      "description": "Existing project file: android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/example/expense_master/MainActivity.kt",
+      "description": "Existing project file: android/app/src/main/kotlin/com/example/expense_master/MainActivity.kt. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "android/app/src/main/res/drawable-v21/launch_background.xml",
+      "description": "Existing project file: android/app/src/main/res/drawable-v21/launch_background.xml. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "android/app/src/main/res/drawable/launch_background.xml",
+      "description": "Existing project file: android/app/src/main/res/drawable/launch_background.xml. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "android/app/src/main/res/values-night/styles.xml",
+      "description": "Existing project file: android/app/src/main/res/values-night/styles.xml. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "android/app/src/main/res/values/styles.xml",
+      "description": "Existing project file: android/app/src/main/res/values/styles.xml. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "android/app/src/profile/AndroidManifest.xml",
+      "description": "Existing project file: android/app/src/profile/AndroidManifest.xml. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "android/build.gradle.kts",
+      "description": "Existing project file: android/build.gradle.kts. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "android/gradle.properties",
+      "description": "Existing project file: android/gradle.properties. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "android/gradle/wrapper/gradle-wrapper.properties",
+      "description": "Existing project file: android/gradle/wrapper/gradle-wrapper.properties. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "android/gradlew",
+      "description": "Existing project file: android/gradlew. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "android/gradlew.bat",
+      "description": "Existing project file: android/gradlew.bat. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "android/local.properties",
+      "description": "Existing project file: android/local.properties. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "android/settings.gradle.kts",
+      "description": "Existing project file: android/settings.gradle.kts. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "firebase.json",
+      "description": "Existing project file: firebase.json. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "firestore.rules",
+      "description": "Existing project file: firestore.rules. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "lib/firebase_options.dart",
+      "description": "Existing project file: lib/firebase_options.dart. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "lib/main.dart",
+      "description": "Existing project file: lib/main.dart. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "lib/models/budget_model.dart",
+      "description": "Existing project file: lib/models/budget_model.dart. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "lib/models/transaction_model.dart",
+      "description": "Existing project file: lib/models/transaction_model.dart. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "lib/models/user_model.dart",
+      "description": "Existing project file: lib/models/user_model.dart. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "lib/screens/dashboard_screen.dart",
+      "description": "Existing project file: lib/screens/dashboard_screen.dart. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "lib/screens/login_screen.dart",
+      "description": "Existing project file: lib/screens/login_screen.dart. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "lib/services/api_service.dart",
+      "description": "Existing project file: lib/services/api_service.dart. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "lib/services/auth_service.dart",
+      "description": "Existing project file: lib/services/auth_service.dart. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "lib/services/ml_service.dart",
+      "description": "Existing project file: lib/services/ml_service.dart. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "lib/utils/date_utils.dart",
+      "description": "Existing project file: lib/utils/date_utils.dart. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "pubspec.yaml",
+      "description": "Existing project file: pubspec.yaml. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "test/app_test.dart",
+      "description": "Existing project file: test/app_test.dart. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "test/firebase_services_test.dart",
+      "description": "Existing project file: test/firebase_services_test.dart. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "test/widget_test.dart",
+      "description": "Existing project file: test/widget_test.dart. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "web/index.html",
+      "description": "Existing project file: web/index.html. Preserve its implementation and repair only diagnosed defects."
+    },
+    {
+      "path": "web/manifest.json",
+      "description": "Existing project file: web/manifest.json. Preserve its implementation and repair only diagnosed defects."
+    }
+  ]
+}

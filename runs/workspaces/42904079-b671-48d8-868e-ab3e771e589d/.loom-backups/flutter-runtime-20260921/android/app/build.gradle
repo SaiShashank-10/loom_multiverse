@@ -1,0 +1,32 @@
+android/app/build.gradle
+apply plugin: 'com.android.application'
+apply from: "../../node_modules/flutter/packages/flutter_tools/scriptsFlutter.gradle"
+
+android {
+    compileSdkVersion 30
+defaultConfig {
+        applicationId "com.styleos"
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+            useProguard false
+classpath 'com.google.gms:google-services:4.3.10'
+proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation project(':flutter')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.google.firebase:firebase-core:19.6.0'
+}
+
+apply plugin: 'com.google.gms.google-services'

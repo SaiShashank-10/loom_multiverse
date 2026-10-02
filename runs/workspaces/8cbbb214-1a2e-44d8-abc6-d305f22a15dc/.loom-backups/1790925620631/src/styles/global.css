@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #f7f9ff;
+  color: #161c22;
+  line-height: 1.5;
+}
+
+div, p, h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 1rem;
+}
+
+button, input, textarea {
+  font-family: inherit;
+  border-radius: 0.125rem;
+}
+
+/* Shared styles for common elements */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.header {
+  background-color: #ffffff;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e3e9f0;
+}
+
+.footer {
+  background-color: #2b3137;
+  color: #fefcff;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* Responsive variants */
+@media (max-width: 640px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+}

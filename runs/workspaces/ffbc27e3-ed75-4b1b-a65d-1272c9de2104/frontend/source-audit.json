@@ -1,0 +1,360 @@
+{
+  "success": true,
+  "checkedAt": "2026-09-20T15:13:26.291Z",
+  "counts": {
+    "total": 58,
+    "invalid": 0,
+    "valid": 44
+  },
+  "warnings": [],
+  "entries": [
+    {
+      "path": ".flutter-plugins-dependencies",
+      "bytes": 3982,
+      "sha256": "2569089a9ac6bc904f9486a57cbaab94f17e5b6842f0349927dee5825b98e7c1",
+      "status": "valid"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 748,
+      "sha256": "1e725ca8cb4e6c2a19dc889d0cebb497d954f091aba3b08d53df20edd0a98cdb",
+      "status": "valid"
+    },
+    {
+      "path": ".metadata",
+      "bytes": 1114,
+      "sha256": "e9c9c269a5174f8d775bdaaaa895705c5aaa763d855383fb9cb756ed13dd6c31",
+      "status": "valid"
+    },
+    {
+      "path": "FIREBASE_SETUP.md",
+      "bytes": 5248,
+      "sha256": "aebd342e9aa7abfc1014942aebd4775419d89ec1e76f04f32426a5cf5a8383e5",
+      "status": "documentation"
+    },
+    {
+      "path": "README.md",
+      "bytes": 573,
+      "sha256": "af20486341cb2bb5b761718e3f4f5130419c3997628de9f75d1111d189c5a053",
+      "status": "documentation"
+    },
+    {
+      "path": "analysis_options.yaml",
+      "bytes": 39,
+      "sha256": "7618479961a46decab1d7a7d08c85a1dcd78a59d9dd8eca87fa155d5b0dc200c",
+      "status": "valid"
+    },
+    {
+      "path": "android/.gitignore",
+      "bytes": 267,
+      "sha256": "c9af75dbc2c8aa867476a09426c80b178c4aeed8b9393ae48503eedfa3273d71",
+      "status": "valid"
+    },
+    {
+      "path": "android/app/build.gradle.kts",
+      "bytes": 1519,
+      "sha256": "35a93cad5da749735abffbf31a4f03df2ee170bc78a9df8b1a2db45ee83a8773",
+      "status": "valid"
+    },
+    {
+      "path": "android/app/google-services.json",
+      "bytes": 694,
+      "sha256": "b395cc05abc383e1bd0ea0884ef9d44a1a34f42a32c4fb26d2f7c4827abd428f",
+      "status": "valid"
+    },
+    {
+      "path": "android/app/src/debug/AndroidManifest.xml",
+      "bytes": 442,
+      "sha256": "833ceca807d101a152bfe898ef849446b863af4cf505ffa156d7d4b04d82901e",
+      "status": "valid"
+    },
+    {
+      "path": "android/app/src/main/AndroidManifest.xml",
+      "bytes": 1982,
+      "sha256": "c902e7a944ece269354a03588cc71fd1e366a9f897e5380309102a0468c1b983",
+      "status": "valid"
+    },
+    {
+      "path": "android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java",
+      "bytes": 1351,
+      "sha256": "7e7cbf045b33c281c0d4c133c38661c6468e3307fe133bf73da5c2dd2380258b",
+      "status": "valid"
+    },
+    {
+      "path": "android/app/src/main/kotlin/com/example/expense_master/MainActivity.kt",
+      "bytes": 292,
+      "sha256": "7d00ce4b70f3e4c3d9d79eee3d5f0e1051472775d8052423e741364b605fcd85",
+      "status": "valid"
+    },
+    {
+      "path": "android/app/src/main/res/drawable-v21/launch_background.xml",
+      "bytes": 450,
+      "sha256": "dca312ec77de83e43ef70a825c299b51451247286c29167d62f19165750b8793",
+      "status": "valid"
+    },
+    {
+      "path": "android/app/src/main/res/drawable/launch_background.xml",
+      "bytes": 446,
+      "sha256": "2df60e2cfbee873ce2858088cf003e6b93498f2f568476da437610467ea1a9d7",
+      "status": "valid"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-hdpi/ic_launcher.png",
+      "bytes": 544,
+      "sha256": "6a7c8f0d703e3682108f9662f813302236240d3f8f638bb391e32bfb96055fef",
+      "status": "asset"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-mdpi/ic_launcher.png",
+      "bytes": 442,
+      "sha256": "c7c0c0189145e4e32a401c61c9bdc615754b0264e7afae24e834bb81049eaf81",
+      "status": "asset"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xhdpi/ic_launcher.png",
+      "bytes": 721,
+      "sha256": "e14aa40904929bf313fded22cf7e7ffcbf1d1aac4263b5ef1be8bfce650397aa",
+      "status": "asset"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png",
+      "bytes": 1031,
+      "sha256": "4d470bf22d5c17d84edc5f82516d1ba8a1c09559cd761cefb792f86d9f52b540",
+      "status": "asset"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+      "bytes": 1443,
+      "sha256": "3c34e1f298d0c9ea3455d46db6b7759c8211a49e9ec6e44b635fc5c87dfb4180",
+      "status": "asset"
+    },
+    {
+      "path": "android/app/src/main/res/values-night/styles.xml",
+      "bytes": 1013,
+      "sha256": "ea763597dc1a84c8034251caee98d7753e0fbf57340ffc94677427de4b537516",
+      "status": "valid"
+    },
+    {
+      "path": "android/app/src/main/res/values/styles.xml",
+      "bytes": 996,
+      "sha256": "937d7c82f539c72eb94fd3a3773f29b3d3fef1997213c92cb632298cedf4bda9",
+      "status": "valid"
+    },
+    {
+      "path": "android/app/src/profile/AndroidManifest.xml",
+      "bytes": 385,
+      "sha256": "b01a4541a8144c15bc617bab7eb267c99fa1476368fbbda5a12cdbf4e316a34c",
+      "status": "valid"
+    },
+    {
+      "path": "android/build.gradle.kts",
+      "bytes": 561,
+      "sha256": "218f400e3fff31c9c986a2535dfb974560e1b4d33cc27b7c1fee96a2b7e44454",
+      "status": "valid"
+    },
+    {
+      "path": "android/expense_master_android.iml",
+      "bytes": 1630,
+      "sha256": "c8e0091edeca4e766e9dcf948e59c86a0427381fb5e31768ae396eedde5f1dfc",
+      "status": "valid"
+    },
+    {
+      "path": "android/gradle.properties",
+      "bytes": 140,
+      "sha256": "1888df8f168eb770ca0f540b7bf84091e6b31b0d5ac55e4de518590b8f7ed8e5",
+      "status": "valid"
+    },
+    {
+      "path": "android/gradle/wrapper/gradle-wrapper.jar",
+      "bytes": 53636,
+      "sha256": "16caeaf66d57a0d1d2087fef6a97efa62de8da69afa5b908f40db35afc4342da",
+      "status": "asset"
+    },
+    {
+      "path": "android/gradle/wrapper/gradle-wrapper.properties",
+      "bytes": 206,
+      "sha256": "1220fdd333a881e47441de07b23f9dd1ebd35459730543ae429cf249847d91bf",
+      "status": "valid"
+    },
+    {
+      "path": "android/gradlew",
+      "bytes": 4971,
+      "sha256": "ec56c02543666d92d9ac5ae7fcc48f88ce4de0deb8b7f9b39928ca46f68c1b2b",
+      "status": "valid"
+    },
+    {
+      "path": "android/gradlew.bat",
+      "bytes": 2404,
+      "sha256": "c13c6e91b9a517783976de213d46398c661ea9e17651376d7301e839eaedcc62",
+      "status": "valid"
+    },
+    {
+      "path": "android/local.properties",
+      "bytes": 227,
+      "sha256": "5ceace4413f9de696efa6ed832c7ead941032ff924edc7a222d958fb1eaa972b",
+      "status": "valid"
+    },
+    {
+      "path": "android/settings.gradle.kts",
+      "bytes": 946,
+      "sha256": "27d01fb2f1f5e5561a5c7aebff165756e3bddd31a78f5a75f1ce3b5f9c09df9e",
+      "status": "valid"
+    },
+    {
+      "path": "expense_master.iml",
+      "bytes": 859,
+      "sha256": "d2052ef022de364483e3823043cb6a5be1c3f33217cae65c1a40b48b17669199",
+      "status": "valid"
+    },
+    {
+      "path": "firebase.json",
+      "bytes": 388,
+      "sha256": "0d15a4f3fb652a8fa73cc4f922e03d7bb7cdaebaf526be45bd13a1864612f7c7",
+      "status": "valid"
+    },
+    {
+      "path": "firestore.rules",
+      "bytes": 1201,
+      "sha256": "46ffee11e14b7e0b5062c276a11c20b3d6c1e408ddde8144d4d317042fcf709d",
+      "status": "valid"
+    },
+    {
+      "path": "lib/firebase_options.dart",
+      "bytes": 2459,
+      "sha256": "78e722b80cf7bcd631429fc3e431598fe0f7ffa3d3957f33ae874bbf60610e68",
+      "status": "valid"
+    },
+    {
+      "path": "lib/main.dart",
+      "bytes": 2412,
+      "sha256": "5b49f3e3c66ad8104fb19a651eb98dfe036e11da093f2389f9ea085f5e692a3f",
+      "status": "valid"
+    },
+    {
+      "path": "lib/models/budget_model.dart",
+      "bytes": 705,
+      "sha256": "e7dc3f3dc6374cf37f61d32c397dd3220aeba31557fae17d0e6a8fd950d5f893",
+      "status": "valid"
+    },
+    {
+      "path": "lib/models/transaction_model.dart",
+      "bytes": 666,
+      "sha256": "75550d80ebbb43715121f52d3f0249d0b0c58baefda8f2d5c347013c11a9c3bf",
+      "status": "valid"
+    },
+    {
+      "path": "lib/models/user_model.dart",
+      "bytes": 120,
+      "sha256": "fc87e082cf298ffbefb3797ac0cdac6959de525fe443a2175a4e75ea4464b9ca",
+      "status": "valid"
+    },
+    {
+      "path": "lib/screens/dashboard_screen.dart",
+      "bytes": 11310,
+      "sha256": "7682a4234d87cef345111695829fca001819cd569f806a7595020c333dfee380",
+      "status": "valid"
+    },
+    {
+      "path": "lib/screens/login_screen.dart",
+      "bytes": 3199,
+      "sha256": "8454a17808460033ddd10dcb84804ef45acff7adcef48582fa34c0e3f79949b4",
+      "status": "valid"
+    },
+    {
+      "path": "lib/services/api_service.dart",
+      "bytes": 2985,
+      "sha256": "12f5a303b8eba96487fb9d1ccd2c6e96e15d878e8383233eca44d3a862965965",
+      "status": "valid"
+    },
+    {
+      "path": "lib/services/auth_service.dart",
+      "bytes": 2882,
+      "sha256": "b33e2fbdff3a80b1c5b3fb2444f47681df4ca2fad0479e4fea324f5770dad462",
+      "status": "valid"
+    },
+    {
+      "path": "lib/services/ml_service.dart",
+      "bytes": 544,
+      "sha256": "1bcd219d203e45e410a0bef3ea9f6fe7ac349449327e572ff3693ad26ce8e391",
+      "status": "valid"
+    },
+    {
+      "path": "lib/utils/date_utils.dart",
+      "bytes": 761,
+      "sha256": "3e4e2a24f9d10adf3541b1998a202c459adaca189841b148a8cb3d63e5aae89a",
+      "status": "valid"
+    },
+    {
+      "path": "pubspec.lock",
+      "bytes": 14242,
+      "sha256": "66aa257b7ff8d9204c39c40d54b4f466a0d0a9030c6f8108bf7049cafefb3626",
+      "status": "asset"
+    },
+    {
+      "path": "pubspec.yaml",
+      "bytes": 501,
+      "sha256": "8637efe3c63694c2dc21bb38c34859f44aac6f38aa15f632330a288431acb70b",
+      "status": "valid"
+    },
+    {
+      "path": "test/app_test.dart",
+      "bytes": 2037,
+      "sha256": "44f972d36ef64aeff3df94c5490c4fc7610e97e2a99c4036cde2dcdac9a027b2",
+      "status": "valid"
+    },
+    {
+      "path": "test/firebase_services_test.dart",
+      "bytes": 2153,
+      "sha256": "0320e8d1982ea2781f1f96935ed1286cffef53adec02d55b4408f42e005d263d",
+      "status": "valid"
+    },
+    {
+      "path": "test/widget_test.dart",
+      "bytes": 394,
+      "sha256": "0b92c6052462503d39fe009014649abb0f34585cd80e1b72bbf461c56efb3866",
+      "status": "valid"
+    },
+    {
+      "path": "web/favicon.png",
+      "bytes": 917,
+      "sha256": "7ab2525f4b86b65d3e4c70358a17e5a1aaf6f437f99cbcc046dad73d59bb9015",
+      "status": "asset"
+    },
+    {
+      "path": "web/icons/Icon-192.png",
+      "bytes": 5292,
+      "sha256": "3dce99077602f70421c1c6b2a240bc9b83d64d86681d45f2154143310c980be3",
+      "status": "asset"
+    },
+    {
+      "path": "web/icons/Icon-512.png",
+      "bytes": 8252,
+      "sha256": "baccb205ae45f0b421be1657259b4943ac40c95094ab877f3bcbe12cd544dcbe",
+      "status": "asset"
+    },
+    {
+      "path": "web/icons/Icon-maskable-192.png",
+      "bytes": 5594,
+      "sha256": "d2c842e22a9f4ec9d996b23373a905c88d9a203b220c5c151885ad621f974b5c",
+      "status": "asset"
+    },
+    {
+      "path": "web/icons/Icon-maskable-512.png",
+      "bytes": 20998,
+      "sha256": "6aee06cdcab6b2aef74b1734c4778f4421d2da100b0ff9e52b21b55240202929",
+      "status": "asset"
+    },
+    {
+      "path": "web/index.html",
+      "bytes": 1264,
+      "sha256": "2808806dfc4be440caa4a03c8490922e64244d4f9222ffd9cc7c8e080c7a7aa8",
+      "status": "valid"
+    },
+    {
+      "path": "web/manifest.json",
+      "bytes": 959,
+      "sha256": "0dde8b10b50472ab5d3dec720f5aaca6fff5c664fdae9b54cdf9ad7ac190419b",
+      "status": "valid"
+    }
+  ]
+}

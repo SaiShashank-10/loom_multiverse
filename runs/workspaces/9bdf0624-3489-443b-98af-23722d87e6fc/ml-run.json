@@ -1,0 +1,12 @@
+{
+  "dataset": null,
+  "seed": 42,
+  "epochs": 10,
+  "batchSize": 32,
+  "device": "cpu",
+  "mode": "new",
+  "pretrainedCheckpoint": null,
+  "resumeCheckpoint": null,
+  "outputDir": "artifacts/ml",
+  "maxRuntimeMinutes": 120
+}

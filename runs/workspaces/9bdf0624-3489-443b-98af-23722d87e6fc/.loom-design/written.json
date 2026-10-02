@@ -1,0 +1,42 @@
+{
+  "index.html": {
+    "design": "e029725f3bfd856a6509c89c48d3aaff5559f73476e211a98e057bcb1921d9ec",
+    "source": "ff06a68d7fda4215f07012326c35968ba6c264a01176032e3a8c12d9c9546eab"
+  },
+  "src/index.jsx": {
+    "design": "e029725f3bfd856a6509c89c48d3aaff5559f73476e211a98e057bcb1921d9ec",
+    "source": "9909c77e6d2f309037e745da2a3f1d571c729d3483ae0fb06cc1c7ccff9e9cad"
+  },
+  "src/App.jsx": {
+    "design": "e029725f3bfd856a6509c89c48d3aaff5559f73476e211a98e057bcb1921d9ec",
+    "source": "437bdf5434daf5ad37ae3e227e0c88e2b8e5bdb9779ff42202e04a60f070a28c"
+  },
+  "src/components/JobSearch.jsx": {
+    "design": "e029725f3bfd856a6509c89c48d3aaff5559f73476e211a98e057bcb1921d9ec",
+    "source": "a85e2317eb456153e021dbebb5c01141fe22549af85113beee6c2d32656fff0f"
+  },
+  "src/components/JobCard.jsx": {
+    "design": "e029725f3bfd856a6509c89c48d3aaff5559f73476e211a98e057bcb1921d9ec",
+    "source": "d1586f1e066bc08be730361ff1f3ec0501522198ea757cc602d24f4e8517b3f4"
+  },
+  "src/components/TechnicalGapAnalysis.jsx": {
+    "design": "e029725f3bfd856a6509c89c48d3aaff5559f73476e211a98e057bcb1921d9ec",
+    "source": "da04a729caa8430d585acafd3aa9b395422792848d84967e1db35e4ae9b1b728"
+  },
+  "src/components/CareerRecommendations.jsx": {
+    "design": "e029725f3bfd856a6509c89c48d3aaff5559f73476e211a98e057bcb1921d9ec",
+    "source": "53dc0530fd2172c474fa5caf660289e009f4a93d64c237078b225d963d95c1b2"
+  },
+  "src/index.css": {
+    "design": "e029725f3bfd856a6509c89c48d3aaff5559f73476e211a98e057bcb1921d9ec",
+    "source": "5ef729e15f59e0a54e29ef8db8faa72ff46a07db17ee581f86e5d7c17c78bc58"
+  },
+  "src/components/DesignSystem.jsx": {
+    "design": "e029725f3bfd856a6509c89c48d3aaff5559f73476e211a98e057bcb1921d9ec",
+    "source": "bf2d2c8ccd37ce638819ce66f60042d460f19eb1351cc356412f0df6cbce2e06"
+  },
+  "src/components/JobDetails.jsx": {
+    "design": "e029725f3bfd856a6509c89c48d3aaff5559f73476e211a98e057bcb1921d9ec",
+    "source": "46b33cb2d0c2854013efea85170f219a64d12959a408dd39096102b1734232b3"
+  }
+}

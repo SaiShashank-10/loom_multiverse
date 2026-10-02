@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings &amp; Preferences - EcoStream Live</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Open+Sans:wght@400;500;600;700&amp;family=Roboto+Flex:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "text-primary": "#343a40",
+            "surface-container-lowest": "#ffffff",
+            "secondary-fixed-dim": "#bfc8d0",
+            "on-secondary": "#ffffff",
+            "tertiary-fixed": "#ffdbcc",
+            "primary": "#0059bb",
+            "text-secondary": "#6c757d",
+            "surface-tint": "#005bc0",
+            "on-tertiary-fixed": "#351000",
+            "on-tertiary-container": "#fffbff",
+            "on-secondary-container": "#5b646b",
+            "outline": "#717786",
+            "error": "#dc3545",
+            "surface-container-low": "#eff4fc",
+            "on-error": "#ffffff",
+            "primary-fixed": "#d8e2ff",
+            "success": "#28a745",
+            "surface-dim": "#d5dae2",
+            "tertiary-container": "#c64f00",
+            "on-secondary-fixed-variant": "#3f484f",
+            "tertiary-fixed-dim": "#ffb695",
+            "surface-container": "#e9eef6",
+            "surface-container-highest": "#dde3eb",
+            "on-surface": "#161c22",
+            "on-primary": "#ffffff",
+            "on-background": "#161c22",
+            "surface-container-high": "#e3e9f0",
+            "on-tertiary-fixed-variant": "#7c2e00",
+            "primary-container": "#0070ea",
+            "inverse-on-surface": "#ecf1f9",
+            "surface": "#f8f9fa",
+            "secondary-container": "#d8e1ea",
+            "surface-variant": "#dde3eb",
+            "on-secondary-fixed": "#141d23",
+            "primary-fixed-dim": "#adc7ff",
+            "on-primary-fixed-variant": "#004493",
+            "inverse-primary": "#adc7ff",
+            "error-container": "#ffdad6",
+            "on-primary-fixed": "#001a41",
+            "on-tertiary": "#ffffff",
+            "border": "#dee2e6",
+            "surface-bright": "#f7f9ff",
+            "background": "#ffffff",
+            "on-surface-variant": "#414754",
+            "on-primary-container": "#fefcff",
+            "inverse-surface": "#2b3137",
+            "warning": "#ffc107",
+            "outline-variant": "#c1c6d7",
+            "secondary": "#575f67",
+            "on-error-container": "#93000a",
+            "tertiary": "#9e3d00",
+            "secondary-fixed": "#dbe4ed"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin-mobile": "1.5rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "margin": "3rem"
+          },
+          "fontFamily": {
+            "headline-lg-mobile": ["Roboto Flex"],
+            "headline-lg": ["Roboto Flex"],
+            "caption": ["Montserrat"],
+            "headline-sm": ["Open Sans"],
+            "body-lg": ["Montserrat"],
+            "headline-md": ["Open Sans"],
+            "label-md": ["Open Sans"],
+            "label-sm": ["Open Sans"],
+            "body-md": ["Montserrat"]
+          },
+          "fontSize": {
+            "headline-lg-mobile": ["26px", { "lineHeight": "32px", "fontWeight": "700" }],
+            "headline-lg": ["32px", { "lineHeight": "38px", "fontWeight": "700" }],
+            "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "headline-sm": ["20px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "31px", "fontWeight": "600" }],
+            "label-md": ["14px", { "lineHeight": "18px", "fontWeight": "600" }],
+            "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-text-primary antialiased min-h-screen pb-24 select-none">
+<!-- TopAppBar: Anchored Shared Component -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 py-3 bg-surface border-b border-border shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="recycling">recycling</span>
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">EcoStream Live</span>
+</div>
+<div class="flex items-center gap-3">
+<button aria-label="Notifications" class="relative p-1.5 text-text-secondary hover:text-text-primary rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="notifications">notifications</span>
+<span class="absolute top-1 right-1 w-2.5 h-2.5 bg-error rounded-full ring-2 ring-surface"></span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-md text-label-md font-bold">
+        ER
+      </div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="pt-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+<!-- Page Context Title & Subtitle -->
+<div class="mb-6">
+<div class="flex items-center gap-2 text-text-secondary text-caption font-caption mb-1">
+<span>Console</span>
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+<span class="text-text-primary font-medium">Settings &amp; Preferences</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-text-primary font-bold tracking-tight">System &amp; Account Settings</h1>
+<p class="font-body-md text-body-md text-text-secondary mt-1">Configure organizational profile, automated compliance alerts, telemetry thresholds, and security preferences.</p>
+</div>
+<!-- Layout Grid -->
+<div class="space-y-6">
+<!-- Section 1: Organization & Profile -->
+<section class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+<div class="flex items-center justify-between border-b border-border pb-4 mb-5">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary" data-icon="badge">badge</span>
+<h2 class="font-headline-sm text-headline-sm text-text-primary font-semibold">Organization &amp; Profile</h2>
+</div>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm font-semibold bg-primary-fixed text-on-primary-fixed-variant">
+            Verified Facility
+          </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+<!-- Profile Avatar & Badges -->
+<div class="md:col-span-4 flex flex-col items-center p-4 bg-surface-container-lowest rounded-lg border border-border text-center">
+<div class="relative mb-3">
+<div class="w-24 h-24 rounded-full bg-surface-container-high border-2 border-primary text-primary flex items-center justify-center font-headline-md text-headline-md font-bold shadow-inner">
+                ER
+              </div>
+<button class="absolute bottom-0 right-0 p-1.5 bg-primary text-on-primary rounded-full hover:bg-primary-container shadow transition-all active:scale-95" title="Edit Profile Photo">
+<span class="material-symbols-outlined text-sm block" data-icon="photo_camera">photo_camera</span>
+</button>
+</div>
+<h3 class="font-label-md text-label-md text-text-primary font-semibold">Dr. Elena Rostova</h3>
+<span class="inline-block mt-1 px-2.5 py-0.5 rounded-full text-caption font-caption font-semibold bg-surface-container text-text-secondary border border-border">
+              Compliance Administrator
+            </span>
+<p class="font-caption text-caption text-text-secondary mt-2">Facility Supervisor • Node 4 Pacific</p>
+<button class="mt-3 w-full py-1.5 px-3 border border-border rounded-lg text-label-sm font-label-sm font-semibold text-text-primary hover:bg-surface-container transition-colors">
+              Edit Photo
+            </button>
+</div>
+<!-- Form Fields -->
+<div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block font-label-sm text-label-sm font-semibold text-text-primary mb-1.5">Full Name</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-border rounded-lg px-3 py-2 text-body-md font-body-md text-text-primary focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" type="text" value="Dr. Elena Rostova"/>
+<span class="material-symbols-outlined absolute right-2.5 top-2.5 text-text-secondary text-lg" data-icon="person">person</span>
+</div>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm font-semibold text-text-primary mb-1.5">Work Email</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-border rounded-lg px-3 py-2 text-body-md font-body-md text-text-primary focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" type="email" value="e.rostova@ecostream.org"/>
+<span class="material-symbols-outlined absolute right-2.5 top-2.5 text-text-secondary text-lg" data-icon="mail">mail</span>
+</div>
+</div>
+<div class="sm:col-span-2">
+<label class="block font-label-sm text-label-sm font-semibold text-text-primary mb-1.5">Facility / Depot Node</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border border-border rounded-lg px-3 py-2 text-body-md font-body-md text-text-primary focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all" type="text" value="Pacific Port Depository - Node 4"/>
+<span class="material-symbols-outlined absolute right-2.5 top-2.5 text-text-secondary text-lg" data-icon="factory">factory</span>
+</div>
+</div>
+<div class="sm:col-span-2 flex items-center justify-between p-3 bg-surface-container-lowest rounded-lg border border-border">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-success text-lg" data-icon="verified_user">verified_user</span>
+<div>
+<span class="block font-label-sm text-label-sm text-text-primary font-semibold">Basel Convention Compliance Role</span>
+<span class="font-caption text-caption text-text-secondary">Authorized to digitally certify e-waste transboundary manifests</span>
+</div>
+</div>
+<span class="text-caption font-caption font-bold px-2 py-0.5 rounded bg-success/10 text-success">Active</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Telemetry & Monitoring Alerts -->
+<section class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+<div class="flex items-center justify-between border-b border-border pb-4 mb-5">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary" data-icon="sensors">sensors</span>
+<h2 class="font-headline-sm text-headline-sm text-text-primary font-semibold">Telemetry &amp; Monitoring Alerts</h2>
+</div>
+<span class="text-label-sm font-label-sm text-text-secondary">Real-time Stream Engine</span>
+</div>
+<div class="space-y-4">
+<!-- Toggle 1 -->
+<div class="flex items-center justify-between p-3.5 bg-surface-container-lowest rounded-lg border border-border hover:border-outline-variant transition-colors">
+<div class="pr-4">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-semibold text-text-primary">Real-time Inflow Threshold Alerts</span>
+<span class="text-xs px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed-variant font-medium">Critical</span>
+</div>
+<p class="font-body-md text-body-md text-text-secondary mt-0.5">Notify when physical mass intake spikes beyond 25 Metric Tons per day.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer flex-shrink-0">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-border peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Toggle 2 -->
+<div class="flex items-center justify-between p-3.5 bg-surface-container-lowest rounded-lg border border-border hover:border-outline-variant transition-colors">
+<div class="pr-4">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-semibold text-text-primary">Automated Manifest Sync</span>
+</div>
+<p class="font-body-md text-body-md text-text-secondary mt-0.5">Instantly synchronize Basel Convention certificates and customs clearance keys to the cloud ledger.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer flex-shrink-0">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-border peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Toggle 3 -->
+<div class="flex items-center justify-between p-3.5 bg-surface-container-lowest rounded-lg border border-border hover:border-outline-variant transition-colors">
+<div class="pr-4">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-semibold text-text-primary">Hazardous Material Detection Warning</span>
+<span class="text-xs px-2 py-0.5 rounded bg-error/10 text-error font-medium">Urgent</span>
+</div>
+<p class="font-body-md text-body-md text-text-secondary mt-0.5">Dispatch immediate SMS &amp; push notifications on Lithium-ion thermal runaway or mercury vapor detection.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer flex-shrink-0">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-border peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Toggle 4 -->
+<div class="flex items-center justify-between p-3.5 bg-surface-container-lowest rounded-lg border border-border hover:border-outline-variant transition-colors">
+<div class="pr-4">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-semibold text-text-primary">Weekly Sustainability Digest</span>
+</div>
+<p class="font-body-md text-body-md text-text-secondary mt-0.5">Receive weekly automated email briefings summarizing Metric Tons of CO2e offset and metals diverted.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer flex-shrink-0">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-border peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Threshold Slider / Input -->
+<div class="p-4 bg-surface-container-low rounded-lg border border-border mt-3">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<label class="font-label-md text-label-md font-semibold text-text-primary block">Daily Capacity Alert Limit</label>
+<p class="font-caption text-caption text-text-secondary">Depot triggers quarantine buffer when daily e-waste intake reaches this value.</p>
+</div>
+<div class="flex items-center gap-2">
+<div class="relative w-36">
+<input class="w-full bg-surface-container-lowest border border-border rounded-lg px-3 py-1.5 text-body-md font-body-md text-text-primary font-semibold text-right pr-12 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" step="0.5" type="number" value="150.0"/>
+<span class="absolute right-3 top-2 text-caption font-caption text-text-secondary font-medium">Tons</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Data & Export Preferences -->
+<section class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+<div class="flex items-center justify-between border-b border-border pb-4 mb-5">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary" data-icon="tune">tune</span>
+<h2 class="font-headline-sm text-headline-sm text-text-primary font-semibold">Data &amp; Export Preferences</h2>
+</div>
+<span class="text-label-sm font-label-sm text-text-secondary">System Integration</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<!-- Segmented Export Format -->
+<div class="space-y-1.5">
+<label class="font-label-sm text-label-sm font-semibold text-text-primary block">Default Export Dossier Format</label>
+<div class="grid grid-cols-3 gap-1 p-1 bg-surface-container-lowest border border-border rounded-lg">
+<button class="py-1.5 text-label-sm font-label-sm font-semibold rounded bg-primary text-on-primary shadow-xs" type="button">
+                PDF Summary
+              </button>
+<button class="py-1.5 text-label-sm font-label-sm font-medium text-text-secondary hover:text-text-primary hover:bg-surface-container transition-colors rounded" type="button">
+                CSV Dossier
+              </button>
+<button class="py-1.5 text-label-sm font-label-sm font-medium text-text-secondary hover:text-text-primary hover:bg-surface-container transition-colors rounded" type="button">
+                JSON Stream
+              </button>
+</div>
+<p class="font-caption text-caption text-text-secondary">Standard compliant format for customs reporting</p>
+</div>
+<!-- Polling Rate -->
+<div class="space-y-1.5">
+<label class="font-label-sm text-label-sm font-semibold text-text-primary block">Telemetry Polling Rate</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-lowest border border-border rounded-lg px-3 py-2 text-body-md font-body-md text-text-primary focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20">
+<option selected="">Real-time (30s Polling)</option>
+<option>5 minutes (Standard Battery Save)</option>
+<option>Hourly (Aggregated Summary)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-text-secondary pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+<p class="font-caption text-caption text-text-secondary">Higher polling rates yield pinpoint thermal dissipation logs</p>
+</div>
+<!-- Auto-Archive Records Toggle -->
+<div class="md:col-span-2 flex items-center justify-between p-3.5 bg-surface-container-lowest rounded-lg border border-border">
+<div>
+<span class="font-label-md text-label-md font-semibold text-text-primary block">Automated Historical Records Archiving</span>
+<p class="font-body-md text-body-md text-text-secondary">Automatically transfer immutable chain-of-custody manifests to cold storage after 180 operational days.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer flex-shrink-0 ml-4">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-border peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Section 4: Security & Compliance -->
+<section class="bg-surface rounded-xl border border-border p-6 shadow-sm">
+<div class="flex items-center justify-between border-b border-border pb-4 mb-5">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary" data-icon="shield">shield</span>
+<h2 class="font-headline-sm text-headline-sm text-text-primary font-semibold">Security &amp; Compliance</h2>
+</div>
+<span class="inline-flex items-center gap-1 text-label-sm font-label-sm font-semibold text-success">
+<span class="material-symbols-outlined text-sm" data-icon="lock">lock</span>
+            Encrypted
+          </span>
+</div>
+<div class="space-y-4">
+<!-- 2FA Box -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-surface-container-lowest rounded-lg border border-border gap-3">
+<div class="flex items-start gap-3">
+<div class="p-2 bg-success/10 rounded-lg text-success">
+<span class="material-symbols-outlined text-xl block" data-icon="phonelink_lock">phonelink_lock</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-semibold text-text-primary">Two-Factor Authentication (2FA)</span>
+<span class="px-2 py-0.5 rounded-full text-caption font-caption font-bold bg-success/10 text-success">Active</span>
+</div>
+<p class="font-caption text-caption text-text-secondary mt-0.5">Enforced hardware key via FIDO2 / Authenticator App</p>
+</div>
+</div>
+<button class="px-3 py-1.5 text-label-sm font-label-sm font-semibold border border-border rounded-lg text-text-primary hover:bg-surface-container transition-colors self-start sm:self-auto">
+              Reconfigure
+            </button>
+</div>
+<!-- Session Timeout & Digital Signature Key -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="p-3 bg-surface-container-lowest rounded-lg border border-border">
+<label class="block font-label-sm text-label-sm font-semibold text-text-primary mb-1">Session Inactivity Timeout</label>
+<div class="relative mt-1">
+<select class="w-full appearance-none bg-surface border border-border rounded px-3 py-1.5 text-body-md font-body-md text-text-primary focus:outline-none focus:border-primary">
+<option selected="">30 minutes of inactivity</option>
+<option>15 minutes of inactivity</option>
+<option>1 hour of inactivity</option>
+<option>4 hours (Operational Kiosk)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-2 text-text-secondary pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<div class="p-3 bg-surface-container-lowest rounded-lg border border-border">
+<label class="block font-label-sm text-label-sm font-semibold text-text-primary mb-1">Digital Signature Node ID</label>
+<div class="flex items-center justify-between mt-1 px-3 py-1.5 bg-surface border border-border rounded text-body-md font-body-md font-mono text-text-primary">
+<span>EC-SIG-99482-2025</span>
+<span class="material-symbols-outlined text-success text-base" data-icon="verified" title="Public Certificate Verified">verified</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Action Footer / Save Buttons -->
+<div class="bg-surface rounded-xl border border-border p-4 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-2 text-text-secondary">
+<span class="material-symbols-outlined text-base" data-icon="history">history</span>
+<span class="text-caption font-caption">Last saved today at 10:14 AM by Elena R.</span>
+</div>
+<div class="flex items-center gap-3 w-full sm:w-auto">
+<button class="w-1/2 sm:w-auto px-4 py-2 text-label-md font-label-md font-semibold text-text-secondary hover:text-text-primary hover:bg-surface-container border border-border rounded-lg transition-colors" type="button">
+            Discard Changes
+          </button>
+<button class="w-1/2 sm:w-auto px-6 py-2 bg-primary hover:bg-primary-container text-on-primary text-label-md font-label-md font-semibold rounded-lg shadow-sm active:scale-95 transition-all" type="button">
+            Save Changes
+          </button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar: Exact Anchored Shared Component -->
+<!-- Contextually mapping to active "Settings" tab -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface shadow-sm pb-safe">
+<!-- Item 1: Dashboard (inactive) -->
+<a class="flex flex-col items-center justify-center text-text-secondary px-3 py-1.5 hover:bg-surface-variant hover:text-on-surface active:scale-95 transition-all duration-150 rounded-lg" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm text-label-sm font-medium">Dashboard</span>
+</a>
+<!-- Item 2: Reports (inactive) -->
+<a class="flex flex-col items-center justify-center text-text-secondary px-3 py-1.5 hover:bg-surface-variant hover:text-on-surface active:scale-95 transition-all duration-150 rounded-lg" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="assessment">assessment</span>
+<span class="font-label-sm text-label-sm font-medium">Reports</span>
+</a>
+<!-- Item 3: Settings (ACTIVE) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-lg px-3 py-1.5 active:scale-95 transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-sm text-label-sm font-semibold">Settings</span>
+</a>
+</nav>
+</body></html>

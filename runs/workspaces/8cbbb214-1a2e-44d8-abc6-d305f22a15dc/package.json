@@ -1,0 +1,17 @@
+{
+  "name": "ceramics-store",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "vitest run --environment=jsdom"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^14.0.0",
+    "@vitejs/plugin-react": "^3.0.0",
+    "vitest": "^0.29.0"
+  }
+}

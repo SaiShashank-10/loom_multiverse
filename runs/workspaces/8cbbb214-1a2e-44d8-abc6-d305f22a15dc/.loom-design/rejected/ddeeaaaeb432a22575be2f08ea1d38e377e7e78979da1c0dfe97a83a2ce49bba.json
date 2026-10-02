@@ -1,0 +1,8 @@
+{
+  "file": "src/components/Card.tsx",
+  "design": "e542aba9b34c8599240c7e394dd14245316b3b495fe0e9257fb2599de934c570",
+  "source": "import React, { useEffect, useState } from 'react';\nimport './Card.css';\n\ninterface CardProps {\n  title: string;\n  description: string;\n  imageUrl: string;\n  price?: number;\n  onClick?: () => void;\n}\n\nconst Card: React.FC<CardProps> = ({ title, description, imageUrl, price, onClick }) => {\n  const [isVisible, setIsVisible] = useState(false);\n\n  useEffect(() => {\n    const handleScroll = () => {\n      const cardTop = document.getElementById('card').getBoundingClientRect().top;\n      const windowHeight = window.innerHeight;\n      if (cardTop < windowHeight) {\n        setIsVisible(true);\n      }\n    };\n\n    window.addEventListener('scroll', handleScroll);\n    return () => window.removeEventListener('scroll', handleScroll);\n  }, []);\n\n  return (\n    <div className={`card ${isVisible ? 'visible' : ''}`} id='card' onClick={onClick}>\n      <img src={imageUrl} alt={title} className='card-image' />\n      <div className='card-content'>\n        <h3>{title}</h3>\n        <p>{description}</p>\n        {price && <p>${price.toFixed(2)}</p>}\n      </div>\n    </div>\n  );\n};\n\nexport default Card;\n",
+  "issues": [
+    "Source checkpoint: design review is pending"
+  ]
+}

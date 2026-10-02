@@ -7,6 +7,7 @@
 
 import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js";
 import { SSEClientTransport } from "@modelcontextprotocol/sdk/client/sse.js";
+import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { createLogger } from "@loom/shared/logger";
 import type { McpClientConfig, TransportType } from "./types.js";
@@ -25,12 +26,23 @@ const log = createLogger("mcp-transport");
  * @returns A transport instance ready for the MCP client
  */
 export function createClientTransport(config: McpClientConfig) {
-  log.debug({ serverName: config.serverName, transport: config.transport }, "Creating client transport");
+  log.debug(
+    { serverName: config.serverName, transport: config.transport },
+    "Creating client transport",
+  );
 
   switch (config.transport) {
+    case "streamable-http": {
+      if (!config.serverUrl) throw new Error("HTTP transport requires serverUrl");
+      return new StreamableHTTPClientTransport(new URL(config.serverUrl), {
+        requestInit: { headers: config.headers },
+      });
+    }
     case "stdio": {
       if (!config.command) {
-        throw new Error(`stdio transport requires a 'command' in config for server '${config.serverName}'`);
+        throw new Error(
+          `stdio transport requires a 'command' in config for server '${config.serverName}'`,
+        );
       }
       return new StdioClientTransport({
         command: config.command,
@@ -40,7 +52,9 @@ export function createClientTransport(config: McpClientConfig) {
 
     case "sse": {
       if (!config.serverUrl) {
-        throw new Error(`SSE transport requires a 'serverUrl' in config for server '${config.serverName}'`);
+        throw new Error(
+          `SSE transport requires a 'serverUrl' in config for server '${config.serverName}'`,
+        );
       }
       return new SSEClientTransport(new URL(config.serverUrl));
     }
@@ -67,5 +81,5 @@ export function createServerTransport() {
  * Type guard to validate transport type strings.
  */
 export function isValidTransport(value: string): value is TransportType {
-  return value === "stdio" || value === "sse";
+  return value === "stdio" || value === "sse" || value === "streamable-http";
 }

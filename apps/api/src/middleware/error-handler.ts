@@ -15,7 +15,7 @@ export const errorHandler = (err: Error, c: Context) => {
       error: {
         code: err.code,
         message: err.message,
-        details: err.context
+        details: err.statusCode >= 500 ? undefined : err.context
       }
     }, err.statusCode as any);
   }

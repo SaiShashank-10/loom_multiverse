@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Style OS - Closet Health &amp; Wardrobe Analytics</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary": "#006b24",
+            "secondary-fixed": "#dbe4ed",
+            "tertiary-fixed": "#83fc8e",
+            "on-primary-fixed-variant": "#004493",
+            "outline": "#717786",
+            "on-tertiary": "#ffffff",
+            "surface-variant": "#dfe2ec",
+            "primary-fixed-dim": "#adc7ff",
+            "on-secondary": "#ffffff",
+            "outline-variant": "#c1c6d7",
+            "surface-container-low": "#f1f3fd",
+            "secondary": "#575f67",
+            "primary-fixed": "#d8e2ff",
+            "on-secondary-fixed-variant": "#3f484f",
+            "on-error": "#ffffff",
+            "primary-container": "#0070ea",
+            "inverse-on-surface": "#eef0fa",
+            "secondary-fixed-dim": "#bfc8d0",
+            "on-error-container": "#93000a",
+            "inverse-primary": "#adc7ff",
+            "on-secondary-fixed": "#141d23",
+            "inverse-surface": "#2d3138",
+            "error-container": "#ffdad6",
+            "on-background": "#181c23",
+            "on-tertiary-fixed-variant": "#00531a",
+            "surface-container-highest": "#dfe2ec",
+            "primary": "#0059bb",
+            "tertiary-container": "#008730",
+            "on-primary-container": "#fefcff",
+            "on-tertiary-container": "#f7fff2",
+            "on-secondary-container": "#5b646b",
+            "on-primary-fixed": "#001a41",
+            "tertiary-fixed-dim": "#66df75",
+            "secondary-container": "#d8e1ea",
+            "surface-container-high": "#e5e8f2",
+            "on-primary": "#ffffff",
+            "error": "#ba1a1a",
+            "on-surface-variant": "#414754",
+            "surface-container": "#ebeef7",
+            "background": "#f9f9ff",
+            "surface-bright": "#f9f9ff",
+            "surface": "#f9f9ff",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-fixed": "#002106",
+            "surface-tint": "#005bc0",
+            "on-surface": "#181c23",
+            "surface-dim": "#d7dae3"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2.5rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "margin": "1.25rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Space Grotesk"],
+            "label-md": ["Space Grotesk"],
+            "label-lg": ["Space Grotesk"],
+            "body-sm": ["Hanken Grotesk"],
+            "display-lg": ["Space Grotesk"],
+            "label-sm": ["Space Grotesk"],
+            "headline-sm": ["Space Grotesk"],
+            "headline-md": ["Space Grotesk"],
+            "display-lg-mobile": ["Space Grotesk"],
+            "body-md": ["Hanken Grotesk"],
+            "body-lg": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+            "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "display-lg-mobile": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased selection:bg-primary selection:text-on-primary">
+<!-- Mobile Viewport Simulator Outer Frame -->
+<div class="min-h-screen flex justify-center bg-surface-container-low sm:py-6">
+<main class="w-full max-w-[430px] bg-surface flex flex-col min-h-screen relative shadow-2xl overflow-x-hidden pb-28">
+<!-- iOS Status Bar (9:41 Safe Area) -->
+<div class="sticky top-0 z-50 bg-surface/90 backdrop-blur-md px-6 pt-3 pb-2 flex justify-between items-center text-on-surface">
+<span class="font-headline-sm text-body-md font-semibold tracking-tight">9:41</span>
+<div class="flex items-center space-x-2 text-on-surface">
+<span class="material-symbols-outlined text-[16px]">signal_cellular_4_bar</span>
+<span class="material-symbols-outlined text-[16px]">wifi</span>
+<span class="material-symbols-outlined text-[20px]">battery_full</span>
+</div>
+</div>
+<!-- Pinned Top App Bar Header -->
+<header class="bg-surface px-5 py-3 flex items-center justify-between sticky top-[38px] z-40">
+<div class="flex items-center gap-3">
+<button aria-label="Go back" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[22px]">arrow_back</span>
+</button>
+<div>
+<h1 class="font-headline-sm text-headline-sm text-on-surface font-bold">Closet Health &amp; Audit</h1>
+<p class="font-label-sm text-label-sm text-secondary">Style OS Sartorial Intelligence</p>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Export audit report" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[22px]">ios_share</span>
+</button>
+</div>
+</header>
+<!-- Scrollable Main Content -->
+<div class="px-5 space-y-6 pt-2">
+<!-- 1. Header & Wardrobe Health Score Hero -->
+<section class="bg-surface-container-lowest rounded-2xl p-5 border border-outline-variant/30 shadow-[0_4px_20px_rgba(30,34,41,0.04)]">
+<div class="flex items-center justify-between">
+<div class="space-y-1">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-tertiary/10 text-tertiary font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                Optimal Flow
+              </span>
+<h2 class="font-headline-lg text-headline-md text-on-surface font-bold tracking-tight">Closet Health</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Real-time dynamic wardrobe efficiency</p>
+</div>
+<!-- SVG Radial Health Meter (88%) -->
+<div class="relative flex items-center justify-center w-24 h-24">
+<svg class="w-24 h-24 transform -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#f1f3fd" stroke-width="8"></circle>
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#0070ea" stroke-dasharray="251.2" stroke-dashoffset="30.14" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-lg text-headline-md font-bold text-on-surface">88%</span>
+<span class="font-label-sm text-[9px] uppercase tracking-wider text-secondary">Score</span>
+</div>
+</div>
+</div>
+<!-- Divider -->
+<div class="h-px w-full bg-surface-container-high my-4"></div>
+<!-- Wardrobe Key Metrics Grid -->
+<div class="grid grid-cols-3 gap-2">
+<div class="p-2.5 rounded-xl bg-surface-container-low flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary">Active Wear</span>
+<div class="mt-1 flex items-baseline gap-1">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">37</span>
+<span class="font-body-sm text-body-sm text-secondary">/42</span>
+</div>
+<span class="font-label-sm text-[10px] text-tertiary mt-0.5">88% in 45d</span>
+</div>
+<div class="p-2.5 rounded-xl bg-surface-container-low flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary">Cost/Wear</span>
+<span class="mt-1 font-headline-sm text-headline-sm font-bold text-on-surface">$14.20</span>
+<span class="font-label-sm text-[10px] text-tertiary mt-0.5 flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[11px]">trending_down</span>-18% mo
+              </span>
+</div>
+<div class="p-2.5 rounded-xl bg-surface-container-low flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary">Valuation</span>
+<span class="mt-1 font-headline-sm text-headline-sm font-bold text-on-surface">$4,850</span>
+<span class="font-label-sm text-[10px] text-secondary mt-0.5">Appraised</span>
+</div>
+</div>
+</section>
+<!-- 2. Identified Wardrobe Gaps (Actionable AI Recommendations) -->
+<section class="space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">auto_fix_high</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Wardrobe Gaps</h3>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm">2 Identified</span>
+</div>
+<!-- Primary Gap Card -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-2xl p-4 shadow-[0_4px_20px_rgba(30,34,41,0.04)] relative overflow-hidden">
+<div class="absolute top-0 right-0 w-28 h-28 bg-primary/5 rounded-full -mr-8 -mt-8 pointer-events-none"></div>
+<div class="flex gap-3">
+<div class="w-20 h-24 rounded-xl bg-surface-container-low overflow-hidden flex-shrink-0 flex items-center justify-center p-1.5 border border-outline-variant/20">
+<img class="w-full h-full object-contain mix-blend-multiply" data-alt="A refined minimalist studio photograph of a lightweight beige tailored trench coat hung neatly against an architectural ivory concrete wall. Bright, high-fashion daylight accentuates the smooth cotton gabardine weave and tonal tortoise buttons. Modern high-fashion aesthetic with serene neutral tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkhsFdAC6NGQAcx0UEwiagxoUG-tvsZaJfL_K73SnJk92plrLKr9M3jYxXHMtFfjpNXqUDH6R91tJLV4lXOyQEJa5xvOY1XPmT-nCupp8WiyBpbLLYCZoM2S089jnfaO13BCktkWENRhXnEJVGYzBjqrco15N8thx_dlWqFAs-jRNsdnJHn0NzMJHx1wc-Avhjg0PtG32SSErer_mSvjKjGyDjsUJ6zlgQwMAT3IVWV3mfw1oQCd3GcXVGb2-prESJriyoIXoLkH4"/>
+</div>
+<div class="flex flex-col justify-between flex-1">
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-bold uppercase tracking-wider text-primary">Missing Key Staple</span>
+<span class="font-label-sm text-label-sm bg-surface-container px-2 py-0.5 rounded-full text-secondary">High Priority</span>
+</div>
+<h4 class="font-headline-sm text-body-lg font-bold text-on-surface mt-1">Breathable Spring Trench</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Unlocks 6 business casual combinations for 65°F–75°F forecast.</p>
+</div>
+</div>
+</div>
+<button class="mt-3.5 w-full py-2.5 px-4 bg-primary text-on-primary rounded-full font-label-lg text-label-lg flex items-center justify-center gap-2 active:scale-95 transition-all">
+<span>View Recommended Matches</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- Secondary Gap Card -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-2xl p-4 shadow-[0_4px_20px_rgba(30,34,41,0.04)] flex items-center gap-3.5">
+<div class="w-14 h-14 rounded-xl bg-surface-container-low overflow-hidden flex-shrink-0 flex items-center justify-center p-1 border border-outline-variant/20">
+<img class="w-full h-full object-contain mix-blend-multiply" data-alt="Close-up studio lookbook shot of premium charcoal neutral wool trousers folded with sharp crisp pleats against a pristine white surface. Minimalist high-end garment photography with precise studio lighting and neutral cool tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQUCzp2GrZp8o8cJQMNgsdQYtmVqRvTh14icY6GmcbjjHI7AFaULFPyzxvENta7BxMvp0MV3crcG_2TkL-iSjQuWNhjfSO64hnlCUANT3LohhIGjfeH7sosuTXwzMrI5t3IDlIJfnmJ2J2aWHfDyNQyt8OVf7ajfV9LOmp_W3THhllEBZ_pQqJnlxDUhkWKA0ykT5AmsiJZUAqa2EsFSoHnCXkNWArqRCPBOd4hp6TUuFgNAihisJOCb1tpok_WrQnky3V-LsOgTI"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-body-md font-bold text-on-surface truncate">Neutral Wool Trousers</span>
+<span class="font-label-sm text-label-sm text-tertiary font-semibold">+14% Index</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Expands top-layer versatility with current knitwear</p>
+</div>
+<button class="w-9 h-9 rounded-full bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-on-surface active:scale-95 transition-all flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+</section>
+<!-- 3. Dormant Items Alert (>45 Days Unworn) -->
+<section class="space-y-3">
+<div class="flex items-center justify-between">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-[20px]">notifications_active</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Dormant Items</h3>
+</div>
+<p class="font-label-sm text-label-sm text-secondary">&gt;45 days without closet rotation</p>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-semibold">
+              5 Pieces ($640)
+            </span>
+</div>
+<!-- Horizontal Scroll of Flagged Dormant Items -->
+<div class="flex gap-3 overflow-x-auto no-scrollbar pb-1 -mx-5 px-5">
+<!-- Dormant Card 1 -->
+<div class="w-60 flex-shrink-0 bg-surface-container-lowest border border-outline-variant/30 rounded-2xl p-3.5 shadow-[0_4px_20px_rgba(30,34,41,0.04)] flex flex-col justify-between">
+<div>
+<div class="relative w-full h-36 bg-surface-container-low rounded-xl overflow-hidden mb-2.5 p-2 flex items-center justify-center">
+<img class="h-full object-contain mix-blend-multiply" data-alt="Sophisticated double-breasted structured navy blazer displayed on a tailored mannequin against a crisp bright architectural background. High-key light-mode editorial fashion photography highlighting peaked lapels and horn buttons with deep rich navy hues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3zQjMijQoCJ9OUWDOrZDjh-Ty0HthXSyrxoq93DYUu1hThnRJfjeYahwfhF6P4yaTcSD4qEOaxTvpTqG2jas6RMVAYrlortgIxdFE5h24jGpZAtMnc00PhV_rt_Wdgv7YHswFrPC5oDozeoWxTBvLpFLARpnChPKl1DdspVols6HSudJhjA19WGQOf7LorMZcWWaixw9e9PfQm9rSlP1k0JGgu1RgUSZZj61sgm52WNHK0pdXWuzGkjqmvU2_IG8H4Q2dDZSVfpo"/>
+<span class="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-surface-container-lowest/90 backdrop-blur-sm text-error font-label-sm text-[10px] font-bold shadow-sm">
+                    62d Unworn
+                  </span>
+</div>
+<h4 class="font-headline-sm text-body-md font-bold text-on-surface">Double-Breasted Blazer</h4>
+<p class="font-label-sm text-label-sm text-secondary">Tailoring • Acquired Sep 2023</p>
+</div>
+<div class="mt-3 pt-3 border-t border-surface-container-high grid grid-cols-2 gap-1.5">
+<button class="py-1.5 px-2 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm flex items-center justify-center gap-1 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[14px]">magic_button</span> Revive
+                </button>
+<button class="py-1.5 px-2 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm flex items-center justify-center gap-1 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[14px]">sell</span> Resell
+                </button>
+</div>
+</div>
+<!-- Dormant Card 2 -->
+<div class="w-60 flex-shrink-0 bg-surface-container-lowest border border-outline-variant/30 rounded-2xl p-3.5 shadow-[0_4px_20px_rgba(30,34,41,0.04)] flex flex-col justify-between">
+<div>
+<div class="relative w-full h-36 bg-surface-container-low rounded-xl overflow-hidden mb-2.5 p-2 flex items-center justify-center">
+<img class="h-full object-contain mix-blend-multiply" data-alt="Pure silk minimalist slip dress in champagne cream draped gently on a sculpted minimalist form against a bright modern atelier background. Luminous high-key morning light reflecting silk luster and fine seams in an elegant high-end fashion portfolio." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCah2KobozZ240HG6SOcvvhVWetqpTScbCsSvqJehbMIQJrlSmjNKlrB3ZJewpi-iB81fQ_wcGI8EiNqMzLqRrRCjDAjg8nZCzwv95uETG5FWrkaeAIC74X8cE2xL_5DdIZQwKrBioIscp4XHk5CBNCmE3_TlZGVh7ILdhBNoupmahMH1DsgCQ12BqnE6JVgykvKEmriECeum4dTbcHI-w9iG0kSYppSBl83qvtqta8d6Dam1toZvIys50hdAtjCJI2rY4iZwPgtY"/>
+<span class="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-surface-container-lowest/90 backdrop-blur-sm text-error font-label-sm text-[10px] font-bold shadow-sm">
+                    84d Unworn
+                  </span>
+</div>
+<h4 class="font-headline-sm text-body-md font-bold text-on-surface">Silk Slip Dress</h4>
+<p class="font-label-sm text-label-sm text-secondary">Evening • Acquired May 2023</p>
+</div>
+<div class="mt-3 pt-3 border-t border-surface-container-high grid grid-cols-2 gap-1.5">
+<button class="py-1.5 px-2 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm flex items-center justify-center gap-1 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[14px]">magic_button</span> Revive
+                </button>
+<button class="py-1.5 px-2 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm flex items-center justify-center gap-1 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[14px]">volunteer_activism</span> Donate
+                </button>
+</div>
+</div>
+<!-- Dormant Card 3 -->
+<div class="w-60 flex-shrink-0 bg-surface-container-lowest border border-outline-variant/30 rounded-2xl p-3.5 shadow-[0_4px_20px_rgba(30,34,41,0.04)] flex flex-col justify-between">
+<div>
+<div class="relative w-full h-36 bg-surface-container-low rounded-xl overflow-hidden mb-2.5 p-2 flex items-center justify-center">
+<img class="h-full object-contain mix-blend-multiply" data-alt="A pair of clean white minimalist leather Chelsea boots shot at a dynamic angle on a neutral beige pedestal in a modern sunlit fashion studio. Polished styling with sharp edges, pristine neutral light, and pure luxury leather craftsmanship." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKdL5u3EIWZHt61Eb2ec7CYykUkjcHAs4g-BMfEroqCL9oJumdedKwcd78R31nVv0nIBaJe4ethTpdyIAmyhynQ45gGjMrYx0d4mMCR0iZvAVWsHotcwGsHSkRH5kGLCA7mIqZ06KHTmTpBZ5msMnI8Xd9PpY929fnvgcIEd5-v-q2uaHziC-dTYZ3ezmaFycPUKgsiqnb9cukqVme5VjNZwdOSk4jRJwSxIsML0NpT8F3mYYkgtWQ-c9gUkTAITPqs8yAugO4ToM"/>
+<span class="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-surface-container-lowest/90 backdrop-blur-sm text-error font-label-sm text-[10px] font-bold shadow-sm">
+                    51d Unworn
+                  </span>
+</div>
+<h4 class="font-headline-sm text-body-md font-bold text-on-surface">Chelsea Leather Boots</h4>
+<p class="font-label-sm text-label-sm text-secondary">Footwear • Acquired Nov 2023</p>
+</div>
+<div class="mt-3 pt-3 border-t border-surface-container-high grid grid-cols-2 gap-1.5">
+<button class="py-1.5 px-2 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm flex items-center justify-center gap-1 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[14px]">magic_button</span> Revive
+                </button>
+<button class="py-1.5 px-2 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm flex items-center justify-center gap-1 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[14px]">sell</span> Resell
+                </button>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Category Versatility & Wear Matrix -->
+<section class="bg-surface-container-lowest border border-outline-variant/30 rounded-2xl p-5 shadow-[0_4px_20px_rgba(30,34,41,0.04)] space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">category</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Category Utilization</h3>
+</div>
+<span class="font-label-sm text-label-sm text-secondary">Last 45 Days</span>
+</div>
+<!-- Progress Bars -->
+<div class="space-y-3">
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Outerwear</span>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-tertiary font-bold">Optimal</span>
+<span class="font-headline-sm text-label-lg font-bold text-on-surface">92%</span>
+</div>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 92%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Tops &amp; Shirts</span>
+<span class="font-headline-sm text-label-lg font-bold text-on-surface">86%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 86%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Bottoms &amp; Tailoring</span>
+<span class="font-headline-sm text-label-lg font-bold text-on-surface">90%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 90%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Footwear</span>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-error font-bold">Needs Rotation</span>
+<span class="font-headline-sm text-label-lg font-bold text-on-surface">78%</span>
+</div>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 78%"></div>
+</div>
+</div>
+</div>
+<!-- Microclimate Readiness Pill Banner -->
+<div class="p-3 bg-surface-container-low rounded-xl flex items-center justify-between border border-outline-variant/20">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">wb_twilight</span>
+</div>
+<div>
+<p class="font-headline-sm text-body-sm font-bold text-on-surface">Microclimate Readiness</p>
+<p class="font-label-sm text-[11px] text-secondary">Calibrated for Mild / Spring conditions</p>
+</div>
+</div>
+<span class="font-headline-sm text-label-lg font-bold text-tertiary bg-surface-container-lowest px-2.5 py-1 rounded-full border border-outline-variant/10">95%</span>
+</div>
+</section>
+<!-- 5. Sustainable Impact & Cost Optimization summary -->
+<section class="bg-gradient-to-br from-surface-container-low to-surface-container rounded-2xl p-5 border border-outline-variant/30 space-y-4">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[22px]">savings</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-tertiary font-bold">Economic &amp; Eco Impact</span>
+<h4 class="font-headline-sm text-body-lg font-bold text-on-surface mt-0.5">$230 Saved This Quarter</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                Achieved by maximizing existing wardrobe rotations and reducing redundant fast-fashion impulse acquisitions.
+              </p>
+</div>
+</div>
+<button class="w-full py-3 px-4 bg-on-surface text-surface rounded-full font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 active:scale-98 transition-transform shadow-md">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+<span>Schedule Seasonal Wardrobe Audit</span>
+</button>
+</section>
+</div>
+<!-- BottomNavBar Shared Component Implementation -->
+<!-- Highlight 5th tab 'Health' as mandated -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 border-t border-outline-variant/20 dark:border-outline/20 bg-surface-container-lowest dark:bg-inverse-surface shadow-lg dark:shadow-none max-w-[430px] mx-auto right-0">
+<!-- Tab 1: Home -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1.5 hover:bg-surface-container dark:hover:bg-surface-variant active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-[22px]">home</span>
+<span class="font-label-sm text-label-sm mt-0.5">Home</span>
+</button>
+<!-- Tab 2: Try-On -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1.5 hover:bg-surface-container dark:hover:bg-surface-variant active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-[22px]">view_in_ar</span>
+<span class="font-label-sm text-label-sm mt-0.5">Try-On</span>
+</button>
+<!-- Tab 3: Scan -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1.5 hover:bg-surface-container dark:hover:bg-surface-variant active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-[22px]">photo_camera</span>
+<span class="font-label-sm text-label-sm mt-0.5">Scan</span>
+</button>
+<!-- Tab 4: Closet -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-3 py-1.5 hover:bg-surface-container dark:hover:bg-surface-variant active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-[22px]">checkroom</span>
+<span class="font-label-sm text-label-sm mt-0.5">Closet</span>
+</button>
+<!-- Tab 5: Health (ACTIVE) -->
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container dark:bg-primary-fixed dark:text-on-primary-fixed rounded-full px-3 py-1.5 hover:bg-surface-container dark:hover:bg-surface-variant active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-label-sm text-label-sm mt-0.5">Health</span>
+</button>
+</nav>
+</main>
+</div>
+</body></html>

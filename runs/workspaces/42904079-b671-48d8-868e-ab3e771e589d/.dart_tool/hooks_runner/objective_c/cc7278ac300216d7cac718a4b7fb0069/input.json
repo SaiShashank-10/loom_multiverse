@@ -1,0 +1,29 @@
+{
+  "assets": {},
+  "config": {
+    "build_asset_types": [
+      "code_assets/code"
+    ],
+    "extensions": {
+      "code_assets": {
+        "android": {
+          "target_ndk_api": 24
+        },
+        "c_compiler": {
+          "ar": "C:\\Shashank\\loom_multiverse\\runs\\toolchains\\android-sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-ar.exe",
+          "cc": "C:\\Shashank\\loom_multiverse\\runs\\toolchains\\android-sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+          "ld": "C:\\Shashank\\loom_multiverse\\runs\\toolchains\\android-sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\ld.lld.exe"
+        },
+        "link_mode_preference": "dynamic",
+        "target_architecture": "arm64",
+        "target_os": "android"
+      }
+    },
+    "linking_enabled": false
+  },
+  "out_dir_shared": "C:\\Shashank\\loom_multiverse\\runs\\workspaces\\42904079-b671-48d8-868e-ab3e771e589d\\.dart_tool\\hooks_runner\\shared\\objective_c\\build\\",
+  "out_file": "C:\\Shashank\\loom_multiverse\\runs\\workspaces\\42904079-b671-48d8-868e-ab3e771e589d\\.dart_tool\\hooks_runner\\objective_c\\cc7278ac300216d7cac718a4b7fb0069\\output.json",
+  "package_name": "objective_c",
+  "package_root": "C:\\Shashank\\loom_multiverse\\runs\\toolchains\\pub-cache\\hosted\\pub.dev\\objective_c-9.5.0\\",
+  "user_defines": {}
+}

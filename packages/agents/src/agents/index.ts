@@ -8,7 +8,9 @@ export * from "./base-agent.js";
 
 import "./idea-check/idea-check-agent.js";
 import "./planning/planning-agent.js";
+import "./code-gen/stitch-agent.js";
 import "./code-gen/code-gen-agent.js";
+export { StitchAgent } from "./code-gen/stitch-agent.js";
 
 export { IdeaCheckAgent } from "./idea-check/idea-check-agent.js";
 export { PlanningAgent } from "./planning/planning-agent.js";

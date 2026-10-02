@@ -18,7 +18,9 @@ export class HackerNewsAdapter implements FeedSource {
         throw new Error(`Failed to fetch HN top stories: ${topStoriesRes.statusText}`);
       }
       
-      const storyIds: number[] = await topStoriesRes.json();
+      const responseIds: unknown = await topStoriesRes.json();
+      if (!Array.isArray(responseIds)) throw new Error("Invalid Hacker News story list");
+      const storyIds = responseIds.filter((id): id is number => typeof id === "number" && Number.isSafeInteger(id));
       
       // We only take the top 30 to avoid rate limiting and excessive requests
       const top30 = storyIds.slice(0, 30);
@@ -30,15 +32,17 @@ export class HackerNewsAdapter implements FeedSource {
           const itemRes = await fetch(`${this.apiUrl}/item/${id}.json`);
           if (!itemRes.ok) continue;
           
-          const item = await itemRes.json();
+          const raw: unknown = await itemRes.json();
+          if (!raw || typeof raw !== "object") continue;
+          const item = raw as Record<string, unknown>;
           
           // Skip if it's not a story or if it has no title
-          if (item.type !== "story" || !item.title) continue;
+          if (item.type !== "story" || typeof item.title !== "string" || typeof item.time !== "number") continue;
           
-          const url = item.url || `https://news.ycombinator.com/item?id=${id}`;
+          const url = typeof item.url === "string" ? item.url : `https://news.ycombinator.com/item?id=${id}`;
           
           let domain: string | undefined;
-          if (item.url) {
+          if (typeof item.url === "string") {
             const domainMatch = item.url.match(/^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/im);
             domain = domainMatch ? domainMatch[1] : undefined;
           }
@@ -46,7 +50,7 @@ export class HackerNewsAdapter implements FeedSource {
           items.push({
             title: item.title,
             url,
-            snippet: item.text || "", // HN stories sometimes have text, but usually just title
+            snippet: typeof item.text === "string" ? item.text : "",
             publishedAt: new Date(item.time * 1000), // HN time is in Unix seconds
             source: this.name,
             domain,

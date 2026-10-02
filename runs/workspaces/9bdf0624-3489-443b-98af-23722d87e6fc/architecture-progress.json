@@ -1,0 +1,389 @@
+{
+  "fingerprint": "b047f57041500ccfd0d1893a9a5152249617760d060d3c13a97af1f0f1c4a616",
+  "batches": [
+    {
+      "files": [
+        {
+          "path": "src/.env.example",
+          "description": "Example environment variables for the React application."
+        },
+        {
+          "path": "src/App.js",
+          "description": "Main entry point of the React application."
+        },
+        {
+          "path": "src/components/JobSearch.js",
+          "description": "Component for job search functionality."
+        },
+        {
+          "path": "src/components/TechnicalGapAnalysis.js",
+          "description": "Component for technical gap analysis."
+        },
+        {
+          "path": "src/components/CareerRecommendations.js",
+          "description": "Component for career recommendations and learning roadmap."
+        },
+        {
+          "path": "src/services/JobService.js",
+          "description": "Service layer for job-related operations."
+        },
+        {
+          "path": "src/services/GapAnalysisService.js",
+          "description": "Service layer for technical gap analysis operations."
+        },
+        {
+          "path": "src/services/RecommendationService.js",
+          "description": "Service layer for career recommendation operations."
+        },
+        {
+          "path": "src/utils/config.js",
+          "description": "Configuration file for the application."
+        },
+        {
+          "path": "src/assets/logo.png",
+          "description": "Logo image for the application."
+        },
+        {
+          "path": "src/index.css",
+          "description": "Global CSS styles for the application."
+        },
+        {
+          "path": "src/App.test.js",
+          "description": "Unit tests for the main application component."
+        },
+        {
+          "path": "src/components/JobSearch.test.js",
+          "description": "Unit tests for the job search component."
+        },
+        {
+          "path": "src/components/TechnicalGapAnalysis.test.js",
+          "description": "Unit tests for the technical gap analysis component."
+        },
+        {
+          "path": "src/components/CareerRecommendations.test.js",
+          "description": "Unit tests for the career recommendations component."
+        }
+      ]
+    },
+    {
+      "files": [
+        {
+          "path": "src/.env.example",
+          "description": "Environment variables template for development and production environments."
+        },
+        {
+          "path": "src/App.js",
+          "description": "Main entry point of the React application, renders the layout and routes."
+        },
+        {
+          "path": "src/components/JobSearch.js",
+          "description": "Component for job search functionality, including input fields and job card display."
+        },
+        {
+          "path": "src/components/TechnicalGapAnalysis.js",
+          "description": "Component for technical gap analysis, displaying skill matrix and progress bars."
+        },
+        {
+          "path": "src/components/CareerRecommendations.js",
+          "description": "Component for career recommendations, showing learning roadmap and suggested courses."
+        },
+        {
+          "path": "src/services/JobService.js",
+          "description": "Service layer for job-related API calls and data processing."
+        },
+        {
+          "path": "src/services/GapAnalysisService.js",
+          "description": "Service layer for technical gap analysis, including skill matrix generation."
+        },
+        {
+          "path": "src/services/RecommendationService.js",
+          "description": "Service layer for career recommendation generation, suggesting learning resources."
+        },
+        {
+          "path": "src/utils/config.js",
+          "description": "Configuration file to hold project-wide settings and constants."
+        },
+        {
+          "path": "src/assets/logo.png",
+          "description": "Project logo image used in the header of the application."
+        },
+        {
+          "path": "src/index.css",
+          "description": "Global CSS file for styling the application, including design tokens and layout styles."
+        },
+        {
+          "path": "src/App.test.js",
+          "description": "Unit tests for the main App component to ensure it renders correctly."
+        },
+        {
+          "path": "src/components/JobSearch.test.js",
+          "description": "Unit tests for the JobSearch component to validate its functionality."
+        },
+        {
+          "path": "src/components/TechnicalGapAnalysis.test.js",
+          "description": "Unit tests for the TechnicalGapAnalysis component to ensure it displays data correctly."
+        },
+        {
+          "path": "src/components/CareerRecommendations.test.js",
+          "description": "Unit tests for the CareerRecommendations component to validate its recommendation logic."
+        }
+      ]
+    },
+    {
+      "files": [
+        {
+          "path": "src/.env.example",
+          "description": "Example environment variables for the React application."
+        },
+        {
+          "path": "src/App.js",
+          "description": "The main entry point of the React application."
+        },
+        {
+          "path": "src/components/JobSearch.js",
+          "description": "Component responsible for job search functionality."
+        },
+        {
+          "path": "src/components/TechnicalGapAnalysis.js",
+          "description": "Component for technical gap analysis."
+        },
+        {
+          "path": "src/components/CareerRecommendations.js",
+          "description": "Component for career recommendations and learning roadmaps."
+        },
+        {
+          "path": "src/services/JobService.js",
+          "description": "Service layer for job-related operations."
+        },
+        {
+          "path": "src/services/GapAnalysisService.js",
+          "description": "Service layer for technical gap analysis operations."
+        },
+        {
+          "path": "src/services/RecommendationService.js",
+          "description": "Service layer for career recommendation and learning roadmap generation."
+        },
+        {
+          "path": "src/utils/config.js",
+          "description": "Configuration file for the application, including API endpoints and other constants."
+        },
+        {
+          "path": "src/assets/logo.png",
+          "description": "Logo image used in the application."
+        },
+        {
+          "path": "src/index.css",
+          "description": "Global CSS styles for the application."
+        },
+        {
+          "path": "src/App.test.js",
+          "description": "Unit tests for the main App component."
+        },
+        {
+          "path": "src/components/JobSearch.test.js",
+          "description": "Unit tests for the JobSearch component."
+        },
+        {
+          "path": "src/components/TechnicalGapAnalysis.test.js",
+          "description": "Unit tests for the TechnicalGapAnalysis component."
+        },
+        {
+          "path": "src/components/CareerRecommendations.test.js",
+          "description": "Unit tests for the CareerRecommendations component."
+        }
+      ]
+    },
+    {
+      "files": [
+        {
+          "path": "src/.env.example",
+          "description": "Example environment variables for the React application."
+        },
+        {
+          "path": "src/App.js",
+          "description": "Main entry point of the React application."
+        },
+        {
+          "path": "src/components/JobSearch.js",
+          "description": "Component for job search functionality."
+        },
+        {
+          "path": "src/components/TechnicalGapAnalysis.js",
+          "description": "Component for technical gap analysis functionality."
+        },
+        {
+          "path": "src/components/CareerRecommendations.js",
+          "description": "Component for career recommendations and learning roadmap generation."
+        },
+        {
+          "path": "src/services/JobService.js",
+          "description": "Service layer for job-related operations."
+        },
+        {
+          "path": "src/services/GapAnalysisService.js",
+          "description": "Service layer for technical gap analysis operations."
+        },
+        {
+          "path": "src/services/RecommendationService.js",
+          "description": "Service layer for career recommendation and learning roadmap generation operations."
+        },
+        {
+          "path": "src/utils/config.js",
+          "description": "Configuration utility file to manage project settings."
+        },
+        {
+          "path": "src/assets/logo.png",
+          "description": "Project logo image."
+        },
+        {
+          "path": "src/index.css",
+          "description": "Global CSS styles for the React application."
+        },
+        {
+          "path": "src/App.test.js",
+          "description": "Unit tests for the main App component."
+        },
+        {
+          "path": "src/components/JobSearch.test.js",
+          "description": "Unit tests for the JobSearch component."
+        },
+        {
+          "path": "src/components/TechnicalGapAnalysis.test.js",
+          "description": "Unit tests for the TechnicalGapAnalysis component."
+        },
+        {
+          "path": "src/components/CareerRecommendations.test.js",
+          "description": "Unit tests for the CareerRecommendations component."
+        }
+      ]
+    },
+    {
+      "files": [
+        {
+          "path": "src/.env.example",
+          "description": "Example environment variables for the React application."
+        },
+        {
+          "path": "src/App.js",
+          "description": "Main entry point of the React application."
+        },
+        {
+          "path": "src/components/JobSearch.js",
+          "description": "Component for job search functionality."
+        },
+        {
+          "path": "src/components/TechnicalGapAnalysis.js",
+          "description": "Component for technical gap analysis functionality."
+        },
+        {
+          "path": "src/components/CareerRecommendations.js",
+          "description": "Component for career recommendations and learning roadmap generation."
+        },
+        {
+          "path": "src/services/JobService.js",
+          "description": "Service layer for job-related API calls."
+        },
+        {
+          "path": "src/services/GapAnalysisService.js",
+          "description": "Service layer for technical gap analysis API calls."
+        },
+        {
+          "path": "src/services/RecommendationService.js",
+          "description": "Service layer for career recommendation API calls."
+        },
+        {
+          "path": "src/utils/config.js",
+          "description": "Configuration file for project settings and constants."
+        },
+        {
+          "path": "src/assets/logo.png",
+          "description": "Application logo image."
+        },
+        {
+          "path": "src/index.css",
+          "description": "Global CSS styles for the application."
+        },
+        {
+          "path": "src/App.test.js",
+          "description": "Unit tests for the main App component."
+        },
+        {
+          "path": "src/components/JobSearch.test.js",
+          "description": "Unit tests for the JobSearch component."
+        },
+        {
+          "path": "src/components/TechnicalGapAnalysis.test.js",
+          "description": "Unit tests for the TechnicalGapAnalysis component."
+        },
+        {
+          "path": "src/components/CareerRecommendations.test.js",
+          "description": "Unit tests for the CareerRecommendations component."
+        }
+      ]
+    },
+    {
+      "files": [
+        {
+          "path": "src/.env.example",
+          "description": "Example environment variables for development, staging, and production environments."
+        },
+        {
+          "path": "src/App.js",
+          "description": "Main entry point of the React application. Initializes the React Context and renders the main component."
+        },
+        {
+          "path": "src/components/JobSearch.js",
+          "description": "Component for job search functionality, including form inputs and search results display."
+        },
+        {
+          "path": "src/components/TechnicalGapAnalysis.js",
+          "description": "Component for technical gap analysis, including resume upload and analysis results display."
+        },
+        {
+          "path": "src/components/CareerRecommendations.js",
+          "description": "Component for career recommendations and learning roadmap display."
+        },
+        {
+          "path": "src/services/JobService.js",
+          "description": "Service layer for job-related operations, including fetching job data from the backend."
+        },
+        {
+          "path": "src/services/GapAnalysisService.js",
+          "description": "Service layer for technical gap analysis operations, including processing resumes and analyzing skills."
+        },
+        {
+          "path": "src/services/RecommendationService.js",
+          "description": "Service layer for career recommendation operations, including generating learning roadmaps."
+        },
+        {
+          "path": "src/utils/config.js",
+          "description": "Utility file for configuration settings, such as API keys and database URLs."
+        },
+        {
+          "path": "src/assets/logo.png",
+          "description": "Application logo image used in the header or footer of the React application."
+        },
+        {
+          "path": "src/index.css",
+          "description": "Global CSS file for styling the React application, including common styles and layout components."
+        },
+        {
+          "path": "src/App.test.js",
+          "description": "Unit tests for the main App component to ensure it renders correctly and interacts with services properly."
+        },
+        {
+          "path": "src/components/JobSearch.test.js",
+          "description": "Unit tests for the JobSearch component to validate form inputs, search functionality, and rendering of results."
+        },
+        {
+          "path": "src/components/TechnicalGapAnalysis.test.js",
+          "description": "Unit tests for the TechnicalGapAnalysis component to validate resume upload, analysis processing, and display of results."
+        },
+        {
+          "path": "src/components/CareerRecommendations.test.js",
+          "description": "Unit tests for the CareerRecommendations component to validate rendering of recommendations and learning roadmaps."
+        }
+      ]
+    }
+  ]
+}

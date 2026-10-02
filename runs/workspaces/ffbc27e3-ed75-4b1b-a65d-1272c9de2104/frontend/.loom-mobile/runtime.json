@@ -1,0 +1,8 @@
+{
+  "success": false,
+  "isRunning": false,
+  "framework": "flutter",
+  "checkedAt": "2026-09-20T15:13:46.915Z",
+  "deviceId": "8c99de0f",
+  "error": "Error: flutter build apk --debug exited 1\nBuild failed due to use of deleted Android v1 embedding.\n"
+}

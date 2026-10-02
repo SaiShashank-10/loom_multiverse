@@ -1,0 +1,10 @@
+{
+  "project": "9bdf0624-3489-443b-98af-23722d87e6fc",
+  "model": "qwen2.5-coder:7b",
+  "design": "e029725f3bfd856a6509c89c48d3aaff5559f73476e211a98e057bcb1921d9ec",
+  "scope": "One React Job Search result card using existing CSS; not a full pipeline run",
+  "passed": false,
+  "error": "src/components/JobCard.jsx: Stitch source review still fails: The job title is not bold and does not use the correct font size and weight as per the approved reference.; The company mark and location are not displayed in a consistent manner with the approved reference.; The workplace and salary information are not aligned properly with the approved reference.; The match badge color and text should be dynamically set based on the job object's 'color' property, but it is hardcoded as 'Match: 88%'.; The 'Quick Apply' button does not have the correct styling or spacing as per the approved reference.; The save/unsave toggle button is missing from the approved reference.",
+  "calls": 6,
+  "elapsedSeconds": 423
+}

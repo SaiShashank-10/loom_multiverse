@@ -1,4 +1,5 @@
 export { projects, projectRelations } from "./projects.js";
+export { users, sessions } from "./accounts.js";
 export { phases, phaseRelations } from "./phases.js";
 export { agents, agentRelations } from "./agents.js";
 export { adrs, adrRelations } from "./adrs.js";

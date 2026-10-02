@@ -1,0 +1,140 @@
+{
+  "files": [
+    {
+      "path": "ml/__init__.py",
+      "description": "Package marker; no training side effects on import"
+    },
+    {
+      "path": "ml/requirements.txt",
+      "description": "Compatible versions of approved ML dependencies and pytest"
+    },
+    {
+      "path": "ml/pytest.ini",
+      "description": "pytest configuration with pythonpath=.. so tests run from ml directory and import ml package"
+    },
+    {
+      "path": "ml/common.py",
+      "description": "Shared config loader, seeded execution, artifact paths, checkpoint helpers; exported APIs documented for all workers"
+    },
+    {
+      "path": "ml/preprocess.py",
+      "description": "Complete preprocessing module and command-line entrypoint"
+    },
+    {
+      "path": "ml/model.py",
+      "description": "Actual project-specific model architecture and loss definitions"
+    },
+    {
+      "path": "ml/train.py",
+      "description": "Real resumable training module and command-line entrypoint"
+    },
+    {
+      "path": "ml/finetune.py",
+      "description": "Real optional fine-tuning module and command-line entrypoint"
+    },
+    {
+      "path": "ml/predict.py",
+      "description": "Shared trained-model inference used by evaluation and the application backend"
+    },
+    {
+      "path": "ml/evaluate.py",
+      "description": "Measured evaluation, baseline comparison and metrics.json entrypoint"
+    },
+    {
+      "path": "ml/verify.py",
+      "description": "Independent checkpoint reload, held-out prediction parity, metric recomputation and hashed verification.json evidence"
+    },
+    {
+      "path": "ml/tests/test_pipeline.py",
+      "description": "Small explicitly synthetic smoke tests for leakage, finite loss, actual parameter updates, reload prediction parity and missing dataset errors; no production claims"
+    },
+    {
+      "path": "ml/README.md",
+      "description": "Dataset schema, real commands, compute prerequisites, checkpoint resume and measured-result interpretation"
+    },
+    {
+      "path": "package.json",
+      "description": "React application dependency manifest with finite Vite start/build and Vitest test scripts"
+    },
+    {
+      "path": "vite.config.js",
+      "description": "Vite React build and finite Vitest jsdom test configuration"
+    },
+    {
+      "path": "index.html",
+      "description": "Accessible browser document entrypoint with the React root mount"
+    },
+    {
+      "path": "src/index.jsx",
+      "description": "React browser bootstrap that mounts the application into the document root"
+    },
+    {
+      "path": "src/setupTests.js",
+      "description": "Jest DOM assertion setup shared by frontend behavioral tests"
+    },
+    {
+      "path": "src/.env.example",
+      "description": "Environment configuration template. List all variable names needed by this component with empty values or obvious placeholders and explanatory comments. Never include real credentials, copy an existing .env, or invent working API keys. The user creates their own local environment file from this template."
+    },
+    {
+      "path": "src/App.jsx",
+      "description": "Main entry point of the React application.; Main entry point of the React application, renders the layout and routes.; The main entry point of the React application.; Main entry point of the React application.; Main entry point of the React application.; Main entry point of the React application. Initializes the React Context and renders the main component."
+    },
+    {
+      "path": "src/components/JobSearch.jsx",
+      "description": "Component for job search functionality.; Component for job search functionality, including input fields and job card display.; Component responsible for job search functionality.; Component for job search functionality.; Component for job search functionality.; Component for job search functionality, including form inputs and search results display."
+    },
+    {
+      "path": "src/components/JobCard.jsx",
+      "description": "Reusable accessible presentation component for a returned job result"
+    },
+    {
+      "path": "src/components/TechnicalGapAnalysis.jsx",
+      "description": "Component for technical gap analysis.; Component for technical gap analysis, displaying skill matrix and progress bars.; Component for technical gap analysis.; Component for technical gap analysis functionality.; Component for technical gap analysis functionality.; Component for technical gap analysis, including resume upload and analysis results display."
+    },
+    {
+      "path": "src/components/CareerRecommendations.jsx",
+      "description": "Component for career recommendations and learning roadmap.; Component for career recommendations, showing learning roadmap and suggested courses.; Component for career recommendations and learning roadmaps.; Component for career recommendations and learning roadmap generation.; Component for career recommendations and learning roadmap generation.; Component for career recommendations and learning roadmap display."
+    },
+    {
+      "path": "src/services/JobService.js",
+      "description": "Service layer for job-related operations.; Service layer for job-related API calls and data processing.; Service layer for job-related operations.; Service layer for job-related operations.; Service layer for job-related API calls.; Service layer for job-related operations, including fetching job data from the backend."
+    },
+    {
+      "path": "src/services/GapAnalysisService.js",
+      "description": "Service layer for technical gap analysis operations.; Service layer for technical gap analysis, including skill matrix generation.; Service layer for technical gap analysis operations.; Service layer for technical gap analysis operations.; Service layer for technical gap analysis API calls.; Service layer for technical gap analysis operations, including processing resumes and analyzing skills."
+    },
+    {
+      "path": "src/services/RecommendationService.js",
+      "description": "Service layer for career recommendation operations.; Service layer for career recommendation generation, suggesting learning resources.; Service layer for career recommendation and learning roadmap generation.; Service layer for career recommendation and learning roadmap generation operations.; Service layer for career recommendation API calls.; Service layer for career recommendation operations, including generating learning roadmaps."
+    },
+    {
+      "path": "src/utils/config.js",
+      "description": "Configuration file for the application.; Configuration file to hold project-wide settings and constants.; Configuration file for the application, including API endpoints and other constants.; Configuration utility file to manage project settings.; Configuration file for project settings and constants.; Utility file for configuration settings, such as API keys and database URLs."
+    },
+    {
+      "path": "src/assets/logo.svg",
+      "description": "Source SVG application logo used in the header and footer"
+    },
+    {
+      "path": "src/index.css",
+      "description": "Global CSS styles for the application.; Global CSS file for styling the application, including design tokens and layout styles.; Global CSS styles for the application.; Global CSS styles for the React application.; Global CSS styles for the application.; Global CSS file for styling the React application, including common styles and layout components."
+    },
+    {
+      "path": "src/App.test.jsx",
+      "description": "Unit tests for the main application component.; Unit tests for the main App component to ensure it renders correctly.; Unit tests for the main App component.; Unit tests for the main App component.; Unit tests for the main App component.; Unit tests for the main App component to ensure it renders correctly and interacts with services properly."
+    },
+    {
+      "path": "src/components/JobSearch.test.jsx",
+      "description": "Unit tests for the job search component.; Unit tests for the JobSearch component to validate its functionality.; Unit tests for the JobSearch component.; Unit tests for the JobSearch component.; Unit tests for the JobSearch component.; Unit tests for the JobSearch component to validate form inputs, search functionality, and rendering of results."
+    },
+    {
+      "path": "src/components/TechnicalGapAnalysis.test.jsx",
+      "description": "Unit tests for the technical gap analysis component.; Unit tests for the TechnicalGapAnalysis component to ensure it displays data correctly.; Unit tests for the TechnicalGapAnalysis component.; Unit tests for the TechnicalGapAnalysis component.; Unit tests for the TechnicalGapAnalysis component.; Unit tests for the TechnicalGapAnalysis component to validate resume upload, analysis processing, and display of results."
+    },
+    {
+      "path": "src/components/CareerRecommendations.test.jsx",
+      "description": "Unit tests for the career recommendations component.; Unit tests for the CareerRecommendations component to validate its recommendation logic.; Unit tests for the CareerRecommendations component.; Unit tests for the CareerRecommendations component.; Unit tests for the CareerRecommendations component.; Unit tests for the CareerRecommendations component to validate rendering of recommendations and learning roadmaps."
+    }
+  ]
+}

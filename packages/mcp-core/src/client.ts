@@ -13,12 +13,8 @@ import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { createLogger } from "@loom/shared/logger";
 import { MCPError } from "@loom/shared/errors";
 import { createClientTransport } from "./transport.js";
-import type {
-  McpClientConfig,
-  ConnectionState,
-  ToolResult,
-  ToolContent,
-} from "./types.js";
+import { StitchSchemaValidator } from "./stitch-schema-validator.js";
+import type { McpClientConfig, ConnectionState, ToolResult, ToolContent } from "./types.js";
 
 const DEFAULT_TIMEOUT_MS = 30_000;
 const DEFAULT_MAX_RETRIES = 3;
@@ -57,6 +53,7 @@ export class McpClient {
       serverName: config.serverName,
       transport: config.transport,
       serverUrl: config.serverUrl ?? "",
+      headers: config.headers ?? {},
       command: config.command ?? "",
       args: config.args ?? [],
       timeoutMs: config.timeoutMs ?? DEFAULT_TIMEOUT_MS,
@@ -65,10 +62,15 @@ export class McpClient {
 
     this.log = createLogger(`mcp-client:${config.serverName}`);
 
-    this.client = new Client({
-      name: `loom-agent-${config.serverName}`,
-      version: "1.0.0",
-    });
+    this.client = new Client(
+      {
+        name: `loom-agent-${config.serverName}`,
+        version: "1.0.0",
+      },
+      config.serverName === "stitch"
+        ? { jsonSchemaValidator: new StitchSchemaValidator() }
+        : undefined,
+    );
   }
 
   /** Current connection state */
@@ -96,22 +98,29 @@ export class McpClient {
 
     for (let attempt = 1; attempt <= this.config.maxRetries; attempt++) {
       try {
-        this.log.info(
-          { attempt, maxRetries: this.config.maxRetries },
-          "Connecting to MCP server",
-        );
+        this.log.info({ attempt, maxRetries: this.config.maxRetries }, "Connecting to MCP server");
 
         const transport = createClientTransport(this.config);
-        await this.client.connect(transport);
+        await this.withTimeout(this.client.connect(transport), 30_000);
 
         this._state = "connected";
         this.log.info("Connected to MCP server");
         return;
       } catch (error) {
-        lastError = error instanceof Error ? error : new Error(String(error));
-        this.log.warn(
-          { attempt, error: lastError.message },
-          "Connection attempt failed",
+        const cause =
+          error instanceof Error
+            ? (error.cause as { code?: string; message?: string } | undefined)
+            : undefined;
+        lastError = new Error(
+          `${error instanceof Error ? error.message : String(error)}${cause ? ` (${cause.code ?? cause.message ?? "network failure"})` : ""}`,
+        );
+        this.log.warn({ attempt, error: lastError.message }, "Connection attempt failed");
+        await this.client.close().catch(() => {});
+        this.client = new Client(
+          { name: `loom-agent-${this.config.serverName}`, version: "1.0.0" },
+          this.config.serverName === "stitch"
+            ? { jsonSchemaValidator: new StitchSchemaValidator() }
+            : undefined,
         );
 
         if (attempt < this.config.maxRetries) {
@@ -133,7 +142,7 @@ export class McpClient {
    * Disconnect from the MCP server.
    */
   async disconnect(): Promise<void> {
-    if (this._state !== "connected") {
+    if (this._state === "disconnected") {
       return;
     }
 
@@ -153,13 +162,11 @@ export class McpClient {
    *
    * @returns Array of tool definitions with name, description, and input schema
    */
-  async listTools(): Promise<
-    Array<{ name: string; description: string; inputSchema: unknown }>
-  > {
+  async listTools(): Promise<Array<{ name: string; description: string; inputSchema: unknown }>> {
     this.ensureConnected();
 
     try {
-      const result = await this.withTimeout(this.client.listTools());
+      const result = await this.withTimeout(this.client.listTools(), 30_000);
 
       return (result.tools ?? []).map((tool) => ({
         name: tool.name,
@@ -178,10 +185,7 @@ export class McpClient {
    * @param args - Input arguments (will be validated by the server's Zod schema)
    * @returns The tool's result
    */
-  async callTool(
-    toolName: string,
-    args: Record<string, unknown> = {},
-  ): Promise<ToolResult> {
+  async callTool(toolName: string, args: Record<string, unknown> = {}): Promise<ToolResult> {
     this.ensureConnected();
 
     const startTime = Date.now();
@@ -189,7 +193,9 @@ export class McpClient {
 
     try {
       const result = await this.withTimeout(
-        this.client.callTool({ name: toolName, arguments: args }),
+        this.client.callTool({ name: toolName, arguments: args }, undefined, {
+          timeout: this.config.timeoutMs,
+        }),
       );
 
       const duration = Date.now() - startTime;
@@ -198,13 +204,11 @@ export class McpClient {
       return {
         content: (result.content ?? []) as ToolContent[],
         isError: result.isError as boolean | undefined,
+        structuredContent: result.structuredContent,
       };
     } catch (error) {
       const duration = Date.now() - startTime;
-      this.log.error(
-        { tool: toolName, duration, error: String(error) },
-        "Tool call failed",
-      );
+      this.log.error({ tool: toolName, duration, error: String(error) }, "Tool call failed");
       throw this.wrapError(`callTool:${toolName}`, error);
     }
   }
@@ -224,8 +228,7 @@ export class McpClient {
     const result = await this.callTool(toolName, args);
 
     if (result.isError) {
-      const errorText =
-        result.content.find((c) => c.type === "text")?.text ?? "Unknown error";
+      const errorText = result.content.find((c) => c.type === "text")?.text ?? "Unknown error";
       throw new MCPError(
         `Tool '${toolName}' returned error: ${errorText}`,
         this.config.serverName,
@@ -233,13 +236,12 @@ export class McpClient {
       );
     }
 
+    if (result.structuredContent !== undefined) return result.structuredContent as T;
     const textContent = result.content.find((c) => c.type === "text");
     if (!textContent?.text) {
-      throw new MCPError(
-        `Tool '${toolName}' returned no text content`,
-        this.config.serverName,
-        { tool: toolName },
-      );
+      throw new MCPError(`Tool '${toolName}' returned no text content`, this.config.serverName, {
+        tool: toolName,
+      });
     }
 
     try {
@@ -266,22 +268,28 @@ export class McpClient {
     }
   }
 
-  private async withTimeout<T>(promise: Promise<T>): Promise<T> {
-    return Promise.race([
-      promise,
-      new Promise<never>((_, reject) =>
-        setTimeout(
-          () =>
-            reject(
-              new MCPError(
-                `Request to '${this.config.serverName}' timed out after ${this.config.timeoutMs}ms`,
-                this.config.serverName,
-              ),
-            ),
-          this.config.timeoutMs,
+  private async withTimeout<T>(promise: Promise<T>, timeoutMs = this.config.timeoutMs): Promise<T> {
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    try {
+      return await Promise.race([
+        promise,
+        new Promise<never>(
+          (_, reject) =>
+            (timer = setTimeout(
+              () =>
+                reject(
+                  new MCPError(
+                    `Request to '${this.config.serverName}' timed out after ${timeoutMs}ms`,
+                    this.config.serverName,
+                  ),
+                ),
+              timeoutMs,
+            )),
         ),
-      ),
-    ]);
+      ]);
+    } finally {
+      clearTimeout(timer);
+    }
   }
 
   private wrapError(operation: string, error: unknown): MCPError {

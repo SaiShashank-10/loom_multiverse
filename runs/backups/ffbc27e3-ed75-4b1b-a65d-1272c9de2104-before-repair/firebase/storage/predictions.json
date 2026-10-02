@@ -1,0 +1,19 @@
+{
+  "predictions": [
+    {
+      "date": "2023-10-01",
+      "amount": 500,
+      "category": "Groceries"
+    },
+    {
+      "date": "2023-10-02",
+      "amount": 200,
+      "category": "Transportation"
+    },
+    {
+      "date": "2023-10-03",
+      "amount": 75,
+      "category": "Utilities"
+    }
+  ]
+}

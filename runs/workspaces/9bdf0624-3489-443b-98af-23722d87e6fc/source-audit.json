@@ -1,0 +1,228 @@
+{
+  "success": true,
+  "checkedAt": "2026-09-18T13:21:27.513Z",
+  "counts": {
+    "total": 36,
+    "invalid": 0,
+    "valid": 33
+  },
+  "warnings": [],
+  "entries": [
+    {
+      "path": "README.md",
+      "bytes": 1453,
+      "sha256": "1cd371f7b96ecd1a141011804d5b6ce03d384dca8a4df624733b95a160044429",
+      "status": "documentation"
+    },
+    {
+      "path": "index.html",
+      "bytes": 515,
+      "sha256": "353daa7fb6b9eca39c11be740702513f16e61f537b86b772bf789bca91d1668e",
+      "status": "valid"
+    },
+    {
+      "path": "ml/README.md",
+      "bytes": 1698,
+      "sha256": "24a57dda480aec8c55481cfa2a49615dc854459d27eb28dc614c8cdb29f9c9b7",
+      "status": "documentation"
+    },
+    {
+      "path": "ml/__init__.py",
+      "bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "status": "valid"
+    },
+    {
+      "path": "ml/common.py",
+      "bytes": 1867,
+      "sha256": "15d60cc29fb63fb98c4798cb1d0db495078939df16903073b6b25a58e443bd74",
+      "status": "valid"
+    },
+    {
+      "path": "ml/evaluate.py",
+      "bytes": 2079,
+      "sha256": "d72bc9da7da51e376d4e3c100205be15d916b9958a93adc810705ed7b7a4eaf7",
+      "status": "valid"
+    },
+    {
+      "path": "ml/finetune.py",
+      "bytes": 1927,
+      "sha256": "5b305e38eda9cc293fd62b33e2004d0308c84151b840f1ad7f354a128c4017f2",
+      "status": "valid"
+    },
+    {
+      "path": "ml/model.py",
+      "bytes": 1828,
+      "sha256": "21341be599397702b03ad4b2f13ee7be227675fb3303c67329dcf2e9ee9633c0",
+      "status": "valid"
+    },
+    {
+      "path": "ml/predict.py",
+      "bytes": 1394,
+      "sha256": "0cbc899ea15af6f90ea40b9025005b76ec3a0479a3372fd1c5c31ea61b78ff63",
+      "status": "valid"
+    },
+    {
+      "path": "ml/preprocess.py",
+      "bytes": 2035,
+      "sha256": "fa1612200e80561f89d34aa6f06fe8d536599da9a689c7f9b029e142f5bf7e6c",
+      "status": "valid"
+    },
+    {
+      "path": "ml/pytest.ini",
+      "bytes": 140,
+      "sha256": "72416dcd63a47e0d55eb55f4773c7f5a8adfcd9e11a627e22b83593215b9c42a",
+      "status": "valid"
+    },
+    {
+      "path": "ml/requirements.txt",
+      "bytes": 66,
+      "sha256": "4cbd19f9157dd0ada07377ee6db9c869b359ba7b89296851a0d76591935c6457",
+      "status": "valid"
+    },
+    {
+      "path": "ml/tests/test_pipeline.py",
+      "bytes": 2116,
+      "sha256": "e0ddfc6216f753d7c0e76c79fca1ecbd55328063f289cd7acac01fcfddfd8dae",
+      "status": "valid"
+    },
+    {
+      "path": "ml/train.py",
+      "bytes": 1895,
+      "sha256": "0c3a3a24a51e501de7d6392fd5f45b30222da18d3f9f6775a96e670ca6292531",
+      "status": "valid"
+    },
+    {
+      "path": "ml/verify.py",
+      "bytes": 2092,
+      "sha256": "41ae76bba3e1da8a8d476c5f08a41c8870016f55fc48bf1e5d2e1a739cd91486",
+      "status": "valid"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 100480,
+      "sha256": "b0c601073b0ff96d62d93c766bcc366b2ece1aa7d23b46b6f55fdcc436088396",
+      "status": "asset"
+    },
+    {
+      "path": "package.json",
+      "bytes": 633,
+      "sha256": "739c04fdd47b50329e8f30b8e3a71cc5ae3c5a2cec1f941201887a507d6f63c0",
+      "status": "valid"
+    },
+    {
+      "path": "src/.env.example",
+      "bytes": 230,
+      "sha256": "5d89486b29be3e286c50c60f18ff115421758e410c868c8337d90f14d934a3eb",
+      "status": "valid"
+    },
+    {
+      "path": "src/App.jsx",
+      "bytes": 1067,
+      "sha256": "49f57161ac96f2ffa8aa202d811eba6cf2b0f93cdd069f0978f4c87ddb8bda08",
+      "status": "valid"
+    },
+    {
+      "path": "src/App.test.jsx",
+      "bytes": 625,
+      "sha256": "c94baf7bbc76b1edaf265f349aaf298bc22cb3de447fd770818099bef9a076d6",
+      "status": "valid"
+    },
+    {
+      "path": "src/assets/logo.svg",
+      "bytes": 149,
+      "sha256": "8ece97080ef8526c08d954db511c6b34c53aa2aa08d6197c18438e594cc07815",
+      "status": "valid"
+    },
+    {
+      "path": "src/components/CareerRecommendations.jsx",
+      "bytes": 1245,
+      "sha256": "2f24493e769e9e4939185a4d5de4a3e4cfecdf611e6a8a6ce77e18b86d8f7c0d",
+      "status": "valid"
+    },
+    {
+      "path": "src/components/CareerRecommendations.test.jsx",
+      "bytes": 817,
+      "sha256": "33233bfd8658f9d785a706fc570eb1889f2dd99daf6ba4f8bb2ea84aa4697ea9",
+      "status": "valid"
+    },
+    {
+      "path": "src/components/JobCard.jsx",
+      "bytes": 212,
+      "sha256": "a7a6cf5328fe488d60dd443da0a1c87871f2ab289da52852f9d7eadae8fed435",
+      "status": "valid"
+    },
+    {
+      "path": "src/components/JobSearch.jsx",
+      "bytes": 1219,
+      "sha256": "b445edb7ad9f893f5954477de547ae406c74518dcdbda3833d9d049967da0b99",
+      "status": "valid"
+    },
+    {
+      "path": "src/components/JobSearch.test.jsx",
+      "bytes": 1139,
+      "sha256": "f20613d942e2d59a69d06cbac35c93e78a6dd0e015c235d909344cce1613b50d",
+      "status": "valid"
+    },
+    {
+      "path": "src/components/TechnicalGapAnalysis.jsx",
+      "bytes": 1195,
+      "sha256": "6646d325e805db901cc40a827bd22435e94b1f5e4dc879cbb67bcb26ec61e407",
+      "status": "valid"
+    },
+    {
+      "path": "src/components/TechnicalGapAnalysis.test.jsx",
+      "bytes": 716,
+      "sha256": "976635d01c4baefc9ade1a6135bf635cb131a3add191d8e7abc8972282fc65a7",
+      "status": "valid"
+    },
+    {
+      "path": "src/index.css",
+      "bytes": 1652,
+      "sha256": "35eb24cc1f2cdd3807a4522ab3f780de2978231aba4671e01cb7c6576c4279ed",
+      "status": "valid"
+    },
+    {
+      "path": "src/index.jsx",
+      "bytes": 337,
+      "sha256": "9909c77e6d2f309037e745da2a3f1d571c729d3483ae0fb06cc1c7ccff9e9cad",
+      "status": "valid"
+    },
+    {
+      "path": "src/services/GapAnalysisService.js",
+      "bytes": 412,
+      "sha256": "51b15db726fe4c523835f6f1bc995d83057fd6763aa24a9bb2f67bf06a43b6de",
+      "status": "valid"
+    },
+    {
+      "path": "src/services/JobService.js",
+      "bytes": 389,
+      "sha256": "99b6c956cceb87ef11cd1d944a2ae2257e1f6840c8b90ba8eca459f502fd24c3",
+      "status": "valid"
+    },
+    {
+      "path": "src/services/RecommendationService.js",
+      "bytes": 424,
+      "sha256": "b2186d58c5c09cf3bf262b51996049da3d1d1034275565a69e956d0c6d075f75",
+      "status": "valid"
+    },
+    {
+      "path": "src/setupTests.js",
+      "bytes": 43,
+      "sha256": "9b328c4843431fa76d8de00008fc159e95f99a840211085ff3b8f25e53d14409",
+      "status": "valid"
+    },
+    {
+      "path": "src/utils/config.js",
+      "bytes": 241,
+      "sha256": "a68baf1275528ccfbda2b664a4e7abf8c3e8156a43d249621c33ab9264f56de0",
+      "status": "valid"
+    },
+    {
+      "path": "vite.config.js",
+      "bytes": 237,
+      "sha256": "a366dadcd702d56c6ef5f117f86881e7426ba45d86a75af1250ba6ecc2c719d1",
+      "status": "valid"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "framework": "flutter",
+  "platform": "mobile",
+  "deviceType": "MOBILE",
+  "evidence": "Approved target: mobile; client framework: flutter. Explicit user requirements were evaluated before the technical plan."
+}

@@ -1,0 +1,27 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function owner(uid) { return request.auth != null && request.auth.uid == uid; }
+    function validRecord() {
+      return request.resource.data.keys().hasAll(['amount', 'category', 'date'])
+        && request.resource.data.keys().hasOnly(['amount', 'category', 'date'])
+        && request.resource.data.amount is number
+        && request.resource.data.amount != 0
+        && request.resource.data.amount > -1000000000000
+        && request.resource.data.amount < 1000000000000
+        && request.resource.data.category is string
+        && request.resource.data.category.size() > 0
+        && request.resource.data.category.size() <= 80
+        && request.resource.data.date is string
+        && request.resource.data.date.size() <= 40;
+    }
+    match /users/{uid}/transactions/{id} {
+      allow read, delete: if owner(uid);
+      allow create, update: if owner(uid) && validRecord();
+    }
+    match /users/{uid}/budgets/{id} {
+      allow read, delete: if owner(uid);
+      allow create, update: if owner(uid) && validRecord() && request.resource.data.amount > 0;
+    }
+  }
+}

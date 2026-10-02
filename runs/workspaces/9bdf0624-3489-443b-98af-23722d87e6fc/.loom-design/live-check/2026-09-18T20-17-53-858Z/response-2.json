@@ -1,0 +1,8 @@
+{
+  "content": "{ \"passed\": false, \"issues\": [ \"The job title is not bold and does not match the approved reference.\", \"The company mark is missing.\", \"The location is not displayed in a separate line as per the approved reference.\", \"The workplace information is not styled consistently with other text elements.\", \"The salary format is inconsistent with the approved reference (missing dollar sign).\", \"The posted age is not included in the card.\", \"The sample match badge does not have the correct color and label.\", \"The matched skills are not displayed as chips with a selected state as per the approved reference.\" ] }",
+  "usage": {
+    "input_tokens": 4880,
+    "output_tokens": 124,
+    "total_tokens": 5004
+  }
+}

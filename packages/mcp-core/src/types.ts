@@ -38,6 +38,7 @@ export interface ToolContent {
 export interface ToolResult {
   content: ToolContent[];
   isError?: boolean;
+  structuredContent?: unknown;
 }
 
 // ─────────────────────────────────────────────
@@ -45,7 +46,7 @@ export interface ToolResult {
 // ─────────────────────────────────────────────
 
 /** Transport type for MCP server connections */
-export type TransportType = "stdio" | "sse";
+export type TransportType = "stdio" | "sse" | "streamable-http";
 
 /** Configuration for an MCP server */
 export interface McpServerConfig {
@@ -65,6 +66,7 @@ export interface McpClientConfig {
   transport: TransportType;
   /** For SSE transport: the server URL */
   serverUrl?: string;
+  headers?: Record<string, string>;
   /** For stdio transport: the command to spawn the server */
   command?: string;
   /** For stdio transport: arguments for the command */
@@ -83,9 +85,7 @@ export interface McpClientConfig {
  * Handler function for an MCP tool.
  * Receives validated input and returns a ToolResult.
  */
-export type ToolHandler<T = unknown> = (
-  input: T,
-) => Promise<ToolResult> | ToolResult;
+export type ToolHandler<T = unknown> = (input: T) => Promise<ToolResult> | ToolResult;
 
 /** Registration entry for a tool on an MCP server */
 export interface ToolRegistration<T = unknown> {
@@ -100,11 +100,7 @@ export interface ToolRegistration<T = unknown> {
 // ─────────────────────────────────────────────
 
 /** Connection state for an MCP client */
-export type ConnectionState =
-  | "disconnected"
-  | "connecting"
-  | "connected"
-  | "error";
+export type ConnectionState = "disconnected" | "connecting" | "connected" | "error";
 
 /** Event emitted by the MCP client */
 export interface McpClientEvent {

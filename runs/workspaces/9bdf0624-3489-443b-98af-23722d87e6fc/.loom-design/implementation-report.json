@@ -1,0 +1,68 @@
+{
+  "fingerprint": "e029725f3bfd856a6509c89c48d3aaff5559f73476e211a98e057bcb1921d9ec",
+  "checkedAt": "2026-09-18T14:03:05.736Z",
+  "sourceChecksPassed": true,
+  "visualComparison": "not_performed",
+  "coverage": [
+    {
+      "screen": "cc46252419c642de9de784d314a65400",
+      "title": "Desktop - Job Search & Skill Match",
+      "files": [
+        "src/components/JobSearch.jsx",
+        "src/components/DesignSystem.jsx"
+      ]
+    },
+    {
+      "screen": "835f1cedaf3a4292bcd4ed3e1b7807c2",
+      "title": "Desktop - Technical Gap Analysis",
+      "files": [
+        "src/components/TechnicalGapAnalysis.jsx"
+      ]
+    },
+    {
+      "screen": "1349ab84c6f543a5a5e90d2f62f9b364",
+      "title": "Technical Gap Analysis - Junior Frontend Engineer",
+      "files": [
+        "src/components/TechnicalGapAnalysis.jsx",
+        "src/components/JobDetails.jsx"
+      ]
+    },
+    {
+      "screen": "01ab715e69b943a8a64abfb03ba35367",
+      "title": "Desktop - Career Recommendations & Learning Roadmap",
+      "files": [
+        "src/components/CareerRecommendations.jsx"
+      ]
+    },
+    {
+      "screen": "1e881425a35f4e1ab8891b1f2125238e",
+      "title": "Career Recommendations & Learning Roadmap",
+      "files": [
+        "src/components/CareerRecommendations.jsx"
+      ]
+    },
+    {
+      "screen": "a6ab36f65b7e44e587a891e4e061d6b2",
+      "title": "Desktop - Job Details & Application",
+      "files": [
+        "src/components/JobDetails.jsx"
+      ]
+    },
+    {
+      "screen": "b512031141624b57bb4d4e69392fdf6b",
+      "title": "Job Search & Skill Match",
+      "files": [
+        "src/components/JobSearch.jsx",
+        "src/components/DesignSystem.jsx"
+      ]
+    },
+    {
+      "screen": "27945bda986b48e3b41adb852fad6738",
+      "title": "Job Details & Application - Junior Frontend Engineer",
+      "files": [
+        "src/components/JobDetails.jsx"
+      ]
+    }
+  ],
+  "problems": []
+}

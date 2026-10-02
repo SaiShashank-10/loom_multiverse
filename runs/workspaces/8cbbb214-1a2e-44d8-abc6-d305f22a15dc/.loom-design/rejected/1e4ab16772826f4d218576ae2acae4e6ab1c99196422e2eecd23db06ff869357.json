@@ -1,0 +1,10 @@
+{
+  "file": "src/components/Button.tsx",
+  "design": "e542aba9b34c8599240c7e394dd14245316b3b495fe0e9257fb2599de934c570",
+  "source": "import React from 'react';\n\nconst Button = ({ children, onClick, type = 'button', className = '' }) => {\n  return (\n    <button\n      onClick={onClick}\n      type={type}\n      className={`btn ${className} hover:scale-102 hover:shadow-lg transition duration-200 ease-out text-primary bg-secondary hover:bg-secondary-container hover:text-on-secondary-container focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary`}\n    >\n      {children}\n    </button>\n  );\n};\n\nexport default Button;\n",
+  "issues": [
+    "The button component does not use the approved design tokens for colors, fonts, and other styling properties. The current implementation uses Tailwind utility classes that are not defined in the provided design tokens.",
+    "The hover animation is implemented using Tailwind's `hover:scale-102` and `hover:shadow-lg`, which are not part of the approved reference. The approved reference suggests a different hover effect, but it is not clear from the provided information what that should be.",
+    "The button component does not use the approved design tokens for font sizes and line heights. The current implementation uses Tailwind's `text-primary` and `bg-secondary`, which are not defined in the provided design tokens."
+  ]
+}

@@ -7,6 +7,19 @@
 
 ---
 
+## Run the LOOM product studio
+
+With Docker Desktop running, from this repository:
+
+```powershell
+pnpm install
+docker compose up -d postgres redis
+pnpm build:studio
+pnpm dev:studio
+```
+
+Open **http://127.0.0.1:5174**. The studio includes project creation, saved terminal projects, interactive agent conversations and approvals, Stitch references, source previews and project insights. The root `.env` supplies the existing backend configuration. See [the frontend guide](apps/web/README.md) for details.
+
 ## What is Loom Multiverse?
 
 Loom Multiverse compresses the idea-to-product timeline for non-technical founders. You provide an idea, abstract, or partially built codebase — the system handles everything from market validation to deployment through **6 specialized AI agents** coordinated by an Orchestrator.

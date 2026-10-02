@@ -1,0 +1,8 @@
+{
+  "content": "{ \"passed\": false, \"issues\": [ \"The job title is not bold and does not match the approved reference.\", \"The company mark is missing.\", \"The location is not displayed in a consistent format with other screens.\", \"The workplace information is not aligned properly.\", \"The salary information is not formatted as currency.\", \"The posted age is not displayed.\", \"The sample match badge is not styled correctly.\", \"The matched skills are not displayed in the same style as other screens.\" ] }",
+  "usage": {
+    "input_tokens": 4880,
+    "output_tokens": 101,
+    "total_tokens": 4981
+  }
+}

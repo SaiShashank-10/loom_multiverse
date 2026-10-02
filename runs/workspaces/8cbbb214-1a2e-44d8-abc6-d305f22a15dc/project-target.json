@@ -1,0 +1,6 @@
+{
+  "framework": "web",
+  "platform": "web",
+  "deviceType": "DESKTOP",
+  "evidence": "Approved target: web; client framework: web. Explicit user requirements were evaluated before the technical plan."
+}

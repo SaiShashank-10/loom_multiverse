@@ -1,3 +1,4 @@
+import { ensureOllamaReady } from "../llm/ollama-health.js";
 /**
  * @loom/agents — Base Agent
  *
@@ -35,10 +36,10 @@ export abstract class BaseAgent implements IAgent {
     this.name = config.name;
     this.phase = config.phase;
     this.description = config.description;
-    
+
     // Each agent gets a dedicated logger namespace (e.g. agent:idea-check)
     this.log = createLogger(`agent:${this.phase}`);
-    
+
     // Initialize standard pgvector store interface
     this.vectorStore = new VectorStore(db);
 
@@ -62,30 +63,34 @@ export abstract class BaseAgent implements IAgent {
 
     try {
       // Use provided LLM (for testing) or default to Tier 1 (due to VRAM constraint)
+      if (!input.llm && config.LLM_PROVIDER === "ollama")
+        await ensureOllamaReady(undefined, undefined, (message) =>
+          input.onMessage?.("agent:message", { phase: this.phase, message }),
+        );
       const llm = input.llm ?? createTier1LLM();
-      
+
       // Execute the concrete agent's logic
       const result = await this.execute(input, llm);
-      
+
       const duration = Date.now() - startTime;
       this.log.info({ duration, success: result.success }, `Finished phase: ${this.phase}`);
-      
+
       return result;
     } catch (error) {
       const duration = Date.now() - startTime;
       const message = error instanceof Error ? error.message : String(error);
-      
+
       this.log.error({ duration, error: message }, `Failed phase: ${this.phase}`);
-      
+
       if (error instanceof AgentError) {
         throw error;
       }
-      
+
       throw new AgentError(
         `Agent ${this.name} failed during phase ${this.phase}: ${message}`,
         this.phase,
         undefined,
-        { originalError: message }
+        { originalError: message },
       );
     }
   }
@@ -94,9 +99,13 @@ export abstract class BaseAgent implements IAgent {
    * Utility: Connect to an MCP server, list its tools, and return the client.
    * Agents use this when they need to call tools like `execute_code` or `github_pr`.
    */
-  protected async connectMcp(serverName: string, command: string, args: string[] = []): Promise<McpClient> {
+  protected async connectMcp(
+    serverName: string,
+    command: string,
+    args: string[] = [],
+  ): Promise<McpClient> {
     this.log.debug({ serverName }, "Connecting to MCP server");
-    
+
     const client = new McpClient({
       serverName,
       transport: "stdio",

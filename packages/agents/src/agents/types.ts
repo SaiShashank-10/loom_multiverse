@@ -36,6 +36,7 @@ export interface AgentInput {
   phase: string;
   /** The payload specific to this phase */
   payload: Record<string, unknown>;
+  resumeChatHistory?: ChatMessage[];
   /** Optional override for the LLM to use */
   llm?: BaseChatModel;
   /** Callback for sending messages to the user (WebSocket/CLI) */
